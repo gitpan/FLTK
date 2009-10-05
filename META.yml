@@ -1,0 +1,293 @@
+---
+name: FLTK
+version: 0.530
+author:
+  - 'Sanko Robinson <sanko@cpan.org>'
+abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
+license: artistic_2
+resources:
+  ChangeLog: http://github.com/sanko/fltk-perl/commits/master
+  bugtracker: http://github.com/sanko/fltk-perl/issues
+  homepage: http://sanko.github.com.com/fltk-perl/
+  license: http://www.perlfoundation.org/artistic_license_2_0
+  repository: http://github.com/sanko/fltk-perl
+build_requires:
+  Alien::FLTK: 0.06879
+  Config: 0
+  Cwd: 0
+  Devel::PPPort: 0
+  ExtUtils::CBuilder: 0.24
+  ExtUtils::ParseXS: 0
+  File::Find: 0
+  File::Path: 2.04
+  File::Spec: 0
+  Module::Build: 0
+  Pod::Parser: 0
+  Test::More: 0.88
+  perl: v5.8.0
+requires:
+  Config: 0
+  Cwd: 0
+  Devel::PPPort: 0
+  ExtUtils::CBuilder: 0.24
+  ExtUtils::ParseXS: 0
+  File::Find: 0
+  File::Path: 2.04
+  File::Spec: 0
+  Module::Build: 0
+  Test::More: 0.88
+  base: 0
+  perl: v5.8.0
+recommends:
+  OpenGL: 0.58
+configure_requires:
+  Module::Build: 0.35
+provides:
+  FLTK:
+    file: lib/FLTK.pm
+    version: 0.530
+  FLTK::Adjuster:
+    file: xs/Adjuster.xsi
+    version: 0.530
+  FLTK::AlignGroup:
+    file: xs/AlignGroup.xsi
+    version: 0.530
+  FLTK::AnsiWidget:
+    file: xs/AnsiWidget.xsi
+    version: 0.530
+  FLTK::AssociationFunctor:
+    file: xs/AssociationFunctor.xsi
+    version: 0.530
+  FLTK::AssociationType:
+    file: xs/AssociationType.xsi
+    version: 0.530
+  FLTK::BarGroup:
+    file: xs/BarGroup.xsi
+    version: 0.530
+  FLTK::Box:
+    file: xs/Box.xsi
+    version: 0.530
+  FLTK::Browser:
+    file: xs/Browser.xsi
+    version: 0.530
+  FLTK::Browser::Mark:
+    file: xs/Browser/Mark.xsi
+    version: 0.530
+  FLTK::Button:
+    file: xs/Button.xsi
+    version: 0.530
+  FLTK::CheckButton:
+    file: xs/CheckButton.xsi
+    version: 0.530
+  FLTK::Choice:
+    file: xs/Choice.xsi
+    version: 0.530
+  FLTK::Clock:
+    file: xs/Clock.xsi
+    version: 0.530
+  FLTK::ClockOutput:
+    file: xs/ClockOutput.xsi
+    version: 0.530
+  FLTK::Color:
+    file: xs/Color.xsi
+    version: 0.530
+  FLTK::ColorChooser:
+    file: xs/ColorChooser.xsi
+    version: 0.530
+  FLTK::ComboBox:
+    file: xs/ComboBox.xsi
+    version: 0.530
+  FLTK::Cursor:
+    file: xs/Cursor.xsi
+    version: 0.530
+  FLTK::CycleButton:
+    file: xs/CycleButton.xsi
+    version: 0.530
+  FLTK::Dial:
+    file: xs/Dial.xsi
+    version: 0.530
+  FLTK::Divider:
+    file: xs/Divider.xsi
+    version: 0.530
+  FLTK::EngravedLabel:
+    file: xs/EngravedLabel.xsi
+    version: 0.530
+  FLTK::FileBrowser:
+    file: xs/FileBrowser.xsi
+    version: 0.530
+  FLTK::FileIcon:
+    file: xs/FileIcon.xsi
+    version: 0.530
+  FLTK::FileInput:
+    file: xs/FileInput.xsi
+    version: 0.530
+  FLTK::FillDial:
+    file: xs/FillDial.xsi
+    version: 0.530
+  FLTK::FillSlider:
+    file: xs/FillSlider.xsi
+    version: 0.530
+  FLTK::Flags:
+    file: xs/Flags.xsi
+    version: 0.530
+  FLTK::FlatBox:
+    file: xs/FlatBox.xsi
+    version: 0.530
+  FLTK::FloatInput:
+    file: xs/FloatInput.xsi
+    version: 0.530
+  FLTK::Font:
+    file: xs/Font.xsi
+    version: 0.530
+  FLTK::FrameBox:
+    file: xs/FrameBox.xsi
+    version: 0.530
+  FLTK::GL:
+    file: xs/GL.xsi
+    version: 0.530
+  FLTK::GlWindow:
+    file: xs/GlWindow.xsi
+    version: 0.530
+  FLTK::Group:
+    file: xs/Group.xsi
+    version: 0.530
+  FLTK::HelpDialog:
+    file: xs/HelpDialog.xsi
+    version: 0.530
+  FLTK::HelpView:
+    file: xs/HelpView.xsi
+    version: 0.530
+  FLTK::HighlightBox:
+    file: xs/HighlightBox.xsi
+    version: 0.530
+  FLTK::HighlightButton:
+    file: xs/HighlightButton.xsi
+    version: 0.530
+  FLTK::Image:
+    file: xs/Image.xsi
+    version: 0.530
+  FLTK::Input:
+    file: xs/Input.xsi
+    version: 0.530
+  FLTK::InputBrowser:
+    file: xs/InputBrowser.xsi
+    version: 0.530
+  FLTK::IntInput:
+    file: xs/IntInput.xsi
+    version: 0.530
+  FLTK::InvisibleBox:
+    file: xs/InvisibleBox.xsi
+    version: 0.530
+  FLTK::Item:
+    file: xs/Item.xsi
+    version: 0.530
+  FLTK::ItemGroup:
+    file: xs/ItemGroup.xsi
+    version: 0.530
+  FLTK::LabelType:
+    file: xs/LabelType.xsi
+    version: 0.530
+  FLTK::Layout:
+    file: xs/layout.xsi
+    version: 0.530
+  FLTK::LightButton:
+    file: xs/LightButton.xsi
+    version: 0.530
+  FLTK::LineDial:
+    file: xs/LineDial.xsi
+    version: 0.530
+  FLTK::Menu:
+    file: xs/Menu.xsi
+    version: 0.530
+  FLTK::MenuBar:
+    file: xs/MenuBar.xsi
+    version: 0.530
+  FLTK::MenuSection:
+    file: xs/MenuSection.xsi
+    version: 0.530
+  FLTK::MenuWindow:
+    file: xs/MenuWindow.xsi
+    version: 0.530
+  FLTK::Monitor:
+    file: xs/Monitor.xsi
+    version: 0.530
+  FLTK::MultiBrowser:
+    file: xs/MultiBrowser.xsi
+    version: 0.530
+  FLTK::MultiImage:
+    file: xs/MultiImage.xsi
+    version: 0.530
+  FLTK::MultiLineInput:
+    file: xs/MultiLineInput.xsi
+    version: 0.530
+  FLTK::MultiLineOutput:
+    file: xs/MultiLineOutput.xsi
+    version: 0.530
+  FLTK::NamedStyle:
+    file: xs/NamedStyle.xsi
+    version: 0.530
+  FLTK::NumericInput:
+    file: xs/NumericInput.xsi
+    version: 0.530
+  FLTK::Output:
+    file: xs/Output.xsi
+    version: 0.530
+  FLTK::Plugin:
+    file: xs/Plugin.xsi
+    version: 0.530
+  FLTK::Style:
+    file: xs/Style.xsi
+    version: 0.530
+  FLTK::Version:
+    file: xs/Version.xsi
+    version: 0.530
+  FLTK::Widget:
+    file: xs/Cursor.xsi
+    version: 0.530
+  FLTK::Window:
+    file: xs/Window.xsi
+    version: 0.530
+  FLTK::ask:
+    file: xs/ask.xsi
+    version: 0.530
+  FLTK::ccCellBox:
+    file: xs/ccCellBox.xsi
+    version: 0.530
+  FLTK::ccHueBox:
+    file: xs/ccHueBox.xsi
+    version: 0.530
+  FLTK::ccValueBox:
+    file: xs/ccValueBox.xsi
+    version: 0.530
+  FLTK::damage:
+    file: xs/damage.xsi
+    version: 0.530
+  FLTK::draw:
+    file: xs/draw.xsi
+    version: 0.530
+  FLTK::events:
+    file: xs/events.xsi
+    version: 0.530
+  FLTK::run:
+    file: xs/run.xsi
+    version: 0.530
+no_index:
+  directory:
+    - examples
+    - inc
+generated_by: 'Conversion, software version 7.0'
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+keywords:
+  - FLTK
+  - Fast
+  - Light
+  - Toolkit
+  - widget
+  - FL
+  - GUI
+  - UI
+  - window
+  - 2.0.x
+  - experimental

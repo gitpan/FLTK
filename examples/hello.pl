@@ -1,22 +1,29 @@
-#!/usr/bin/perl
-# The ubiquitous Hello World in 6 lines of Perl using the perl FLTK module.
 
-use FLTK qw( :Boxtypes );
+=pod
 
-$win = new Fl_Window(110, 40, "$0");
-$btn = new Fl_Highlight_Button(5,5,100,30, "Hello World!");
-$btn->callback(\&fancy_cb, 'foo');
-$btn->box(FL_THIN_UP_BOX);
-$win->end();
+=for abstract Basic 'Hello, World' script described in
+L<FLTK::Basics|FLTK::Basics>
 
-$win->show();
-Fl::run();
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
 
-sub fancy_cb {
-  my ($w, $data) = @_;
-  print "I'm a callback.\nI was called by a widget with the label ";
-  print $w->label();
-  print "\nI was passed a data argument containing '$data'.\n";
-  print "Buh bye now.\n";
-  exit;
-}
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for git $Id: hello.pl 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+
+=cut
+
+use strict;
+use warnings;
+use FLTK;
+
+#
+my $window = FLTK::Window->new(300, 180);
+$window->begin();
+my $box = FLTK::Widget->new(20, 40, 260, 100, "Hello, World!");
+$box->box(UP_BOX);
+$box->labelfont(HELVETICA_BOLD_ITALIC);
+$box->labelsize(36);
+$box->labeltype(SHADOW_LABEL);
+$window->end();
+$window->show();
+exit run();

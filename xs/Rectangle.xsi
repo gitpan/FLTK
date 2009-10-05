@@ -1,0 +1,28 @@
+#ifndef DISABLE_RECTANGLE
+
+MODULE = FLTK               PACKAGE = FLTK::Rectangle
+
+=pod
+
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for git $Id: Rectangle.xsi 192e821 2009-09-20 02:23:06Z sanko@cpan.org $ for got=
+
+=for apidoc ||FLTK::Rectangle self|new|int x|int y|int w|int h|
+
+The default constructor does not put anything into the fields! You can either
+call L<C<set()>|FLTK::Rectangle/"set"> or just modify the C<x>, C<y>, C<w>,
+and C<h> variables directly.
+
+=for hackers The fltk::Rectangle class is completly defined within run.h
+
+=cut
+
+fltk::Rectangle *
+fltk::Rectangle::new( int x, int y, int w, int h )
+
+INCLUDE: Monitor.xsi
+
+#endif // ifndef DISABLE_RECTANGLE

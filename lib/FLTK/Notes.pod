@@ -1,0 +1,425 @@
+=pod
+
+=head1 NAME
+
+FLTK::Notes - Annotated Guide to the Ins and Outs of FLTK
+
+=head1 Description
+
+=for html <span style="color:#F00;font-size:2em;">
+
+B<I am actively seeking volunteers to help test and develop this project.
+Please see the notes on L<joining the team|/"Join the Team">.>
+
+=for html </span>
+
+This is a first draft attempt at defining a road map for future development
+and a behavioral reference for users and third-party developers.
+
+=head1 Support and Information Links
+
+Right off the bat, here's a list of some of the important links refered to
+in this document.
+
+=over
+
+=item Website and Blog
+
+Eventually, the official website will be http://sanko.github.com/fltk-perl/.
+There you'll find html versions of all the documentation, examples, the
+development blog, and links to other resources.
+
+...eventually.
+
+=item Live support
+
+Eventually, the official means of support for L<FLTK|FLTK> may be through
+C<#fltk-perl> on... some IRC network. Probably Freenode. If anyone aside from
+me decides to show up on a regular basis.
+
+Yeah, ...eventually.
+
+=item Receive Commit and Issue Tracker Updates
+
+Follow the project on github: http://github.com/sanko/fltk-perl/
+
+=item Mailinglist
+
+I'd need someone to host it. :\
+
+=item Issue Tracker
+
+Use http://github.com/sanko/fltk-perl/issues/list for bug tracking. Please
+include as much information as possible and review the list in the
+L<Bug Tracking|/"Bug Tracking"> section below.
+
+=item Twitter
+
+I announce stable builds and occasionally complain on Twitter:
+http://twitter.com/FLTKpm
+
+=back
+
+=head1 API
+
+[TODO]
+
+=head2 API Maturity
+
+Please see the section on API
+L<Backward Compatibility|/"Backward Compatibility">.
+
+=head2 Documentation Resources
+
+[TODO]
+
+=head3 See Also
+
+See also the section on L<APIDoc|/"APIDoc">.
+
+=head2 ...vs. the C++ API
+
+For the most part, I have tried to emulate the official interface to FLTK but
+there are a few areas where I stray (sometimes drastically) from the C++ API
+Here, I'll list them and (for some) try to explain why.
+
+If a change I mention here chafes you the wrong way, you're free to (within
+reason) bug me about it until I reconsider. ...and, in turn, I am free to
+ignore you if I'm busy or just about any other reason. Drop such requests in
+the issue tracker.
+
+=head3 Major Differences
+
+[TODO]
+
+=head3 Minor Differences
+
+=over
+
+=item * Support for C<args(...), arg(...), and show(...)>
+
+The latter two are used extensively in the tests that come with fltk but I
+don't think they're powerful enough to use in Perl. I would suggest using
+L<GetOpt::Long|GetOpt::Long> or another command line parser and then setting
+the values in FLTK manually.
+
+I'm still thinking about this choice, so don't get too angry if your life is
+incomplete without C<arg(0, '-geometry blah', 0)> support.
+
+=item * L<FLTK::ask|FLTK::ask> functions do not do sprintf-like stuff.
+
+Working around XSUB's inability to take true variable argument lists isn't
+worth the time nor effort.
+
+=item * L<C<choice(...)>|FLTK::ask/choice>'s choices (<_<) are shown in the
+correct order; from left to right.
+
+=item * Anti-perl-isms
+
+The Fast Light Toolkit's API is so C++ oriented that it makes me itch. Here,
+I'll list the places where things moved too far from what one might expect in
+a Perl module and I made a decision which strayes from the underlying C++ API.
+
+=over
+
+=item * L<C<FLTK::parsecolor ( COLOR, [ LENGTH ] )>|FLTK::Color/parsecolor>
+
+The C++ function takes two parameters:
+L<C<parsecolor( char * name, unsigned length )>|FLTK::Color/"parsecolor">
+...but this is Perl and forcing you to call
+L<C<parsecolor( $mycolor, length($mycolor) )>|FLTK::Color/"parsecolor"> is
+silly.
+
+=item * L<C<FLTK::Browser::column_widths()>|FLTK::Browser/"column_widths">,
+L<C<FLTK::Browser::current_index>|FLTK::Browser/"current_index">
+L<C<FLTK::Browser::focus_index>|FLTK::Browser/"focus_index">
+L<C<FLTK::Browser::column_labels>|FLTK::Browser/"column_labels"> do not
+require a trailing zero (C<0>) and do not add one to return values.
+
+=item * L<C<FLTK::addvertices>|FLTK::draw/"addvertices"> and
+L<C<FLTK::addvertices_transformed>|FLTK::draw/"addvertices_transformed"> don't
+require an initial total.
+
+=item * L<C<rgb2hsv($r, $g, $b)>|FLTK::ColorChooser/"rgb2hsv"> returns
+C<$h, $s, $v> as opposed the C function which is defined as
+C<void rgb2hsv(r,b,g,h,s,v)> and changes C<h, s, v> in place.
+
+=item * L<C<hsv2rgb($h, $s, $v)>|FLTK::ColorChooser/"hsv2rbg"> returns
+C<$r, $b, $g> as opposed the C function which is defined as
+C<void hsv2rbg(h, s, v, r, b, g)> and changes C<r, b, g> in place.
+
+=back
+
+=back
+
+=head1 System Requirements
+
+If you work with any other setups (VC++, CygFail, etc.) and would like to lend
+a hand with development please L<join the team|/"Join the Team">. If you just
+want to L<report a bug|/"Bug Tracking"> or L<help test|/"Testing">, that's
+cool too.
+
+=head2 Prerequisites
+
+L<FLTK|FLTK> requires L<Alien::FLTK|Alien::FLTK> (which attempts to build and
+install a local copy of the fltk libs) is listed as prerequisite in
+C<Build.PL> so, unless you answer 'no' when prompted, the CPAN shell should
+automatically install it for you.
+
+Other requirements are listed by system below.
+
+=head2 OSs
+
+This is a partial (and currently incomplete) list of OSs/setups known to work
+or have problems with L<FLTK|FLTK>. Where possible, workarounds are mentioned.
+
+=head3 Mac OS
+
+Absolutly untested. The fltk libs work on MacOS but the last time I had access
+to an Apple was in 1st grade. I played Number Munchers.
+
+=head3 *nix
+
+Before most major changes are uploaded, I run the test suite with the latest
+Xbuntu (LTS). Assistance (even if only test reports) from BSDs are welcome.
+
+=head3 Win32
+
+My primary dev environment is XP Professional with MinGW. If you work with any
+other setups (VC++, CygFail, etc.) and would like to lend a hand with
+development and/or testing, please L<join the team|/"Join the Team">.
+
+=head2 GL
+
+[TODO]
+
+=head1 Installation
+
+This distribution uses C<Module::Build> for installation, so use the following
+procedure:
+
+  perl Build.PL
+  ./Build
+  ./Build test
+  ./Build install
+
+See also: L<Distribution Testing|/"Distribution Testing">
+
+=head2 Installing the fltk2 Libraries
+
+Please refer to L<Alien::FLTK|Alien::FLTK>.
+
+=head2 Backward Compatibility
+
+This section lists recent major changes in API or behavior between stable
+releases. For older news see the F<Changes> file included with this
+distribution. For detail see the commit logs.
+
+=over
+
+=item ...nothin' has changed yet.
+
+=back
+
+...and yeah, I know this isn't fluff but it may grow too large to put near the
+top with L<API|/"API">.
+
+=head1 The Source
+
+=head2 Getting the source
+
+[TODO]
+
+=head3 GitHub
+
+[TODO]
+
+=head3 CPAN
+
+[TODO]
+
+=head2 Navigating the Source...
+
+=head3 ...as a Developer
+
+[TODO]
+
+=head3 ...as a User
+
+[TODO]
+
+=head2 APIDoc
+
+To make life easy, FLTK's documentation is in the xs source files near to
+whatever is being described. The documentation format is based on the apidoc
+found in perl's own core. ...why not steal a great idea, amirite?
+
+During the build process, the documentation is pulled from the xs and .pod
+files are created and installed with the module.
+
+=head3 APIDoc format
+
+For folks with an itch to hack or a flair for words and want to help improve
+the documentation, lines are of the form:
+
+    flags|prereq|return_type|function_name|arg1|arg2|...|argN
+
+ flags are single letters with following meanings:
+    D       depreciated code/widget
+    E       enum/flag
+    F       function rather than an OO method*
+    x       experimental and may be removed or changed in a future version
+    T[X,Y]  exported by tags :X and :Y
+    N       basic functionality has changed since the last major release*
+    U       suppress usage example in auto-generated documentation
+    H       this is a hidden, internal (hacker only) function
+
+ prereq are single letters with the following meanings:
+    G       requires GL
+    X       requires the X Window system
+    t       requires pthreads (or Windows)*
+    W       requires Windows
+
+* denotes stuff I haven't really given enough thought to and probably haven't
+used yet.
+
+This format is subject to change.
+
+=head1 Contributing
+
+[TODO]
+
+=head2 The Development Cycle
+
+This section describes all the behind the scenes stuff that makes L<FLTK|FLTK>
+work. Or not work. It depends. If you're interested in assisting with
+L<FLTK|FLTK>'s development but don't know where to begin, here are a few
+ideas.
+
+=head3 Work, work, work...
+
+[TODO]
+
+=head3 Bug Stomping
+
+[TODO]
+
+Also see the section on
+L<testing development builds|/"Testing Development Builds">.
+
+=head3 Release
+
+[TODO]
+
+=head1 The Team
+
+...well, it's currently a team of one. But I'm looking for help. Skip down to
+the L<join the team|/"Join the Team"> section below.
+
+=head2 Join the Team
+
+C<FLTK> is too large for just one person to hack on. If you're XS, C++, or
+just Perl-adept and would like to help, you can start by forking the project
+on github: http://github.com/sanko/fltk-perl/. When ready, send me a pull
+request, I'll look over your changes and get back to you. Minor patches get
+your name in the changelog. Really major contributions get your name in the
+L<Acknowledgments|FLTK/Acknowledgments> section and an invitation to be a
+trusted collaborator. Oooo. Ahhh.
+
+As "The Team" grows (assuming anyone helps me out...) the
+L<development cycle|/"The Development Cycle"> will grow with it. For now,
+a trimmed down version of Moose's
+L<contribution notes|Moose::Manual::Contributing>.
+
+=head2 Bug Tracking
+
+Found bugs should be reported through C<FLTK>'s
+L<Issue Tracker|/"Issue Tracker">.  Before creating a new report, please
+review the following list:
+
+=over
+
+=item 1. Make sure you are using the most recent stable release.
+
+=item 2. Make sure the bug is reproducible.
+
+=item 3. Please write in clear English.
+
+=item 4. Provide "baby steps" to describe exactly how to replicate the bug.
+Sample code is welcome.
+
+=item 5. Search the list of open and resolved issues to make sure the flaw
+hasn't already been reported.
+
+=item 6. One bug is one bug report. Please do not include multiple, separate
+issues in one report unless they are explicitly related to each other.
+
+=item 7. Look over your report before submission to be sure you've included as
+much detail as possible. Seriously. Get up, have a drink of water, come back,
+read over it again to make sure you've included everything you intended, and
+then submit it.
+
+=back
+
+=head2 Testing
+
+More than just about anything else, L<FLTK|FLTK> needs to be tested. Here are
+a couple ways you can help with that.
+
+=head3 Testing Development Builds
+
+[TODO]
+
+=head3 Distribution Testing
+
+Becoming a CPAN Tester is an easy, automatic way to contribute to the quality
+of your favorite module and CPAN in general.  If you would like to contribute
+automated test reports for C<FLTK>, install C<CPAN::Reporter> from the CPAN
+shell first:
+
+ $ cpan
+ cpan> install CPAN::Reporter
+ cpan> reload cpan
+ cpan> o conf init test_report
+   [...follow the CPAN::Reporter setup prompts...]
+ cpan> o conf commit
+ cpan> install FLTK
+
+For more on becoming a CPAN Tester and why this is useful, see the
+L<CPAN::Reporter|CPAN::Reporter/"DESCRIPTION"> documentation and
+http://cpantesters.org/.
+
+=head1 See Also
+
+=over
+
+=item What are the Versions of FLTK?
+
+http://fltk.org/articles.php?L825+I0+T+P1+Q
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+CPAN ID: SANKO
+
+=head1 License and Legal
+
+Copyright (C) 2008-2009 by Sanko Robinson E<lt>sanko@cpan.orgE<gt>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of The Artistic License 2.0.  See the F<LICENSE>
+file included with this distribution or
+http://www.perlfoundation.org/artistic_license_2_0.  For
+clarification, see http://www.perlfoundation.org/artistic_2_0_notes.
+
+When separated from the distribution, all POD documentation is covered
+by the Creative Commons Attribution-Share Alike 3.0 License.  See
+http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
+clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
+
+=for git $Id: Notes.pod 257ab13 2009-10-05 00:23:01Z sanko@cpan.org $
+
+=cut

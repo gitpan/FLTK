@@ -1,0 +1,55 @@
+#ifndef DISABLE_NAMEDSTYLE
+
+MODULE = FLTK               PACKAGE = FLTK::NamedStyle
+
+=pod
+
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for version 0.530
+
+=for git $Id: NamedStyle.xsi 84c047b 2009-09-04 03:55:45Z sanko@cpan.org $ for got=
+
+=head1 NAME
+
+FLTK::NamedStyle -
+
+=head1 Description
+
+Typically a widget class will define a single NamedStyle that is used by all
+instances of that widget. A "theme" can locate this structure by looking it up
+by name (using the L<C<find()>|FLTK::Style/"find"> method) and then change it
+to change the appearance of all widgets of that class.
+
+The reason a string name is used, rather than making the style be a public
+static data member of the class, is so that a theme can modify a large number
+of types of widgets without having them all linked into a program. If
+L<C<find()>|FLTK::Style/"find"> returns null it should just skip that setting
+code because that widget is not used by this program.
+
+The "revert" function is mostly provided to make it easy to initialize the
+fields even though C++ does not allow a structure constant. It is also used to
+undo theme changes when L<C<FLTK::reset_theme()>|FLTK/"reset_theme"> is
+called.
+
+=begin apidoc
+
+=cut
+
+#include <fltk/Style.h>
+
+=for apidoc |||destroy|
+
+Destroy the L<NamedStyle|FLTK::NamedStyle>.
+
+=cut
+
+void
+fltk::NamedStyle::destroy( )
+    CODE:
+        delete THIS;
+        sv_setsv(ST(0), &PL_sv_undef);
+
+#endif // ifndef DISABLE_NAMEDSTYLE

@@ -1,0 +1,6 @@
+#include "resource.h"
+#include <windows.h>
+
+FLTK               ICON           "fltk.ico"
+
+ // $ID: icons.rc bb50aef 2009-07-26 02:36:33Z sanko@cpan.org $

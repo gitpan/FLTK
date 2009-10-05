@@ -1,0 +1,191 @@
+#ifndef DISABLE_GL
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=pod
+
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for version 0.530
+
+=for git $Id: GL.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+
+=head1 NAME
+
+FLTK::GL - Portable OpenGL
+
+=head1 Description
+
+
+
+=begin apidoc
+
+=cut
+
+#include <fltk/gl.h>
+
+=for apidoc T[gl]|G||glstart|||
+
+
+
+=for apidoc T[gl]|G||glfinish|||
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+glstart( )
+
+void
+glfinish( )
+
+BOOT:
+    export_tag("glstart",  "gl");
+    export_tag("glfinish", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||glsetcolor|FLTK::Color color|
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+glsetcolor( fltk::Color color )
+
+BOOT:
+    export_tag("glsetcolor", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||glstrokerect|int x|int y|int w|int h|
+
+
+
+=for apidoc T[gl]|G||glfillrect|int x|int y|int w|int h|
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+glstrokerect( int x, int y, int w, int h )
+
+void
+glfillrect ( int x, int y, int w, int h )
+
+BOOT:
+    export_tag("glstrokerect", "gl");
+    export_tag("glfillrect",   "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||glsetfont|FLTK::Font * font|float size|
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+glsetfont( fltk::Font * f, float size )
+
+BOOT:
+    export_tag("glsetfont", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||glgetascent||
+
+
+
+=for apidoc T[gl]|G||glgetdescent||
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+float
+glgetascent( )
+
+float
+glgetdescent( )
+
+BOOT:
+    export_tag("glgetascent",  "gl");
+    export_tag("glgetdescent", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G|float width|glgetwidth|char * string|
+
+
+
+=for apidoc T[gl]|G|float width|glgetwidth|char * string|int length|
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+float
+glgetwidth( char * string, int length = NO_INIT )
+    CASE: items == 1
+        C_ARGS: string
+    CASE:
+        C_ARGS: string, length
+
+BOOT:
+    export_tag("glgetwidth", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||gldrawtext||||
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+gldrawtext ( char * string, float x = NO_INIT, float y = NO_INIT, float z = 0 )
+    CASE: items == 1
+        C_ARGS: string  /* NOTE: n (length) is not supported */
+    CASE: items >= 3
+        C_ARGS: string, /* NOTE: n (length) is not supported */ x, y, z
+
+BOOT:
+    export_tag("gldrawtext", "gl");
+
+MODULE = FLTK               PACKAGE = FLTK::GL
+
+=for apidoc T[gl]|G||gldrawimage|uchar * data|int x|int y|int w|int h|int d = 3|int ld = 0|
+
+
+
+=cut
+
+MODULE = FLTK               PACKAGE = FLTK
+
+void
+gldrawimage( uchar * data, int x, int y, int w,int h, int d = 3, int ld = 0 )
+
+BOOT:
+    export_tag("gldrawimage", "gl");
+
+#endif // ifndef DISABLE_GL

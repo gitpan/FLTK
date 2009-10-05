@@ -1,9 +1,24 @@
-Revision history for Perl extension FLTK.
+Version 0.530 | 2009-10-05 00:48:18Z (Mon, 05 Oct 2009) | 277e9ef
 
-0.52  Thu Sep 27 21:48:56 2000
-  - Finally remembered to update this. Makefile improvements, fixed compile
-    bug.
+    API Changes/Compatibility Information:
+     * ...see below
 
-0.01  Wed Sep 13 20:10:47 2000
-	- original version; created by h2xs 1.19
+    Resolved Issues/Bug Fixes:
+     * ...see below
 
+    Internal/Behavioral Changes:
+     * It actually exists
+
+    Documentation/Sample Code/Test Suite:
+     * ...see above
+
+    Notes:
+     * The FLTK project is just getting started so now's a great time to join
+
+_ -.-. .... .- -. --. . ... _________________________________________
+For more information, see the commit log:
+    http://github.com/sanko/fltk-perl/commits/master
+
+$Ver: 0.530 $ from git $Rev: 277e9ef $
+$Date: 2009-10-05 00:48:18Z (Mon, 05 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/277e9ef14e02490fce3613fc3b4041d4d55af8c1/Changes $

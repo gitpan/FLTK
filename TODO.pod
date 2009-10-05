@@ -1,0 +1,188 @@
+=pod
+
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for git $Id: TODO.pod 34f3ea1 2009-09-22 04:09:51Z sanko@cpan.org $ for got=
+
+=head1 NAME
+
+FLTK::Todo - TODO list for Perl module FLTK
+
+=head1 High priorities
+
+=over
+
+=item * Prove that FLTK and L<Alien::FLTK|Alien::FLTK> to build on non-Win32
+systems!
+
+They both build just fine on my Xubuntu box but I get nothing but failures and
+false positives from CPAN Testers.
+
+=item * Document internals and write regression tests
+
+=item * Make sure all examples in POD (c+p from the fltk2 docs) actually work
+
+=item * Creating new callbacks/timeouts leaks memory
+
+=item * remove_timeout(...) doesn't...
+
+=item * Thread safety
+
+=item * Finish the following widgets/classes
+
+=over
+
+=item FLTK::List
+
+=item FLTK::MenuSection
+
+=item FLTK::MultiImage
+
+=item FLTK::MultiLineOutput
+
+=item FLTK::Mutex
+
+=item FLTK::NamedStyle
+
+=item FLTK::NumericInput
+
+=item FLTK::Output
+
+=item FLTK::PackedGroup
+
+=item FLTK::PopupMenu
+
+=item FLTK::Preferences
+
+=item FLTK::ProgressBar
+
+=item FLTK::RadioButton
+
+=item FLTK::RadioItem
+
+=item FLTK::Rectangle
+
+=item FLTK::RecursiveMutex
+
+=item FLTK::RepeatButton
+
+=item FLTK::ReturnButton
+
+=item FLTK::Scrollbar
+
+=item FLTK::ScrollGroup
+
+=item FLTK::ShapedWindow
+
+=item FLTK::SharedImage
+
+=item FLTK::ShortcutAssignment
+
+=item FLTK::SignalMutex
+
+=item FLTK::Slider
+
+=item FLTK::StatusBarGroup
+
+=item FLTK::StringArray
+
+=item FLTK::StringHierarchy
+
+=item FLTK::StringList
+
+=item FLTK::Style (partially complete)
+
+=item FLTK::StyleSet
+
+=item FLTK::Symbol
+
+=item FLTK::TabGroup
+
+=item FLTK::TabGroupPager
+
+=item FLTK::TextBuffer
+
+=item FLTK::TextDisplay
+
+=item FLTK::TextEditor
+
+=item FLTK::ThumbWheel
+
+=item FLTK::TiledImage
+
+=item FLTK::ToggleButton
+
+=item FLTK::ToggleItem
+
+=item FLTK::Tooltip
+
+=item FLTK::Valuator
+
+=item FLTK::ValueInput
+
+=item FLTK::ValueOutput
+
+=item FLTK::ValueSlider
+
+=item FLTK::Widget (partially complete)
+
+=item FLTK::Window (partially complete)
+
+=item FLTK::WizardGroup
+
+=item FLTK::WordwrapOutput
+
+=item FLTK::xbmImage
+
+=item FLTK::xpmFileImage
+
+=item FLTK::xpmImage
+
+=back
+
+=back
+
+=head1 Short term goals
+
+=over
+
+=item * Remove all anti-Perl-isms
+
+=item * C<has_timeout()>, C<remove_timeout(...)>, C<repeat_timeout(...)> do
+not work because the SV* I shove into the callback is not equal from the
+perspective of C++.
+
+=item * C<remove_check(...)>, et. al do not work for the reasons stated above
+
+=item * C<remove_idle(...)>, et. al do not work for the reasons stated above
+
+=item * C<add_fd(...)>, C<add_fd(...)>, and C<remove_fd(...)>
+
+=item * C<lock()>, C<unlock()>, C<awake([...])>, C<thread_message()>,
+C<in_main_thread()>
+
+=item * C<add_event_handler>
+
+=item * Subclass-able L<Image|FLTK::Image>
+
+=back
+
+=head1 Long term goals
+
+=over
+
+=item * None yet
+
+=back
+
+=head1 Eventually...
+
+=over
+
+=item * None yet
+
+=back
+
+=cut

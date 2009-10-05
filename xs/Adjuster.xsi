@@ -1,0 +1,92 @@
+#ifndef DISABLE_ADJUSTER
+
+MODULE = FLTK               PACKAGE = FLTK::Adjuster
+
+=pod
+
+=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+
+=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=for version 0.530
+
+=for git $Id: Adjuster.xsi 3680636 2009-09-21 17:57:38Z sanko@cpan.org $
+
+=head1 NAME
+
+FLTK::Adjuster - FLTK::Valuator subclass
+
+=head1 Description
+
+L<Valuator|FLTK::Valuator> widget that displays three buttons. The user pushes
+down the button and drags left/right to adjust, or clicks the button to step,
+or shift-clicks to step backwards. One button moves in the
+L<C<step()>|FLTK::Valuator/"step"> values, the next in
+C<10 * >L<C<step()>|FLTK::Valuator/"step">, and the third in
+C<100 * >L<C<step()>|FLTK::Valuator/"step">. Holding down shift makes the
+buttons move in the opposite way.
+
+B<Note: This is a depreciated widget. Please see
+L<FLTK::Notes|FLTK::Notes/"NotesDepPol">.>
+
+=begin apidoc
+
+=cut
+
+#include <fltk/Adjuster.h>
+
+=for apidoc d||FLTK::Adjuster self|new|int x|int y|int w|int h|char * label = ''|
+
+Creates a new C<FLTK::Adjuster> object.
+
+=cut
+
+#include "include/WidgetSubclass.h"
+
+void
+fltk::Adjuster::new( int x, int y, int w, int h, char * label = 0 )
+    PPCODE:
+        void * RETVAL = NULL;
+        RETVAL = (void *) new WidgetSubclass<fltk::Adjuster>(CLASS,x,y,w,h,label);
+        if (RETVAL != NULL) {
+            ST(0) = sv_newmortal();
+            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
+            XSRETURN(1);
+        }
+
+=for apidoc d||FLTK::NamedStyle style|default_style|
+
+TODO
+
+=cut
+
+static fltk::NamedStyle *
+fltk::Adjuster::default_style ( )
+    CODE:
+        RETVAL = THIS->default_style;
+    OUTPUT:
+        RETVAL
+
+=for apidoc d|||soft|int x|
+
+TODO
+
+=for apidoc d||int x|soft||
+
+=cut
+
+int
+fltk::Adjuster::soft ( int x = NO_INIT )
+    CASE: items == 1
+        CODE:
+            RETVAL = THIS->soft( );
+        OUTPUT:
+            RETVAL
+    CASE:
+        CODE:
+            THIS->soft( X );
+
+BOOT:
+    isa("FLTK::Adjuster", "FLTK::Valuator");
+
+#endif // ifndef DISABLE_ADJUSTER

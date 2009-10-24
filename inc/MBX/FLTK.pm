@@ -112,7 +112,12 @@ package MBX::FLTK;
 
         sub ACTION_docs {
             my $self = shift;
-            $self->depends_on('apidoc');
+            if ($self->notes('skip_apidoc')) {
+                $self->notes('skip_apidoc' => 0);
+            }
+            else {
+                $self->depends_on('apidoc');
+            }
             return $self->SUPER::ACTION_docs(@_);
         }
         use File::Path qw[make_path];
@@ -368,15 +373,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: 4240aaf $
+=for $Rev: cc8529b $
 
-=for $Revision: 4240aafb0936e2b2d3ff7065e09bfb641242b026 $
+=for $Revision: cc8529b5cc65bd2879bee4424f44394347214044 $
 
-=for $Date: 2009-09-24 21:42:29Z (Thu, 24 Sep 2009) $ | Last $Modified: 10 days ago $
+=for $Date: 2009-10-24 02:56:15Z (Sat, 24 Oct 2009) $ | Last $Modified: 12 hours ago $
 
-=for $URL: http://github.com/sanko/fltk-perl/raw/4240aafb0936e2b2d3ff7065e09bfb641242b026/inc/MBX/FLTK.pm $
+=for $URL: http://github.com/sanko/fltk-perl/raw/cc8529b5cc65bd2879bee4424f44394347214044/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 4240aaf 2009-09-24 21:42:29Z sanko@cpan.org $
+=for $ID: FLTK.pm cc8529b 2009-10-24 02:56:15Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

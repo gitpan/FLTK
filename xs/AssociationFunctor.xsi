@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::AssociationFunctor
 
 =for version 0.530
 
-=for git $Id: AssociationFunctor.xsi e22e210 2009-09-04 03:51:27Z sanko@cpan.org $ for got=
+=for git $Id: AssociationFunctor.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
 
 =head1 NAME
 

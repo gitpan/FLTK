@@ -8,13 +8,13 @@ package FLTK;
 
 =for abstract Perl interface to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm 277e9ef 2009-10-05 00:48:18Z sanko@cpan.org $
+=for git $Id: FLTK.pm 44c4926 2009-10-16 22:17:26Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-our $VERSION_BASE = 530; our $UNSTABLE_RELEASE = 0; our $VERSION = sprintf(($UNSTABLE_RELEASE ? '%.3f_%03d' : '%.3f'), $VERSION_BASE / 1000, $UNSTABLE_RELEASE);
+our $VERSION_BASE = 530; our $UNSTABLE_RELEASE = 1; our $VERSION = sprintf(($UNSTABLE_RELEASE ? '%.3f_%03d' : '%.3f'), $VERSION_BASE / 1000, $UNSTABLE_RELEASE);
 use XSLoader;
 use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
 use Exporter qw[import];
@@ -32,5 +32,5 @@ $EXPORT_TAGS{'all'} = \@EXPORT_OK;    # When you want to import everything
     if 1 < scalar keys %EXPORT_TAGS;
 @EXPORT    # Export these tags (if prepended w/ ':') or functions by default
     = sort map { m[^:(.+)] ? @{$EXPORT_TAGS{$1}} : $_ } qw[:style :default]
-    if 1 < scalar keys %EXPORT_TAGS;
+    if 0;    # 1 < scalar keys %EXPORT_TAGS;
 1;

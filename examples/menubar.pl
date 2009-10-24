@@ -7,7 +7,9 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: menubar.pl 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: menubar.pl b32bb0b 2009-10-24 14:51:13Z sanko@cpan.org $
+
+=for todo expand into a full text editor
 
 =cut
 
@@ -17,9 +19,14 @@ use FLTK;
 $|++;
 
 #
-my $win = new FLTK::Window(500, 500, 'Test');
+my $win = new FLTK::Window(500, 21, 'Test');
 $win->begin;
 my $m = FLTK::MenuBar->new(0, 0, 660, 21, 'Test');
+{
+
+    package FLTKx::MyItem;
+    our @ISA = qw[FLTK::Item];
+}
 build_menus($m, $win);
 {
     use Data::Dump;
@@ -34,10 +41,10 @@ build_menus($m, $win);
     $m->add_many('This|is|n/o/t/h|er|test');
     $XXXXX = 2;
 }
-my $mb = FLTK::MultiBrowser->new(0, 20, 100, 100);
+
 $win->end();
 $win->show();
-run;
+FLTK::run;
 
 sub build_menus {
     my ($menu) = @_;
@@ -45,7 +52,7 @@ sub build_menus {
     $menu->begin();
     $g = FLTK::ItemGroup->new("&File");
     $g->begin();
-    FLTK::Item->new(
+    FLTKx::MyItem->new(
         "&New File",
         0,
         sub {
@@ -90,7 +97,7 @@ sub build_menus {
         $x->begin();
         my $btn = FLTK::Button->new(0, 0, 250, 20, 'Button');
         $btn->callback(sub { warn 'button'; warn ref shift });
-        $btn->labelfont(HELVETICA_BOLD);
+        $btn->labelfont(FLTK::HELVETICA_BOLD);
         $x->end();
     }
     new FLTK::Divider();

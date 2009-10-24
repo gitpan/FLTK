@@ -1,4 +1,33 @@
-Version 0.530 | 2009-10-05 00:48:18Z (Mon, 05 Oct 2009) | 277e9ef
+Version 0.XXXXX | Next Sunday AD | b32bb0b
+
+    API Changes/Compatibility Information:
+     * New Widgets/Types
+       - PackedGroup, PixelType, Preferences, ProgressBar, RadioButton,
+           RadioItem, RadioLightButton, Rectangle (base class of all Widgets),
+           RepeatButton, ReturnButton, Scrollbar, ScrollGroup, SecretInput
+           (for passwords), ShapedWindow, Slider, Symbol (.*Image base class),
+           Valuator, and xpmImage
+     * Support for fltk's file and directory chooser API
+
+    Resolved Issues/Bug Fixes:
+     * FLTK::Menu->item() now (attempts to) return correctly blessed widgets
+
+    Internal/Behavioral Changes:
+     * The :default tag is no longer automatically exported
+
+    Documentation/Sample Code/Test Suite:
+     * Basic Rectangle tests
+     * New example scripts for ProgressBar and xpmImage
+     * New FLTK::CheatSheet (incomplete)
+
+    Notes:
+     * The FLTK project is just getting started so now's a great time to join
+
+    Meanwhile:
+     * Ian Giammarco was born October 23rd at 1:22pm. He was 8lbs 14oz and
+         22in long
+
+Version 0.530 | 2009-10-05 00:42:52Z (Mon, 05 Oct 2009) | 3b70f43
 
     API Changes/Compatibility Information:
      * ...see below
@@ -19,6 +48,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530 $ from git $Rev: 277e9ef $
-$Date: 2009-10-05 00:48:18Z (Mon, 05 Oct 2009) $
-$Url: http://github.com/sanko/fltk-perl/raw/277e9ef14e02490fce3613fc3b4041d4d55af8c1/Changes $
+$Ver: 0.530_001 $ from git $Rev: b32bb0b $
+$Date: 2009-10-24 14:51:13Z (Sat, 24 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/b32bb0b9f6dd214b61dd2c7b3d5d96a5a4307b64/Changes $

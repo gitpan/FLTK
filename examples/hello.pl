@@ -8,13 +8,13 @@ L<FLTK::Basics|FLTK::Basics>
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: hello.pl 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: hello.pl b32bb0b 2009-10-24 14:51:13Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use FLTK;
+use FLTK qw[:default :style];
 
 #
 my $window = FLTK::Window->new(300, 180);

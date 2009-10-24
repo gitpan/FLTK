@@ -7,9 +7,10 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 070a3a8 2009-10-04 14:47:19Z sanko@cpan.org $
+=for git $Id: Build.PL 10c2d42 2009-10-14 18:45:55Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Module::Build;
@@ -19,8 +20,8 @@ use File::Find qw[find];
 my $automated_testing = $ENV{AUTOMATED_TESTING} || $ENV{PERL_MM_USE_DEFAULT};
 my $is_developer = ((-d '.git') ? 1 : 0) or ($ENV{RELEASE_TESTING} ? 1 : 0);
 my @tests;
-find \&find_cb, qw[t/10000_basic t/20000_functions
-    t/40000_widgets t/60000_types], ($is_developer ? 't/90000_author' : ());
+find \&find_cb, qw[t/10000_basic t/20000_functions t/40000_widgets
+    t/50000_objects t/60000_types], ($is_developer ? 't/90000_author' : ());
 @tests = sort @tests;
 my $class = $is_developer ? 'MBX::FLTK::Developer' : 'MBX::FLTK';
 
@@ -59,7 +60,7 @@ my $mb = $class->new(
                        'File::Path'         => 2.04,
                        'Module::Build'      => 0,
                        'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => 0.06879,
+                       'Alien::FLTK'        => 0.06916,
                        'Pod::Parser'        => 0
     },
     recommends     => {OpenGL => 0.58},
@@ -68,7 +69,8 @@ my $mb = $class->new(
                              '.' . $Config{'so'}, $Config{'_o'}, $Config{'_a'}
                        )
     ],
-    no_index   => {directory => [qw[examples inc]]},
+    no_index =>
+        {directory => [qw[examples inc]], files => [qw[xs/ppport.pl]]},
     test_files => \@tests,
     meta_merge => {
         generated_by => 'Conversion, software version 7.0',
@@ -78,7 +80,7 @@ my $mb = $class->new(
         resources => {
               bugtracker => 'http://github.com/sanko/fltk-perl/issues',
               ChangeLog => 'http://github.com/sanko/fltk-perl/commits/master',
-              homepage  => 'http://sanko.github.com.com/fltk-perl/',
+              homepage  => 'http://sanko.github.com/fltk-perl/',
               license => 'http://www.perlfoundation.org/artistic_license_2_0',
               repository => 'http://github.com/sanko/fltk-perl'
         }
@@ -86,21 +88,12 @@ my $mb = $class->new(
     get_options => {'interactive!' => {},
                     'messy!'       => {}
     },
-    quiet => 1
-);
-print
-    <<''; if (!$mb->cbuilder->have_compiler()) { print <<''; exit 0 } print <<'';
- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-  FLTK requires a functioning C++ compiler.  Hold on a sec while I look for
-  one...
-
-  Aw, man... Looks like you're missing something important so this is where
-  you and I part ways.
- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
-  Everything's okay here. Moving on.
- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
+);                #
+$mb->quiet(1);    # Don't print while looking for compiler
+print "Checking for a functioning C++ compiler...\n";
+if ($mb->cbuilder->have_compiler()) { print "Looks good\n\n" }
+else { print "fail\n* No compiler found. Exiting.\n"; exit 0 }
+$mb->quiet(0);    # You can get noisy again.
 $mb->notes(
     fltk_svn => (
         sub {
@@ -125,17 +118,4 @@ sub find_cb {
     return unless -T $_;
     return unless $_ =~ m[.+\.t$];
     return push @tests, $File::Find::name;
-}
-
-BEGIN {
-    if ($] < 5.008008) {
-        warn sprintf 'Perl v5.8.8 required--this is only v%vd, stopped', $^V;
-        exit 0;
-    }
-    if ($Module::Build::VERSION < 0.3) {
-        warn sprintf
-            'Module::Build version 0.3 required--this is only version %s',
-            $Module::Build::VERSION;
-        exit 0;
-    }
 }

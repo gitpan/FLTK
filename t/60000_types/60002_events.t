@@ -11,6 +11,7 @@
 =for git $Id: 60002_events.t f9c0ab0 2009-09-19 02:01:12Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More tests => 167;

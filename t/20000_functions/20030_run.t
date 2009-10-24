@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/run.xsi
 
-=for git $Id: 20030_run.t 3b70f43 2009-10-05 00:42:52Z sanko@cpan.org $
+=for git $Id: 20030_run.t fec1976 2009-10-16 15:44:21Z sanko@cpan.org $
 
 =cut
 
@@ -28,7 +28,8 @@ my $interactive     = $build->notes('interactive');
 #
 use_ok('FLTK', qw[:run]);
 {
-    FLTK::wait(0.1);
-    add_timeout(5, sub { pass 'add_timeout called' });
-    FLTK::wait(10);
+    FLTK::wait(0.01) for 1 .. 60;
+    my $i = 0;
+    add_timeout(2, sub { $i++; pass 'add_timeout called' });
+    for (1 .. 60) { sleep 1; FLTK::wait(1); last if $i; }
 }

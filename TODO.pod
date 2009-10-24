@@ -4,7 +4,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: TODO.pod 34f3ea1 2009-09-22 04:09:51Z sanko@cpan.org $ for got=
+=for git $Id: TODO.pod a5e585c 2009-10-24 02:58:11Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -13,12 +13,6 @@ FLTK::Todo - TODO list for Perl module FLTK
 =head1 High priorities
 
 =over
-
-=item * Prove that FLTK and L<Alien::FLTK|Alien::FLTK> to build on non-Win32
-systems!
-
-They both build just fine on my Xubuntu box but I get nothing but failures and
-false positives from CPAN Testers.
 
 =item * Document internals and write regression tests
 
@@ -38,43 +32,9 @@ false positives from CPAN Testers.
 
 =item FLTK::MenuSection
 
-=item FLTK::MultiImage
-
-=item FLTK::MultiLineOutput
-
 =item FLTK::Mutex
 
-=item FLTK::NamedStyle
-
-=item FLTK::NumericInput
-
-=item FLTK::Output
-
-=item FLTK::PackedGroup
-
-=item FLTK::PopupMenu
-
-=item FLTK::Preferences
-
-=item FLTK::ProgressBar
-
-=item FLTK::RadioButton
-
-=item FLTK::RadioItem
-
-=item FLTK::Rectangle
-
 =item FLTK::RecursiveMutex
-
-=item FLTK::RepeatButton
-
-=item FLTK::ReturnButton
-
-=item FLTK::Scrollbar
-
-=item FLTK::ScrollGroup
-
-=item FLTK::ShapedWindow
 
 =item FLTK::SharedImage
 
@@ -96,8 +56,6 @@ false positives from CPAN Testers.
 
 =item FLTK::StyleSet
 
-=item FLTK::Symbol
-
 =item FLTK::TabGroup
 
 =item FLTK::TabGroupPager
@@ -118,8 +76,6 @@ false positives from CPAN Testers.
 
 =item FLTK::Tooltip
 
-=item FLTK::Valuator
-
 =item FLTK::ValueInput
 
 =item FLTK::ValueOutput
@@ -134,11 +90,7 @@ false positives from CPAN Testers.
 
 =item FLTK::WordwrapOutput
 
-=item FLTK::xbmImage
-
 =item FLTK::xpmFileImage
-
-=item FLTK::xpmImage
 
 =back
 
@@ -147,6 +99,8 @@ false positives from CPAN Testers.
 =head1 Short term goals
 
 =over
+
+=item * Compsite/Mega Widget API
 
 =item * Remove all anti-Perl-isms
 

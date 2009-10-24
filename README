@@ -28,7 +28,7 @@ Synopsis
         $box->labeltype(SHADOW_LABEL);
         $window->end();
         $window->show();
-        exit run();
+        exit FLTK::run();
 
 See Also
     FLTK::Notes
@@ -50,4 +50,4 @@ License and Legal
     http://creativecommons.org/licenses/by-sa/3.0/us/legalcode. For
     clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 
-$Id: README 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+$Id: README a42e7e9 2009-10-18 19:51:34Z sanko@cpan.org $

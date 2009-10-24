@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::Dial
 
 =for version 0.530
 
-=for git $Id: Dial.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+=for git $Id: Dial.xsi f6ce7cb 2009-10-16 16:27:37Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -115,15 +115,24 @@ the dial moves counter-clockwise.
 void
 fltk::Dial::angles( short a, short b )
 
+int
+NORMAL( )
+    CODE:
+        switch( ix ) {
+            case 0: RETVAL = fltk::Dial::NORMAL; break;
+            case 1: RETVAL = fltk::Dial::LINE;   break;
+            case 2: RETVAL = fltk::Dial::FILL;   break;
+        }
+    OUTPUT:
+        RETVAL
+    ALIAS:
+        LINE = 1
+        FILL = 2
+
 BOOT:
     isa("FLTK::Dial", "FLTK::Valuator");
-    // values for Dial->type()
-    newCONSTSUB(FLTK_stash, "NORMAL", newSViv(fltk::Dial::NORMAL));
-    export_tag( "NORMAL", "dial" );
-    newCONSTSUB(FLTK_stash, "LINE", newSViv(fltk::Dial::LINE));
-    export_tag( "LINE", "dial" );
-    newCONSTSUB(FLTK_stash, "FILL", newSViv(fltk::Dial::FILL));
-    export_tag( "FILL", "dial" );
+
+INCLUDE: FillDial.xsi
 
 INCLUDE: LineDial.xsi
 

@@ -8,7 +8,11 @@ MODULE = FLTK               PACKAGE = FLTK::ValueInput
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: ValueInput.xsi 7ea7753 2009-07-17 23:33:07Z sanko@cpan.org $ for got=
+=for git $Id: ValueInput.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
+
+=head1 NAME
+
+FLTK::ValueInput - Text field for inputing a floating-point number
 
 =head1 Description
 

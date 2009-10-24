@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::Input
 
 =for version 0.530
 
-=for git $Id: Input.xsi 6058ca8 2009-09-25 04:03:58Z sanko@cpan.org $
+=for git $Id: Input.xsi 3f71549 2009-10-16 21:20:54Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -669,5 +669,7 @@ INCLUDE: MultiLineInput.xsi
 INCLUDE: NumericInput.xsi
 
 INCLUDE: Output.xsi
+
+INCLUDE: SecretInput.xsi
 
 #endif // ifndef DISABLE_INPUT

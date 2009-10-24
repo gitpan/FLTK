@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::CheckButton
 
 =for version 0.530
 
-=for git $Id: CheckButton.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+=for git $Id: CheckButton.xsi 42f6e49 2009-10-14 22:10:47Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -54,20 +54,30 @@ fltk::CheckButton::new( int x, int y, int w, int h, const char * label = 0 )
             XSRETURN(1);
         }
 
-=for apidoc ||FLTK::NamedStyle style|default_style||
+=for apidoc ||FLTK::NamedStyle * style|default_style||
 
-NFI
+Get the style
+
+=for apidoc |||default_style|FLTK::NamedStyle * style|
+
+Set the style.
 
 =cut
 
 fltk::NamedStyle *
-fltk::CheckButton::default_style ( )
-    CODE:
-        RETVAL = THIS->default_style;
-    OUTPUT:
-        RETVAL
+fltk::CheckButton::default_style( fltk::NamedStyle * style = NO_INIT )
+    CASE: items == 1
+        CODE:
+            RETVAL = THIS->default_style;
+        OUTPUT:
+            RETVAL
+    CASE: items == 2
+        CODE:
+            THIS->default_style = style;
 
 BOOT:
     isa("FLTK::CheckButton", "FLTK::Button");
+
+INCLUDE: RadioButton.xsi
 
 #endif // ifndef DISABLE_CHECKBUTTON

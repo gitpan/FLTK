@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::LightButton
 
 =for version 0.530
 
-=for git $Id: LightButton.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $ for got=
+=for git $Id: LightButton.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -75,5 +75,7 @@ fltk::LightButton::default_style( fltk::NamedStyle * new_style = NO_INIT )
 
 BOOT:
     isa("FLTK::LightButton", "FLTK::CheckButton");
+
+INCLUDE: RadioLightButton.xsi
 
 #endif // #ifndef DISABLE_LIGHTBUTTON

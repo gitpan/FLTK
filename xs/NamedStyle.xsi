@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::NamedStyle
 
 =for version 0.530
 
-=for git $Id: NamedStyle.xsi 84c047b 2009-09-04 03:55:45Z sanko@cpan.org $ for got=
+=for git $Id: NamedStyle.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
 
 =head1 NAME
 

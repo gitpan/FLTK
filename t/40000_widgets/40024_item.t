@@ -11,6 +11,7 @@
 =for git $Id: 40024_item.t 69456c1 2009-09-12 05:33:53Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More 0.82 tests => 7;

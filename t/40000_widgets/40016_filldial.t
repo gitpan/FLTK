@@ -8,12 +8,13 @@
 
 =for abstract Tests for xs/FillDial.xsi
 
-=for git $Id: 40016_filldial.t 69456c1 2009-09-12 05:33:53Z sanko@cpan.org $
+=for git $Id: 40016_filldial.t fec1976 2009-10-16 15:44:21Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
-use Test::More 0.82 tests => 13;
+use Test::More 0.82 tests => 10;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -25,10 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK', qw[:dial]);
-
-# Dial types imported with :dial tag
-for my $sub (qw[NORMAL LINE FILL]) { can_ok(__PACKAGE__, $sub); }
+use_ok('FLTK');
 
 #
 my $W = new FLTK::Window(200, 100);
@@ -42,11 +40,8 @@ $W->end();
 $W->show();
 
 #
-SKIP: {
-    skip 'Failed to inherit type() from FLTK::Widget', 1
-        if !scalar @FLTK::Widget::ISA;
-    is($C0->type(), FILL(), 'type() is set to FILL by the constructor');
-}
+is($C0->type(), FLTK::Dial::FILL(),
+    'type() is set to FILL by the constructor');
 
 #
 note '$C0->angle1( 10 )';
@@ -59,19 +54,14 @@ note '$C0->angles( 0, 360 )';
 $C0->angles(0, 360);
 is($C0->angle1(), 0,   'angle1 == 0');
 is($C0->angle2(), 360, 'angle2 == 360');
-SKIP: {
-    skip 'Failed to inherit value() from FLTK::Valuator', 2
-        if !scalar @FLTK::Valuator::ISA;
 
-    #
-    for (0 .. 100) {
-        $_ *= 2;
-        $C0->value($_ / 180);
-        $C1->value((360 - $_) / 360);
-        FLTK::wait(0.01);
-    }
-
-    #
-    is(int $C0->value(), 1, '$C0->value ~ 1');
-    is(int $C1->value(), 0, '$C1->value ~ 0');
+for (0 .. 100) {
+    $_ *= 2;
+    $C0->value($_ / 180);
+    $C1->value((360 - $_) / 360);
+    FLTK::wait(0.01);
 }
+
+#
+is(int $C0->value(), 1, '$C0->value ~ 1');
+is(int $C1->value(), 0, '$C1->value ~ 0');

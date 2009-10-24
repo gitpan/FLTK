@@ -8,7 +8,11 @@ MODULE = FLTK               PACKAGE = FLTK::ValueOutput
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: ValueOutput.xsi 6058ca8 2009-09-25 04:03:58Z sanko@cpan.org $ for got=
+=for git $Id: ValueOutput.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
+
+=head1 NAME
+
+FLTK::ValueOutput - Valuator that displays the number like a text box
 
 =head1 Description
 

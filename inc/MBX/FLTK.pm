@@ -316,7 +316,7 @@ package MBX::FLTK;
             #   write documentation in here
             #   mention defaults/types/import tags
             my ($return, $call, @args) = ('', '', ());
-            my %types = ('AV *' => '@', 'CV *' => '\&');
+            my %types = ('AV *' => '@', 'CV *' => '\&', 'HV *' => "\%");
             for my $arg (@{$use->{'args'}}) {
                 my ($type, $name, $default)
                     = ($arg
@@ -336,8 +336,6 @@ package MBX::FLTK;
                         ) . $name;
                 }
             }
-
-            #
             if ($use->{'return'}) {
                 my ($type, $name, $default)
                     = ($use->{'return'}
@@ -360,10 +358,10 @@ package MBX::FLTK;
                 : sub {
                 my $p = shift;
                 $p =~ s|^.*:|\$|g;
-                return lc "$p->";
+                return lc($p) . '-E<gt>';
                 }
                 ->($package);
-            my $usage = sprintf '%s%s%s(%s%s )', $return, $call, $sub,
+            my $usage = sprintf '%s%s%s(%s%s );', $return, $call, $sub,
                 (@args ? ' ' : ''), (join ', ', @args);
             return $usage;
         }
@@ -373,15 +371,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: cc8529b $
+=for $Rev: e5949ef $
 
-=for $Revision: cc8529b5cc65bd2879bee4424f44394347214044 $
+=for $Revision: e5949ef32a3308809f50ec04ccfe11c51c6c1632 $
 
-=for $Date: 2009-10-24 02:56:15Z (Sat, 24 Oct 2009) $ | Last $Modified: 12 hours ago $
+=for $Date: 2009-10-24 17:40:20Z (Sat, 24 Oct 2009) $ | Last $Modified: 9 hours ago $
 
-=for $URL: http://github.com/sanko/fltk-perl/raw/cc8529b5cc65bd2879bee4424f44394347214044/inc/MBX/FLTK.pm $
+=for $URL: http://github.com/sanko/fltk-perl/raw/e5949ef32a3308809f50ec04ccfe11c51c6c1632/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm cc8529b 2009-10-24 02:56:15Z sanko@cpan.org $
+=for $ID: FLTK.pm e5949ef 2009-10-24 17:40:20Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

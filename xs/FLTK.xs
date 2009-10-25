@@ -6,7 +6,7 @@
 
 =for version 0.531
 
-=for git $Id: FLTK.xs d3cd637 2009-10-24 02:55:36Z sanko@cpan.org $
+=for git $Id: FLTK.xs 16abb77 2009-10-25 02:38:40Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -38,8 +38,8 @@ its built-in GLUT emulation.
 #include <perl.h>
 #define NO_XSLOCKS // XSUB.h will otherwise override various things we need
 #include <XSUB.h>
-#define NEED_newCONSTSUB
-#include "./ppport.pl"
+#define NEED_sv_2pv_flags
+#include "./include/ppport.h"
 
 #include <fltk/Widget.h>
 
@@ -211,7 +211,7 @@ extern "C" BOOL WINAPI DllMain (HINSTANCE hInst, DWORD reason, LPVOID lpRes) {
 
     use strict;
     use warnings;
-    use FLTK;
+    use FLTK qw[:style];
 
     my $window = FLTK::Window->new(300, 180);
     $window->begin();
@@ -237,8 +237,8 @@ MODULE = FLTK               PACKAGE = FLTK
 PROTOTYPES: DISABLE
 
 BOOT:
-    FLTK_stash  = Perl_gv_stashpv(aTHX_ "FLTK", TRUE );
-    FLTK_export = Perl_get_hv(aTHX_ "FLTK::EXPORT_TAGS", TRUE );
+    FLTK_stash  = gv_stashpv("FLTK", TRUE );
+    FLTK_export = get_hv("FLTK::EXPORT_TAGS", TRUE );
 
     # Functions (Exported)
 

@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | b32bb0b
+Version 0.XXXXX | Next Sunday AD | 16abb77
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -24,8 +24,7 @@ Version 0.XXXXX | Next Sunday AD | b32bb0b
      * The FLTK project is just getting started so now's a great time to join
 
     Meanwhile:
-     * Ian Giammarco was born October 23rd at 1:22pm. He was 8lbs 14oz and
-         22in long
+     * Ian G. was born October 23rd at 1:22pm. He was 8lbs 14oz and 22in long
 
 Version 0.530 | 2009-10-05 00:42:52Z (Mon, 05 Oct 2009) | 3b70f43
 
@@ -48,6 +47,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530_001 $ from git $Rev: b32bb0b $
-$Date: 2009-10-24 14:51:13Z (Sat, 24 Oct 2009) $
-$Url: http://github.com/sanko/fltk-perl/raw/b32bb0b9f6dd214b61dd2c7b3d5d96a5a4307b64/Changes $
+$Ver: 0.530_002 $ from git $Rev: 16abb77 $
+$Date: 2009-10-25 02:38:40Z (Sun, 25 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/16abb7732686edf93cfcd2c94ba74e2d54007c17/Changes $

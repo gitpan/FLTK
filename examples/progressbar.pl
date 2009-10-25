@@ -10,7 +10,7 @@ operation
 
 =for author Greg Ercolano - http://seriss.com/people/erco/fltk/
 
-=for git $Id: progressbar.pl d8d2b29 2009-10-16 22:18:11Z sanko@cpan.org $
+=for git $Id: progressbar.pl b6cc91a 2009-10-24 18:02:08Z sanko@cpan.org $
 
 =cut
 
@@ -38,6 +38,7 @@ sub btn_cb {
         $progress->position($t / 20);    # update progress bar
         check();     # give fltk some cpu to update the screen
         sleep(1);    # 'your stuff' that's compute intensive
+        last if !$w->visible;  # stop processing if the window has been closed
     }
 
     # Cleanup

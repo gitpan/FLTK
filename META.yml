@@ -1,6 +1,6 @@
 ---
 name: FLTK
-version: 0.530_001
+version: 0.530_002
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
@@ -340,6 +340,28 @@ no_index:
     - inc
   files:
     - xs/ppport.pl
+    - t/10000_basic/10001_use_ok.t
+    - t/20000_functions/20010_ask.t
+    - t/20000_functions/20014_draw.t
+    - t/20000_functions/20018_Flags.t
+    - t/20000_functions/20030_run.t
+    - t/20000_functions/21000_Version.t
+    - t/40000_widgets/40010_clock.t
+    - t/40000_widgets/40013_dial.t
+    - t/40000_widgets/40016_filldial.t
+    - t/40000_widgets/40018_floatinput.t
+    - t/40000_widgets/40020_input.t
+    - t/40000_widgets/40022_intinput.t
+    - t/40000_widgets/40024_item.t
+    - t/40000_widgets/47010_subclass.t
+    - t/50000_objects/50001_Preferences.t
+    - t/50000_objects/50005_Rectangle.t
+    - t/60000_types/60001_Color.t
+    - t/60000_types/60002_events.t
+    - t/60000_types/60003_damage.t
+    - t/60000_types/60004_Font.t
+    - t/60000_types/60006_Image.t
+    - t/60000_types/60030_Style.t
 generated_by: 'Conversion, software version 7.0'
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

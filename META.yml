@@ -1,6 +1,6 @@
 ---
 name: FLTK
-version: 0.530_002
+version: 0.530_003
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
@@ -12,7 +12,7 @@ resources:
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/fltk-perl
 build_requires:
-  Alien::FLTK: 0.06916
+  Alien::FLTK: 0.06921
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -339,7 +339,7 @@ no_index:
     - examples
     - inc
   files:
-    - xs/ppport.pl
+    - xs/include/ppport.h
     - t/10000_basic/10001_use_ok.t
     - t/20000_functions/20010_ask.t
     - t/20000_functions/20014_draw.t

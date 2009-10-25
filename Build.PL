@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 6d59cde 2009-10-24 17:25:50Z sanko@cpan.org $
+=for git $Id: Build.PL 517d9f1 2009-10-25 14:55:01Z sanko@cpan.org $
 
 =cut
 
@@ -60,7 +60,7 @@ my $mb = $class->new(
                        'File::Path'         => 2.04,
                        'Module::Build'      => 0,
                        'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => 0.06916,
+                       'Alien::FLTK'        => 0.06921,
                        'Pod::Parser'        => 0
     },
     recommends     => {OpenGL => 0.58},
@@ -70,7 +70,7 @@ my $mb = $class->new(
                        )
     ],
     no_index => {directory => [qw[examples inc]],
-                 files     => [qw[xs/ppport.pl], @tests]
+                 files     => [qw[xs/include/ppport.h], @tests]
     },
     test_files => \@tests,
     meta_merge => {

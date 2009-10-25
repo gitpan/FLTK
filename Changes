@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 16abb77
+Version 0.XXXXX | Next Sunday AD | 517d9f1
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -47,6 +47,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530_002 $ from git $Rev: 16abb77 $
-$Date: 2009-10-25 02:38:40Z (Sun, 25 Oct 2009) $
-$Url: http://github.com/sanko/fltk-perl/raw/16abb7732686edf93cfcd2c94ba74e2d54007c17/Changes $
+$Ver: 0.530_003 $ from git $Rev: c203a81 $
+$Date: 2009-10-25 03:35:04Z (Sun, 25 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/c203a810ac44ab8fa502c81f527995b0d90b51f0/Changes $

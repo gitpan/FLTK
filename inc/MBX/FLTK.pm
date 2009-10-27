@@ -16,6 +16,7 @@ package MBX::FLTK;
         sub ACTION_code {
             require Alien::FLTK;    # Should be installed by now
             my ($self, $args) = @_;
+            my $AF = Alien::FLTK->new();
             my (@xs, @rc, @obj);
             find(sub { push @xs, $File::Find::name if m[.+\.xs$]; }, 'xs');
             find(sub { push @rc, $File::Find::name if !m[.+\.o$]; }, 'xs/rc');
@@ -47,9 +48,11 @@ package MBX::FLTK;
                 }
                 push @obj,
                     $self->cbuilder->compile(
-                              source => $cpp,
-                              extra_compiler_flags =>
-                                  [Alien::FLTK->cxxflags(), $self->cxxflags()]
+                                      'C++'        => 1,
+                                      source       => $cpp,
+                                      include_dirs => [$AF->include_dirs()],
+                                      extra_compiler_flags =>
+                                          [$AF->cxxflags(), $self->cxxflags()]
                     );
             }
             make_path(catdir(qw[blib arch auto FLTK]),
@@ -63,13 +66,13 @@ package MBX::FLTK;
                 )
             {   my ($dll, @cleanup)
                     = $self->cbuilder->link(
-                    objects => \@obj,
-                    lib_file =>
-                        catdir(qw[blib arch auto FLTK],
-                               'FLTK.' . $Config{'so'}
-                        ),
-                    module_name        => 'FLTK',
-                    extra_linker_flags => Alien::FLTK->ldflags(qw[gl images]),
+                            objects => \@obj,
+                            lib_file =>
+                                catdir(qw[blib arch auto FLTK],
+                                       'FLTK.' . $Config{'so'}
+                                ),
+                            module_name        => 'FLTK',
+                            extra_linker_flags => $AF->ldflags(qw[gl images]),
                     );
                 @cleanup = map { s["][]g; rel2abs($_); } @cleanup;
                 $self->add_to_cleanup(@cleanup);
@@ -371,15 +374,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: e5949ef $
+=for $Rev: 1d0ff19 $
 
-=for $Revision: e5949ef32a3308809f50ec04ccfe11c51c6c1632 $
+=for $Revision: 1d0ff1934645aaa9d7e314fef59f3710f5770b8e $
 
-=for $Date: 2009-10-24 17:40:20Z (Sat, 24 Oct 2009) $ | Last $Modified: 21 hours ago $
+=for $Date: 2009-10-27 21:38:43Z (Tue, 27 Oct 2009) $ | Last $Modified: 38 minutes ago $
 
-=for $URL: http://github.com/sanko/fltk-perl/raw/e5949ef32a3308809f50ec04ccfe11c51c6c1632/inc/MBX/FLTK.pm $
+=for $URL: http://github.com/sanko/fltk-perl/raw/1d0ff1934645aaa9d7e314fef59f3710f5770b8e/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm e5949ef 2009-10-24 17:40:20Z sanko@cpan.org $
+=for $ID: FLTK.pm 1d0ff19 2009-10-27 21:38:43Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

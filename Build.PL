@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 517d9f1 2009-10-25 14:55:01Z sanko@cpan.org $
+=for git $Id: Build.PL 9d8c12e 2009-10-27 21:49:37Z sanko@cpan.org $
 
 =cut
 
@@ -36,31 +36,31 @@ my $mb = $class->new(
     dist_version_from => 'lib/FLTK.pm',
     dist_abstract =>
         'Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit',
-    requires => {perl                 => '5.8.0',
+    requires => {perl                 => 5.008000,
                  base                 => 0,
                  'Test::More'         => 0.88,
                  Config               => 0,
                  Cwd                  => 0,
                  'ExtUtils::ParseXS'  => 0,
-                 'ExtUtils::CBuilder' => 0.24,
+                 'ExtUtils::CBuilder' => 0.26_05,
                  'File::Spec'         => 0,
                  'File::Find'         => 0,
                  'File::Path'         => 2.04,
                  'Module::Build'      => 0,
                  'Devel::PPPort'      => 0
     },
-    build_requires => {perl                 => '5.8.0',
+    build_requires => {perl                 => 5.008000,
                        'Test::More'         => 0.88,
                        Config               => 0,
                        Cwd                  => 0,
                        'ExtUtils::ParseXS'  => 0,
-                       'ExtUtils::CBuilder' => 0.24,
+                       'ExtUtils::CBuilder' => 0.26_05,
                        'File::Spec'         => 0,
                        'File::Find'         => 0,
                        'File::Path'         => 2.04,
                        'Module::Build'      => 0,
                        'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => 0.06921,
+                       'Alien::FLTK'        => '0.06921_001',
                        'Pod::Parser'        => 0
     },
     recommends     => {OpenGL => 0.58},
@@ -69,8 +69,8 @@ my $mb = $class->new(
                              '.' . $Config{'so'}, $Config{'_o'}, $Config{'_a'}
                        )
     ],
-    no_index => {directory => [qw[examples inc]],
-                 files     => [qw[xs/include/ppport.h], @tests]
+    no_index => {directory => [qw[examples inc t]],
+                 files     => [qw[xs/include/ppport.h]]
     },
     test_files => \@tests,
     meta_merge => {
@@ -90,11 +90,9 @@ my $mb = $class->new(
                     'messy!'       => {}
     },
 );
-$mb->quiet(1);    # Don't print while looking for compiler
 print "Checking for a functioning C++ compiler...\n";
-if ($mb->cbuilder->have_compiler()) { print "Looks good\n\n" }
+if ($mb->cbuilder->have_cplusplus()) { print "Looks good\n\n" }
 else { print "fail\n* No compiler found. Exiting.\n"; exit 0 }
-$mb->quiet(0);    # You can get noisy again.
 $mb->notes(automated_testing => $automated_testing             ? 1 : 0);
 $mb->notes(is_developer      => $is_developer                  ? 1 : 0);
 $mb->notes(verbose           => $mb->args('messy')             ? 1 : 0);

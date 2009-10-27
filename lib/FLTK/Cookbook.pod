@@ -1,0 +1,54 @@
+=pod
+
+=head1 NAME
+
+FLTK::Cookbook - Fresh code just like mom used to make
+
+=head1 Description
+
+Here, you'll find common 'recipes' and hints that should help get you
+moving in the right direction. For a quick guide, see
+L<The CheatSheet|FLTK::CheatSheet>.
+
+This documentation is a work in progress.
+
+=head1 The Recipes
+
+=over
+
+=item * L<FLTK::Cookbook::MenuBar::Label|FLTK::Cookbook::MenuBar::Label>
+
+Changes a menu's items' labels at runtime.
+
+=item * L<FLTK::Cookbook::MenuBar::Toggle|FLTK::Cookbook::MenuBar::Toggle>
+
+Shows how to toggle menu items at run time.
+
+=item * L<FLTK::Coookbook::ProgressBar::Process|FLTK::Coookbook::ProgressBar::Process>
+
+Demonstrates how to update a progress bar within a cpu intensive operation
+without threads.
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2009 by Sanko Robinson E<lt>sanko@cpan.orgE<gt>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of The Artistic License 2.0.  See the F<LICENSE> file included with
+this distribution or http://www.perlfoundation.org/artistic_license_2_0.  For
+clarification, see http://www.perlfoundation.org/artistic_2_0_notes.
+
+When separated from the distribution, all original POD documentation is
+covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
+http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
+clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
+
+=for git $Id: Cookbook.pod 9942a2d 2009-10-27 17:37:43Z sanko@cpan.org $
+
+=cut

@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 517d9f1
+Version 0.XXXXX | Next Sunday AD | 43d4427
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -17,8 +17,9 @@ Version 0.XXXXX | Next Sunday AD | 517d9f1
 
     Documentation/Sample Code/Test Suite:
      * Basic Rectangle tests
-     * New example scripts for ProgressBar and xpmImage
+     * New example script for xpmImage
      * New FLTK::CheatSheet (incomplete)
+     * First few recipes in the FLTK::Cookbook
 
     Notes:
      * The FLTK project is just getting started so now's a great time to join
@@ -47,6 +48,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530_003 $ from git $Rev: c203a81 $
-$Date: 2009-10-25 03:35:04Z (Sun, 25 Oct 2009) $
-$Url: http://github.com/sanko/fltk-perl/raw/c203a810ac44ab8fa502c81f527995b0d90b51f0/Changes $
+$Ver: 0.530_004 $ from git $Rev: 43d4427 $
+$Date: 2009-10-27 22:15:03Z (Tue, 27 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/43d442740e4132f295b99dbaab3d4352657f7d2d/Changes $

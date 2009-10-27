@@ -13,14 +13,14 @@
 
 =for seealso xs/Subclass.xsi
 
-=for git $Id: WidgetSubclass.h 6e630a7 2009-10-24 02:50:59Z sanko@cpan.org $
+=for git $Id: WidgetSubclass.h c29cf94 2009-10-27 04:25:36Z sanko@cpan.org $
 
 =cut
 
 */
 
 #ifndef fltk_Widget_h
-#include "Widget.h" // Minimum.
+#include <fltk/Widget.h> // Minimum.
 #endif
 
 template< class X >

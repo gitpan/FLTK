@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/Dial.xsi
 
-=for git $Id: 40013_dial.t fec1976 2009-10-16 15:44:21Z sanko@cpan.org $
+=for git $Id: 40013_dial.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More 0.82 tests => 9;
+use Test::More 0.82 tests => 8;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK');
+use FLTK;
 
 #
 my $W = new FLTK::Window(200, 100);
@@ -37,7 +37,7 @@ my $C0 = new_ok('FLTK::Dial' => [0, 0, 100, 100],
 my $C1 = new_ok('FLTK::Dial' => [100, 0, 100, 100],
                 'new FLTK::Dial( 100, 0, 100, 100 )');
 $W->end();
-$W->show();
+$W->show() if $interactive;
 
 #
 note '$C0->angle1( 10 )';

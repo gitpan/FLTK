@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/events.xsi
 
-=for git $Id: 60002_events.t f9c0ab0 2009-09-19 02:01:12Z sanko@cpan.org $
+=for git $Id: 60002_events.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 167;
+use Test::More tests => 166;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK', qw[:events]);
+use FLTK qw[:events];
 
 # Event types and Event Keys imported with :event tag
 for my $sub (

@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-FLTK::Coookbook::ProgressBar::Process - Update the user while processing in the background
+FLTK::Cookbook::ProgressBar::Process - Update the user while processing in the background
 
 =head1 Description
 
@@ -77,6 +77,6 @@ covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
 http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
 clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 
-=for git $Id: Process.pod 9942a2d 2009-10-27 17:37:43Z sanko@cpan.org $
+=for git $Id: Process.pod 9a8734a 2009-10-28 01:34:14Z sanko@cpan.org $
 
 =cut

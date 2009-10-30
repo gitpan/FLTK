@@ -10,13 +10,13 @@
 
 =for TODO Everything
 
-=for git $Id: 20014_draw.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 20014_draw.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 63;
+use Test::More tests => 62;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -28,7 +28,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK', qw[:draw]);
+use FLTK qw[:draw];
 
 # imported with :draw tag
 for my $sub (qw[ push_matrix pop_matrix scale translate rotate concat

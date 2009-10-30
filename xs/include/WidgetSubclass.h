@@ -13,11 +13,19 @@
 
 =for seealso xs/Subclass.xsi
 
-=for git $Id: WidgetSubclass.h c29cf94 2009-10-27 04:25:36Z sanko@cpan.org $
+=for git $Id: WidgetSubclass.h aaba4c5 2009-10-30 21:00:54Z sanko@cpan.org $
 
 =cut
 
 */
+
+#define PERL_NO_GET_CONTEXT 1
+#include <EXTERN.h>
+#include <perl.h>
+#define NO_XSLOCKS // XSUB.h will otherwise override various things we need
+#include <XSUB.h>
+#define NEED_sv_2pv_flags
+#include "ppport.h"
 
 #ifndef fltk_Widget_h
 #include <fltk/Widget.h> // Minimum.
@@ -253,8 +261,8 @@ private:
 
 protected:
     int _call_method ( const char * method, AV * args ) {
-        int retval = 0;
         dTHX;
+        int retval = 0;
         HV * pkg = gv_stashpv( _class, 0 );
         GV * gv  = gv_fetchmethod_autoload( pkg, method, FALSE );
         if ( !( gv && isGV( gv ) ) )

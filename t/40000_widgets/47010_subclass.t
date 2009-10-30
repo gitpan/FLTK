@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Subclass.xsi (Subclassed Widgets)
 
-=for git $Id: 47010_subclass.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 47010_subclass.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
@@ -30,8 +30,8 @@ my @classes = sort qw[
     Button
     CheckButton
 ];
-plan tests => 1 + 6 * scalar @classes;    # Order of operations ftw!
-use_ok('FLTK', ':events');
+plan tests => 6 * scalar @classes;    # Order of operations ftw!
+use FLTK qw[:events];
 
 #
 my $TEMPLATE = <<'';
@@ -81,7 +81,7 @@ SKIP: {
                         "new Test::$class ( 0, 0, 100, 100 )");
         isa_ok($W1, "FLTK::$class", $W1);
         $W->end();
-        $W->show();
+        $W->show();     # if $interactive;
         FLTK::wait(1);
         $W->hide();
         $W1->destroy();

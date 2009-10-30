@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 43d4427
+Version 0.XXXXX | Next Sunday AD | 2fa5650
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -8,6 +8,10 @@ Version 0.XXXXX | Next Sunday AD | 43d4427
            (for passwords), ShapedWindow, Slider, Symbol (.*Image base class),
            Valuator, and xpmImage
      * Support for fltk's file and directory chooser API
+     * The variables $FLTK::ok, $FLTK::yes, $FLTK::no, $FLTK::cancel,
+           $FLTK::message_window_label, $FLTK::message_window_timeout, and
+           $FLTK::message_window_scrollable are now connected to their C++
+           counterparts and may be imported with the :vars tag
 
     Resolved Issues/Bug Fixes:
      * FLTK::Menu->item() now (attempts to) return correctly blessed widgets
@@ -48,6 +52,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530_004 $ from git $Rev: 43d4427 $
-$Date: 2009-10-27 22:15:03Z (Tue, 27 Oct 2009) $
-$Url: http://github.com/sanko/fltk-perl/raw/43d442740e4132f295b99dbaab3d4352657f7d2d/Changes $
+$Ver: 0.530_005 $ from git $Rev: 2fa5650 $
+$Date: 2009-10-30 22:31:05Z (Fri, 30 Oct 2009) $
+$Url: http://github.com/sanko/fltk-perl/raw/master/Changes $

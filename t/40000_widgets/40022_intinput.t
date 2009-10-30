@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/Input.xsi
 
-=for git $Id: 40022_intinput.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 40022_intinput.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More 0.82 tests => 2;
+use Test::More 0.82 tests => 1;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK');
+use FLTK;
 
 #
 my $W = new FLTK::Window(200, 100);
@@ -35,6 +35,6 @@ $W->begin();
 my $I = new_ok('FLTK::IntInput' => [0, 0, 100, 100],
                'new FLTK::IntInput( 0, 0, 100, 100 )');
 $W->end();
-$W->show();
+$W->show() if $interactive;
 note 'TODO: test type()';
 note '  FLTK::NumericInput is the missing link in the inheritance chain';

@@ -6,7 +6,7 @@
 
 =for version 0.531
 
-=for git $Id: FLTK.xs 16abb77 2009-10-25 02:38:40Z sanko@cpan.org $
+=for git $Id: FLTK.xs 2fa5650 2009-10-30 22:31:05Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -40,10 +40,8 @@ its built-in GLUT emulation.
 #include <XSUB.h>
 #define NEED_sv_2pv_flags
 #include "./include/ppport.h"
-
+#include "./include/WidgetSubclass.h"
 #include <fltk/Widget.h>
-
-using namespace fltk; // TODO: Remove this and use fully qualified names
 
 #define DISABLE_DEPRECATED          // Depreciated widgets, and other junk
 #define DISABLE_ASSOCIATIONFUNCTOR  // Requires subclass
@@ -60,6 +58,10 @@ using namespace fltk; // TODO: Remove this and use fully qualified names
 #ifndef ENABLE_DEPRECATED
 #define DISABLE_ADJUSTER
 #endif // #ifndef ENABLE_DEPRECATED
+
+#ifndef MAX_PATH
+#define MAX_PATH 1024
+#endif //#ifndef MAX_PATH
 
 HV * FLTK_stash,  // For inserting stuff directly into FLTK's namespace
    * FLTK_export; // For inserting stuff directly into FLTK's exports
@@ -191,9 +193,15 @@ void export_tag (const char * what, const char * _tag ) {
     }
 }
 
+=for apidoc H|W|bool true|DllMain|HINSTANCE hInst|DWORD reason|LPVOID lpRes|
+
+Grabs the process global instance handle.
+
+=cut
+
 #ifdef WIN32
 #include <windows.h>
-HINSTANCE dllInstance; // Global library instance handle.
+HINSTANCE dllInstance; /* Global library instance handle. */
 extern "C" BOOL WINAPI DllMain (HINSTANCE hInst, DWORD reason, LPVOID lpRes) {
     switch ( reason ) {
         case DLL_PROCESS_ATTACH:
@@ -204,6 +212,139 @@ extern "C" BOOL WINAPI DllMain (HINSTANCE hInst, DWORD reason, LPVOID lpRes) {
     return TRUE;
 }
 #endif // #ifdef WIN32
+
+=for TODO This whole magic variable stuff screams "Refactor and rethink me!"
+
+=for apidoc H||I32|magic_ptr_get_int|IV iv|SV * sv|
+
+Gets the value of int-based magical variables.
+
+=for apidoc H||I32|magic_ptr_set_int|IV iv|SV * sv|
+
+Sets the value of int-based magical variables.
+
+=cut
+
+I32 magic_ptr_get_int( pTHX_ IV iv, SV * sv ) {
+    int * ptr = INT2PTR( int *, iv );
+    sv_setiv( sv, (int) * ptr );
+    return 1;
+}
+
+I32 magic_ptr_set_int( pTHX_ IV iv, SV * sv ) {
+    int * ptr = INT2PTR( int *, iv );
+    * ptr = SvIV( sv );
+    return 1;
+}
+
+=for apidoc H||I32|magic_ptr_get_float|IV iv|SV * sv|
+
+Gets the value of float-based magical variables.
+
+=for apidoc H||I32|magic_ptr_set_float|IV iv|SV * sv|
+
+Sets the value of float-based magical variables.
+
+=cut
+
+I32 magic_ptr_get_float ( pTHX_ IV iv, SV * sv ) {
+    float * ptr = INT2PTR( float *, iv );
+    sv_setnv( sv, (float) * ptr );
+    return 1;
+}
+
+I32 magic_ptr_set_float ( pTHX_ IV iv, SV * sv ) {
+    float * ptr = INT2PTR( float *, iv );
+    * ptr = SvNV( sv );
+    return 1;
+}
+
+=for apidoc H||I32|magic_ptr_get_bool|IV iv|SV * sv|
+
+Gets the value of int-based magical variables.
+
+=for apidoc H||I32|magic_ptr_set_bool|IV iv|SV * sv|
+
+Sets the value of int-based magical variables.
+
+=cut
+
+I32 magic_ptr_get_bool ( pTHX_ IV iv, SV * sv ) {
+    bool * ptr = INT2PTR( bool *, iv );
+    sv_setiv( sv, (bool) * ptr );
+    return 1;
+}
+
+I32 magic_ptr_set_bool ( pTHX_ IV iv, SV * sv ) {
+    bool * ptr = INT2PTR( bool *, iv );
+    * ptr = SvTRUE(sv) ? true : false;
+    return 1;
+}
+
+=for apidoc H||I32|magic_ptr_get_char_ptr|IV iv|SV * sv|
+
+Gets the value of string-like magical variables.
+
+=for apidoc H||I32|magic_ptr_set_char_ptr|IV iv|SV * sv|
+
+Sets the value of string-like magical variables.
+
+=cut
+
+I32 magic_ptr_get_char_ptr ( pTHX_ IV iv, SV * sv ) {
+    const char ** ptr = INT2PTR( const char **, iv );
+    sv_setpv( sv, (const char *) * ptr );
+    return 1;
+}
+
+I32 magic_ptr_set_char_ptr ( pTHX_ IV iv, SV * sv ) {
+    const char ** ptr = INT2PTR( const char **, iv );
+    * ptr = SvPV_nolen( sv );
+    return 1;
+}
+
+=for apidoc H|||magic_ptr_init|const char * var|void ** ptr|
+
+Creates truly magical variables. (This is effectively a C-level equivalent of
+a tied variable).
+
+=cut
+
+static void magic_ptr_init( const char * var, int * ptr ) {
+    dTHX;
+    SV * sv;
+    struct ufuncs ufuncs_int = { magic_ptr_get_int, magic_ptr_set_int, (int) ptr };
+    sv = get_sv( var, GV_ADD|GV_ADDMULTI );
+    sv_magic(sv, NULL, PERL_MAGIC_uvar, (char *)&ufuncs_int, sizeof(ufuncs_int));
+    return;
+}
+
+static void magic_ptr_init( const char * var, float * ptr ) {
+    dTHX;
+    SV * sv;
+    struct ufuncs ufuncs_float = { magic_ptr_get_float, magic_ptr_set_float, (int) ptr };
+    sv = get_sv( var, GV_ADD|GV_ADDMULTI );
+    sv_magic(sv, NULL, PERL_MAGIC_uvar, (char *)&ufuncs_float, sizeof(ufuncs_float));
+    return;
+}
+
+static void magic_ptr_init( const char * var, bool * ptr ) {
+    dTHX;
+    SV * sv;
+    struct ufuncs ufuncs_bool = { magic_ptr_get_bool, magic_ptr_set_bool, (int) ptr };
+    sv = get_sv( var, GV_ADD|GV_ADDMULTI );
+    sv_magic(sv, NULL, PERL_MAGIC_uvar, (char *)&ufuncs_bool, sizeof(ufuncs_bool));
+    return;
+}
+
+static void magic_ptr_init( const char * var, const char ** ptr ) {
+    dTHX;
+    SV * sv;
+    struct ufuncs ufuncs_char_ptr = { magic_ptr_get_char_ptr, magic_ptr_set_char_ptr, (int) ptr };
+    sv = get_sv( var, GV_ADD|GV_ADDMULTI );
+    sv_magic(sv, NULL, PERL_MAGIC_uvar, (char *)&ufuncs_char_ptr, sizeof(ufuncs_char_ptr));
+    return;
+}
 
 =end apidoc
 
@@ -230,7 +371,7 @@ L<FLTK::Notes|FLTK::Notes>
 
 =cut
 
-// Alright, let's get things started, shall we?
+/* Alright, let's get things started, shall we? */
 
 MODULE = FLTK               PACKAGE = FLTK
 

@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/Image.xsi
 
-=for git $Id: 60006_Image.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 60006_Image.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 12;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK');
+use FLTK;
 
 # Set some typical values to use in this next section...
 my ($name, $w, $h, $data, $linedelta) = qw[Name 100 150 RANDOMDATA 300];

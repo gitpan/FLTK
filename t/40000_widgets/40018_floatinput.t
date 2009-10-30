@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/FloatInput.xsi
 
-=for git $Id: 40018_floatinput.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 40018_floatinput.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More 0.82 tests => 4;
+use Test::More 0.82 tests => 3;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK');
+use FLTK;
 
 # type() ...uh, types
 for my $sub (qw[FLOAT INT]) { can_ok('FLTK::FloatInput', $sub); }
@@ -38,7 +38,7 @@ $W->begin();
 my $FI = new_ok('FLTK::FloatInput' => [0, 0, 100, 100],
                 'new FLTK::FloatInput( 0, 0, 100, 100 )');
 $W->end();
-$W->show();
+$W->show() if $interactive;
 note 'TODO: ...everything';
 
 #

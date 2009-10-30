@@ -1,6 +1,6 @@
 ---
 name: FLTK
-version: 0.530_004
+version: 0.530_005
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
@@ -12,7 +12,7 @@ resources:
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/fltk-perl
 build_requires:
-  Alien::FLTK: 0.06921_001
+  Alien::FLTK: 0.06921_002
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -51,7 +51,7 @@ provides:
     version: 0.530
   FLTK::AlignGroup:
     file: xs/AlignGroup.xsi
-    version: 0.530
+    version: 0.531
   FLTK::AnsiWidget:
     file: xs/AnsiWidget.xsi
     version: 0.530
@@ -144,7 +144,7 @@ provides:
     version: 0.530
   FLTK::GL:
     file: xs/GL.xsi
-    version: 0.530
+    version: 0.531
   FLTK::GlWindow:
     file: xs/GlWindow.xsi
     version: 0.530
@@ -294,7 +294,7 @@ provides:
     version: 0.0531
   FLTK::Version:
     file: xs/Version.xsi
-    version: 0.530
+    version: 0.531
   FLTK::Widget:
     file: xs/Cursor.xsi
     version: 0.531
@@ -303,7 +303,7 @@ provides:
     version: 0.530
   FLTK::ask:
     file: xs/ask.xsi
-    version: 0.530
+    version: 0.531
   FLTK::ccCellBox:
     file: xs/ccCellBox.xsi
     version: 0.530
@@ -318,10 +318,10 @@ provides:
     version: 0.530
   FLTK::draw:
     file: xs/draw.xsi
-    version: 0.530
+    version: 0.531
   FLTK::events:
     file: xs/events.xsi
-    version: 0.530
+    version: 0.531
   FLTK::file_chooser:
     file: xs/file_chooser.xsi
     version: 0.531
@@ -330,7 +330,7 @@ provides:
     version: 0.530
   FLTK::run:
     file: xs/run.xsi
-    version: 0.530
+    version: 0.531
   FLTK::xpmImage:
     file: xs/xpmImage.xsi
     version: 0.531

@@ -10,13 +10,13 @@
 
 =for TODO ...create lib/FLTK/Version.pm
 
-=for git $Id: 21000_Version.t 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: 21000_Version.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 7;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -28,7 +28,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK', qw[:version]);
+use FLTK qw[:version];
 
 # Imported with version tag
 for my $sub (qw[FL_MAJOR_VERSION FL_MINOR_VERSION FL_PATCH_VERSION

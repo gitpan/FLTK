@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 9d8c12e 2009-10-27 21:49:37Z sanko@cpan.org $
+=for git $Id: Build.PL 05b160a 2009-10-28 04:24:23Z sanko@cpan.org $
 
 =cut
 
@@ -60,7 +60,7 @@ my $mb = $class->new(
                        'File::Path'         => 2.04,
                        'Module::Build'      => 0,
                        'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => '0.06921_001',
+                       'Alien::FLTK'        => '0.06921_002',
                        'Pod::Parser'        => 0
     },
     recommends     => {OpenGL => 0.58},

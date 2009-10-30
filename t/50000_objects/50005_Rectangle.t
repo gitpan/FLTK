@@ -8,12 +8,13 @@
 
 =for abstract Tests for xs/Preferences.xsi
 
-=for git $Id: 50005_Rectangle.t 9d49b8e 2009-10-16 02:44:06Z sanko@cpan.org $
+=for git $Id: 50005_Rectangle.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
-use Test::More tests => 200;
+use Test::More tests => 199;
 use Module::Build qw[];
 use File::Temp qw[];
 my $test_builder = Test::More->builder;
@@ -25,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK');
+use FLTK;
 
 # 0 width, 0 height, position 0, 0
 my $rect_1 = new_ok('FLTK::Rectangle', [], '$rect_1 = new( )');

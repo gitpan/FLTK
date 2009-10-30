@@ -8,13 +8,13 @@
 
 =for abstract Tests for xs/run.xsi
 
-=for git $Id: 20030_run.t fec1976 2009-10-16 15:44:21Z sanko@cpan.org $
+=for git $Id: 20030_run.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More 0.82 tests => 2;
+use Test::More 0.82 tests => 1;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -26,7 +26,7 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-use_ok('FLTK', qw[:run]);
+use FLTK qw[:run];
 {
     FLTK::wait(0.01) for 1 .. 60;
     my $i = 0;

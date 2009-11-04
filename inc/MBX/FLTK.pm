@@ -378,7 +378,7 @@ package MBX::FLTK;
 
 =for $Revision: 2166cb78a62d7ce665c1cdf99b7440a41d4ca4d4 $
 
-=for $Date: 2009-11-02 18:05:53Z (Mon, 02 Nov 2009) $ | Last $Modified: 34 hours ago $
+=for $Date: 2009-11-02 18:05:53Z (Mon, 02 Nov 2009) $ | Last $Modified: 2 days ago $
 
 =for $URL: http://github.com/sanko/fltk-perl/raw/master/inc/MBX/FLTK.pm $
 
@@ -402,3 +402,4 @@ covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
 http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
 clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 ARTISTIC_TWO
+

@@ -11,7 +11,6 @@ package MBX::FLTK;
     use File::Path qw[make_path];
     use base 'Module::Build';
     {
-        sub cxxflags { return '' }
 
         sub ACTION_code {
             require Alien::FLTK;    # Should be installed by now
@@ -48,11 +47,10 @@ package MBX::FLTK;
                 }
                 push @obj,
                     $self->cbuilder->compile(
-                                      'C++'        => 1,
-                                      source       => $cpp,
-                                      include_dirs => [$AF->include_dirs()],
-                                      extra_compiler_flags =>
-                                          [$AF->cxxflags(), $self->cxxflags()]
+                                       'C++'        => 1,
+                                       source       => $cpp,
+                                       include_dirs => [$AF->include_dirs()],
+                                       extra_compiler_flags => $AF->cxxflags()
                     );
             }
             make_path(catdir(qw[blib arch auto FLTK]),
@@ -374,15 +372,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: 2166cb7 $
+=for $Rev: 68e6ff3 $
 
-=for $Revision: 2166cb78a62d7ce665c1cdf99b7440a41d4ca4d4 $
+=for $Revision: 68e6ff35c179789a1cc1fc4455e3f53700b99088 $
 
-=for $Date: 2009-11-02 18:05:53Z (Mon, 02 Nov 2009) $ | Last $Modified: 2 days ago $
+=for $Date: 2009-11-04 20:01:12Z (Wed, 04 Nov 2009) $ | Last $Modified: 16 minutes ago $
 
 =for $URL: http://github.com/sanko/fltk-perl/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 2166cb7 2009-11-02 18:05:53Z sanko@cpan.org $
+=for $ID: FLTK.pm 68e6ff3 2009-11-04 20:01:12Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
@@ -402,4 +400,3 @@ covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
 http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
 clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 ARTISTIC_TWO
-

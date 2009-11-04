@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::ValueOutput
 
 =for version 0.531
 
-=for git $Id: ValueOutput.xsi 9e35ca7 2009-11-02 18:09:12Z sanko@cpan.org $
+=for git $Id: ValueOutput.xsi 6e85995 2009-11-04 18:19:42Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -27,7 +27,6 @@ There is no way for the user to change the number, but calling
 L<C<value()>|FLTK::Widget/"value"> will change it.
 
 =cut
-
 
 #include <fltk/ValueOutput.h>
 

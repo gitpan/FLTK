@@ -1,5 +1,5 @@
 NAME
-    FLTK - Perl Interface to the Fast Light Toolkit
+    FLTK - Perl bindings to the Fast Light Toolkit
 
 Description
     FLTK is-
@@ -50,4 +50,4 @@ License and Legal
     http://creativecommons.org/licenses/by-sa/3.0/us/legalcode. For
     clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 
-$Id: README 325febb 2009-10-24 16:02:52Z sanko@cpan.org $
+$Id: README 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $

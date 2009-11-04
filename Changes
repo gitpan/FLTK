@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 07b4f2f
+Version 0.XXXXX | Next Sunday AD | 68e6ff3
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -6,7 +6,7 @@ Version 0.XXXXX | Next Sunday AD | 07b4f2f
            RadioItem, RadioLightButton, Rectangle (base class of all Widgets),
            RepeatButton, ReturnButton, Scrollbar, ScrollGroup, SecretInput
            (for passwords), ShapedWindow, Slider, Symbol (.*Image base class),
-           Valuator, and xpmImage
+           Valuator, ValueInput, and xpmImage
      * Support for fltk's file and directory chooser API
      * The variables $FLTK::ok, $FLTK::yes, $FLTK::no, $FLTK::cancel,
            $FLTK::message_window_label, $FLTK::message_window_timeout, and
@@ -52,6 +52,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/fltk-perl/commits/master
 
-$Ver: 0.530_007 $ from git $Rev: 07b4f2f $
-$Date: 2009-11-04 14:25:45Z (Wed, 04 Nov 2009) $
+$Ver: 0.530_008 $ from git $Rev: 6e85995 $
+$Date: 2009-11-04 18:19:42Z (Wed, 04 Nov 2009) $
 $Url: http://github.com/sanko/fltk-perl/raw/master/Changes $

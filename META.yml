@@ -1,9 +1,9 @@
 ---
 name: FLTK
-version: 0.530_007
+version: 0.530_008
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
-abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
+abstract: Perl bindings to the (experimental) 2.0.x branch of the FLTK GUI toolkit
 license: artistic_2
 resources:
   ChangeLog: http://github.com/sanko/fltk-perl/commits/master
@@ -292,6 +292,9 @@ provides:
   FLTK::Valuator:
     file: xs/Valuator.xsi
     version: 0.0531
+  FLTK::ValueInput:
+    file: xs/ValueInput.xsi
+    version: 0.531
   FLTK::ValueOutput:
     file: xs/ValueOutput.xsi
     version: 0.531

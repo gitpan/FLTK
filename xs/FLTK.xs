@@ -6,11 +6,11 @@
 
 =for version 0.531
 
-=for git $Id: FLTK.xs 0a9d21a 2009-11-04 14:18:34Z sanko@cpan.org $
+=for git $Id: FLTK.xs 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $
 
 =head1 NAME
 
-FLTK - Perl Interface to the Fast Light Toolkit
+FLTK - Perl bindings to the Fast Light Toolkit
 
 =head1 Description
 

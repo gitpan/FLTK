@@ -8,7 +8,7 @@ MODULE = FLTK               PACKAGE = FLTK::Valuator
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: Valuator.xsi b5413d5 2009-10-16 19:38:01Z sanko@cpan.org $
+=for git $Id: Valuator.xsi 6e85995 2009-11-04 18:19:42Z sanko@cpan.org $
 
 =for version 0.0531
 
@@ -313,5 +313,7 @@ BOOT:
 INCLUDE: Dial.xsi
 
 INCLUDE: Slider.xsi
+
+INCLUDE: ValueInput.xsi
 
 #endif // ifndef DISABLE_VALUATOR

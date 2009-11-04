@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 1c83e29 2009-11-04 03:42:55Z sanko@cpan.org $
+=for git $Id: Build.PL 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $
 
 =cut
 
@@ -35,7 +35,7 @@ my $mb = $class->new(
     dist_author       => 'Sanko Robinson <sanko@cpan.org>',
     dist_version_from => 'lib/FLTK.pm',
     dist_abstract =>
-        'Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit',
+        'Perl bindings to the (experimental) 2.0.x branch of the FLTK GUI toolkit',
     requires => {perl                 => 5.008000,
                  base                 => 0,
                  'Test::More'         => 0.88,

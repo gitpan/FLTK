@@ -8,7 +8,7 @@ package MBX::FLTK;
     use ExtUtils::CBuilder qw[];
     use File::Spec::Functions qw[catdir rel2abs abs2rel canonpath];
     use File::Find qw[find];
-    use File::Path 2.07 qw[make_path];
+    use File::Path qw[make_path];
     use base 'Module::Build';
     {
         sub cxxflags { return '' }
@@ -374,15 +374,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: 1d0ff19 $
+=for $Rev: 2166cb7 $
 
-=for $Revision: 1d0ff1934645aaa9d7e314fef59f3710f5770b8e $
+=for $Revision: 2166cb78a62d7ce665c1cdf99b7440a41d4ca4d4 $
 
-=for $Date: 2009-10-27 21:38:43Z (Tue, 27 Oct 2009) $ | Last $Modified: 3 days ago $
+=for $Date: 2009-11-02 18:05:53Z (Mon, 02 Nov 2009) $ | Last $Modified: 34 hours ago $
 
 =for $URL: http://github.com/sanko/fltk-perl/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 1d0ff19 2009-10-27 21:38:43Z sanko@cpan.org $
+=for $ID: FLTK.pm 2166cb7 2009-11-02 18:05:53Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

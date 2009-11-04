@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 05b160a 2009-10-28 04:24:23Z sanko@cpan.org $
+=for git $Id: Build.PL 1c83e29 2009-11-04 03:42:55Z sanko@cpan.org $
 
 =cut
 
@@ -42,11 +42,11 @@ my $mb = $class->new(
                  Config               => 0,
                  Cwd                  => 0,
                  'ExtUtils::ParseXS'  => 0,
-                 'ExtUtils::CBuilder' => 0.26_05,
+                 'ExtUtils::CBuilder' => 0.27,
                  'File::Spec'         => 0,
                  'File::Find'         => 0,
-                 'File::Path'         => 2.04,
-                 'Module::Build'      => 0,
+                 'File::Path'         => 2.07,
+                 'Module::Build'      => '0.35_05',
                  'Devel::PPPort'      => 0
     },
     build_requires => {perl                 => 5.008000,
@@ -54,13 +54,13 @@ my $mb = $class->new(
                        Config               => 0,
                        Cwd                  => 0,
                        'ExtUtils::ParseXS'  => 0,
-                       'ExtUtils::CBuilder' => 0.26_05,
+                       'ExtUtils::CBuilder' => 0.27,
                        'File::Spec'         => 0,
                        'File::Find'         => 0,
-                       'File::Path'         => 2.04,
-                       'Module::Build'      => 0,
+                       'File::Path'         => 2.07,
+                       'Module::Build'      => '0.35_05',
                        'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => '0.06921_002',
+                       'Alien::FLTK'        => '0.06921_004',
                        'Pod::Parser'        => 0
     },
     recommends     => {OpenGL => 0.58},

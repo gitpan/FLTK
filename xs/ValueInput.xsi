@@ -8,7 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::ValueInput
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: ValueInput.xsi 60aa168 2009-10-15 01:33:55Z sanko@cpan.org $
+=for version 0.531
+
+=for git $Id: ValueInput.xsi 9e35ca7 2009-11-02 18:09:12Z sanko@cpan.org $
 
 =head1 NAME
 

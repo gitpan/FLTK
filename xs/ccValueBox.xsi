@@ -11,11 +11,11 @@ MODULE = FLTK               PACKAGE = FLTK::ccValueBox
 
 =for version 0.530
 
-=for git $Id: ccValueBox.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+=for git $Id: ccValueBox.xsi fa406e9 2009-11-02 18:16:40Z sanko@cpan.org $
 
 =head1 NAME
 
-FLTK::ccValueBox -
+FLTK::ccValueBox - Part of the FLTK::ColorChooser megawidget
 
 =head1 Description
 

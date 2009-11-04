@@ -10,11 +10,11 @@ MODULE = FLTK               PACKAGE = FLTK::ccCellBox
 
 =for version 0.530
 
-=for git $Id: ccCellBox.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+=for git $Id: ccCellBox.xsi fa406e9 2009-11-02 18:16:40Z sanko@cpan.org $
 
 =head1 NAME
 
-FLTK::ccCellBox -
+FLTK::ccCellBox - Part of the FLTK::ColorChooser megawidget
 
 =head1 Description
 

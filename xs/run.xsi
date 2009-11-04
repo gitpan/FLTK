@@ -10,11 +10,11 @@ MODULE = FLTK               PACKAGE = FLTK::run
 
 =for version 0.531
 
-=for git $Id: run.xsi 016b807 2009-10-30 20:10:24Z sanko@cpan.org $
+=for git $Id: run.xsi fa406e9 2009-11-02 18:16:40Z sanko@cpan.org $
 
 =head1 NAME
 
-FLTK::run
+FLTK::run - Basic activity functions for the Fast Light Toolkit
 
 =head1 Description
 

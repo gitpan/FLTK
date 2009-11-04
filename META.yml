@@ -1,6 +1,6 @@
 ---
 name: FLTK
-version: 0.530_005
+version: 0.530_006
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 abstract: Perl interface to the (experimental) 2.0.x branch of the FLTK GUI toolkit
@@ -12,16 +12,16 @@ resources:
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/fltk-perl
 build_requires:
-  Alien::FLTK: 0.06921_002
+  Alien::FLTK: 0.06921_004
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
-  ExtUtils::CBuilder: 0.2605
+  ExtUtils::CBuilder: 0.27
   ExtUtils::ParseXS: 0
   File::Find: 0
-  File::Path: 2.04
+  File::Path: 2.07
   File::Spec: 0
-  Module::Build: 0
+  Module::Build: 0.35_05
   Pod::Parser: 0
   Test::More: 0.88
   perl: 5.008
@@ -29,12 +29,12 @@ requires:
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
-  ExtUtils::CBuilder: 0.2605
+  ExtUtils::CBuilder: 0.27
   ExtUtils::ParseXS: 0
   File::Find: 0
-  File::Path: 2.04
+  File::Path: 2.07
   File::Spec: 0
-  Module::Build: 0
+  Module::Build: 0.35_05
   Test::More: 0.88
   base: 0
   perl: 5.008
@@ -292,6 +292,9 @@ provides:
   FLTK::Valuator:
     file: xs/Valuator.xsi
     version: 0.0531
+  FLTK::ValueOutput:
+    file: xs/ValueOutput.xsi
+    version: 0.531
   FLTK::Version:
     file: xs/Version.xsi
     version: 0.531

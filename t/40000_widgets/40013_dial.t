@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Dial.xsi
 
-=for git $Id: 40013_dial.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 40013_dial.t 3ed2305 2009-11-05 18:33:55Z sanko@cpan.org $
 
 =cut
 
@@ -61,4 +61,4 @@ for (0 .. 100) {
 
 #
 is($C0->value(), 20,  '$C0->value == 20');
-is($C1->value(), 1.6, '$C1->value == 1.06');
+like($C1->value(), qr[^1.6\d*$], '$C1->value is around 1.06');

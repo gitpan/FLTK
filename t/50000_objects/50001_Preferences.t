@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Preferences.xsi
 
-=for git $Id: 50001_Preferences.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 50001_Preferences.t c9b696e 2009-11-05 18:41:28Z sanko@cpan.org $
 
 =cut
 
@@ -56,10 +56,10 @@ my $dir = File::Temp->newdir('FLTK_Preferences_XXXX', TMPDIR => 1);
     my $p_prefs =
         new_ok('FLTK::Preferences', [$dir, 'AcmeSoft', 'WonderWare 2.0'],
                'PATH prefs');
-    ok($s_prefs->getUserdataPath ne $u_prefs->getUserdataPath,
-        'SYSTEM and USER prefs are stored in different locations');
-    ok($s_prefs->getUserdataPath ne $p_prefs->getUserdataPath,
-        'SYSTEM and PATH prefs are stored in different locations');
+    isn't($s_prefs->getUserdataPath, $u_prefs->getUserdataPath,
+          'SYSTEM and USER prefs are stored in different locations');
+    isn't($s_prefs->getUserdataPath, $p_prefs->getUserdataPath,
+          'SYSTEM and PATH prefs are stored in different locations');
     ok($u_prefs->getUserdataPath ne $p_prefs->getUserdataPath,
         'USER and PATH prefs are stored in different locations');
 }

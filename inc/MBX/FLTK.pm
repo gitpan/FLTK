@@ -372,15 +372,15 @@ package MBX::FLTK;
 
 =pod
 
-=for $Rev: db40fa7 $
+=for $Rev: c9b696e $
 
-=for $Revision: db40fa790ff56ab3ff53e770e4fb9aaca16faa4d $
+=for $Revision: c9b696ef5a2b09285cba3bbf0fb3f91cd4692b24 $
 
-=for $Date: 2009-11-05 15:38:35Z (Thu, 05 Nov 2009) $ | Last $Modified: 66 seconds ago $
+=for $Date: 2009-11-05 18:41:28Z (Thu, 05 Nov 2009) $ | Last $Modified: 20 minutes ago $
 
 =for $URL: http://github.com/sanko/fltk-perl/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm db40fa7 2009-11-05 15:38:35Z sanko@cpan.org $
+=for $ID: FLTK.pm c9b696e 2009-11-05 18:41:28Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
@@ -400,4 +400,3 @@ covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
 http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
 clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 ARTISTIC_TWO
-

@@ -1,6 +1,6 @@
 ---
 name: FLTK
-version: 0.530_009
+version: 0.530_010
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 abstract: Perl bindings to the (experimental) 2.0.x branch of the FLTK GUI toolkit

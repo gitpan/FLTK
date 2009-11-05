@@ -10,13 +10,13 @@
 
 =for TODO Somehow test selecting different buttons (with defaults and C<ESC>)
 
-=for git $Id: 20010_ask.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 20010_ask.t e6d8b85 2009-11-05 03:28:12Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 29;
 use Module::Build qw[];
 use Time::HiRes qw[];
 my $test_builder = Test::More->builder;
@@ -76,14 +76,8 @@ is($FLTK::message_window_label,
 #
 my $message_style = message_style();
 my $icon_style    = icon_style();
-isa_ok($message_style, 'FLTK::NamedStyle', 'message_style()');
-isa_ok($icon_style,    'FLTK::NamedStyle', 'icon_style()');
-ok(message_style($icon_style), 'Switching message_style...');
-ok(icon_style($message_style), '...with icon_style');
-$message_style = message_style();
-$icon_style    = icon_style();
-ok(message_style($icon_style), 'Reversing the message_style...');
-ok(icon_style($message_style), '...and icon_style switch');
+isa_ok(message_style(), 'FLTK::NamedStyle', 'message_style()');
+isa_ok(icon_style(),    'FLTK::NamedStyle', 'icon_style()');
 
 #
 note

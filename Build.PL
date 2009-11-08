@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $
+=for git $Id: Build.PL 53908ec 2009-11-06 03:34:36Z sanko@cpan.org $
 
 =cut
 
@@ -34,34 +34,37 @@ my $mb = $class->new(
     license           => 'artistic_2',
     dist_author       => 'Sanko Robinson <sanko@cpan.org>',
     dist_version_from => 'lib/FLTK.pm',
-    dist_abstract =>
-        'Perl bindings to the (experimental) 2.0.x branch of the FLTK GUI toolkit',
-    requires => {perl                 => 5.008000,
-                 base                 => 0,
-                 'Test::More'         => 0.88,
-                 Config               => 0,
-                 Cwd                  => 0,
-                 'ExtUtils::ParseXS'  => 0,
+    dist_abstract     => 'Perl bindings to the Fast Light Toolkit',
+    requires          => {
+                 'Alien::FLTK' => '0.06921_004',
+                 base          => 0,
+                 Config        => 0,
+                 Cwd           => 0,
+                 ($is_developer ? ('Devel::PPPort' => 0) : ()),
                  'ExtUtils::CBuilder' => 0.27,
-                 'File::Spec'         => 0,
+                 'ExtUtils::ParseXS'  => 0,
                  'File::Find'         => 0,
                  'File::Path'         => 2.07,
+                 'File::Spec'         => 0,
                  'Module::Build'      => '0.35_05',
-                 'Devel::PPPort'      => 0
+                 perl                 => 5.008000,
+                 'Pod::Parser'        => 0,
+                 'Test::More'         => 0.88
     },
-    build_requires => {perl                 => 5.008000,
-                       'Test::More'         => 0.88,
-                       Config               => 0,
-                       Cwd                  => 0,
-                       'ExtUtils::ParseXS'  => 0,
+    build_requires => {'Alien::FLTK' => '0.06921_004',
+                       base          => 0,
+                       Config        => 0,
+                       Cwd           => 0,
+                       ($is_developer ? ('Devel::PPPort' => 0) : ()),
                        'ExtUtils::CBuilder' => 0.27,
-                       'File::Spec'         => 0,
+                       'ExtUtils::ParseXS'  => 0,
                        'File::Find'         => 0,
                        'File::Path'         => 2.07,
+                       'File::Spec'         => 0,
                        'Module::Build'      => '0.35_05',
-                       'Devel::PPPort'      => 0,
-                       'Alien::FLTK'        => '0.06921_004',
-                       'Pod::Parser'        => 0
+                       perl                 => 5.008000,
+                       'Pod::Parser'        => 0,
+                       'Test::More'         => 0.88
     },
     recommends     => {OpenGL => 0.58},
     add_to_cleanup => [qw[FLTK-*],
@@ -88,7 +91,7 @@ my $mb = $class->new(
     },
     get_options => {'interactive!' => {},
                     'messy!'       => {}
-    },
+    }
 );
 print "Checking for a functioning C++ compiler...\n";
 if ($mb->cbuilder->have_cplusplus()) { print "Looks good\n\n" }

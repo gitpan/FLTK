@@ -8,13 +8,13 @@ package FLTK;
 
 =for abstract Perl bindings to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm c9b696e 2009-11-05 18:41:28Z sanko@cpan.org $
+=for git $Id: FLTK.pm 8133705 2009-11-06 03:10:41Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-our $VERSION_BASE = 530; our $UNSTABLE_RELEASE = 10; our $VERSION = sprintf(($UNSTABLE_RELEASE ? '%.3f_%03d' : '%.3f'), $VERSION_BASE / 1000, $UNSTABLE_RELEASE);
+our $VERSION_BASE = 531; our $UNSTABLE_RELEASE = 0; our $VERSION = sprintf(($UNSTABLE_RELEASE ? '%.3f_%03d' : '%.3f'), $VERSION_BASE / 1000, $UNSTABLE_RELEASE);
 use XSLoader;
 use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
 use Exporter qw[import];

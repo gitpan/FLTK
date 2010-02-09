@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::file_chooser
 
 =for version 0.531
 
-=for git $Id: file_chooser.xsi 016b807 2009-10-30 20:10:24Z sanko@cpan.org $
+=for git $Id: file_chooser.xsi 384e3d2 2010-01-06 22:57:55Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -91,6 +91,8 @@ MODULE = FLTK               PACKAGE = FLTK::file_chooser
 This function is called every time the user navigates to a new file or
 directory in the file chooser. It can be used to preview the result in the
 main window.
+
+=end apidoc
 
 =cut
 

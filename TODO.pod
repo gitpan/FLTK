@@ -4,7 +4,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: TODO.pod 07b4f2f 2009-11-04 14:25:45Z sanko@cpan.org $
+=for git $Id: TODO.pod db3382a 2010-02-09 21:31:40Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -13,6 +13,12 @@ FLTK::Todo - TODO list for Perl module FLTK
 =head1 High priorities
 
 =over
+
+=item * FLTK::Theme
+
+=item * Complete FLTK::TextBuffer
+
+=item * Complete FLTK::TabGroup
 
 =item * Convert all enum and built-in types to fake tied vars?
 

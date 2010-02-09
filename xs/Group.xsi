@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::Group
 
 =for version 0.530
 
-=for git $Id: Group.xsi 7f18ac6 2009-10-24 02:55:18Z sanko@cpan.org $
+=for git $Id: Group.xsi 40a87ce 2010-01-18 20:10:15Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -395,6 +395,8 @@ INCLUDE: Menu.xsi
 INCLUDE: PackedGroup.xsi
 
 INCLUDE: ScrollGroup.xsi
+
+INCLUDE: TabGroup.xsi
 
 INCLUDE: Window.xsi
 

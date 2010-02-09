@@ -6,30 +6,21 @@
 
 =for version 0.531
 
-=for git $Id: FLTK.xs 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $
+=for git $Id: FLTK.xs 853ac27 2010-02-09 21:24:16Z sanko@cpan.org $
 
 =head1 NAME
 
-FLTK - Perl bindings to the Fast Light Toolkit
+FLTK - Perl bindings to the C<2.0.x> branch of the Fast Light Toolkit
 
 =head1 Description
 
-FLTK is-
+FLTK is a graphical user interface toolkit for X (UNIX®), Microsoft® Windows®,
+OS/X, and several other platforms. FLTK provides modern GUI functionality
+without the bloat and supports 3D graphics via OpenGL® and its built-in GLUT
+emulation.
 
-=for html <span style="color:#F00;font-size:2em;">
-
-B<This project has a long way to go so I am seeking volunteers to help with
-testing and development.>
-
-Please see the L<TODO list|FLTK::Todo> and the notes on
-L<getting started|FLTK::Notes/"Join the Team">.
-
-=for html </span>
-
-Ahem. FLTK is a graphical user interface toolkit for X (UNIX®),
-Microsoft® Windows®, OS/X, and several other platforms. FLTK provides modern
-GUI functionality without the bloat and supports 3D graphics via OpenGL® and
-its built-in GLUT emulation.
+This module, L<FLTK|FLTK>, exposes bindings to the experimental 2.0.x branch
+of the Fast Light Toolkit.
 
 =cut
 
@@ -47,8 +38,7 @@ its built-in GLUT emulation.
 #define DISABLE_ASSOCIATIONFUNCTOR  // Requires subclass
 #define DISABLE_ASSOCIATIONTYPE     // Requires subclass
 
-#include <config.h> // created in / during fltk2's configure stage and
-                         // installed to /fltk/include/ by Alien::FLTK
+#include <config.h>                 // created and installed by Alien::FLTK2
 
 #if HAVE_GL == 0
 #define DISABLE_GL       1
@@ -350,6 +340,8 @@ static void magic_ptr_init( const char * var, const char ** ptr ) {
 
 =head1 Synopsis
 
+=for markdown {%highlight perl linenos%}
+
     use strict;
     use warnings;
     use FLTK qw[:style];
@@ -364,6 +356,8 @@ static void magic_ptr_init( const char * var, const char ** ptr ) {
     $window->end();
     $window->show();
     exit FLTK::run();
+
+=for markdown {%endhighlight%}
 
 =head1 See Also
 
@@ -492,6 +486,8 @@ INCLUDE: Rectangle.xsi
 INCLUDE: Style.xsi
 
 INCLUDE: Symbol.xsi
+
+INCLUDE: TextBuffer.xsi
 
 #INCLUDE: ValueInput.xsi
 

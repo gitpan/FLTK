@@ -7,14 +7,13 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 53908ec 2009-11-06 03:34:36Z sanko@cpan.org $
+=for git $Id: Build.PL 38c34b8 2010-02-09 21:20:04Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
 use Module::Build;
-use lib 'inc';
 use Config qw[%Config];
 use File::Find qw[find];
 my $automated_testing = $ENV{AUTOMATED_TESTING} || $ENV{PERL_MM_USE_DEFAULT};
@@ -23,45 +22,44 @@ my @tests;
 find \&find_cb, qw[t/10000_basic t/20000_functions t/40000_widgets
     t/50000_objects t/60000_types], ($is_developer ? 't/90000_author' : ());
 @tests = sort @tests;
-my $class = $is_developer ? 'MBX::FLTK::Developer' : 'MBX::FLTK';
+my $class = 'inc::MBX::FLTK' . ($is_developer ? '::Developer' : '');
 
 if (!eval "require $class") {
     printf 'Failed to load %s: %s This ain\'t good, so... bye!', $class, $@;
     exit 0;
 }
 my $mb = $class->new(
-    module_name       => 'FLTK',
-    license           => 'artistic_2',
-    dist_author       => 'Sanko Robinson <sanko@cpan.org>',
-    dist_version_from => 'lib/FLTK.pm',
-    dist_abstract     => 'Perl bindings to the Fast Light Toolkit',
-    requires          => {
-                 'Alien::FLTK' => '0.06921_004',
-                 base          => 0,
-                 Config        => 0,
-                 Cwd           => 0,
+    module_name => 'FLTK',
+    license     => 'artistic_2',
+    dist_author => 'Sanko Robinson <sanko@cpan.org>',
+    dist_abstract =>
+        'Perl bindings to the 2.0.x branch of the Fast Light Toolkit',
+    requires => {'Alien::FLTK2' => 0.06970016,
+                 base           => 0,
+                 Config         => 0,
+                 Cwd            => 0,
                  ($is_developer ? ('Devel::PPPort' => 0) : ()),
                  'ExtUtils::CBuilder' => 0.27,
                  'ExtUtils::ParseXS'  => 0,
                  'File::Find'         => 0,
                  'File::Path'         => 2.07,
                  'File::Spec'         => 0,
-                 'Module::Build'      => '0.35_05',
+                 'Module::Build'      => '0.36',
                  perl                 => 5.008000,
                  'Pod::Parser'        => 0,
                  'Test::More'         => 0.88
     },
-    build_requires => {'Alien::FLTK' => '0.06921_004',
-                       base          => 0,
-                       Config        => 0,
-                       Cwd           => 0,
+    build_requires => {'Alien::FLTK2' => 0.06970016,
+                       base           => 0,
+                       Config         => 0,
+                       Cwd            => 0,
                        ($is_developer ? ('Devel::PPPort' => 0) : ()),
                        'ExtUtils::CBuilder' => 0.27,
                        'ExtUtils::ParseXS'  => 0,
                        'File::Find'         => 0,
                        'File::Path'         => 2.07,
                        'File::Spec'         => 0,
-                       'Module::Build'      => '0.35_05',
+                       'Module::Build'      => '0.36',
                        perl                 => 5.008000,
                        'Pod::Parser'        => 0,
                        'Test::More'         => 0.88
@@ -82,20 +80,19 @@ my $mb = $class->new(
             qw[FLTK Fast Light Toolkit widget FL GUI UI window 2.0.x experimental]
         ],
         resources => {
-              bugtracker => 'http://github.com/sanko/fltk-perl/issues',
-              ChangeLog => 'http://github.com/sanko/fltk-perl/commits/master',
-              homepage  => 'http://sanko.github.com/fltk-perl/',
-              license => 'http://www.perlfoundation.org/artistic_license_2_0',
-              repository => 'http://github.com/sanko/fltk-perl'
+             bugtracker => 'http://github.com/sanko/perl-fltk2/issues',
+             ChangeLog => 'http://github.com/sanko/perl-fltk2/commits/master',
+             homepage  => 'http://sanko.github.com/perl-fltk2/',
+             license => 'http://www.perlfoundation.org/artistic_license_2_0',
+             repository => 'http://github.com/sanko/perl-fltk2'
         }
     },
+    needs_compiler => 1,    # adds ExtUtils::CBuilder to build_requires
     get_options => {'interactive!' => {},
                     'messy!'       => {}
     }
 );
-print "Checking for a functioning C++ compiler...\n";
-if ($mb->cbuilder->have_cplusplus()) { print "Looks good\n\n" }
-else { print "fail\n* No compiler found. Exiting.\n"; exit 0 }
+##############################################################################
 $mb->notes(automated_testing => $automated_testing             ? 1 : 0);
 $mb->notes(is_developer      => $is_developer                  ? 1 : 0);
 $mb->notes(verbose           => $mb->args('messy')             ? 1 : 0);
@@ -103,9 +100,10 @@ $mb->notes(interactive       => $mb->args('interactive')       ? 1 : 0);
 $mb->notes(threads           => $Config::Config{'useithreads'} ? 1 : 0);
 $mb->notes(test_suite        => \@tests);
 $mb->notes(gmtime            => scalar gmtime);
+##############################################################################
 $mb->create_build_script;
 exit 0;
-
+##############################################################################
 sub find_cb {
     return if -d $_ or -l $_;
     return unless -T $_;

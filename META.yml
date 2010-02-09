@@ -1,18 +1,9 @@
 ---
-name: FLTK
-version: 0.531
+abstract: 'Perl bindings to the 2.0.x branch of the Fast Light Toolkit'
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
-abstract: Perl bindings to the Fast Light Toolkit
-license: artistic_2
-resources:
-  ChangeLog: http://github.com/sanko/fltk-perl/commits/master
-  bugtracker: http://github.com/sanko/fltk-perl/issues
-  homepage: http://sanko.github.com/fltk-perl/
-  license: http://www.perlfoundation.org/artistic_license_2_0
-  repository: http://github.com/sanko/fltk-perl
 build_requires:
-  Alien::FLTK: 0.06921_004
+  Alien::FLTK2: 0.06970016
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -21,34 +12,42 @@ build_requires:
   File::Find: 0
   File::Path: 2.07
   File::Spec: 0
-  Module::Build: 0.35_05
+  Module::Build: 0.36
   Pod::Parser: 0
   Test::More: 0.88
   base: 0
   perl: 5.008
-requires:
-  Alien::FLTK: 0.06921_004
-  Config: 0
-  Cwd: 0
-  Devel::PPPort: 0
-  ExtUtils::CBuilder: 0.27
-  ExtUtils::ParseXS: 0
-  File::Find: 0
-  File::Path: 2.07
-  File::Spec: 0
-  Module::Build: 0.35_05
-  Pod::Parser: 0
-  Test::More: 0.88
-  base: 0
-  perl: 5.008
-recommends:
-  OpenGL: 0.58
 configure_requires:
-  Module::Build: 0.35
+  Module::Build: 0.36
+generated_by: 'Conversion, software version 7.0'
+keywords:
+  - FLTK
+  - Fast
+  - Light
+  - Toolkit
+  - widget
+  - FL
+  - GUI
+  - UI
+  - window
+  - 2.0.x
+  - experimental
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: FLTK
+no_index:
+  directory:
+    - examples
+    - inc
+    - t
+  files:
+    - xs/include/ppport.h
 provides:
   FLTK:
-    file: xs/FLTK.xs
-    version: 0.531
+    file: lib/FLTK.pm
+    version: 0.531_002
   FLTK::Adjuster:
     file: xs/Adjuster.xsi
     version: 0.530
@@ -292,6 +291,15 @@ provides:
   FLTK::Symbol:
     file: xs/Symbol.xsi
     version: 0.0531
+  FLTK::TabGroup:
+    file: xs/TabGroup.xsi
+    version: 0.530
+  FLTK::TextBuffer:
+    file: xs/TextBuffer.xsi
+    version: 0.532
+  FLTK::TextSelection:
+    file: xs/TextSelection.xsi
+    version: 0.532
   FLTK::Valuator:
     file: xs/Valuator.xsi
     version: 0.0531
@@ -305,8 +313,8 @@ provides:
     file: xs/Version.xsi
     version: 0.531
   FLTK::Widget:
-    file: xs/Widget.xsi
-    version: 0.531
+    file: xs/Cursor.xsi
+    version: 0.530
   FLTK::Window:
     file: xs/Window.xsi
     version: 0.530
@@ -343,26 +351,27 @@ provides:
   FLTK::xpmImage:
     file: xs/xpmImage.xsi
     version: 0.531
-no_index:
-  directory:
-    - examples
-    - inc
-    - t
-  files:
-    - xs/include/ppport.h
-generated_by: 'Conversion, software version 7.0'
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-keywords:
-  - FLTK
-  - Fast
-  - Light
-  - Toolkit
-  - widget
-  - FL
-  - GUI
-  - UI
-  - window
-  - 2.0.x
-  - experimental
+recommends:
+  OpenGL: 0.58
+requires:
+  Alien::FLTK2: 0.06970016
+  Config: 0
+  Cwd: 0
+  Devel::PPPort: 0
+  ExtUtils::CBuilder: 0.27
+  ExtUtils::ParseXS: 0
+  File::Find: 0
+  File::Path: 2.07
+  File::Spec: 0
+  Module::Build: 0.36
+  Pod::Parser: 0
+  Test::More: 0.88
+  base: 0
+  perl: 5.008
+resources:
+  ChangeLog: http://github.com/sanko/perl-fltk2/commits/master
+  bugtracker: http://github.com/sanko/perl-fltk2/issues
+  homepage: http://sanko.github.com/perl-fltk2/
+  license: http://www.perlfoundation.org/artistic_license_2_0
+  repository: http://github.com/sanko/perl-fltk2
+version: 0.531_002

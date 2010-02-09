@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::AnsiWidget
 
 =for version 0.530
 
-=for git $Id: AnsiWidget.xsi ad157f8 2009-09-24 21:13:29Z sanko@cpan.org $
+=for git $Id: AnsiWidget.xsi 384e3d2 2010-01-06 22:57:55Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -320,6 +320,8 @@ AnsiWidget::getFontSize( )
 =for apidoc ||FLTK::Color color|ansiToFltk|long color|
 
 Converts ANSI colors to FLTK colors.
+
+=end apidoc
 
 =cut
 

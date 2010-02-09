@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::run
 
 =for version 0.531
 
-=for git $Id: run.xsi fa406e9 2009-11-02 18:16:40Z sanko@cpan.org $
+=for git $Id: run.xsi 384e3d2 2010-01-06 22:57:55Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -451,6 +451,8 @@ the idle callback.
 =for apidoc FT[run]|||remove_idle|CV * coderef|SV * args|
 
 Removes the specified idle callback, if it is installed.
+
+=end apidoc
 
 =cut
 

@@ -108,6 +108,10 @@ const fltk::Style           *   O_FLTK
       fltk::Style           *   O_FLTK
 const fltk::Symbol          *   O_FLTK
 fltk::Symbol                *   O_FLTK
+fltk::TabGroup              *   O_FLTK
+fltk::TabGroupPager         *   O_FLTK
+fltk::TextBuffer            *   O_FLTK
+fltk::TextSelection         *   O_FLTK
 fltk::Valuator              *   O_FLTK
 fltk::ValueInput            *   O_FLTK
 fltk::ValueOutput           *   O_FLTK
@@ -144,7 +148,7 @@ O_FLTK
 
 =for abstract Type definitions for the Fast Light Toolkit
 
-=for git $Id: type.map 932c536 2009-10-17 16:54:44Z sanko@cpan.org $
+=for git $Id: type.map 40a87ce 2010-01-18 20:10:15Z sanko@cpan.org $
 
 =cut
 

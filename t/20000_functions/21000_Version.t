@@ -10,7 +10,7 @@
 
 =for TODO ...create lib/FLTK/Version.pm
 
-=for git $Id: 21000_Version.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 21000_Version.t 0d15109 2010-01-18 20:07:57Z sanko@cpan.org $
 
 =cut
 
@@ -35,5 +35,5 @@ for my $sub (qw[FL_MAJOR_VERSION FL_MINOR_VERSION FL_PATCH_VERSION
              FL_VERSION version])
 {   can_ok(__PACKAGE__, $sub);
 }
-is(FL_MAJOR_VERSION(), 2, 'This was build with the experimental fltk2 libs');
+is(FL_MAJOR_VERSION(), 2, 'This was build with the experimental FLTK libs');
 is(FL_VERSION(), version(), 'FL_VERSION and version() match');

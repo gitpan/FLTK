@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::damage
 
 =for version 0.530
 
-=for git $Id: damage.xsi 84c047b 2009-09-04 03:55:45Z sanko@cpan.org $
+=for git $Id: damage.xsi 384e3d2 2010-01-06 22:57:55Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -26,6 +26,8 @@ L<C<Widget::handle()>|FLTK::Widget/"handle"> method can then set individual
 damage bits to limit the amount of drawing that needs to be done, and the
 L<C<Widget::draw()>|FLTK::Widget/"draw"> method can test these bits to decide
 what to draw:
+
+=for markdown {%highlight perl linenos%}
 
   package MyClass;
 
@@ -45,6 +47,8 @@ what to draw:
       draw_part2() if ($self->damage() & (DAMAGE_ALL() | 2));
       draw_part3() if ($self->damage() & (DAMAGE_ALL() | 4));
   }
+
+=for markdown {%endhighlight%}
 
 Except for C<DAMAGE_ALL>, each widget is allowed to assign any meaning to any
 of the bits it wants. The enumerations are just to provide suggested meanings.

@@ -11,7 +11,6 @@
 =for git $Id: 40013_dial.t 3ed2305 2009-11-05 18:33:55Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More 0.82 tests => 8;
@@ -60,5 +59,5 @@ for (0 .. 100) {
 }
 
 #
-is($C0->value(), 20,  '$C0->value == 20');
+is($C0->value(), 20, '$C0->value == 20');
 like($C1->value(), qr[^1.6\d*$], '$C1->value is around 1.06');

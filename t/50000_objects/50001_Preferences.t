@@ -11,7 +11,6 @@
 =for git $Id: 50001_Preferences.t c9b696e 2009-11-05 18:41:28Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 106;

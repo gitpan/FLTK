@@ -11,7 +11,6 @@
 =for git $Id: 60001_Color.t fc1e1ed 2009-11-05 15:32:06Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 121;

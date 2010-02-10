@@ -10,7 +10,6 @@
 =for git $Id: xpmImage.pl b32bb0b 2009-10-24 14:51:13Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use FLTK;

@@ -11,7 +11,6 @@ L<FLTK::Basics|FLTK::Basics>
 =for git $Id: hello.pl b32bb0b 2009-10-24 14:51:13Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use FLTK qw[:default :style];

@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | db3382a
+Version 0.XXXXX | Next Sunday AD | 2528b0a
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -62,6 +62,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk2/commits/master
 
-$Ver: 0.531_002 $ from git $Rev: db3382a $
-$Date: 2010-02-09 21:31:40Z (Tue, 09 Feb 2010) $
+$Ver: 0.531_003 $ from git $Rev: 2528b0a $
+$Date: 2010-02-10 07:58:47Z (Wed, 10 Feb 2010) $
 $Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $

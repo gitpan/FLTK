@@ -5,17 +5,35 @@ package inc::MBX::FLTK;
     $|++;
     use Config qw[%Config];
     use ExtUtils::ParseXS qw[];
-    use ExtUtils::CBuilder qw[];
     use File::Spec::Functions qw[catdir rel2abs abs2rel canonpath];
     use File::Find qw[find];
     use File::Path qw[make_path];
     use base 'Module::Build';
     {
 
+        package My::ExtUtils::CBuilder;
+        use base 'ExtUtils::CBuilder';
+
+        sub do_system {
+            my ($self, @cmd) = @_;
+            @cmd = grep { defined && length } @cmd;
+            @cmd = map { s[\s+$][]; s[^\s+][]; $_ } @cmd;
+            print "@cmd\n" if !$self->{'quiet'};
+            my $cmd = join ' ', @cmd;
+            `$cmd`;
+            return 1;
+
+            #(my( $program), @cmd) = @cmd;
+            #return !system ($program, @cmd);
+        }
+    }
+    {
+
         sub ACTION_code {
             require Alien::FLTK2;    # Should be installed by now
             my ($self, $args) = @_;
             my $AF = Alien::FLTK2->new();
+            my $CC = My::ExtUtils::CBuilder->new();
             my (@xs, @rc, @obj);
             find(sub { push @xs, $File::Find::name if m[.+\.xs$]; }, 'xs');
             find(sub { push @rc, $File::Find::name if !m[.+\.o$]; }, 'xs/rc');
@@ -32,29 +50,26 @@ package inc::MBX::FLTK;
                     chdir 'xs/rc';
                     print $self->do_system(sprintf 'windres %s %s',
                                       $dot_rc, $dot_o) ? "okay\n" : "fail!\n";
-                    chdir $self->base_dir;
+                    chdir rel2abs($self->base_dir);
                 }
                 map { abs2rel($_) } @obj;
             }
         XS: for my $XS (@xs) {
                 my $cpp = _xs_to_cpp($self, $XS)
                     or do { printf 'Cannot Parse %s', $XS; exit 0 };
-                if ($self->up_to_date($cpp, $self->cbuilder->object_file($cpp)
-                    )
-                    )
-                {   push @obj, $self->cbuilder->object_file($cpp);
+                if ($self->up_to_date($cpp, $CC->object_file($cpp))) {
+                    push @obj, $CC->object_file($cpp);
                     next XS;
                 }
                 push @obj,
-                    $self->cbuilder->compile(
-                                       'C++'        => 1,
-                                       source       => $cpp,
-                                       include_dirs => [$AF->include_dirs()],
-                                       extra_compiler_flags => [$AF->cxxflags()]
+                    $CC->compile('C++'        => 1,
+                                 source       => $cpp,
+                                 include_dirs => [$AF->include_dirs()],
+                                 extra_compiler_flags => [$AF->cxxflags()]
                     );
             }
             make_path(catdir(qw[blib arch auto FLTK]),
-                      {verbose => !$self->quiet(), mode => 0711});
+                      {verbose => !$self->quiet(), mode => 0777});
             @obj = map { canonpath abs2rel($_) } @obj;
             if (!$self->up_to_date([@obj],
                                    catdir(qw[blib arch auto FLTK],
@@ -63,14 +78,14 @@ package inc::MBX::FLTK;
                 )
                 )
             {   my ($dll, @cleanup)
-                    = $self->cbuilder->link(
-                            objects => \@obj,
-                            lib_file =>
-                                catdir(qw[blib arch auto FLTK],
-                                       'FLTK.' . $Config{'so'}
-                                ),
-                            module_name        => 'FLTK',
-                            extra_linker_flags => [$AF->ldflags(qw[gl images])],
+                    = $CC->link(
+                          objects => \@obj,
+                          lib_file =>
+                              catdir(qw[blib arch auto FLTK],
+                                     'FLTK.' . $Config{'so'}
+                              ),
+                          module_name        => 'FLTK',
+                          extra_linker_flags => [$AF->ldflags(qw[gl images])],
                     );
                 @cleanup = map { s["][]g; rel2abs($_); } @cleanup;
                 $self->add_to_cleanup(@cleanup);
@@ -239,7 +254,7 @@ package inc::MBX::FLTK;
                     for my $section (qw[NAME Description Synopsis]) {
                         next
                             if !$parser->{'apidoc_modules'}{$package}
-                                {'section'}{$section};
+                            {'section'}{$section};
                         syswrite $DOC, "=head1 $section\n\n";
                         syswrite $DOC,
                             $parser->{'apidoc_modules'}{$package}{'section'}
@@ -289,7 +304,7 @@ package inc::MBX::FLTK;
                         )
                     {   next
                             if !$parser->{'apidoc_modules'}{$package}
-                                {'section'}{$section};
+                            {'section'}{$section};
                         syswrite $DOC, "=head1 $section\n\n";
                         syswrite $DOC,
                             $parser->{'apidoc_modules'}{$package}{'section'}
@@ -402,15 +417,15 @@ package inc::MBX::FLTK;
 
 =pod
 
-=for $Rev: 5f72066 $
+=for $Rev: 2528b0a $
 
-=for $Revision: 5f72066f29efd4d48e18c66d7927128ec40ab561 $
+=for $Revision: 2528b0a45b6edb7523de7dbd5868a968175aa3db $
 
-=for $Date: 2010-02-09 21:21:48Z (Tue, 09 Feb 2010) $ | Last $Modified: 13 minutes ago $
+=for $Date: 2010-02-10 07:58:47Z (Wed, 10 Feb 2010) $ | Last $Modified: 36 seconds ago $
 
 =for $URL: http://github.com/sanko/perl-fltk2/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 5f72066 2010-02-09 21:21:48Z sanko@cpan.org $
+=for $ID: FLTK.pm 2528b0a 2010-02-10 07:58:47Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

@@ -11,7 +11,6 @@
 =for git $Id: 10001_use_ok.t 070a3a8 2009-10-04 14:47:19Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 1;

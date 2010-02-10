@@ -10,7 +10,6 @@
 =for git $Id: gl.pl 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use FLTK;

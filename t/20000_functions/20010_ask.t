@@ -13,7 +13,6 @@
 =for git $Id: 20010_ask.t e6d8b85 2009-11-05 03:28:12Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 29;

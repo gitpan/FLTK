@@ -11,7 +11,6 @@
 =for git $Id: 47010_subclass.t fafd1cb 2009-11-05 03:34:38Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More 0.82;

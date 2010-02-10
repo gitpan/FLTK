@@ -13,7 +13,6 @@
 =for git $Id: 21000_Version.t 0d15109 2010-01-18 20:07:57Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 7;

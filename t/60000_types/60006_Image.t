@@ -11,7 +11,6 @@
 =for git $Id: 60006_Image.t 4cd1afc 2009-11-05 03:37:55Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 10;

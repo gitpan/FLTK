@@ -3,7 +3,7 @@ abstract: 'Perl bindings to the 2.0.x branch of the Fast Light Toolkit'
 author:
   - 'Sanko Robinson <sanko@cpan.org>'
 build_requires:
-  Alien::FLTK2: 0.06970016
+  Alien::FLTK2: 0.06970017
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -47,7 +47,7 @@ no_index:
 provides:
   FLTK:
     file: lib/FLTK.pm
-    version: 0.531_002
+    version: 0.531_003
   FLTK::Adjuster:
     file: xs/Adjuster.xsi
     version: 0.530
@@ -354,7 +354,7 @@ provides:
 recommends:
   OpenGL: 0.58
 requires:
-  Alien::FLTK2: 0.06970016
+  Alien::FLTK2: 0.06970017
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -374,4 +374,4 @@ resources:
   homepage: http://sanko.github.com/perl-fltk2/
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/perl-fltk2
-version: 0.531_002
+version: 0.531_003

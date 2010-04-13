@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Preferences.xsi
 
-=for git $Id: 50001_Preferences.t c9b696e 2009-11-05 18:41:28Z sanko@cpan.org $
+=for git $Id: 50001_Preferences.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

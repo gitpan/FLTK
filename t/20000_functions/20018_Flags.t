@@ -10,7 +10,7 @@
 
 =for TODO Everything
 
-=for git $Id: 20018_Flags.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 20018_Flags.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

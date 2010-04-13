@@ -10,7 +10,7 @@ MODULE = FLTK               PACKAGE = FLTK::BarGroup
 
 =for version 0.530
 
-=for git $Id: BarGroup.xsi 384e3d2 2010-01-06 22:57:55Z sanko@cpan.org $
+=for git $Id: BarGroup.xsi ceb273b 2010-04-12 14:29:26Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -91,7 +91,7 @@ fltk::BarGroup::layout( )
 
 bool
 fltk::BarGroup::opened( bool value = NO_INIT )
-    CASE: !items
+    CASE: items == 1
         C_ARGS:
      CASE:
         C_ARGS: value
@@ -132,7 +132,7 @@ fltk::BarGroup::open( )
 
 int
 fltk::BarGroup::glyph_size( int value = NO_INIT )
-    CASE: !items
+    CASE: items == 1
         CODE:
             RETVAL = THIS->glyph_size( );
     CASE:

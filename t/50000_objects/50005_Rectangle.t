@@ -6,9 +6,9 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for abstract Tests for xs/Preferences.xsi
+=for abstract Tests for xs/Rectangle.xsi
 
-=for git $Id: 50005_Rectangle.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 50005_Rectangle.t ed06b62 2010-04-12 20:58:52Z sanko@cpan.org $
 
 =cut
 use strict;

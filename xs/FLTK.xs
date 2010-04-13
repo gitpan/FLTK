@@ -6,7 +6,7 @@
 
 =for version 0.531
 
-=for git $Id: FLTK.xs 853ac27 2010-02-09 21:24:16Z sanko@cpan.org $
+=for git $Id: FLTK.xs 44e79ab 2010-04-13 20:51:16Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -37,6 +37,7 @@ of the Fast Light Toolkit.
 #define DISABLE_DEPRECATED          // Depreciated widgets, and other junk
 #define DISABLE_ASSOCIATIONFUNCTOR  // Requires subclass
 #define DISABLE_ASSOCIATIONTYPE     // Requires subclass
+#define DISABLE_TEXTBUFFER          // Floating on a sea of bugs
 
 #include <config.h>                 // created and installed by Alien::FLTK2
 
@@ -55,6 +56,30 @@ of the Fast Light Toolkit.
 
 HV * FLTK_stash,  // For inserting stuff directly into FLTK's namespace
    * FLTK_export; // For inserting stuff directly into FLTK's exports
+
+SV * fltk_theme_CV;
+fltk::Theme * original_theme = &fltk::theme_;
+
+bool _fltk_theme( ) {
+    dTHX;
+    warn ("Here");
+    if ( fltk_theme_CV && SvOK( fltk_theme_CV ) ) {
+        warn ("Trying to call fltk_theme sub...");
+        int count, ret_val;
+    dSP;
+    ENTER;
+        SAVETMPS;
+            PUSHMARK( sp );
+            PUTBACK;
+    count = call_sv( fltk_theme_CV, G_SCALAR );
+            SPAGAIN;
+    ret_val = ( bool ) ( ( count != 1 ) ? 0 : POPi );
+        FREETMPS;
+    LEAVE;
+        return ret_val;
+    }
+    return (*original_theme)();
+}
 
 =begin apidoc
 
@@ -95,7 +120,7 @@ void _cb_w ( fltk::Widget * WIDGET, void * CODE ) {
     LEAVE;
 }
 
-=for apidoc H|||_cb_t|(void*)CODE|
+=for apidoc H|||_cb_t|(void *) CODE|
 
 This is the generic callback for just about everything. It expects a single
 C<(void*) CODE> parameter which should be an AV* holding data that looks a
@@ -147,6 +172,40 @@ void _cb_f (const char * file) { // Callback for file_chooser
     XPUSHs( newSVpv( file, strlen( file ) ) );
             PUTBACK;
     call_sv( file_chooser_cb, G_DISCARD );
+        FREETMPS;
+    LEAVE;
+}
+
+=for apidoc H|||_cb_u|int position|(void *) CODE|
+
+This is the callback for FLTK::TextDisplay->highlight_data(...). It expects an
+C<int> parameter which represents a buffer position and a C<(void*) CODE>
+parameter which should be an AV* holding data that looks a little like this...
+
+  [
+    SV * coderef,
+    SV * args  # optional arguments sent along to coderef
+  ]
+
+=cut
+
+void _cb_u ( int position, void * CODE) { // Callback for TextDisplay->highlight_data( ... )
+    dTHX;
+    if ( CODE == NULL )     return;
+    HV * cb       = ( HV * ) CODE;
+    if ( cb       == NULL ) return;
+    SV ** cb_code  = hv_fetch( cb, "coderef", 7, FALSE );
+    if ( cb_code  == ( SV ** ) NULL ) return;
+    SV ** cb_args  = hv_fetch( cb, "args",    4, FALSE );
+    SV ** cb_class = hv_fetch( cb, "class",   5, FALSE );
+    dSP;
+    ENTER;
+        SAVETMPS;
+            PUSHMARK( sp );
+    XPUSHs(sv_2mortal(newSViv(position)));
+    if ( cb_args != NULL ) XPUSHs( * cb_args );
+            PUTBACK;
+    call_sv( * cb_code, G_DISCARD );
         FREETMPS;
     LEAVE;
 }
@@ -488,6 +547,8 @@ INCLUDE: Style.xsi
 INCLUDE: Symbol.xsi
 
 INCLUDE: TextBuffer.xsi
+
+INCLUDE: Theme.xsi
 
 #INCLUDE: ValueInput.xsi
 

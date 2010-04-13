@@ -243,7 +243,7 @@ package inc::MBX::FLTK;
             print 'Parsing XS files for documentation... ';
             $parser->parse_from_file('xs/FLTK.xs');
             print "okay\nGenerating documentation... ";
-            for my $package (sort keys %{$self->{'apidoc_modules'}}) {
+            for my $package (sort keys %{$parser->{'apidoc_modules'}}) {
                 my $file = './blib/lib/' . $package . '.pod';
                 $file =~ s|::|/|g;
                 make_path((splitpath($file))[0 .. 1]);
@@ -308,7 +308,7 @@ package inc::MBX::FLTK;
                         syswrite $DOC, "=head1 $section\n\n";
                         syswrite $DOC,
                             $parser->{'apidoc_modules'}{$package}{'section'}
-                            {$section}{'text'};
+                            {$section}{'text'} || '';
                     }
                     {
                         if (scalar keys %{
@@ -417,15 +417,15 @@ package inc::MBX::FLTK;
 
 =pod
 
-=for $Rev: 2528b0a $
+=for $Rev: 7aee1fa $
 
-=for $Revision: 2528b0a45b6edb7523de7dbd5868a968175aa3db $
+=for $Revision: 7aee1fa6f73b4e2bfb8a9a5e8470ec4c0aba114f $
 
-=for $Date: 2010-02-10 07:58:47Z (Wed, 10 Feb 2010) $ | Last $Modified: 36 seconds ago $
+=for $Date: 2010-04-12 14:30:14Z (Mon, 12 Apr 2010) $ | Last $Modified: 32 hours ago $
 
 =for $URL: http://github.com/sanko/perl-fltk2/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 2528b0a 2010-02-10 07:58:47Z sanko@cpan.org $
+=for $ID: FLTK.pm 7aee1fa 2010-04-12 14:30:14Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

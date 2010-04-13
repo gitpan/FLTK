@@ -8,7 +8,7 @@ L<FLTK::Basics|FLTK::Basics>
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: hello.pl b32bb0b 2009-10-24 14:51:13Z sanko@cpan.org $
+=for git $Id: hello.pl 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

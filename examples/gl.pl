@@ -7,7 +7,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: gl.pl 848cb11 2009-10-04 15:26:46Z sanko@cpan.org $
+=for git $Id: gl.pl 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

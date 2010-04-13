@@ -10,7 +10,7 @@
 
 =for TODO Somehow test selecting different buttons (with defaults and C<ESC>)
 
-=for git $Id: 20010_ask.t e6d8b85 2009-11-05 03:28:12Z sanko@cpan.org $
+=for git $Id: 20010_ask.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

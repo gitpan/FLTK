@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Dial.xsi
 
-=for git $Id: 40013_dial.t 3ed2305 2009-11-05 18:33:55Z sanko@cpan.org $
+=for git $Id: 40013_dial.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

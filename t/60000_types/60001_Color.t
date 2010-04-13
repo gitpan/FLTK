@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Color.xsi
 
-=for git $Id: 60001_Color.t fc1e1ed 2009-11-05 15:32:06Z sanko@cpan.org $
+=for git $Id: 60001_Color.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

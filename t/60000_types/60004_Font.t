@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Font.xsi
 
-=for git $Id: 60004_Font.t 47c21af 2009-10-30 20:48:17Z sanko@cpan.org $
+=for git $Id: 60004_Font.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

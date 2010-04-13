@@ -17,6 +17,7 @@ fltk::Flags                     T_ENUM
 fltk::Color                     T_ENUM
 fltk::Browser::linepos          O_FLTK
 fltk::PixelType                 O_FLTK
+fltk::Theme                     O_FLTK
 
 # Objects
 fltk::Adjuster              *   O_FLTK
@@ -111,6 +112,8 @@ fltk::Symbol                *   O_FLTK
 fltk::TabGroup              *   O_FLTK
 fltk::TabGroupPager         *   O_FLTK
 fltk::TextBuffer            *   O_FLTK
+fltk::TextDisplay           *   O_FLTK
+fltk::TextDisplay::StyleTableEntry * O_FLTK
 fltk::TextSelection         *   O_FLTK
 fltk::Valuator              *   O_FLTK
 fltk::ValueInput            *   O_FLTK
@@ -148,7 +151,7 @@ O_FLTK
 
 =for abstract Type definitions for the Fast Light Toolkit
 
-=for git $Id: type.map 40a87ce 2010-01-18 20:10:15Z sanko@cpan.org $
+=for git $Id: type.map 44e79ab 2010-04-13 20:51:16Z sanko@cpan.org $
 
 =cut
 

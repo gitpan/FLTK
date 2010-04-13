@@ -1,8 +1,9 @@
-Version 0.XXXXX | Next Sunday AD | 2528b0a
+Version 0.XXXXX | Next Sunday AD | 2c97afd
 
     API Changes/Compatibility Information:
      * New Widgets/Types
-       - TextBuffer, Selection
+       - TextDisplay, TextDisplay::StyleTableEntry
+     * Early FLTK::Theme support
 
     Meanwhile:
      * 開例 R. was born November 16th at 8:58am. She was 3.670kg and 52cm long
@@ -62,6 +63,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk2/commits/master
 
-$Ver: 0.531_003 $ from git $Rev: 2528b0a $
-$Date: 2010-02-10 07:58:47Z (Wed, 10 Feb 2010) $
+$Ver: 0.531_004 $ from git $Rev: e4bf5b1 $
+$Date: 2010-04-13 21:52:39Z (Tue, 13 Apr 2010) $
 $Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $

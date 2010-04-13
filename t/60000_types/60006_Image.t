@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Image.xsi
 
-=for git $Id: 60006_Image.t 4cd1afc 2009-11-05 03:37:55Z sanko@cpan.org $
+=for git $Id: 60006_Image.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

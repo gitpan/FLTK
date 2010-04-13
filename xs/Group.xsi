@@ -8,9 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::Group
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for version 0.530
+=for version 0.532
 
-=for git $Id: Group.xsi 40a87ce 2010-01-18 20:10:15Z sanko@cpan.org $
+=for git $Id: Group.xsi e4bf5b1 2010-04-13 21:52:39Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -397,6 +397,8 @@ INCLUDE: PackedGroup.xsi
 INCLUDE: ScrollGroup.xsi
 
 INCLUDE: TabGroup.xsi
+
+INCLUDE: TextDisplay.xsi
 
 INCLUDE: Window.xsi
 

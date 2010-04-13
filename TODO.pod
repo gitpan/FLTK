@@ -4,7 +4,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: TODO.pod db3382a 2010-02-09 21:31:40Z sanko@cpan.org $
+=for git $Id: TODO.pod 44e79ab 2010-04-13 20:51:16Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -13,6 +13,8 @@ FLTK::Todo - TODO list for Perl module FLTK
 =head1 High priorities
 
 =over
+
+=item * FLTK::TextDisplay::StyleTableEntry
 
 =item * FLTK::Theme
 
@@ -69,8 +71,6 @@ FLTK::Todo - TODO list for Perl module FLTK
 =item FLTK::TabGroupPager
 
 =item FLTK::TextBuffer
-
-=item FLTK::TextDisplay
 
 =item FLTK::TextEditor
 

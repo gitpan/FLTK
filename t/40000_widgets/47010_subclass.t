@@ -8,7 +8,7 @@
 
 =for abstract Tests for (Subclassed Widgets)
 
-=for git $Id: 47010_subclass.t fafd1cb 2009-11-05 03:34:38Z sanko@cpan.org $
+=for git $Id: 47010_subclass.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
 
 =cut
 use strict;

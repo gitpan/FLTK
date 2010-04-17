@@ -8,9 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::Valuator
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: Valuator.xsi 6e85995 2009-11-04 18:19:42Z sanko@cpan.org $
+=for git $Id: Valuator.xsi c6346a6 2010-04-17 13:42:35Z sanko@cpan.org $
 
-=for version 0.0531
+=for version 0.531
 
 =head1 NAME
 

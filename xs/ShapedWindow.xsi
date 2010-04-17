@@ -8,9 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::ShapedWindow
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: ShapedWindow.xsi bcc0f45 2009-10-16 21:40:24Z sanko@cpan.org $
+=for git $Id: ShapedWindow.xsi c6346a6 2010-04-17 13:42:35Z sanko@cpan.org $
 
-=for version 0.0531
+=for version 0.531
 
 =head1 NAME
 

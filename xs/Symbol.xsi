@@ -8,9 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::Symbol
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: Symbol.xsi ceb273b 2010-04-12 14:29:26Z sanko@cpan.org $
+=for git $Id: Symbol.xsi c6346a6 2010-04-17 13:42:35Z sanko@cpan.org $
 
-=for version 0.0531
+=for version 0.531
 
 =for todo Subclass this like Widget
 

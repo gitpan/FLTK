@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 2c97afd 2010-04-13 22:11:13Z sanko@cpan.org $
+=for git $Id: Build.PL c6346a6 2010-04-17 13:42:35Z sanko@cpan.org $
 
 =cut
 
@@ -34,7 +34,7 @@ my $mb = $class->new(
     dist_author => 'Sanko Robinson <sanko@cpan.org>',
     dist_abstract =>
         'Perl bindings to the 2.0.x branch of the Fast Light Toolkit',
-    requires => {'Alien::FLTK2' => 0.06970019,
+    requires => {'Alien::FLTK2' => 0.06970022,
                  base           => 0,
                  Config         => 0,
                  Cwd            => 0,

@@ -8,9 +8,9 @@ MODULE = FLTK               PACKAGE = FLTK::Widget
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for version 0.531
+=for version 0.532
 
-=for git $Id: Widget.xsi 7fed1b0 2009-10-17 16:40:04Z sanko@cpan.org $
+=for git $Id: Widget.xsi b9f4e5a 2010-04-17 14:25:12Z sanko@cpan.org $
 
 =head1 NAME
 

@@ -47,7 +47,7 @@ no_index:
 provides:
   FLTK:
     file: lib/FLTK.pm
-    version: 0.532005
+    version: 0.532005001
   FLTK::Adjuster:
     file: xs/Adjuster.xsi
     version: 0.530
@@ -101,7 +101,7 @@ provides:
     version: 0.530
   FLTK::Cursor:
     file: xs/Cursor.xsi
-    version: 0.530
+    version: 0.531
   FLTK::CycleButton:
     file: xs/CycleButton.xsi
     version: 0.530
@@ -319,8 +319,8 @@ provides:
     file: xs/Version.xsi
     version: 0.531
   FLTK::Widget:
-    file: xs/Cursor.xsi
-    version: 0.530
+    file: xs/Widget.xsi
+    version: 0.532
   FLTK::Window:
     file: xs/Window.xsi
     version: 0.530
@@ -383,4 +383,4 @@ resources:
   homepage: http://sanko.github.com/perl-fltk2/
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/perl-fltk2
-version: 0.532005
+version: 0.532005001

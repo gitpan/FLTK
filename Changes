@@ -1,4 +1,4 @@
-Version 0.532005 | 2010-04-17 13:42:35Z (Sat, 17 Apr 2010) | c6346a6
+Version 0.532005001 | 2010-04-17 14:25:12Z (Sat, 17 Apr 2010) | b9f4e5a
 
     API Changes/Compatibility Information:
      * New Widgets/Types
@@ -63,6 +63,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk2/commits/master
 
-$Ver: 0.532005 $ from git $Rev: c6346a6 $
-$Date: 2010-04-17 13:42:35Z (Sat, 17 Apr 2010) $
+$Ver: 0.532005001 $ from git $Rev: b9f4e5a $
+$Date: 2010-04-17 14:25:12Z (Sat, 17 Apr 2010) $
 $Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $

@@ -47,7 +47,7 @@ no_index:
 provides:
   FLTK:
     file: lib/FLTK.pm
-    version: 0.532005001
+    version: 0.532005_002
   FLTK::Adjuster:
     file: xs/Adjuster.xsi
     version: 0.530
@@ -293,7 +293,7 @@ provides:
     version: 0.531
   FLTK::TabGroup:
     file: xs/TabGroup.xsi
-    version: 0.530
+    version: 0.533
   FLTK::TextBuffer:
     file: xs/TextBuffer.xsi
     version: 0.532
@@ -363,7 +363,7 @@ provides:
 recommends:
   OpenGL: 0.58
 requires:
-  Alien::FLTK2: 0.06970022
+  Alien::FLTK2: 0.06970023
   Config: 0
   Cwd: 0
   Devel::PPPort: 0
@@ -383,4 +383,4 @@ resources:
   homepage: http://sanko.github.com/perl-fltk2/
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: http://github.com/sanko/perl-fltk2
-version: 0.532005001
+version: 0.532005_002

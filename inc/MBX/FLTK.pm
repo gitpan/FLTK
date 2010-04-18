@@ -47,12 +47,12 @@ package inc::MBX::FLTK;
                     next if $self->up_to_date($dot_rc, $dot_o);
                     printf 'Building Win32 resource: %s... ',
                         abs2rel($dot_rc);
-                    chdir 'xs/rc';
+                    chdir $self->base_dir . '/xs/rc';
                     print $self->do_system(sprintf 'windres %s %s',
                                       $dot_rc, $dot_o) ? "okay\n" : "fail!\n";
                     chdir rel2abs($self->base_dir);
                 }
-                map { abs2rel($_) } @obj;
+                map { abs2rel($_) if -f } @obj;
             }
         XS: for my $XS (@xs) {
                 my $cpp = _xs_to_cpp($self, $XS)
@@ -417,15 +417,15 @@ package inc::MBX::FLTK;
 
 =pod
 
-=for $Rev: 7aee1fa $
+=for $Rev: a331148 $
 
-=for $Revision: 7aee1fa6f73b4e2bfb8a9a5e8470ec4c0aba114f $
+=for $Revision: a3311487b9ad63a805cff8382747cea8fe88ee38 $
 
-=for $Date: 2010-04-12 14:30:14Z (Mon, 12 Apr 2010) $ | Last $Modified: 5 days ago $
+=for $Date: 2010-04-18 18:42:15Z (Sun, 18 Apr 2010) $ | Last $Modified: 67 minutes ago $
 
 =for $URL: http://github.com/sanko/perl-fltk2/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm 7aee1fa 2010-04-12 14:30:14Z sanko@cpan.org $
+=for $ID: FLTK.pm a331148 2010-04-18 18:42:15Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

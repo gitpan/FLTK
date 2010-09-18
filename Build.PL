@@ -1,13 +1,13 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 03b0572 2010-04-18 19:43:23Z sanko@cpan.org $
+=for git $Id: Build.PL 736f8c1 2010-09-18 01:38:51Z sanko@cpan.org $
 
 =cut
 
@@ -34,26 +34,13 @@ my $mb = $class->new(
     dist_author => 'Sanko Robinson <sanko@cpan.org>',
     dist_abstract =>
         'Perl bindings to the 2.0.x branch of the Fast Light Toolkit',
-    requires => {'Alien::FLTK2' => 0.06970023,
-                 base           => 0,
-                 Config         => 0,
-                 Cwd            => 0,
-                 ($is_developer ? ('Devel::PPPort' => 0) : ()),
-                 'ExtUtils::CBuilder' => 0.27,
-                 'ExtUtils::ParseXS'  => 0,
-                 'File::Find'         => 0,
-                 'File::Path'         => 2.07,
-                 'File::Spec'         => 0,
-                 'Module::Build'      => '0.36',
-                 perl                 => 5.008000,
-                 'Pod::Parser'        => 0,
-                 'Test::More'         => 0.88
-    },
-    build_requires => {'Alien::FLTK2' => 0.06970017,
+    requires       => {base => 0, Exporter => 0, XSLoader => 0},
+    build_requires => {'Alien::FLTK2' => 0.07704,
                        base           => 0,
                        Config         => 0,
                        Cwd            => 0,
                        ($is_developer ? ('Devel::PPPort' => 0) : ()),
+                       Exporter             => 0,
                        'ExtUtils::CBuilder' => 0.27,
                        'ExtUtils::ParseXS'  => 0,
                        'File::Find'         => 0,
@@ -62,7 +49,10 @@ my $mb = $class->new(
                        'Module::Build'      => '0.36',
                        perl                 => 5.008000,
                        'Pod::Parser'        => 0,
-                       'Test::More'         => 0.88
+                       'TAP::Harness'       => 3.18,
+                       'Test::More'         => 0.88,
+                       'Test::NeedsDisplay' => 1.07,
+                       XSLoader             => 0
     },
     recommends     => {OpenGL => 0.58},
     add_to_cleanup => [qw[FLTK-*],
@@ -73,18 +63,39 @@ my $mb = $class->new(
     no_index => {directory => [qw[examples inc t]],
                  files     => [qw[xs/include/ppport.h]]
     },
-    test_files => \@tests,
+    test_files       => \@tests,
+    test_file_exts   => [qw(.t .tap .txt)],
+    use_tap_harness  => 1,
+    tap_harness_args => {
+                  jobs  => 9,
+                  rules => {
+                      par => [
+                          {seq => '/t/10000_basic/*'},
+                          {seq => '/t/20000_functions/*'},
+                          {seq => '/t/40000_widgets/*'},
+                          {seq => '/t/50000_objects/*'},
+                          {seq => '/t/60000_types/*'},
+                          {seq => '/t/80000_experimental/*'},
+                          ($is_developer ? {seq => '/t/90000_author/*'} : ()),
+                          '*'
+                      ]
+                  }
+    },
     meta_merge => {
-        generated_by => 'Conversion, software version 7.0',
-        keywords     => [
+        keywords => [
             qw[FLTK Fast Light Toolkit widget FL GUI UI window 2.0.x experimental]
         ],
         resources => {
-             bugtracker => 'http://github.com/sanko/perl-fltk2/issues',
-             ChangeLog => 'http://github.com/sanko/perl-fltk2/commits/master',
-             homepage  => 'http://sanko.github.com/perl-fltk2/',
-             license => 'http://www.perlfoundation.org/artistic_license_2_0',
-             repository => 'http://github.com/sanko/perl-fltk2'
+            bugtracker => {web => 'http://github.com/sanko/perl-fltk2/issues',
+                           mailto => 'sanko@cpan.org'
+            },
+            repository => {url  => 'git://github.com/sanko/perl-fltk2.git',
+                           web  => 'http://github.com/sanko/perl-fltk2',
+                           type => 'git'
+            },
+            ChangeLog => 'http://github.com/sanko/perl-fltk2/commits/master/',
+            homepage  => 'http://sanko.github.com/perl-fltk2/',
+            license => ['http://www.perlfoundation.org/artistic_license_2_0']
         }
     },
     needs_compiler => 1,    # adds ExtUtils::CBuilder to build_requires

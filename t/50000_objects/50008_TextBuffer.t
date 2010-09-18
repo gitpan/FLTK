@@ -2,15 +2,16 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Tests for xs/TextBuffer.xsi
 
-=for git $Id: 50008_TextBuffer.t 230aa3d 2010-04-13 20:10:00Z sanko@cpan.org $
+=for git $Id: 50008_TextBuffer.t 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More skip_all => 'fltk::TextBuffer is buggy';
@@ -177,7 +178,7 @@ is($buffer_2->character_width("\t"), 8, 'character_width("\t") returns 8');
 is($buffer_2->character_width("a"),  1, 'character_width("a") returns 1');
 is($buffer_2->character_width("abcdefg", 3),
     1, 'character_width("abcdefg", 3) returns 1');
-is($buffer_2->count_displayed_characters(0,5),
+is($buffer_2->count_displayed_characters(0, 5),
     12, 'count_displayed_characters(0, 5) == 12');
-is($buffer_2->count_displayed_characters(1,5),
+is($buffer_2->count_displayed_characters(1, 5),
     4, 'count_displayed_characters(1, 5) == 4');

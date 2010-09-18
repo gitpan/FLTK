@@ -2,20 +2,22 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Tests for (Subclassed Widgets)
 
-=for git $Id: 47010_subclass.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
+=for git $Id: 47010_subclass.t 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More 0.82;
 use Module::Build qw[];
 use Time::HiRes qw[];
+use Test::NeedsDisplay;
 my $test_builder = Test::More->builder;
 chdir '../..' if not -d '_build';
 use lib 'inc';

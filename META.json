@@ -1,0 +1,479 @@
+{
+   "abstract" : "Perl bindings to the 2.0.x branch of the Fast Light Toolkit",
+   "author" : [
+      "Sanko Robinson <sanko@cpan.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Conversion, Software version 7.0",
+   "keywords" : [
+      "FLTK",
+      "Fast",
+      "Light",
+      "Toolkit",
+      "widget",
+      "FL",
+      "GUI",
+      "UI",
+      "window",
+      "2.0.x",
+      "experimental"
+   ],
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "FLTK",
+   "no_index" : {
+      "directory" : [
+         "examples",
+         "inc",
+         "t"
+      ],
+      "x_files" : [
+         "xs/include/ppport.h"
+      ]
+   },
+   "provides" : {
+      "FLTK" : {
+         "file" : "lib/FLTK.pm",
+         "version" : "0.532005_003"
+      },
+      "FLTK::Adjuster" : {
+         "file" : "xs/Adjuster.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::AlignGroup" : {
+         "file" : "xs/AlignGroup.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::AnsiWidget" : {
+         "file" : "xs/AnsiWidget.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::AssociationFunctor" : {
+         "file" : "xs/AssociationFunctor.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::AssociationType" : {
+         "file" : "xs/AssociationType.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::BarGroup" : {
+         "file" : "xs/BarGroup.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Box" : {
+         "file" : "xs/Box.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Browser" : {
+         "file" : "xs/Browser.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Browser::Mark" : {
+         "file" : "xs/Browser/Mark.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Button" : {
+         "file" : "xs/Button.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::CheckButton" : {
+         "file" : "xs/CheckButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Choice" : {
+         "file" : "xs/Choice.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Clock" : {
+         "file" : "xs/Clock.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ClockOutput" : {
+         "file" : "xs/ClockOutput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Color" : {
+         "file" : "xs/Color.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ColorChooser" : {
+         "file" : "xs/ColorChooser.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ComboBox" : {
+         "file" : "xs/ComboBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Cursor" : {
+         "file" : "xs/Cursor.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::CycleButton" : {
+         "file" : "xs/CycleButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Dial" : {
+         "file" : "xs/Dial.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Divider" : {
+         "file" : "xs/Divider.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::EngravedLabel" : {
+         "file" : "xs/EngravedLabel.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FileBrowser" : {
+         "file" : "xs/FileBrowser.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FileIcon" : {
+         "file" : "xs/FileIcon.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FileInput" : {
+         "file" : "xs/FileInput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FillDial" : {
+         "file" : "xs/FillDial.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FillSlider" : {
+         "file" : "xs/FillSlider.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Flags" : {
+         "file" : "xs/Flags.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FlatBox" : {
+         "file" : "xs/FlatBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FloatInput" : {
+         "file" : "xs/FloatInput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Font" : {
+         "file" : "xs/Font.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::FrameBox" : {
+         "file" : "xs/FrameBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::GL" : {
+         "file" : "xs/GL.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::GlWindow" : {
+         "file" : "xs/GlWindow.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Group" : {
+         "file" : "xs/Group.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::HelpDialog" : {
+         "file" : "xs/HelpDialog.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::HelpView" : {
+         "file" : "xs/HelpView.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::HighlightBox" : {
+         "file" : "xs/HighlightBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::HighlightButton" : {
+         "file" : "xs/HighlightButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Image" : {
+         "file" : "xs/Image.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Input" : {
+         "file" : "xs/Input.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::InputBrowser" : {
+         "file" : "xs/InputBrowser.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::IntInput" : {
+         "file" : "xs/IntInput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::InvisibleBox" : {
+         "file" : "xs/InvisibleBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Item" : {
+         "file" : "xs/Item.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ItemGroup" : {
+         "file" : "xs/ItemGroup.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::LabelType" : {
+         "file" : "xs/LabelType.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Layout" : {
+         "file" : "xs/layout.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::LightButton" : {
+         "file" : "xs/LightButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::LineDial" : {
+         "file" : "xs/LineDial.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Menu" : {
+         "file" : "xs/Menu.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MenuBar" : {
+         "file" : "xs/MenuBar.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MenuSection" : {
+         "file" : "xs/MenuSection.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MenuWindow" : {
+         "file" : "xs/MenuWindow.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Monitor" : {
+         "file" : "xs/Monitor.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MultiBrowser" : {
+         "file" : "xs/MultiBrowser.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MultiImage" : {
+         "file" : "xs/MultiImage.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MultiLineInput" : {
+         "file" : "xs/MultiLineInput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::MultiLineOutput" : {
+         "file" : "xs/MultiLineOutput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::NamedStyle" : {
+         "file" : "xs/NamedStyle.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::NumericInput" : {
+         "file" : "xs/NumericInput.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Output" : {
+         "file" : "xs/Output.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::PackedGroup" : {
+         "file" : "xs/PackedGroup.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::PixelType" : {
+         "file" : "xs/PixelType.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Plugin" : {
+         "file" : "xs/Plugin.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::PopupMenu" : {
+         "file" : "xs/PopupMenu.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Preferences" : {
+         "file" : "xs/Preferences.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ProgressBar" : {
+         "file" : "xs/ProgressBar.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::RadioButton" : {
+         "file" : "xs/RadioButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::RadioItem" : {
+         "file" : "xs/RadioItem.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::RadioLightButton" : {
+         "file" : "xs/RadioLightButton.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Rectangle" : {
+         "file" : "xs/Rectangle.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::RepeatButton" : {
+         "file" : "xs/RepeatButton.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ReturnButton" : {
+         "file" : "xs/ReturnButton.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ScrollGroup" : {
+         "file" : "xs/ScrollGroup.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::Scrollbar" : {
+         "file" : "xs/Scrollbar.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::SecretInput" : {
+         "file" : "xs/SecretInput.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ShapedWindow" : {
+         "file" : "xs/ShapedWindow.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::Slider" : {
+         "file" : "xs/Slider.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::Style" : {
+         "file" : "xs/Style.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::Symbol" : {
+         "file" : "xs/Symbol.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::TabGroup" : {
+         "file" : "xs/TabGroup.xsi",
+         "version" : "0.533"
+      },
+      "FLTK::TextBuffer" : {
+         "file" : "xs/TextBuffer.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::TextDisplay" : {
+         "file" : "xs/TextDisplay.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::TextDisplay::StyleTableEntry" : {
+         "file" : "xs/TextDisplay/StyleTableEntry.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::TextSelection" : {
+         "file" : "xs/TextSelection.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::Valuator" : {
+         "file" : "xs/Valuator.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ValueInput" : {
+         "file" : "xs/ValueInput.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ValueOutput" : {
+         "file" : "xs/ValueOutput.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::Version" : {
+         "file" : "xs/Version.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::Widget" : {
+         "file" : "xs/Widget.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::Window" : {
+         "file" : "xs/Window.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ask" : {
+         "file" : "xs/ask.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::ccCellBox" : {
+         "file" : "xs/ccCellBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ccHueBox" : {
+         "file" : "xs/ccHueBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::ccValueBox" : {
+         "file" : "xs/ccValueBox.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::damage" : {
+         "file" : "xs/damage.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::draw" : {
+         "file" : "xs/draw.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::events" : {
+         "file" : "xs/events.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::file_chooser" : {
+         "file" : "xs/file_chooser.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::pnmImage" : {
+         "file" : "xs/pnmImage.xsi",
+         "version" : "0.530"
+      },
+      "FLTK::run" : {
+         "file" : "xs/run.xsi",
+         "version" : "0.531"
+      },
+      "FLTK::theme" : {
+         "file" : "xs/Theme.xsi",
+         "version" : "0.532"
+      },
+      "FLTK::xpmImage" : {
+         "file" : "xs/xpmImage.xsi",
+         "version" : "0.531"
+      }
+   },
+   "release_status" : "testing",
+   "resources" : {
+      "bugtracker" : {
+         "mailto" : "sanko@cpan.org",
+         "web" : "http://github.com/sanko/perl-fltk2/issues"
+      },
+      "homepage" : "http://sanko.github.com/perl-fltk2/",
+      "license" : [
+         "http://www.perlfoundation.org/artistic_license_2_0"
+      ],
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/sanko/perl-fltk2.git",
+         "web" : "http://github.com/sanko/perl-fltk2"
+      },
+      "x_ChangeLog" : "http://github.com/sanko/perl-fltk2/commits/master/"
+   },
+   "version" : "0.532005_003"
+}

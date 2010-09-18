@@ -18,9 +18,8 @@ lib/FLTK/Cookbook/ProgressBar/Process.pod
 lib/FLTK/Cookbook/TabGroup/Simple.pod
 lib/FLTK/Notes.pod
 LICENSE
-Makefile.PL
 MANIFEST			This list of files
-META.yml
+META.json
 README
 t/10000_basic/10001_use_ok.t
 t/20000_functions/20010_ask.t
@@ -131,6 +130,7 @@ xs/RadioButton.xsi
 xs/RadioItem.xsi
 xs/RadioLightButton.xsi
 xs/rc/fltk.ico
+xs/rc/FLTK_version_rc.PL
 xs/rc/icons.rc
 xs/rc/resource.h
 xs/Rectangle.xsi

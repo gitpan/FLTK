@@ -2,20 +2,22 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Tests for xs/Rectangle.xsi
 
-=for git $Id: 50005_Rectangle.t ed06b62 2010-04-12 20:58:52Z sanko@cpan.org $
+=for git $Id: 50005_Rectangle.t 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More tests => 199;
 use Module::Build qw[];
 use File::Temp qw[];
+use Test::NeedsDisplay;
 my $test_builder = Test::More->builder;
 chdir '../..' if not -d '_build';
 use lib 'inc';

@@ -2,20 +2,22 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Tests for xs/Clock.xsi (Clock and ClockOutput objects)
 
-=for git $Id: 40010_clock.t 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
+=for git $Id: 40010_clock.t 1ad83ff 2010-09-17 23:48:03Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More 0.82 tests => 20;
 use Module::Build qw[];
 use Time::HiRes qw[];
+use Test::NeedsDisplay;
 my $test_builder = Test::More->builder;
 chdir '../..' if not -d '_build';
 use lib 'inc';
@@ -74,8 +76,10 @@ is($CO->value(), 0, 'Calue for ClockOutput is still 0');
 note 'value(h, m, s) does not change actual value()';
 
 #
-ok(($C1->value() >= (time - 3)) && ($C1->value() <= (time + 3)),
-    'Default value for Clock is the current time');
+TODO: {
+    local $TODO = 'timestamps may be off due to processing time';
+    is($C1->value(), time, 'Default value for Clock is the current time');
+}
 is($C2->value(), 0, 'Orphan Clock objects do not keep track of time');
 my $_value = $C1->value();
 for my $countdown (reverse 1 .. 3) {
@@ -84,8 +88,7 @@ for my $countdown (reverse 1 .. 3) {
     $W->label("Closing in $countdown seconds");
 }
 FLTK::wait();
-ok(    # XXX - ...timestamps may be off due to processing time; close enough?
-    ($C1->value() >= $_value + 3),
+ok( ($C1->value() >= $_value + 3),
     'After 3 seconds of sleep, the value for Clock is still the current time'
 );
 is($C2->value(), 0,

@@ -34,22 +34,35 @@ package inc::MBX::FLTK;
             my ($self, $args) = @_;
             my $AF = Alien::FLTK2->new();
             my $CC = My::ExtUtils::CBuilder->new();
-            my (@xs, @rc, @obj);
+            my (@xs, @rc, @pl, @obj);
             find(sub { push @xs, $File::Find::name if m[.+\.xs$]; }, 'xs');
-            find(sub { push @rc, $File::Find::name if !m[.+\.o$]; }, 'xs/rc');
+            find(sub { push @pl, $File::Find::name if m[.+\.pl$]i; },
+                 'xs/rc');
             if ($self->is_windowsish) {
+                $self->do_system($^X, $_) for @pl;
+                find(sub { push @rc, $File::Find::name if m[.+\.rc$]; },
+                     'xs/rc');
                 my @dot_rc = grep defined,
                     map { m[\.(rc)$] ? rel2abs($_) : () } @rc;
                 for my $dot_rc (@dot_rc) {
-                    my $dot_o
-                        = $dot_rc =~ m[^(.*)\.] ? $1 . $Config{'_o'} : next;
+                    my $dot_o = $dot_rc =~ m[^(.*)\.] ? $1 . '.res' : next;
                     push @obj, $dot_o;
                     next if $self->up_to_date($dot_rc, $dot_o);
                     printf 'Building Win32 resource: %s... ',
                         abs2rel($dot_rc);
                     chdir $self->base_dir . '/xs/rc';
-                    print $self->do_system(sprintf 'windres %s %s',
+                    require Config;
+                    my $cc = $Config{'ccname'} || $Config{'cc'};
+                    if ($cc eq 'cl') {    # MSVC
+                        print $self->do_system(
+                                      sprintf 'rc.exe /l 0x409 /fo"%s" %s',
+                                      $dot_o, $dot_rc) ? "okay\n" : "fail!\n";
+                    }
+                    else {                # GCC
+                        print $self->do_system(
+                                      sprintf 'windres -O coff -i %s -o %s',
                                       $dot_rc, $dot_o) ? "okay\n" : "fail!\n";
+                    }
                     chdir rel2abs($self->base_dir);
                 }
                 map { abs2rel($_) if -f } @obj;
@@ -79,13 +92,14 @@ package inc::MBX::FLTK;
                 )
             {   my ($dll, @cleanup)
                     = $CC->link(
-                          objects => \@obj,
-                          lib_file =>
-                              catdir(qw[blib arch auto FLTK],
-                                     'FLTK.' . $Config{'so'}
-                              ),
-                          module_name        => 'FLTK',
-                          extra_linker_flags => [$AF->ldflags(qw[gl images])],
+                              objects => \@obj,
+                              lib_file =>
+                                  catdir(qw[blib arch auto FLTK],
+                                         'FLTK.' . $Config{'so'}
+                                  ),
+                              module_name => 'FLTK',
+                              extra_linker_flags =>
+                                  [$AF->ldflags('images', $AF->capabilities)],
                     );
                 @cleanup = map { s["][]g; rel2abs($_); } @cleanup;
                 $self->add_to_cleanup(@cleanup);
@@ -109,12 +123,13 @@ package inc::MBX::FLTK;
                                      $cpp);
             printf '%s -> %s (%s)... ', $xs, $cpp, $typemap;
 
-            if (ExtUtils::ParseXS->process_file(filename   => $xs,
-                                                output     => $cpp,
-                                                'C++'      => 1,
-                                                hiertype   => 1,
-                                                typemap    => $typemap,
-                                                prototypes => 1
+            if (ExtUtils::ParseXS->process_file(filename    => $xs,
+                                                output      => $cpp,
+                                                'C++'       => 1,
+                                                hiertype    => 1,
+                                                typemap     => $typemap,
+                                                prototypes  => 1,
+                                                linenumbers => 0
                 )
                 )
             {   print "okay\n";
@@ -417,15 +432,15 @@ package inc::MBX::FLTK;
 
 =pod
 
-=for $Rev: a331148 $
+=for $Rev: 0320651 $
 
-=for $Revision: a3311487b9ad63a805cff8382747cea8fe88ee38 $
+=for $Revision: 0320651a3a52bbe39622e67f8bc20dcc04f3ae62 $
 
-=for $Date: 2010-04-18 18:42:15Z (Sun, 18 Apr 2010) $ | Last $Modified: 67 minutes ago $
+=for $Date: 2010-09-17 21:49:10Z (Fri, 17 Sep 2010) $ | Last $Modified: 4 hours ago $
 
 =for $URL: http://github.com/sanko/perl-fltk2/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm a331148 2010-04-18 18:42:15Z sanko@cpan.org $
+=for $ID: FLTK.pm 0320651 2010-09-17 21:49:10Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
@@ -433,15 +448,18 @@ package inc::MBX::FLTK;
 
 sub LICENSE {
     <<'ARTISTIC_TWO' }
-Copyright (C) 2008-2009 by Sanko Robinson E<lt>sanko@cpan.orgE<gt>
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
 
 This program is free software; you can redistribute it and/or modify it under
-the terms of The Artistic License 2.0.  See the F<LICENSE> file included with
-this distribution or http://www.perlfoundation.org/artistic_license_2_0.  For
-clarification, see http://www.perlfoundation.org/artistic_2_0_notes.
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
 
 When separated from the distribution, all original POD documentation is
-covered by the Creative Commons Attribution-Share Alike 3.0 License.  See
-http://creativecommons.org/licenses/by-sa/3.0/us/legalcode.  For
-clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 ARTISTIC_TWO

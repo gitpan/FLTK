@@ -4,13 +4,14 @@
 =for abstract Basic 'Hello, World' script described in
 L<FLTK::Basics|FLTK::Basics>
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: hello.pl 345b859 2010-02-11 02:30:01Z sanko@cpan.org $
+=for git $Id: hello.pl 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use FLTK qw[:default :style];

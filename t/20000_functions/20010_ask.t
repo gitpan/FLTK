@@ -1,4 +1,4 @@
-#!perl -Iblib/lib -Iblib/arch
+#!perl
 
 =pod
 
@@ -10,19 +10,19 @@
 
 =for TODO Somehow test selecting different buttons (with defaults and C<ESC>)
 
-=for git $Id: 20010_ask.t 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
+=for git $Id: 20010_ask.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 29;
+use Test::More tests => 30;
 use Module::Build qw[];
 use Time::HiRes qw[];
 use Test::NeedsDisplay;
 my $test_builder = Test::More->builder;
-chdir '../..' if not -d '_build';
-use lib 'inc';
+BEGIN { chdir '../..' if not -d '_build'; }
+use lib 'inc', 'blib/lib', 'blib/arch', 'lib';
 my $build           = Module::Build->current;
 my $release_testing = $build->notes('release_testing');
 my $verbose         = $build->notes('verbose');
@@ -82,7 +82,7 @@ isa_ok(icon_style(),    'FLTK::NamedStyle', 'icon_style()');
 
 #
 note
-    'These pop up and go a way quick because the message_window_timeout is now 0.25s';
+    'These pop up and go away quick because the message_window_timeout is now 0.25s';
 ok(!message("This is a test."),
     'message("This is a test.") always returns void');
 ok(!alert("This is a test."), 'alert("This is a test.") always returns void');
@@ -95,4 +95,8 @@ is(password("This is a test.", "default"),
 is( choice("This is a test.", 'One', 'Two', 'Three'),
     -1,
     'choice("This is a test.", "One", "Two", "Three") returns -1 on timeout'
+);
+is( choice_alert("This is a test.", 'One', 'Two', 'Three'),
+    -1,
+    'choice_alert("This is a test.", "One", "Two", "Three") returns -1 on timeout'
 );

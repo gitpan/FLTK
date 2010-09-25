@@ -1,8 +1,13 @@
-Version 0.XXXXX | Next Sunday AD | dcc9dc0
+Version 0.XXXXX | Next Sunday AD | a42720f
 
     Resolved Issues/Bug Fixes:
      * Cleaned up general stupidity in FLTK::TabGroup->tab_positions()
      * Attempt to use the correct resource builder for MSVC
+     * Fix doublefree when ...->destroy() is done manually on subclassed
+         widgets
+
+    Internal/Behavioral Changes:
+     * Build system has been tweaked to avoid a bug in ExtUtils::ParseXS
 
     Documentation/Sample Code/Test Suite/Metadata:
      * New FLTK::Cookbook::TabGroup::Simple
@@ -73,6 +78,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk2/commits/master/
 
-$Ver: 0.532005_003 $ from git $Rev: 01f15b2 $
-$Date: 2010-09-17 23:50:20Z (Fri, 17 Sep 2010) $
+$Ver: 0.532005_004 $ from git $Rev: 0bddc42 $
+$Date: 2010-09-25 05:54:34Z (Sat, 25 Sep 2010) $
 $Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $

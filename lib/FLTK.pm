@@ -8,13 +8,12 @@ package FLTK;
 
 =for abstract Perl bindings to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm 0320651 2010-09-17 21:49:10Z sanko@cpan.org $
+=for git $Id: FLTK.pm 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
-our $MAJOR = 532; our $MINOR = 5; our $DEV = 3; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
+our $MAJOR = 532; our $MINOR = 5; our $DEV = 4; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
 use XSLoader;
 use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
 use Exporter qw[import];
@@ -32,7 +31,7 @@ $EXPORT_TAGS{'all'} = \@EXPORT_OK;    # When you want to import everything
     if 1 < scalar keys %EXPORT_TAGS;
 @EXPORT    # Export these tags (if prepended w/ ':') or functions by default
     = sort map { m[^:(.+)] ? @{$EXPORT_TAGS{$1}} : $_ } qw[:style :default]
-    if 0;    # 1 < scalar keys %EXPORT_TAGS;
+    if 0 && keys %EXPORT_TAGS > 1;
 1;
 
 =pod
@@ -60,6 +59,6 @@ L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.or
 See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
-=for rcs $Id: FLTK.pm 0320651 2010-09-17 21:49:10Z sanko@cpan.org $
+=for rcs $Id: FLTK.pm 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut

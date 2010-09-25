@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Style.xsi
 
-=for git $Id: 60030_Style.t 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
+=for git $Id: 60030_Style.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut
 
@@ -19,8 +19,8 @@ use Module::Build qw[];
 use Time::HiRes qw[];
 use Test::NeedsDisplay;
 my $test_builder = Test::More->builder;
-chdir '../..' if not -d '_build';
-use lib 'inc';
+BEGIN { chdir '../..' if not -d '_build'; }
+use lib 'inc', 'blib/lib', 'blib/arch', 'lib';
 my $build           = Module::Build->current;
 my $release_testing = $build->notes('release_testing');
 my $verbose         = $build->notes('verbose');

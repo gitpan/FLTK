@@ -15,7 +15,7 @@
 
 =for seealso xs/include/WidgetSubclass.h
 
-=for git $Id: GlWindowSubclass.h 4240aaf 2009-09-24 21:42:29Z sanko@cpan.org $
+=for git $Id: GlWindowSubclass.h 0bddc42 2010-09-25 05:54:34Z sanko@cpan.org $
 
 =cut
 
@@ -31,11 +31,11 @@
 
 template<>
 void WidgetSubclass<fltk::GlWindow>::draw ( ) {
-    int handled = 1; /* safe to assume for now */
-    dTHX;
-    AV * args = newAV();
-    handled = _call_method( "draw", args );
-    /* GlWindow::draw( ) is a pure virtual function */
+	int handled = 1; /* safe to assume for now */
+	dTHX;
+	AV * args = newAV();
+	handled = _call_method( "draw", args );
+	/* GlWindow::draw( ) is a pure virtual function */
 }
 
 #endif // #ifndef fltk_GlWindowSubclass_h

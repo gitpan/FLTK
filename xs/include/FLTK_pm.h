@@ -11,7 +11,7 @@
 
 =for abstract Global include
 
-=for git $Id: FLTK_pm.h 0bddc42 2010-09-25 05:54:34Z sanko@cpan.org $
+=for git $Id: FLTK_pm.h 33a0e4c 2010-09-25 14:58:55Z sanko@cpan.org $
 
 =cut
 
@@ -36,7 +36,7 @@
 
 #include <fltk/../config.h>                 // created and installed by Alien::FLTK2
 
-#if HAVE_GL == 0
+#ifndef HAVE_GL
 #define DISABLE_GL       1
 #define DISABLE_GLWINDOW 1
 #endif

@@ -10,10 +10,9 @@
 
 =for TODO Somehow test selecting different buttons (with defaults and C<ESC>)
 
-=for git $Id: 20010_ask.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
+=for git $Id: 20010_ask.t 04ca288 2010-09-27 04:13:25Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More tests => 30;

@@ -11,7 +11,6 @@
 =for git $Id: 40022_intinput.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More 0.82 tests => 1;

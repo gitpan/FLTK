@@ -10,9 +10,9 @@ MODULE = FLTK::ScrollGroup               PACKAGE = FLTK::ScrollGroup
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: ScrollGroup.xs 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
+=for git $Id: ScrollGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
 
-=for version 0.531
+=for version 0.532006
 
 =head1 NAME
 

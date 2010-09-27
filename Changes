@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 33a0e4c
+Version 0.532006 | 2010-09-27 04:13:25Z (Mon, 27 Sep 2010) | 04ca288
 
     Resolved Issues/Bug Fixes:
      * Cleaned up general stupidity in FLTK::TabGroup->tab_positions()
@@ -8,6 +8,7 @@ Version 0.XXXXX | Next Sunday AD | 33a0e4c
 
     Internal/Behavioral Changes:
      * Build system has been tweaked to avoid a bug in ExtUtils::ParseXS
+     * Require Perl 5.10 (which I consider quite old) or better
 
     Documentation/Sample Code/Test Suite/Metadata:
      * New FLTK::Cookbook::TabGroup::Simple
@@ -78,6 +79,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk2/commits/master/
 
-$Ver: 0.532005_006 $ from git $Rev: 0bddc42 $
-$Date: 2010-09-25 05:54:34Z (Sat, 25 Sep 2010) $
+$Ver: 0.532006 $ from git $Rev: c629eeb $
+$Date: 2010-09-27 04:12:30Z (Mon, 27 Sep 2010) $
 $Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $

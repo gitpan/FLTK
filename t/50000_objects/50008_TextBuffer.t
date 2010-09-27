@@ -11,7 +11,6 @@
 =for git $Id: 50008_TextBuffer.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use Test::More skip_all => 'fltk::TextBuffer is buggy';

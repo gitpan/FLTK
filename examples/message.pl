@@ -10,7 +10,6 @@
 =for git $Id: message.pl 7e88e03 2010-09-17 21:30:36Z sanko@cpan.org $
 
 =cut
-
 use strict;
 use warnings;
 use FLTK qw[:dialog];

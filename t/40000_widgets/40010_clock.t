@@ -8,15 +8,16 @@
 
 =for abstract Tests for xs/Clock.xsi (Clock and ClockOutput objects)
 
-=for git $Id: 40010_clock.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
+=for git $Id: 40010_clock.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More 0.82 tests => 20;
 use Module::Build qw[];
 use Time::HiRes qw[];
-use Test::NeedsDisplay;
+use Test::NeedsDisplay ':skip_all';
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';

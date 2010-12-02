@@ -8,9 +8,10 @@
 
 =for abstract As simple as it gets
 
-=for git $Id: 10001_use_ok.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
+=for git $Id: 10001_use_ok.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More tests => 1;

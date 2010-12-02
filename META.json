@@ -39,7 +39,7 @@
    "provides" : {
       "FLTK" : {
          "file" : "lib/FLTK.pm",
-         "version" : "0.532006"
+         "version" : "0.532006_001"
       },
       "FLTK::Adjuster" : {
          "file" : "xs/Adjuster.xs",
@@ -458,22 +458,22 @@
          "version" : "0.532006"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "mailto" : "sanko@cpan.org",
-         "web" : "http://github.com/sanko/perl-fltk2/issues"
+         "web" : "http://github.com/sanko/perl-fltk/issues"
       },
-      "homepage" : "http://sanko.github.com/perl-fltk2/",
+      "homepage" : "http://sanko.github.com/perl-fltk/",
       "license" : [
          "http://www.perlfoundation.org/artistic_license_2_0"
       ],
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/sanko/perl-fltk2.git",
-         "web" : "http://github.com/sanko/perl-fltk2"
+         "url" : "git://github.com/sanko/perl-fltk.git",
+         "web" : "http://github.com/sanko/perl-fltk"
       },
-      "x_ChangeLog" : "http://github.com/sanko/perl-fltk2/commits/master/"
+      "x_ChangeLog" : "http://github.com/sanko/perl-fltk/commits/master/"
    },
-   "version" : "0.532006"
+   "version" : "0.532006_001"
 }

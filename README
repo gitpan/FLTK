@@ -2,17 +2,10 @@ NAME
     FLTK - Perl bindings to the Fast Light Toolkit
 
 Description
-    FLTK is-
-
-    This project has a long way to go so I am seeking volunteers to help
-    with testing and development.
-
-    Please see the TODO list and the notes on getting started.
-
-    Ahem. FLTK is a graphical user interface toolkit for X (UNIX®),
-    Microsoft® Windows®, OS/X, and several other platforms. FLTK provides
-    modern GUI functionality without the bloat and supports 3D graphics via
-    OpenGL® and its built-in GLUT emulation.
+    FLTK is a graphical user interface toolkit for X (UNIX®), Microsoft®
+    Windows®, OS/X, and several other platforms. FLTK provides modern GUI
+    functionality without the bloat and supports 3D graphics via OpenGL® and
+    its built-in GLUT emulation.
 
 Synopsis
         use strict;
@@ -50,4 +43,4 @@ License and Legal
     http://creativecommons.org/licenses/by-sa/3.0/us/legalcode. For
     clarification, see http://creativecommons.org/licenses/by-sa/3.0/us/.
 
-$Id: README 215f6c9 2009-11-04 18:34:17Z sanko@cpan.org $
+$Id: README 6e61e6e 2010-12-02 22:11:11Z sanko@cpan.org $

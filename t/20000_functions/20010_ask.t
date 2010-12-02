@@ -10,15 +10,16 @@
 
 =for TODO Somehow test selecting different buttons (with defaults and C<ESC>)
 
-=for git $Id: 20010_ask.t 04ca288 2010-09-27 04:13:25Z sanko@cpan.org $
+=for git $Id: 20010_ask.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More tests => 30;
 use Module::Build qw[];
 use Time::HiRes qw[];
-use Test::NeedsDisplay;
+use Test::NeedsDisplay ':skip_all';
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';

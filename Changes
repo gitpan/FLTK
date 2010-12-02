@@ -1,3 +1,11 @@
+Version 0.XXXXX | Next Sunday AD | 7c48fb9
+
+    Documentation/Sample Code/Test Suite/Metadata:
+     * Updated repo URLs
+     * Updated README
+     * Moved basic POD from xs/FLTK.xs to lib/FLTK.pm
+     * Allow systems to skip tests when Test::NeedsDisplay fails
+
 Version 0.532006 | 2010-09-27 04:13:25Z (Mon, 27 Sep 2010) | 04ca288
 
     Resolved Issues/Bug Fixes:
@@ -77,8 +85,8 @@ Version 0.530 | 2009-10-05 00:42:52Z (Mon, 05 Oct 2009) | 3b70f43
 
 _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
-    http://github.com/sanko/perl-fltk2/commits/master/
+    http://github.com/sanko/perl-fltk/commits/master/
 
-$Ver: 0.532006 $ from git $Rev: c629eeb $
-$Date: 2010-09-27 04:12:30Z (Mon, 27 Sep 2010) $
-$Url: http://github.com/sanko/perl-fltk2/raw/master/Changes $
+$Ver: 0.532006_001 $ from git $Rev: 7c48fb9 $
+$Date: 2010-12-02 22:13:34Z (Thu, 02 Dec 2010) $
+$Url: http://github.com/sanko/perl-fltk/raw/master/Changes $

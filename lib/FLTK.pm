@@ -1,4 +1,5 @@
 package FLTK;
+{
 
 =pod
 
@@ -8,34 +9,78 @@ package FLTK;
 
 =for abstract Perl bindings to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FLTK.pm 516e380 2010-12-02 22:12:11Z sanko@cpan.org $
 
 =cut
 
-use strict;
-use warnings;
-our $MAJOR = 532; our $MINOR = 6; our $DEV = 0; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
-use XSLoader;
-use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
-use Exporter qw[import];
+    use strict;
+    use warnings;
+    our $MAJOR = 532; our $MINOR = 6; our $DEV = 1; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
+    use XSLoader;
+    use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
+    use Exporter qw[import];
 
-#
-our $NOXS ||= $0 eq __FILE__;    # for testing
-XSLoader::load 'FLTK', $VERSION if !$FLTK::NOXS;  # Fills %EXPORT_TAGS on BOOT
+    #
+    our $NOXS ||= $0 eq __FILE__;    # for testing
+    XSLoader::load 'FLTK', $VERSION
+        if !$FLTK::NOXS;             # Fills %EXPORT_TAGS on BOOT
 
-#
-@EXPORT_OK = sort map { @$_ = sort @$_; @$_ } values %EXPORT_TAGS;
-$EXPORT_TAGS{'all'} = \@EXPORT_OK;    # When you want to import everything
-@{$EXPORT_TAGS{'style'}}              # Merge these under a single tag
-    = sort map { defined $EXPORT_TAGS{$_} ? @{$EXPORT_TAGS{$_}} : () }
-    qw[box font label]
-    if 1 < scalar keys %EXPORT_TAGS;
-@EXPORT    # Export these tags (if prepended w/ ':') or functions by default
-    = sort map { m[^:(.+)] ? @{$EXPORT_TAGS{$1}} : $_ } qw[:style :default]
-    if 0 && keys %EXPORT_TAGS > 1;
+    #
+    @EXPORT_OK = sort map { @$_ = sort @$_; @$_ } values %EXPORT_TAGS;
+    $EXPORT_TAGS{'all'} = \@EXPORT_OK;    # When you want to import everything
+    @{$EXPORT_TAGS{'style'}}              # Merge these under a single tag
+        = sort map { defined $EXPORT_TAGS{$_} ? @{$EXPORT_TAGS{$_}} : () }
+        qw[box font label]
+        if 1 < scalar keys %EXPORT_TAGS;
+    @EXPORT  # Export these tags (if prepended w/ ':') or functions by default
+        = sort map { m[^:(.+)] ? @{$EXPORT_TAGS{$1}} : $_ }
+        qw[:style :default]
+        if 0 && keys %EXPORT_TAGS > 1;
+}
 1;
 
 =pod
+
+=encoding utf8
+
+=head1 NAME
+
+FLTK - Perl bindings to the 2.0.x branch of the Fast Light Toolkit
+
+=head1 Description
+
+FLTK is a graphical user interface toolkit for X (UNIX®), Microsoft® Windows®,
+OS/X, and several other platforms. FLTK provides modern GUI functionality
+without the bloat and supports 3D graphics via OpenGL® and its built-in GLUT
+emulation.
+
+This module, L<FLTK|FLTK>, exposes bindings to the experimental 2.0.x branch
+of the Fast Light Toolkit.
+
+=head1 Synopsis
+
+=for markdown {%highlight perl linenos%}
+
+    use strict;
+    use warnings;
+    use FLTK qw[:style];
+
+    my $window = FLTK::Window->new(300, 180);
+    $window->begin();
+    my $box = FLTK::Widget->new(20, 40, 260, 100, "Hello, World!");
+    $box->box(UP_BOX);
+    $box->labelfont(HELVETICA_BOLD_ITALIC);
+    $box->labelsize(36);
+    $box->labeltype(SHADOW_LABEL);
+    $window->end();
+    $window->show();
+    exit FLTK::run();
+
+=for markdown {%endhighlight%}
+
+=head1 See Also
+
+L<FLTK::Notes|FLTK::Notes>
 
 =head1 Author
 
@@ -60,6 +105,6 @@ L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.or
 See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
-=for rcs $Id: FLTK.pm c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FLTK.pm 516e380 2010-12-02 22:12:11Z sanko@cpan.org $
 
 =cut

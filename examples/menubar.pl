@@ -12,7 +12,6 @@
 =for todo expand into a full text editor
 
 =cut
-
 use strict;
 use warnings;
 use FLTK;

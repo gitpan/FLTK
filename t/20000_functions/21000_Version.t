@@ -10,15 +10,16 @@
 
 =for TODO ...create lib/FLTK/Version.pm
 
-=for git $Id: 21000_Version.t 0df7f89 2010-09-25 03:28:55Z sanko@cpan.org $
+=for git $Id: 21000_Version.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
 use Test::More tests => 7;
 use Module::Build qw[];
 use Time::HiRes qw[];
-use Test::NeedsDisplay;
+use Test::NeedsDisplay ':skip_all';
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';

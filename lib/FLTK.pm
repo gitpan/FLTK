@@ -3,19 +3,19 @@ package FLTK;
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Perl bindings to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm 516e380 2010-12-02 22:12:11Z sanko@cpan.org $
+=for git $Id: FLTK.pm 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
 
 =cut
 
     use strict;
     use warnings;
-    our $MAJOR = 532; our $MINOR = 6; our $DEV = 1; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
+    our $MAJOR = 532; our $MINOR = 6; our $DEV = 2; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
     use XSLoader;
     use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
     use Exporter qw[import];
@@ -47,6 +47,25 @@ package FLTK;
 
 FLTK - Perl bindings to the 2.0.x branch of the Fast Light Toolkit
 
+=head1 Synopsis
+
+=for markdown {%highlight perl linenos%}
+
+    use strict;
+    use warnings;
+    use FLTK qw[:style];
+
+    my $win = FLTK::Window->new(300, 180);
+    my $box = $win->add(FLTK::Widget->new(20, 40, 260, 100, 'Hello, World!'));
+    $box->box(UP_BOX);
+    $box->labelfont(HELVETICA_BOLD_ITALIC);
+    $box->labelsize(36);
+    $box->labeltype(SHADOW_LABEL);
+    $win->show();
+    exit FLTK::run();
+
+=for markdown {%endhighlight%}
+
 =head1 Description
 
 FLTK is a graphical user interface toolkit for X (UNIX®), Microsoft® Windows®,
@@ -57,30 +76,10 @@ emulation.
 This module, L<FLTK|FLTK>, exposes bindings to the experimental 2.0.x branch
 of the Fast Light Toolkit.
 
-=head1 Synopsis
-
-=for markdown {%highlight perl linenos%}
-
-    use strict;
-    use warnings;
-    use FLTK qw[:style];
-
-    my $window = FLTK::Window->new(300, 180);
-    $window->begin();
-    my $box = FLTK::Widget->new(20, 40, 260, 100, "Hello, World!");
-    $box->box(UP_BOX);
-    $box->labelfont(HELVETICA_BOLD_ITALIC);
-    $box->labelsize(36);
-    $box->labeltype(SHADOW_LABEL);
-    $window->end();
-    $window->show();
-    exit FLTK::run();
-
-=for markdown {%endhighlight%}
-
 =head1 See Also
 
-L<FLTK::Notes|FLTK::Notes>
+L<FLTK::Notes|FLTK::Notes>, L<FLTK::Basics|FLTK::Basics>,
+L<FLTK::Cookbook|FLTK::Cookbook>, and L<FLTK::CheatSheet|FLTK::CheatSheet>
 
 =head1 Author
 
@@ -105,6 +104,6 @@ L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.or
 See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
-=for git $Id: FLTK.pm 516e380 2010-12-02 22:12:11Z sanko@cpan.org $
+=for git $Id: FLTK.pm 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
 
 =cut

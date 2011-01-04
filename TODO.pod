@@ -4,7 +4,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: TODO.pod c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: TODO.pod 06e8047 2011-01-04 03:30:53Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -42,7 +42,7 @@ FLTK::Todo - TODO list for Perl module FLTK
 
 =item FLTK::List
 
-=item FLTK::MenuSection
+=item FLTK::MenuTabPager
 
 =item FLTK::Mutex
 
@@ -52,11 +52,9 @@ FLTK::Todo - TODO list for Perl module FLTK
 
 =item FLTK::ShortcutAssignment
 
+=item FLTK::ShrinkTabPager
+
 =item FLTK::SignalMutex
-
-=item FLTK::Slider
-
-=item FLTK::StatusBarGroup
 
 =item FLTK::StringArray
 
@@ -72,25 +70,13 @@ FLTK::Todo - TODO list for Perl module FLTK
 
 =item FLTK::TabGroupPager
 
-=item FLTK::TextBuffer
-
 =item FLTK::TextEditor
 
 =item FLTK::ThumbWheel
 
 =item FLTK::TiledImage
 
-=item FLTK::ToggleButton
-
-=item FLTK::ToggleItem
-
 =item FLTK::Tooltip
-
-=item FLTK::ValueInput
-
-=item FLTK::ValueOutput
-
-=item FLTK::ValueSlider
 
 =item FLTK::Widget (partially complete)
 

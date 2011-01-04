@@ -39,7 +39,7 @@
    "provides" : {
       "FLTK" : {
          "file" : "lib/FLTK.pm",
-         "version" : "0.532006_001"
+         "version" : "0.532006_002"
       },
       "FLTK::Adjuster" : {
          "file" : "xs/Adjuster.xs",
@@ -179,7 +179,7 @@
       },
       "FLTK::Group" : {
          "file" : "xs/Group.xs",
-         "version" : "0.532006"
+         "version" : "0.532007"
       },
       "FLTK::HelpDialog" : {
          "file" : "xs/HelpDialog.xs",
@@ -357,6 +357,10 @@
          "file" : "xs/Slider.xs",
          "version" : "0.532006"
       },
+      "FLTK::StatusBarGroup" : {
+         "file" : "xs/StatusBarGroup.xs",
+         "version" : "0.532006"
+      },
       "FLTK::Style" : {
          "file" : "xs/Style.xs",
          "version" : "0.532006"
@@ -385,6 +389,14 @@
          "file" : "xs/TextSelection.xs",
          "version" : "0.532006"
       },
+      "FLTK::ToggleButton" : {
+         "file" : "xs/ToggleButton.xs",
+         "version" : "0.532007"
+      },
+      "FLTK::ToggleItem" : {
+         "file" : "xs/ToggleItem.xs",
+         "version" : "0.532007"
+      },
       "FLTK::Valuator" : {
          "file" : "xs/Valuator.xs",
          "version" : "0.532006"
@@ -396,6 +408,10 @@
       "FLTK::ValueOutput" : {
          "file" : "xs/ValueOutput.xs",
          "version" : "0.532006"
+      },
+      "FLTK::ValueSlider" : {
+         "file" : "xs/ValueSlider.xs",
+         "version" : "0.532007"
       },
       "FLTK::Version" : {
          "file" : "xs/Version.xs",
@@ -475,5 +491,5 @@
       },
       "x_ChangeLog" : "http://github.com/sanko/perl-fltk/commits/master/"
    },
-   "version" : "0.532006_001"
+   "version" : "0.532006_002"
 }

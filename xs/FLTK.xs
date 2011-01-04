@@ -6,7 +6,7 @@
 
 =for version 0.532006
 
-=for git $Id: FLTK.xs 516e380 2010-12-02 22:12:11Z sanko@cpan.org $
+=for git $Id: FLTK.xs 34cc05e 2011-01-02 00:47:39Z sanko@cpan.org $
 
 =cut
 
@@ -18,6 +18,12 @@ HV * FLTK_stash,  // For inserting stuff directly into FLTK's namespace
 void register_constant( const char * name, SV * value ) {
     dTHX;
     newCONSTSUB( FLTK_stash, name, value );
+}
+
+void register_constant( const char * package, const char * name, SV * value ) {
+    dTHX;
+    HV * _stash  = gv_stashpv( package, TRUE );
+    newCONSTSUB( _stash, name, value );
 }
 
 =begin apidoc

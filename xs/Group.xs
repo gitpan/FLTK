@@ -6,13 +6,13 @@ MODULE = FLTK::Group               PACKAGE = FLTK::Group
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for version 0.532006
+=for version 0.532007
 
-=for git $Id: Group.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Group.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -94,12 +94,14 @@ fltk::Group::child( int index )
     PREINIT:
         const char * _class;
     PPCODE:
-        RETVAL = (void *) THIS->child( index );
-        _class = (( WidgetSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
+        if ( index < THIS->children( ) ) {
+            RETVAL = (void *) THIS->child( index );
+            _class = (( WidgetSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
+            if (RETVAL != NULL) {
+                ST(0) = sv_newmortal();
+                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), RETVAL); /* -- hand rolled -- */
+                XSRETURN(1);
+            }
         }
 
 
@@ -151,7 +153,7 @@ Searches the children for C<widget>, returns the index of C<widget> or of a
 parent of C<widget> that is a L<C<child()>|/"child"> of this. Returns
 L<C<children()>|/"children"> if the widget is undef or not found.
 
-=for apidoc |||add|FLTK::Widget * widget|
+=for apidoc NA||FLTK::Widget * widget|add|FLTK::Widget * widget|
 
 The widget is removed from its current group (if any) and then added to the
 end of this group.
@@ -161,14 +163,24 @@ end of this group.
 int
 fltk::Group::find ( fltk::Widget * widget )
 
-void
+void *
 fltk::Group::add( fltk::Widget * widget )
+    PREINIT:
+        const char * _class;
+    PPCODE:
+        THIS->add( widget );
+        _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
+        if (widget != NULL) {
+            ST(0) = sv_newmortal();
+            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
+            XSRETURN(1);
+        }
 
-=for apidoc |||insert|FLTK::Widget * widget|int index|
+=for apidoc NA||FLTK::Widget * widget|insert|FLTK::Widget * widget|int index|
 
 Inserts C<widget> in the <index>th position of this group's stack.
 
-=for apidoc |||insert|FLTK::Widget * widget|FLTK::Widget * before|
+=for apidoc NA||FLTK::Widget * widget|insert|FLTK::Widget * widget|FLTK::Widget * before|
 
 This does L<C<$G-E<gt>insert($widget, $G-E<gt>find($beforethis))>|/"insert">.
 This will append the widget if C<$beforethis> is not in the group.
@@ -180,9 +192,23 @@ fltk::Group::insert( fltk::Widget * widget, before )
     CASE: SvIOK( ST(2) )
         int before
         C_ARGS: * widget, before
+    POSTCALL:
+        const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
+        if (widget != NULL) {
+            ST(0) = sv_newmortal();
+            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
+            XSRETURN(1);
+        }
     CASE:
         fltk::Widget * before
         C_ARGS: * widget, before
+    POSTCALL:
+        const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
+        if (widget != NULL) {
+            ST(0) = sv_newmortal();
+            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
+            XSRETURN(1);
+        }
 
 =for apidoc |||remove|int index|
 
@@ -214,11 +240,11 @@ See L<C<clear())>|/"clear">
 void
 fltk::Group::remove_all( )
 
-=for apidoc |||replace|int index|FLTK::Widget * widget_b|
+=for apidoc NA||FLTK::Widget * widget_b|replace|int index|FLTK::Widget * widget_b|
 
 Remove the C<index>th widget and inserts C<widget_b> in its place.
 
-=for apidoc |||replace|FLTK::Widget * widget|FLTK::Widget * widget_b|
+=for apidoc NA||FLTK::Widget * widget_b|replace|FLTK::Widget * widget|FLTK::Widget * widget_b|
 
 Remove the C<widget> and inserts C<widget_b> in its place.
 
@@ -229,9 +255,23 @@ fltk::Group::replace( widget, fltk::Widget * widget_b )
     CASE: SvIOK( ST(1) )
         int widget
         C_ARGS:   widget, * widget_b
+        POSTCALL:
+            const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget_b)->bless_class( );
+            if (widget_b != NULL) {
+                ST(0) = sv_newmortal();
+                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget_b); /* -- hand rolled -- */
+                XSRETURN(1);
+            }
     CASE:
         fltk::Widget * widget
         C_ARGS: * widget, * widget_b
+        POSTCALL:
+            const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget_b)->bless_class( );
+            if (widget_b != NULL) {
+                ST(0) = sv_newmortal();
+                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget_b); /* -- hand rolled -- */
+                XSRETURN(1);
+            }
 
 =for apidoc |||swap|int indexA|int indexB|
 

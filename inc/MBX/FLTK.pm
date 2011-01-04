@@ -501,7 +501,7 @@ package inc::MBX::FLTK;
 
 =for $Revision: a42720f2664562bb3248006d107f257f3093c432 $
 
-=for $Date: 2010-09-25 05:55:13Z (Sat, 25 Sep 2010) $ | Last $Modified: 10 weeks ago $
+=for $Date: 2010-09-25 05:55:13Z (Sat, 25 Sep 2010) $ | Last $Modified: 3 months ago $
 
 =for $URL: http://github.com/sanko/perl-fltk/raw/master/inc/MBX/FLTK.pm $
 

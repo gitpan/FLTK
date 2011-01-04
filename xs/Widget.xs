@@ -6,13 +6,13 @@ MODULE = FLTK::Widget               PACKAGE = FLTK::Widget
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for version 0.532006
 
-=for git $Id: Widget.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Widget.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
 
 =head1 NAME
 

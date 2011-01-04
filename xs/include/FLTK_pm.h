@@ -11,7 +11,7 @@
 
 =for abstract Global include
 
-=for git $Id: FLTK_pm.h 7a5c312 2010-09-27 04:13:14Z sanko@cpan.org $
+=for git $Id: FLTK_pm.h 34cc05e 2011-01-02 00:47:39Z sanko@cpan.org $
 
 =cut
 
@@ -60,6 +60,7 @@ HINSTANCE dllInstance( );
 #endif // #ifdef WIN32
 
 void register_constant( const char *, SV * );
+void register_constant( const char *, const char *, SV * );
 
 /*
 =begin apidoc

@@ -1,10 +1,22 @@
-Version 0.XXXXX | Next Sunday AD | 7c48fb9
+Version 0.XXXXX | Next Sunday AD | 664e814
+
+    Resolved Issues/Bug Fixes:
+     * $group->child( $i ) no longer crashes when $group has less than $i kids
+
+    API Changes/Compatibility Information:
+     * FLTK::Group->add( ... ), ->insert( ... ), and ->replace( ... ) now
+         return the widget added, inserted, or used as a replacement. This
+         allows code like my $box = $window->add( FLTK::Widget->( ... ) ); and
+         is not compatible with the C++ API
+     * New Widgets/Types
+       - StatusBarGroup, ToggleButton, ToggleItem, ValueSlider
 
     Documentation/Sample Code/Test Suite/Metadata:
      * Updated repo URLs
      * Updated README
      * Moved basic POD from xs/FLTK.xs to lib/FLTK.pm
      * Allow systems to skip tests when Test::NeedsDisplay fails
+     * Upgraded ask( ... ) and choice( ... ) to major C++/Perl API differences
 
 Version 0.532006 | 2010-09-27 04:13:25Z (Mon, 27 Sep 2010) | 04ca288
 
@@ -87,6 +99,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk/commits/master/
 
-$Ver: 0.532006_001 $ from git $Rev: 7c48fb9 $
-$Date: 2010-12-02 22:13:34Z (Thu, 02 Dec 2010) $
+$Ver: 0.532006_002 $ from git $Rev: 06e8047 $
+$Date: 2011-01-04 03:30:53Z (Tue, 04 Jan 2011) $
 $Url: http://github.com/sanko/perl-fltk/raw/master/Changes $

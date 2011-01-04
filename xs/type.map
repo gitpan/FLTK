@@ -17,6 +17,7 @@ fltk::Flags                     T_ENUM
 fltk::Color                     T_ENUM
 fltk::Browser::linepos          O_FLTK
 fltk::PixelType                 O_FLTK
+fltk::StatusBarGroup::Position  T_ENUM
 fltk::Theme                     O_FLTK
 
 # Objects
@@ -105,6 +106,7 @@ fltk::ScrollGroup           *   O_FLTK
 fltk::ShapedWindow          *   O_FLTK
 fltk::ShortcutFunctor       *   O_FLTK
 fltk::Slider                *   O_FLTK
+fltk::StatusBarGroup        *   O_FLTK
 const fltk::Style           *   O_FLTK
       fltk::Style           *   O_FLTK
 const fltk::Symbol          *   O_FLTK
@@ -115,6 +117,7 @@ fltk::TextBuffer            *   O_FLTK
 fltk::TextDisplay           *   O_FLTK
 fltk::TextDisplay::StyleTableEntry * O_FLTK
 fltk::TextSelection         *   O_FLTK
+fltk::ToggleItem            *   O_FLTK
 fltk::Valuator              *   O_FLTK
 fltk::ValueInput            *   O_FLTK
 fltk::ValueOutput           *   O_FLTK
@@ -145,13 +148,13 @@ O_FLTK
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Type definitions for the Fast Light Toolkit
 
-=for git $Id: type.map 44e79ab 2010-04-13 20:51:16Z sanko@cpan.org $
+=for git $Id: type.map 06e8047 2011-01-04 03:30:53Z sanko@cpan.org $
 
 =cut
 

@@ -143,6 +143,7 @@ xs/ScrollGroup.xs
 xs/SecretInput.xs
 xs/ShapedWindow.xs
 xs/Slider.xs
+xs/StatusBarGroup.xs
 xs/Style.xs
 xs/Symbol.xs
 xs/TabGroup.xs
@@ -151,10 +152,13 @@ xs/TextDisplay.xs
 xs/TextDisplay/StyleTableEntry.xs
 xs/TextSelection.xs
 xs/Theme.xs
+xs/ToggleButton.xs
+xs/ToggleItem.xs
 xs/type.map
 xs/Valuator.xs
 xs/ValueInput.xs
 xs/ValueOutput.xs
+xs/ValueSlider.xs
 xs/Version.xs
 xs/Widget.xs
 xs/Window.xs

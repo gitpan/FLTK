@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | e601e5e
+Version 0.XXXXX | Next Sunday AD | 4aa7e11
 
     Resolved Issues/Bug Fixes:
      * $group->child( $i ) no longer crashes when $group has less than $i kids
@@ -104,6 +104,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk/commits/master/
 
-$Ver: 0.532006_003 $ from git $Rev: e601e5e $
+$Ver: 0.532006_004 $ from git $Rev: e601e5e $
 $Date: 2011-01-28 04:08:37Z (Fri, 28 Jan 2011) $
 $Url: http://github.com/sanko/perl-fltk/raw/master/Changes $

@@ -1,0 +1,264 @@
+=pod
+
+=head1 NAME
+
+FLTK::Box - Define your own values for L<C<box()>|FLTK::Widget/"box"> on a
+widget by making one of these
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<BORDER_BOX>
+X<BORDER_BOX>
+
+=over
+
+=item C<my $box = FLTK::BORDER_BOX( );>X<my_box_FLTK_BORDER_BOX_>
+
+1-pixel thick gray line around rectangle.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 119
+
+=back
+
+=head2 C<DOWN_BOX>
+X<DOWN_BOX>
+
+=over
+
+=item C<my $down = FLTK::DOWN_BOX( );>X<my_down_FLTK_DOWN_BOX_>
+
+Inset box in fltk's standard theme.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 83
+
+=back
+
+=head2 C<EMBOSSED_BOX>
+X<EMBOSSED_BOX>
+
+=over
+
+=item C<my $box = FLTK::EMBOSSED_BOX( );>X<my_box_FLTK_EMBOSSED_BOX_>
+
+2-pixel thick raised line around edge.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 115
+
+=back
+
+=head2 C<ENGRAVED_BOX>
+X<ENGRAVED_BOX>
+
+=over
+
+=item C<my $box = FLTK::ENGRAVED_BOX( );>X<my_box_FLTK_ENGRAVED_BOX_>
+
+2-pixel thick engraved line around edge.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 111
+
+=back
+
+=head2 C<FLAT_BOX>
+X<FLAT_BOX>
+
+=over
+
+=item C<my $flat = FLTK::FLAT_BOX( );>X<my_flat_FLTK_FLAT_BOX_>
+
+Draws a flat rectangle of L<C<getbgcolor()>|/"getbgcolor">.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 87
+
+=back
+
+=head2 C<HIGHLIGHT_DOWN_BOX>
+X<HIGHLIGHT_DOWN_BOX>
+
+=over
+
+=item C<my $box = FLTK::HIGHLIGHT_DOWN_BOX( );>X<my_box_FLTK_HIGHLIGHT_DOWN_BOX_>
+
+Draws nothing normally, and as L<C<THIN_DOWN_BOX>|/"THIN_DOWN_BOX"> when the
+mouse pointer points at it or the value of the widget is turned on.
+
+=pod 
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 128
+
+=back
+
+=head2 C<HIGHLIGHT_UP_BOX>
+X<HIGHLIGHT_UP_BOX>
+
+=over
+
+=item C<my $box = FLTK::HIGHLIGHT_UP_BOX( );>X<my_box_FLTK_HIGHLIGHT_UP_BOX_>
+
+Draws nothing normally, and as L<C<THIN_UP_BOX>|/"THIN_UP_BOX"> when the mouse
+pointer points at it or the value of the widget is turned on.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 123
+
+=back
+
+=head2 C<NO_BOX>
+X<NO_BOX>
+
+=over
+
+=item C<my $none = FLTK::NO_BOX( );>X<my_none_FLTK_NO_BOX_>
+
+Draws nothing.
+
+Can be used as a box to make the background of a widget invisible. Also some
+widgets check specifically for this and change their behavior or drawing
+methods.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 91
+
+=back
+
+=head2 C<THIN_DOWN_BOX>
+X<THIN_DOWN_BOX>
+
+=over
+
+=item C<my $down = FLTK::THIN_DOWN_BOX( );>X<my_down_FLTK_THIN_DOWN_BOX_>
+
+1-pixel-thick inset box.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 103
+
+=back
+
+=head2 C<THIN_UP_BOX>
+X<THIN_UP_BOX>
+
+=over
+
+=item C<my $up = FLTK::THIN_UP_BOX( );>X<my_up_FLTK_THIN_UP_BOX_>
+
+1-pixel-thick raised box.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 107
+
+=back
+
+=head2 C<UP_BOX>
+X<UP_BOX>
+
+=over
+
+=item C<my $up = FLTK::UP_BOX( );>X<my_up_FLTK_UP_BOX_>
+
+Up button in fltk's standard theme.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 99
+
+=back
+
+=head2 C<_draw>
+X<_draw>
+
+=over
+
+=item C<$box-E<gt>_draw( $rect );>X<_box_E_gt__draw_rect_>
+
+
+
+=for hackers xs/Box.xs line 30
+
+=back
+
+=head2 C<drawframe>
+X<drawframe>
+
+=over
+
+=item C<$box-E<gt>drawframe( $s, $x, $y, $w, $h );>X<_box_E_gt_drawframe_s_x_y_w_h_>
+
+Draw a spiral, useful as a box edge, starting with the bottom edge and going
+in a counter-clockwise direction, from the outside in toward the center. The
+string is interpreted to get a gray shade: A is black, X is white, and all
+other letters are 24 possible steps of gray shade, and R is the normal
+background color of C<GRAY75>. A leading '2' makes it start with the top edge,
+which will reverse exactly which pixels are drawn in the corner.
+
+Emulates the fltk1 C<fl_frame2()> function.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 42
+
+=back
+
+=head2 C<drawframe2>
+X<drawframe2>
+
+=over
+
+=item C<$box-E<gt>drawframe2( $s, $x, $y, $w, $h );>X<_box_E_gt_drawframe2_s_x_y_w_h_>
+
+Draw a spiral similar to L<C<drawframe()>|/"drawframe">, but starts with the
+top edge and goes counter-clockwise.
+
+Emulates the fltk1 C<fl_frame()> function.
+
+Import this function with the C<:box> tag.
+
+=for hackers xs/Box.xs line 53
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Box.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

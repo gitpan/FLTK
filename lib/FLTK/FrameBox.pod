@@ -1,0 +1,139 @@
+=pod
+
+=head1 NAME
+
+FLTK::FrameBox - Box drawing code for the Fast Light Tool Kit (FLTK)
+
+=head1 Description
+
+This box class interprets a small string stored in L<C<data()>|/"data"> to
+indicate the gray shades to draw around the edge of the box and can be used to
+draw simple bezels.
+
+The box is drawn by calling L<C<drawframe()>|/"drawframe"> or
+L<C<drawframe2()>|/"drawframe2"> if the string starts with a '2'.
+
+The normal up box draws the pattern C<AAWWHHTT>
+
+The normal down_ box draws the pattern C<WWHHPPAA>
+
+The C<PUSHED> or C<STATE> flags will cause the pattern from
+L<C<down_()>|/"down_"> to be used instead, allowing you to draw a different
+bezel when pushed in.
+
+The C<INVISIBLE> flag will not draw the interior, which can make many widgets
+draw faster and with less blinking.
+
+=head1 Functions
+
+=head2 C<_draw>
+X<_draw>
+
+=over
+
+=item C<$framebox-E<gt>_draw( $rect );>X<_framebox_E_gt__draw_rect_>
+
+
+
+=for hackers xs/FrameBox.xs line 89
+
+=back
+
+=head2 C<data>
+X<data>
+
+=over
+
+=item C<my $string = $framebox-E<gt>data( );>X<my_string_framebox_E_gt_data_>
+
+
+
+=for hackers xs/FrameBox.xs line 67
+
+=item C<$framebox-E<gt>data( $string );>X<_framebox_E_gt_data_string_>
+
+
+
+=for hackers xs/FrameBox.xs line 71
+
+=back
+
+=head2 C<fills_rectangle>
+X<fills_rectangle>
+
+=over
+
+=item C<my $does_it = $framebox-E<gt>fills_rectangle( );>X<my_does_it_framebox_E_gt_fills_rectangle_>
+
+
+
+=for hackers xs/FrameBox.xs line 109
+
+=back
+
+=head2 C<inset>
+X<inset>
+
+=over
+
+=item C<$framebox-E<gt>inset( $rect );>X<_framebox_E_gt_inset_rect_>
+
+
+
+=for hackers xs/FrameBox.xs line 99
+
+=back
+
+=head2 C<is_frame>
+X<is_frame>
+
+=over
+
+=item C<my $is_it = $framebox-E<gt>is_frame( );>X<my_is_it_framebox_E_gt_is_frame_>
+
+
+=pod 
+
+=for hackers xs/FrameBox.xs line 113
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $box = $framebox-E<gt>new( $name, $x, $y, $w, $h, $pattern, $down );>X<my_box_framebox_E_gt_new_name_x_y_w_h_pattern_down_>
+
+Constructor where you give the thickness of the borders used by
+L<C<inset()>|/"inset">.
+
+=for hackers xs/FrameBox.xs line 47
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: FrameBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

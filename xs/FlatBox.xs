@@ -4,37 +4,7 @@ MODULE = FLTK::FlatBox               PACKAGE = FLTK::FlatBox
 
 #ifndef DISABLE_FLATBOX
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: FlatBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::FlatBox - Box drawing code for the Fast Light Tool Kit (FLTK)
-
-=head1 Description
-
-Draws a rectangle filled with L<C<getbgcolor()>|/"getbgcolor">. This is a
-useful base class for some box types.
-
-=begin apidoc
-
-=cut
-
 #include <fltk/Box.h>
-
-=for apidoc ||FLTK::FlatBox box|new|char * name|
-
-Creates a new C<FLTK::FlatBox> object.
-
-
-=cut
 
 #include "include/WidgetSubclass.h"
 
@@ -49,25 +19,9 @@ fltk::FlatBox::new( char * name )
             XSRETURN(1);
         }
 
-=for apidoc |||_draw|FLTK::Rectangle * rect|
-
-
-
-=cut
-
 void
 fltk::FlatBox::_draw( fltk::Rectangle * rect )
     C_ARGS: * rect
-
-=for apidoc ||bool eh|fills_rectangle||
-
-
-
-=for apidoc ||bool eh|is_frame||
-
-
-
-=cut
 
 bool
 fltk::FlatBox::fills_rectangle(  )

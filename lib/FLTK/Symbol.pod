@@ -1,0 +1,272 @@
+=pod
+
+=head1 NAME
+
+FLTK::Symbol - Base class for all small, reusable graphics
+
+=head1 Description
+
+All small reusable graphics drawn by fltk are based on this class. This
+includes bitmapped images, the boxes drawn around widgets, symbols drawn into
+buttons, small symbols drawn between the letters in labels, and a number of
+formatting symbols to change the color or fontsize or alignment of labels.
+
+Symbols are typically statically allocated and exist for the life of the
+program. They may either be identified directly by a pointer to them, or by a
+string name. The strings are stored in a simple hash table that should be
+quite efficient up to a few thousand named symbols.
+
+=head1 Functions
+
+=head2 C<dh>
+X<dh>
+
+=over
+
+=item C<my $h = $symbol-E<gt>dh( );>X<my_h_symbol_E_gt_dh_>
+
+Returns C<-$symbol-E<gt>getInset-E<gt>h( )>. This is usally the height of the
+top and bottom insets added together, though if the C<inset( )> method was
+overridden it may return a different number.
+
+=for hackers xs/Symbol.xs line 144
+
+=back
+
+=head2 C<dw>
+X<dw>
+
+=over
+
+=item C<my $w = $symbol-E<gt>dw( );>X<my_w_symbol_E_gt_dw_>
+
+Returns C<-$symbol-E<gt>getInset-E<gt>w( )>. This is usally the width of the
+left and right insets added together, though if the C<inset( )> method was
+overridden it may return a different number.
+
+=for hackers xs/Symbol.xs line 138
+
+=back
+
+=head2 C<dx>
+X<dx>
+
+=over
+
+=item C<my $x = $symbol-E<gt>dx( );>X<my_x_symbol_E_gt_dx_>
+
+Returns C<$symbol-E<gt>getInset( )-E<gt>x( )>. This is usally the width of the
+left inset for the image, though if the C<inset( )> method was overridden it
+may return a different number.
+
+=for hackers xs/Symbol.xs line 126
+
+=back
+
+=head2 C<dy>
+X<dy>
+
+=over
+
+=item C<my $y = $symbol-E<gt>dy( );>X<my_y_symbol_E_gt_dy_>
+
+Returns C<$symbol-E<gt>getInset-E<gt>y( )>. This is usally the height of the
+top inset for the image, though if the C<inset( )> method was overridden it
+may return a different number.
+
+=for hackers xs/Symbol.xs line 132
+
+=back
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $this = $symbol-E<gt>find( $name );>X<my_this_symbol_E_gt_find_name_>
+
+Locate a symbol by the name used to construct it. Returns either a pointer to
+the symbol, or null if it is undefined.
+
+=for hackers xs/Symbol.xs line 164
+
+=item C<my $this = $symbol-E<gt>find( $name, $end );>X<my_this_symbol_E_gt_find_name_end_>
+
+Locate a symbol by the substring after an C<@> sign as used by C<drawtext( )>.
+C<$name> points at the start of the name, C<$end> points to the character
+after the end (this allows the name to be extracted from a longer string
+without having to copy it).
+
+C<drawtext( )> can pass "arguments" to symbols as extra text before and after
+the actual name. If the text does not seem to correspond to a symbol name,
+this function tries to strip off these argments and try again. The current
+rules are to remove a leading C<#> and C<+> or C<-> sign, remove a leading and
+trailing integer, so C<@+400foo21> will locate the symbol "foo". If that still
+does not work, it tries the first letter as a 1-letter symbol, so
+C<@Ccolorname> will work.
+
+When the symbol's C<draw( )> function is called,
+L<C<text( )>|FLTK::Symbol/"text"> is set to C<$name> and
+L<C<text_length( )>|FLTK::Symbol/"text_length"> is set to C<$end> minus
+C<$name>, so the C<draw( )> method can examine these arguments.
+
+=for hackers xs/Symbol.xs line 169
+
+=back
+
+=head2 C<get_inset>
+X<get_inset>
+
+=over
+
+=item C<my $rect = $symbol-E<gt>get_inset( );>X<my_rect_symbol_E_gt_get_inset_>
+
+
+
+=for hackers xs/Symbol.xs line 117
+
+=back
+
+=head2 C<measure>
+X<measure>
+
+=over
+
+=item C<$symbol-E<gt>measure( $w, $h );>X<_symbol_E_gt_measure_w_h_>
+
+Returns the size a L<Symbol|FLTK::Symbol> will draw.
+
+The variables C<$w> and C<$h> should be preset to a size you I<want> to draw
+the symbol, many L<Symbols|FLTK::Symbol> can scale and will return without
+changing these values. Or they may alter the values to preserve aspect ratio.
+Or they may just return constant sizes.
+
+The most recent values sent to C<setcolor( )>, C<setbgcolor( )>,
+C<setdrawflags( )>, C<setfont( )>, etc, may influence the values that this
+returns.
+
+=for hackers xs/Symbol.xs line 63
+
+=back
+
+=head2 C<name>
+X<name>
+
+=over
+
+=item C<my $name = $symbol-E<gt>name( );>X<my_name_symbol_E_gt_name_>
+
+Returns the name of the symbol.
+
+=for hackers xs/Symbol.xs line 41
+
+=item C<$symbol-E<gt>name( $name );>X<_symbol_E_gt_name_name_>
+
+Sets the name of the symbol. If it is in the hash table under the old name it
+is removed. If the new name is defined, then it is added under the new name to
+the hash table.
+
+=for hackers xs/Symbol.xs line 45
+
+=back
+
+=head2 C<set_inset>
+X<set_inset>
+
+=over
+
+=item C<$symbol-E<gt>set_inset( $x, $y, $w, $h );>X<_symbol_E_gt_set_inset_x_y_w_h_>
+
+
+
+=for hackers xs/Symbol.xs line 82
+
+=item C<$symbol-E<gt>set_inset( $x, $y );>X<_symbol_E_gt_set_inset_x_y_>
+
+
+
+=for hackers xs/Symbol.xs line 86
+
+=item C<$symbol-E<gt>set_inset( $x );>X<_symbol_E_gt_set_inset_x_>
+
+
+
+=for hackers xs/Symbol.xs line 90
+
+=item C<$symbol-E<gt>set_inset( $rect );>X<_symbol_E_gt_set_inset_rect_>
+
+Set the inset rectangle. This is normally done by the constructor for a
+subclass. If the l<C<inset( )>|FLTK::Symbol/"inset"> method is not overridden,
+the values in this rectangle define the edges.
+
+=for hackers xs/Symbol.xs line 94
+
+=back
+
+=head2 C<text>
+X<text>
+
+=over
+
+=item C<$symbol-E<gt>text( $string, $n );>X<_symbol_E_gt_text_string_n_>
+
+Set the values returned by L<C<text( )>|FLTK::Symbol/"text( )"> and
+L<C<text_length( )>|FLTK::Symbol/"text_length">.
+
+=for hackers xs/Symbol.xs line 204
+
+=item C<my $text = $symbol-E<gt>text( );>X<my_text_symbol_E_gt_text_>
+
+Returns a pointer to right after the C<@> sign to the text used to invoke this
+symbol. This is a zero-length string if not being called from
+L<C<drawtext( )>|FLTK::Symbol/"drawtext">. This is useful for extracting the
+arguments that are skipped by the L<C<find( )>|FLTK::Symbol/"find"> method.
+
+=for hackers xs/Symbol.xs line 209
+
+=back
+
+=head2 C<text_length>
+X<text_length>
+
+=over
+
+=item C<my $length = $symbol-E<gt>text_length( );>X<my_length_symbol_E_gt_text_length_>
+
+Returns the number of bytes between the C<@> sign and the C<;> or null or
+space that terminates the symbol when called from
+L<C<drawtext( )>|FLTK::Symbol/"drawtext">. This is useful for parsing the
+arguments. This returns zero if it is not being called from
+L<C<drawtext( )>|FLTK::Symbol/"drawtext">.
+
+=pod 
+
+=for hackers xs/Symbol.xs line 226
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Symbol.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

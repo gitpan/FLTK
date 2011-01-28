@@ -1,0 +1,212 @@
+=pod
+
+=head1 NAME
+
+FLTK::GL - Portable OpenGL
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<gldrawimage>
+X<gldrawimage>
+
+=over
+
+=item C<$gl-E<gt>gldrawimage( $data, $x, $y, $w, $h, $d, $ld );>X<_gl_E_gt_gldrawimage_data_x_y_w_h_d_ld_>
+
+
+
+=pod 
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 205
+
+=back
+
+=head2 C<gldrawtext>
+X<gldrawtext>
+
+=over
+
+=item C<$gl-E<gt>gldrawtext( );>X<_gl_E_gt_gldrawtext_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 182
+
+=back
+
+=head2 C<glfillrect>
+X<glfillrect>
+
+=over
+
+=item C<$gl-E<gt>glfillrect( $x, $y, $w, $h );>X<_gl_E_gt_glfillrect_x_y_w_h_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 81
+
+=back
+
+=head2 C<glfinish>
+X<glfinish>
+
+=over
+
+=item C<$gl-E<gt>glfinish( );>X<_gl_E_gt_glfinish_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 35
+
+=back
+
+=head2 C<glgetascent>
+X<glgetascent>
+
+=over
+
+=item C<$gl-E<gt>glgetascent( );>X<_gl_E_gt_glgetascent_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 123
+
+=back
+
+=head2 C<glgetdescent>
+X<glgetdescent>
+
+=over
+
+=item C<$gl-E<gt>glgetdescent( );>X<_gl_E_gt_glgetdescent_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 127
+
+=back
+
+=head2 C<glgetwidth>
+X<glgetwidth>
+
+=over
+
+=item C<my $width = $gl-E<gt>glgetwidth( $string );>X<my_width_gl_E_gt_glgetwidth_string_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 155
+
+=item C<my $width = $gl-E<gt>glgetwidth( $string, $length );>X<my_width_gl_E_gt_glgetwidth_string_length_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 159
+
+=back
+
+=head2 C<glsetcolor>
+X<glsetcolor>
+
+=over
+
+=item C<$gl-E<gt>glsetcolor( $color );>X<_gl_E_gt_glsetcolor_color_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 59
+
+=back
+
+=head2 C<glsetfont>
+X<glsetfont>
+
+=over
+
+=item C<$gl-E<gt>glsetfont( $font, $size );>X<_gl_E_gt_glsetfont_font_size_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 105
+
+=back
+
+=head2 C<glstart>
+X<glstart>
+
+=over
+
+=item C<$gl-E<gt>glstart( );>X<_gl_E_gt_glstart_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 31
+
+=back
+
+=head2 C<glstrokerect>
+X<glstrokerect>
+
+=over
+
+=item C<$gl-E<gt>glstrokerect( $x, $y, $w, $h );>X<_gl_E_gt_glstrokerect_x_y_w_h_>
+
+
+
+Import this function with the C<:gl> tag.
+
+=for hackers xs/GL.xs line 77
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: GL.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

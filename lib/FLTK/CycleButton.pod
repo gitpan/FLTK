@@ -1,0 +1,71 @@
+=pod
+
+=head1 NAME
+
+FLTK::CycleButton - Popup list of items that the user can choose one of
+
+=head1 Description
+
+This widget lets the user select one of a set of choices by clicking on it.
+Each click cycles to the next choice. Holding down any shift key or using the
+middle or right mouse button cycles backwards.
+
+Notice that the number of items can be 2. In this case this widget serves the
+common purpose of a "toggle" button that shows the current on/off state by
+changing it's label.
+
+This is a subclass of L<Menu|FLTK::Menu>. The possible states are defined by
+using L<C<Menu::add()>|FLTK::Menu/"add"> or other methods that define the menu
+items. You can also put a different callback on each item. Or you can replace
+this widget's callback with your own and use
+L<C<value()>|FLTK::Widget/"value"> to get the index of the current setting.
+Items that are not L<C<visible()>|FLTK::Widget/"visible"> or are not
+L<C<active()>|FLTK::Widget/"active"> are skipped by the cycling.
+
+If you set L<C<buttonbox()>|/"buttonbox"> to C<NO_BOX> then you must define
+your items to draw identical-sized and fully opaque images, so that drawing
+one completely obscures any other one. This was done to avoid blinking when
+drawing "artistic" user interfaces where all the entire button is an image.
+
+=head1 Functions
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $cyclebutton-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_cyclebutton_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::CycleButton> object. Obviously.
+
+=pod 
+
+=for hackers xs/CycleButton.xs line 52
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: CycleButton.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

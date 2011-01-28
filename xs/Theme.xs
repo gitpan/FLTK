@@ -32,57 +32,6 @@ MODULE = FLTK::theme               PACKAGE = FLTK::theme
 
 #ifndef DISABLE_THEME
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: Theme.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::Theme -
-
-=pod
-
-=head1 Description
-
-When redrawing your widgets you should look at the damage bits to see what
-parts of your widget need redrawing. The
-L<C<Widget::handle()>|FLTK::Widget/"handle"> method can then set individual
-damage bits to limit the amount of drawing that needs to be done, and the
-L<C<Widget::draw()>|FLTK::Widget/"draw"> method can test these bits to decide
-what to draw:
-
-=for markdown {%highlight perl linenos%}
-
-  package MyClass;
-
-  sub handle {
-      my ($self, $event) =@_;
-      $self->damage(1) if change_to_part1();
-      $self->damage(2) if change_to_part2();
-      $self->damage(3) if change_to_part3();
-  }
-
-  sub draw {
-      my ($self) = @_;
-      if ($self->damage() & DAMAGE_ALL()) {
-          # draw frame/box and other static stuff...
-      }
-      draw_part1() if ($self->damage() & (DAMAGE_ALL() | 1));
-      draw_part2() if ($self->damage() & (DAMAGE_ALL() | 2));
-      draw_part3() if ($self->damage() & (DAMAGE_ALL() | 4));
-  }
-
-=for markdown {%endhighlight%}
-
-
-=cut
-
 #include <fltk/Style.h>
 
 MODULE = FLTK::theme               PACKAGE = FLTK

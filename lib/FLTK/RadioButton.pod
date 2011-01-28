@@ -1,0 +1,89 @@
+=pod
+
+=head1 NAME
+
+FLTK::RadioButton - Button with a circle indicator to it's left, turning it on
+turns off all other radio buttons in the same Group
+
+=head1 Description
+
+This button turns the L<C<value( )>|FLTK::Widget/"value"> on when clicked, and
+turns all other L<RadioButton|FLTK::RadioButton> widgets in the same group
+off. It displays a round dot to show the user the current status.
+
+You can control the color of the circle with
+L<C<color( )>|FLTK::Widget/"color"> and the color of the dot with
+L<C<textcolor( )>|FLTK::Widget/"textcolor">. You can make it draw different
+colors when turned on by setting
+L<C<selection_color( )>|FLTK::Widget/"selection_color"> and
+L<C<selection_textcolor( )>|FLTK::Widget/"selection_textcolor"> on the widget
+(these are ignored if set in an inherited
+L<C<style( )>|FLTK::Widget/"style">).
+
+If you want, you can make any other button act like a
+L<RadioButton|FLTK::RadioButton> by doing
+L<C<type(FLTK::Button::RADIO)>|FLTK::Widget/"type"> to it. Be sure to lay out
+and decorate your interface so it is clear to the user that they are radio
+buttons.
+
+=head1 Functions
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $radiobutton-E<gt>default_style( );>X<my_style_radiobutton_E_gt_default_style_>
+
+Get the style
+
+=for hackers xs/RadioButton.xs line 68
+
+=item C<$radiobutton-E<gt>default_style( $style );>X<_radiobutton_E_gt_default_style_style_>
+
+Set the style.
+
+=pod 
+
+=for hackers xs/RadioButton.xs line 72
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $radiobutton-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_radiobutton_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::RadioButton> object.
+
+=for hackers xs/RadioButton.xs line 49
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: RadioButton.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

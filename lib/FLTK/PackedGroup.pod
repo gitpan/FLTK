@@ -1,0 +1,205 @@
+=pod
+
+=head1 NAME
+
+FLTK::PackedGroup - Group that packs all it's child widgets against the edges
+
+=head1 Description
+
+Resizes all the child widgets to be the full width and stacks them. All
+widgets before the L<resizable()|FLTK::Group/"resizable"> (or all of them if
+there is no L<resizable()|FLTK::Group/"resizable">) are pushed against the top
+of this widget, all widgets after the L<resizable()|FLTK::Group/"resizable">
+are pushed against the bottom, and the L<resizable()|FLTK::Group/"resizable">
+fills the remaining space. Child widgets that have
+L<vertical()|FLTK::Widget/"vertical"> true are pushed against the left/right
+edge.
+
+This is most useful for layout menu/toolbars and work areas in your main
+window. You can get many layouts with this, except the top widgets always
+extend to the right edge and the left widgets always extend to the bottom. To
+change this, put the top or left widgets and resizable in a
+L<PackedGroup|FLTK::PackedGroup> and nest that inside another one with the
+bottom and right widgets.
+
+A child widget can change it's size by calling
+L<layout()|FLTK::Widget/"layout"> on itself and this will rearrange all other
+widgets to accomodate the new height.
+
+If resizable is not set, the L<PackedGroup|FLTK::PackedGroup> itself resizes
+to surround the items, allowing it to be embedded in a surrounding
+L<PackedGroup|FLTK::PackedGroup> or L<ScrollGroup|FLTK::ScrollGroup>. This
+only works if all objects are horizontal or all are vertical.
+
+=head1 Functions
+
+=head2 C<margin>
+X<margin>
+
+=over
+
+=item C<$packedgroup-E<gt>margin( $m );>X<_packedgroup_E_gt_margin_m_>
+
+Set the L<left|FLTK::PackedGroup/"margin_left">,
+L<right|FLTK::PackedGroup/"margin_right">,
+L<top|FLTK::PackedGroup/"margin_top">, and
+L<bottom|FLTK::PackedGroup/"margin_bottom"> margins to the same value.
+
+=pod 
+
+=for hackers xs/PackedGroup.xs line 222
+
+=back
+
+=head2 C<margin_bottom>
+X<margin_bottom>
+
+=over
+
+=item C<my $b = $packedgroup-E<gt>margin_bottom( );>X<my_b_packedgroup_E_gt_margin_bottom_>
+
+Get the bottom margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 201
+
+=item C<$packedgroup-E<gt>margin_bottom( $b );>X<_packedgroup_E_gt_margin_bottom_b_>
+
+Set the bottom margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 205
+
+=back
+
+=head2 C<margin_left>
+X<margin_left>
+
+=over
+
+=item C<my $l = $packedgroup-E<gt>margin_left( );>X<my_l_packedgroup_E_gt_margin_left_>
+
+Get the left margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 138
+
+=item C<$packedgroup-E<gt>margin_left( $l );>X<_packedgroup_E_gt_margin_left_l_>
+
+Set the left margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 142
+
+=back
+
+=head2 C<margin_right>
+X<margin_right>
+
+=over
+
+=item C<my $r = $packedgroup-E<gt>margin_right( );>X<my_r_packedgroup_E_gt_margin_right_>
+
+Get the right margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 159
+
+=item C<$packedgroup-E<gt>margin_right( $r );>X<_packedgroup_E_gt_margin_right_r_>
+
+Set the right margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 163
+
+=back
+
+=head2 C<margin_top>
+X<margin_top>
+
+=over
+
+=item C<my $t = $packedgroup-E<gt>margin_top( );>X<my_t_packedgroup_E_gt_margin_top_>
+
+Get the top margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 180
+
+=item C<$packedgroup-E<gt>margin_top( $t );>X<_packedgroup_E_gt_margin_top_t_>
+
+Set the top margin for child widgets.
+
+=for hackers xs/PackedGroup.xs line 184
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $group = $packedgroup-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_group_packedgroup_E_gt_new_x_y_w_h_label_begin_>
+
+Creates a new L<PackedGroup|FLTK::PackedGroup>.
+
+=for hackers xs/PackedGroup.xs line 96
+
+=back
+
+=head2 C<spacing>
+X<spacing>
+
+=over
+
+=item C<$packedgroup-E<gt>spacing( $s );>X<_packedgroup_E_gt_spacing_s_>
+
+Set a fixed-size gap between all the children. This defaults to zero. If you
+change this in an already-existing one, call
+L<relayout()|FLTK::Widget/"relayout">.
+
+=for hackers xs/PackedGroup.xs line 115
+
+=item C<my $s = $packedgroup-E<gt>spacing( );>X<my_s_packedgroup_E_gt_spacing_>
+
+Returns the fixed-size gap between all children.
+
+=for hackers xs/PackedGroup.xs line 121
+
+=back
+
+=head1 Layout Types
+
+These are the current schemes built into L<PackedGroup|FLTK::PackedGroup>.
+
+=over 
+
+=item * C<FLTK::PackedGroup::NORMAL>
+
+=item * C<FLTK::PackedGroup::ALL_CHILDREN_VERTICAL>
+
+=back 
+
+Setting
+L<C<$pg-E<gt>type(FLTK::PackedGroup::ALL_CHILDREN_VERTICAL)>|FLTK::Widget/"type">
+will make it act like all the children have
+L<vertical()|FLTK::Widget/"vertical"> set.
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: PackedGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

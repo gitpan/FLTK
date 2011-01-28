@@ -1,0 +1,116 @@
+=pod
+
+=head1 NAME
+
+FLTK::Cursor - Mouse cursor support for the Fast Light Tool Kit
+
+=head1 Description
+
+L<C<Cursor>|FLTK::Cursor> is an opaque system-dependent class. Currently you
+can only use the built-in cursors but a method to turn an L<Image|FLTK::Image>
+into a L<C<Cursor>|FLTK::Cursor> will be added in the future.
+
+To display a cursor, call L<C<Widget::cursor()>|FLTK::Widget/"cursor">.
+
+Built-in cursors may be imported with the C<cursor> tag and are...
+
+=over 
+
+=item C<CURSOR_DEFAULT>
+
+the default cursor, usually an arrow.
+
+=item C<CURSOR_ARROW>
+
+up-left arrow pointer
+
+=item C<CURSOR_CROSS>
+
+crosshairs
+
+=item C<CURSOR_WAIT>
+
+watch or hourglass
+
+=item C<CURSOR_INSERT>
+
+I-beam
+
+=item C<CURSOR_HAND>
+
+hand / pointing finger
+
+=item C<CURSOR_HELP>
+
+question mark
+
+=item C<CURSOR_MOVE>
+
+4-pointed arrow
+
+=item C<CURSOR_NS>
+
+up/down arrow
+
+=item C<CURSOR_WE>
+
+left/right arrow
+
+=item C<CURSOR_NWSE>
+
+diagonal arrow
+
+=item C<CURSOR_NESW>
+
+diagonal arrow
+
+=item C<CURSOR_NO>
+
+circle with slash
+
+=item C<CURSOR_NONE>
+
+invisible
+
+=back 
+
+=head1 Functions
+
+=head2 C<cursor>
+X<cursor>
+
+=over
+
+=item C<my $c = $cursor-E<gt>cursor( $image, $x, $y );>X<my_c_cursor_E_gt_cursor_image_x_y_>
+
+
+
+=for hackers xs/Cursor.xs line 97
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Cursor.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

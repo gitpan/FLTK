@@ -1,0 +1,394 @@
+=pod
+
+=head1 NAME
+
+FLTK::ask - Implementation of message, ask, choice, and input functions
+
+=head1 Description
+
+Implementation of L<C<FLTK::message()>|FLTK::ask/"message">,
+L<C<FLTK::ask(...)>|FLTK::ask/"ask">,
+L<C<FLTK::choice(...)>|FLTK::ask/"choice">,
+L<C<FLTK::input()>|FLTK::ask/"input">.
+
+=head1 Functions
+
+=head2 C<BEEP_DEFAULT>
+X<BEEP_DEFAULT>
+
+=over
+
+=item C<BEEP_DEFAULT( );>X<BEEP_DEFAULT_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 34
+
+=back
+
+=head2 C<BEEP_ERROR>
+X<BEEP_ERROR>
+
+=over
+
+=item C<BEEP_ERROR( );>X<BEEP_ERROR_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 42
+
+=back
+
+=head2 C<BEEP_MESSAGE>
+X<BEEP_MESSAGE>
+
+=over
+
+=item C<BEEP_MESSAGE( );>X<BEEP_MESSAGE_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 38
+
+=back
+
+=head2 C<BEEP_NOTIFICATION>
+X<BEEP_NOTIFICATION>
+
+=over
+
+=item C<BEEP_NOTIFICATION( );>X<BEEP_NOTIFICATION_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 54
+
+=back
+
+=head2 C<BEEP_PASSWORD>
+X<BEEP_PASSWORD>
+
+=over
+
+=item C<BEEP_PASSWORD( );>X<BEEP_PASSWORD_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 50
+
+=back
+
+=head2 C<BEEP_QUESTION>
+X<BEEP_QUESTION>
+
+=over
+
+=item C<BEEP_QUESTION( );>X<BEEP_QUESTION_>
+
+
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 46
+
+=back
+
+=head2 C<alert>
+X<alert>
+
+=over
+
+=item C<FLTK::alert( $string );>X<FLTK_alert_string_>
+
+Same as L<C<FLTK::message()>|/"message"> except for the "!" symbol.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 81
+
+=back
+
+=head2 C<ask>
+X<ask>
+
+=over
+
+=item C<my $choice = FLTK::ask( $question );>X<my_choice_FLTK_ask_question_>
+
+Displays a message in a pop-up box with a "Yes" and "No" button and waits for
+the user to hit a button. The return value is C<1> if the user hits "Yes",
+C<0> if they pick "No". The C<Enter> key is a shortcut for "Yes" and C<ESC> is
+a shortcut for "No".
+
+If L<C<message_window_timeout>|/"message_window_timeout"> is used, then C<-1>
+will be returned if the timeout expires.
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 109
+
+=back
+
+=head2 C<beep>
+X<beep>
+
+=over
+
+=item C<FLTK::beep( $type );>X<FLTK_beep_type_>
+
+Generates a simple beep message.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 220
+
+=back
+
+=head2 C<beep_on_dialog>
+X<beep_on_dialog>
+
+=over
+
+=item C<FLTK::beep_on_dialog( $value );>X<FLTK_beep_on_dialog_value_>
+
+You can enable beep on default message dialog (like L<C<ask>|/"dialog">,
+L<C<choice>|/"choice">, L<C<input>|/"input">, ...) by using this function with
+true (default is false).
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 239
+
+=item C<my $value = FLTK::beep_on_dialog( );>X<my_value_FLTK_beep_on_dialog_>
+
+You get the state enable beep on default message dialog (like
+L<C<ask>|/"dialog">, L<C<choice>|/"choice">, L<C<input>|/"input">, ...) by using
+this function with true (default is false).
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 245
+
+=back
+
+=head2 C<choice>
+X<choice>
+
+=over
+
+=item C<my $choice = FLTK::choice( $question, $answer_1, $answer_2, $answer_3 );>X<my_choice_FLTK_choice_question_answer_1_answer_2_answer_3_>
+
+Shows the message with three buttons below it marked with the strings
+C<answer_1>, C<answer_2>, and C<answer_3>. Returns C<0>, C<1>, or C<2>
+depending on which button is hit. If one of the strings begins with the
+special character '*' then the associated button will be the default which is
+selected when the C<Enter> key is pressed. C<ESC> is a shortcut for
+C<answer_1>.
+
+If L<C<message_window_timeout>|/"message_window_timeout"> is used, then C<-1>
+will be returned if the timeout expires.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 136
+
+=back
+
+=head2 C<choice_alert>
+X<choice_alert>
+
+=over
+
+=item C<my $choice = FLTK::choice_alert( $question, $question, $answer_1, $answer_2, $answer_3 );>X<my_choice_FLTK_choice_alert_question_question_answer_1_answer_2_answer_3_>
+
+Same as L<C<choice()>|/"choice"> except a "!" icon is used instead of a "?"
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 148
+
+=back
+
+=head2 C<icon_style>
+X<icon_style>
+
+=over
+
+=item C<my $style = FLTK::icon_style( );>X<my_style_FLTK_icon_style_>
+
+This L<Style|FLTK::Style> is used for the C<50x50> icon area on the left of
+all the popup windows. You can change the colors or font used here.
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 271
+
+=item C<FLTK::icon_style( $style );>X<FLTK_icon_style_style_>
+
+Set the icon style.
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 276
+
+=back
+
+=head2 C<input>
+X<input>
+
+=over
+
+=item C<my $string = FLTK::input( $label, $default_value );>X<my_string_FLTK_input_label_default_value_>
+
+Pops up a window displaying a string, lets the user edit it, and return the
+new value. The cancel button returns C<undef>. The returned pointer is only
+valid until the next time L<C<FLTK::input()>|FLTK::ask/"input"> is called.
+
+If L<C<message_window_timeout>|/"message_window_timeout"> is used, then C<0>
+will be returned if the timeout expires.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 180
+
+=back
+
+=head2 C<message>
+X<message>
+
+=over
+
+=item C<FLTK::message( $string );>X<FLTK_message_string_>
+
+Displays a message in a pop-up box with an "OK" button, waits for the user to
+hit the button. The message will wrap to fit the window, or may be many lines
+by putting C<\n> characters into it. The enter key is a shortcut for the OK
+button.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 74
+
+=back
+
+=head2 C<message_style>
+X<message_style>
+
+=over
+
+=item C<my $style = FLTK::message_style( );>X<my_style_FLTK_message_style_>
+
+This L<Style|FLTK::Style> is used for the label area for all the popup
+windows. You can change the L<C<textfont()>|FLTK::Style/"textfont"> or
+L<C<textsize()>|FLTK::Style/"textsize"> to make them print differently.
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 280
+
+=item C<FLTK::message_style( $style );>X<FLTK_message_style_style_>
+
+Set the message style.
+
+Import this function with the C<:dialog> tag.
+
+=for hackers xs/ask.xs line 286
+
+=back
+
+=head2 C<password>
+X<password>
+
+=over
+
+=item C<my $string = FLTK::password( $label, $default_value );>X<my_string_FLTK_password_label_default_value_>
+
+Same as L<C<FLTK::input()>|FLTK::ask/"input"> except an
+L<FLTK::SecretInput|FLTK::SecretInput> field is used.
+
+Import this function with the C<:dialog> or C<:default> tags.
+
+=for hackers xs/ask.xs line 189
+
+=back
+
+=head1 Variables
+
+There are a few variables you my change that affect how L<FLTK|FLTK> behaves.
+
+=over 
+
+=item * C<$FLTK::message_window_label>
+
+The value of this is used as the title of L<C<message()>|FLTK::ask/"message">,
+L<C<alert()>|FLTK::ask/"alert">, L<C<ask()>|FLTK::ask/"dialog">,
+L<C<choice()>|FLTK::ask/"choice">, etc. windows.
+
+=item * C<$FLTK::no>
+
+You can change this string to convert L<FLTK|FLTK> to a foreign language.
+
+=item * C<$FLTK::yes>
+
+You can change this string to convert L<FLTK|FLTK> to a foreign language.
+
+=item * C<$FLTK::ok>
+
+You can change this string to convert L<FLTK|FLTK> to a foreign language.
+
+=item * C<$FLTK::cancel>
+
+You can change this string to convert L<FLTK|FLTK> to a foreign language.
+
+=item * C<$FLTK::message_window_timeout>
+
+Set this to a positive value to cause the L<C<message()>|FLTK::ask/"message">,
+L<C<alert()>|FLTK::ask/"alert">, L<C<ask()>|FLTK::ask/"dialog">,
+L<C<choice()>|FLTK::ask/"choice">, etc. windows to close automatically after
+this timeout. If the timeout expires, C<-1> will be returned by the functions
+that return integers. The timeout value is a float in seconds.
+
+=item * C<$FLTK::message_window_scrollable>
+
+When this is set to true, then (all) message windows will use scrollbars if
+the given message is too long.
+
+=back 
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: ask.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+
+=cut

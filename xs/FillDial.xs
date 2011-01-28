@@ -4,27 +4,6 @@ MODULE = FLTK::FillDial               PACKAGE = FLTK::FillDial
 
 #ifndef DISABLE_FILLDIAL
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: FillDial.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::FillDial - Subclass of FLTK::Dial which draws a pie slice
-
-=head1 Description
-
-Dial but the constructor sets L<C<type()>|FLTK::Dial/"type"> to C<FILL>, so it
-draws a pie slice.
-
-=cut
-
 #ifdef NORMAL // from perl, probably
 #define PERL_NORMAL NORMAL
 #undef NORMAL
@@ -35,12 +14,6 @@ draws a pie slice.
 #ifdef PERL_NORMAL // Undo our workaround
 #define NORMAL PERL_NORMAL
 #endif // ifdef PERL_NORMAL
-
-=for apidoc d||FLTK::FillDial fd|new|int x|int y|int w|int h|char * label = ''|
-
-Creates a new C<FLTK::FillDial> object.
-
-=cut
 
 #include "include/WidgetSubclass.h"
 

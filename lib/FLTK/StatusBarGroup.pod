@@ -1,0 +1,121 @@
+=pod
+
+=head1 NAME
+
+FLTK::StatusBarGroup - Create and handle a StatusBar with minimum effort
+
+=head1 Description
+
+The L<FLTK::StatusBarGroup|FLTK::StatusBarGroup> is strip that can be put in
+the bottom edge of a L<FLTK::Pack|FLTK::Pack> usually it contains a status
+bar.
+
+It features automatic positioning and resizing adapting to parent
+L<FLTK::Group|FLTK::Group>/L<FLTK::Window|FLTK::Window>.
+
+Only height matters when constructing a
+L<FLTK::StatusBarGroup|FLTK::StatusBar>.
+
+You can use the L<< C<set( )>|FLTK::StatusBarGroup/set >> API's to easily
+print formatted text at one of the three standard position: C<left>,
+C<center>, L<right>.
+
+You can also setup an optional custom box to the incorporated texts with child
+C<_box()>, by default C<FLAT_BOX> is used.
+
+Here's some typical code you can use to create a status bar:
+
+    my $status_bar = FLTK::StatusBarGroup->new();
+    $status_bar->child_box(THIN_DOWN_BOX, FLTK::StatusBarGroup::SBAR_RIGHT());
+
+    # ... more code ...
+    # sets a right-aligned formatted text :
+    $status_bar->set('8 items', FLTK::StatusBarGroup::SBAR_RIGHT());
+
+    # sets a centered text:
+    $status_bar->set('Hi', FLTK::StatusBarGroup::SBAR_CENTER());
+
+    # ... more code ...
+    # undef or 0-len text removes the text box:
+    $status_bar->set('', FLTK::StatusBarGroup::SBAR_CENTER());
+
+=head1 Functions
+
+=head2 C<child_box>
+X<child_box>
+
+=over
+
+=item C<$statusbargroup-E<gt>child_box( $b );>X<_statusbargroup_E_gt_child_box_b_>
+
+Set a default box to all texts inside the status bar.
+
+=for hackers xs/StatusBarGroup.xs line 90
+
+=item C<$statusbargroup-E<gt>child_box( $b, $pos );>X<_statusbargroup_E_gt_child_box_b_pos_>
+
+Set a default box to text a particular posiiton inside the statusbar.
+
+=for hackers xs/StatusBarGroup.xs line 94
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $group = $statusbargroup-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_group_statusbargroup_E_gt_new_x_y_w_h_label_begin_>
+
+Constructor. C<x>, C<y>, and C<w> are ignored.
+
+=for hackers xs/StatusBarGroup.xs line 62
+
+=item C<my $group = $statusbargroup-E<gt>new( $height );>X<my_group_statusbargroup_E_gt_new_height_>
+
+Constructor.
+
+=for hackers xs/StatusBarGroup.xs line 66
+
+=back
+
+=head2 C<set>
+X<set>
+
+=over
+
+=item C<$statusbargroup-E<gt>set( $t, $pos );>X<_statusbargroup_E_gt_set_t_pos_>
+
+Set a simple string in the statusbar at a given position alignment spec.
+
+=pod 
+
+=for hackers xs/StatusBarGroup.xs line 107
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: StatusBarGroup.xs 8f42329 2011-01-04 03:31:25Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,68 @@
+=pod
+
+=head1 NAME
+
+FLTK::AssociationType - Base class for the association type
+
+=head1 Description
+
+Base class for the association type.
+
+FLTK allows you to attach any kind of user data to a widget. This data is
+automatically freed when the widget to which it is attached is destroyed.
+Internally an association table is used to connect the widget pointer with the
+data pointer that is why all the functions concerned with this feature contain
+"association" in their name. The advantage of this is that no space is taken
+on widgets that do not contain the data (or that have the "default value"),
+and that the destructor code is not linked in if the association is not used.
+
+To be able to associate data and to be able to have a customized way of
+freeing the data you need to derive from this class and then create an
+instance of that class. With the pointer to that instance the type of the data
+is identified.
+
+possible uses:
+
+=over 8
+
+=item assign key shortcuts to certain widgets
+
+=item assign a tooltip to some widgets
+
+=item assign a help-index to widgets
+
+=item assign a unique identifier to widgets to remote controlling
+
+=item assign additional layouting data for new container widgets
+
+=item assign data needed by typesafe callback mechanisms
+
+=item assign all kind of data not always required within a widget / each widget
+
+=back 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: AssociationType.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

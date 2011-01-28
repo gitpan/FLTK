@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/run.xsi
 
-=for git $Id: 20030_run.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
+=for git $Id: 20030_run.t e601e5e 2011-01-28 04:08:37Z sanko@cpan.org $
 
 =cut
 
@@ -17,7 +17,6 @@ use warnings;
 use Test::More 0.82 tests => 1;
 use Module::Build qw[];
 use Time::HiRes qw[];
-use Test::NeedsDisplay ':skip_all';
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';

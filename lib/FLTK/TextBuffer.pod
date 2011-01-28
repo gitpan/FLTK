@@ -1,0 +1,696 @@
+=pod
+
+=head1 NAME
+
+FLTK::TextBuffer -
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<append>
+X<append>
+
+=over
+
+=item C<$textbuffer-E<gt>append( $text );>X<_textbuffer_E_gt_append_text_>
+
+Appends C<$text> to the end of the buffer.
+
+=pod 
+
+X<remove>
+
+=head2 C<$buffer-E<gt>remove( $start, $end )>
+
+=for hackers xs/TextBuffer.xs line 171
+
+=back
+
+=head2 C<appendfile>
+X<appendfile>
+
+=over
+
+=item C<my $status = $textbuffer-E<gt>appendfile( $file, $bufferlen );>X<my_status_textbuffer_E_gt_appendfile_file_bufferlen_>
+
+Appends the contents of a C<$file> to the end of the buffer. Optionally, a
+second C<$bufferlen> argument is passed which can limit the amount of data
+brought in from the C<$file>.
+
+On error, the return value is C<2>. Otherwise, the return value is C<0>.
+
+=pod 
+
+X<loadfile>
+
+=head2 C<my $status = $buffer-E<gt>loadfile( file )>
+
+=for hackers xs/TextBuffer.xs line 288
+
+=back
+
+=head2 C<canUndo>
+X<canUndo>
+
+=over
+
+=item C<$textbuffer-E<gt>canUndo( $flag );>X<_textbuffer_E_gt_canUndo_flag_>
+
+Lets the undo system know if we can undo changes.
+
+=pod 
+
+X<insertfile>
+
+=head2 C<my $status = $buffer-E<gt>insertfle( $file, $position )>
+
+=for hackers xs/TextBuffer.xs line 254
+
+=back
+
+=head2 C<character>
+X<character>
+
+=over
+
+=item C<my $char = $textbuffer-E<gt>character( $pos );>X<my_char_textbuffer_E_gt_character_pos_>
+
+Returns the character at buffer position C<$pos>. Positions start at C<0>.
+
+=pod 
+
+X<text_range>
+
+=head2 C<my $txt = $buffer-E<gt>text_range( $start, $end )>
+
+=for hackers xs/TextBuffer.xs line 107
+
+=back
+
+=head2 C<character_width>
+X<character_width>
+
+=over
+
+=item C<my $output = $textbuffer-E<gt>character_width( $char, $indent, $tabDist, $nullSubsChar );>X<my_output_textbuffer_E_gt_character_width_char_indent_tabDist_nullSubsChar_>
+
+Returns the length in displayed characters of C<$char> expanded for display.
+If the buffer for which the character width is being measured is doing null
+substitution, <$nullSubsChar> should be passed as that character.
+
+Optional parameters include:
+
+=over 
+
+=item C<$indent>
+
+the number of characters from the start of the line for figuring tabs
+
+=item C<$tabDist>
+
+the number of spaces (C< >) a tab (C<\t>) consumes
+
+=item C<$nullSubsChar>
+
+the character which will be used in place of null (C<\0>) characters, the
+typical string terminator in C<C++>
+
+=back 
+
+=pod 
+
+X<count_displayed_characters>
+
+=head2 C<my $width = $buffer-E<gt>count_displayed_characters( $lineStartPos, $targetPos )>
+
+=for hackers xs/TextBuffer.xs line 440
+
+=back
+
+=head2 C<copy>
+X<copy>
+
+=over
+
+=item C<$textbuffer-E<gt>copy( $from_buffer, $from_start, $from_end, $to_pos );>X<_textbuffer_E_gt_copy_from_buffer_from_start_from_end_to_pos_>
+
+Copy the characters between C<$from_start> and C<$from_end> in
+C<$from_buffer>, and inserts the string into your object at C<$to_pos>.
+
+=pod 
+
+X<undo>
+
+=head2 C<my ($okay, $cursorPosition) = $buffer-E<gt>undo( )>
+
+=for hackers xs/TextBuffer.xs line 219
+
+=back
+
+=head2 C<count_displayed_characters>
+X<count_displayed_characters>
+
+=over
+
+=item C<my $width = $textbuffer-E<gt>count_displayed_characters( $lineStartPos, $targetPos );>X<my_width_textbuffer_E_gt_count_displayed_characters_lineStartPos_targetPos_>
+
+Count the number of displayed characters between buffer position
+C<$linestartpos> and C<$targetpos>. Displayed characters are the characters
+shown on the screen to represent characters in the buffer, where tabs and
+control characters are expanded.
+
+=pod 
+
+X<count_displayed_characters_utf>
+
+=head2 C<my $width = $buffer-E<gt>count_displayed_characters_utf( $lineStartPos, $targetPos )>
+
+=for hackers xs/TextBuffer.xs line 476
+
+=back
+
+=head2 C<count_displayed_characters_utf>
+X<count_displayed_characters_utf>
+
+=over
+
+=item C<my $width = $textbuffer-E<gt>count_displayed_characters_utf( $lineStartPos, $targetPos );>X<my_width_textbuffer_E_gt_count_displayed_characters_utf_lineStartPos_targetPos_>
+
+Count the number of displayed characters between buffer position
+C<$linestartpos> and C<$targetpos>. Displayed characters are the characters
+shown on the screen to represent characters in the buffer, where tabs and
+control characters are expanded.
+
+This method is utf8-aware.
+
+=pod 
+
+X<skip_displayed_characters>
+
+=head2 C<my $width = $buffer-E<gt>skip_displayed_characters( $startPos, $nChars )>
+
+=for hackers xs/TextBuffer.xs line 494
+
+=back
+
+=head2 C<count_lines>
+X<count_lines>
+
+=over
+
+=item C<my $lines = $textbuffer-E<gt>count_lines( $startPos, $endPos );>X<my_lines_textbuffer_E_gt_count_lines_startPos_endPos_>
+
+Count the number of newlines between C<$startPos> and C<$endPos> in a buffer.
+The character at position C<$endPos> is not counted.
+
+=pod 
+
+X<skip_lines>
+
+=head2 C<my $lines = $buffer-E<gt>skip_lines( $startPos, $nLines )>
+
+=for hackers xs/TextBuffer.xs line 550
+
+=back
+
+=head2 C<expand_character>
+X<expand_character>
+
+=over
+
+=item C<my $output = $textbuffer-E<gt>expand_character( $character, $indent, $tabDist, $nullSubsChar );>X<my_output_textbuffer_E_gt_expand_character_character_indent_tabDist_nullSubsChar_>
+
+Expand a single character from the text buffer into it's screen representation
+(which may be several characters for a tab or a control code).
+
+Optional parameters include:
+
+=over 
+
+=item C<$indent>
+
+the number of characters from the start of the line for figuring tabs
+
+=item C<$tabDist>
+
+the number of spaces (C< >) a tab (C<\t>) consumes
+
+=item C<$nullSubsChar>
+
+the character which will be used in place of null (C<\0>) characters, the
+typical string terminator in C<C++>
+
+=back 
+
+=head2 C<my $output = $buffer-E<gt>expand_character( $position, $indent )>
+
+=for hackers xs/TextBuffer.xs line 364
+
+=item C<my $output = $textbuffer-E<gt>expand_character( $position, $indent );>X<my_output_textbuffer_E_gt_expand_character_position_indent_>
+
+Get a character from the text buffer expanded into it's screen representation
+(which may be several characters for a tab or a control code).
+
+Optional parameters include:
+
+=over 
+
+=item C<$indent>
+
+the number of characters from the start of the line for figuring tabs
+
+=back 
+
+=pod 
+
+X<character_width>
+
+=head2 C<my $width = $buffer-E<gt>character_width( $char, $indent, $tabDist, $nullSubsChar )>
+
+=for hackers xs/TextBuffer.xs line 390
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<$textbuffer-E<gt>insert( $pos, $text );>X<_textbuffer_E_gt_insert_pos_text_>
+
+Inserts string C<$text> at position C<$pos>.
+
+=pod 
+
+X<append>
+
+=head2 C<$buffer-E<gt>append( $text )>
+
+=for hackers xs/TextBuffer.xs line 156
+
+=back
+
+=head2 C<insertfile>
+X<insertfile>
+
+=over
+
+=item C<my $status = $textbuffer-E<gt>insertfile( $file, $position, $bufferlen );>X<my_status_textbuffer_E_gt_insertfile_file_position_bufferlen_>
+
+Inserts the contents of a C<$file> at the given C<$position>. Optionally, a
+third C<$bufferlen> argument is passed which can limit the amount of data
+brought in from the C<$file>.
+
+On error, the return value is C<2>. Otherwise, the return value is C<0>.
+
+=pod 
+
+X<appendfile>
+
+=head2 C<my $status = $buffer-E<gt>appendfile( $file )>
+
+=for hackers xs/TextBuffer.xs line 269
+
+=back
+
+=head2 C<length>
+X<length>
+
+=over
+
+=item C<my $length = $textbuffer-E<gt>length( );>X<my_length_textbuffer_E_gt_length_>
+
+=pod 
+
+=head2 C<< my $txt = $buffer->text( ) >>
+X<text>
+
+=for hackers xs/TextBuffer.xs line 66
+
+=back
+
+=head2 C<loadfile>
+X<loadfile>
+
+=over
+
+=item C<my $status = $textbuffer-E<gt>loadfile( $file, $bufferlen );>X<my_status_textbuffer_E_gt_loadfile_file_bufferlen_>
+
+Loads the contents of a C<$file> to fill the buffer (current content is
+replaced). Optionally, a second C<$bufferlen> argument is passed which can
+limit the amount of data brought in from the C<$file>.
+
+On error, the return value is C<2>. Otherwise, the return value is C<0>.
+
+=pod 
+
+X<outputfile>
+
+=head2 C<my $status = $buffer-E<gt>outputfile( $file, $start, $end )>
+
+=for hackers xs/TextBuffer.xs line 307
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $buffer = $textbuffer-E<gt>new( $requested_size );>X<my_buffer_textbuffer_E_gt_new_requested_size_>
+
+Creates an empty text buffer of pre-determined size. Use this to avoid
+unnecessary re-allocation if you know exactly how much the buffer will need to
+hold.
+
+=head2 Usage
+
+=for markdown {%highlight perl%}
+
+    my $buffer   = FLTK::TextBuffer->new( $requested_size );
+    my $buffer_2 = FLTK::TextBuffer->new( 1027 * 256 );
+    my $buffer_3 = FLTK::TextBuffer->new( );
+
+=for markdown {%endhighlight%}
+
+=for hackers xs/TextBuffer.xs line 31
+
+=back
+
+=head2 C<outputfile>
+X<outputfile>
+
+=over
+
+=item C<my $status = $textbuffer-E<gt>outputfile( $file, $start, $end, $bufferlen );>X<my_status_textbuffer_E_gt_outputfile_file_start_end_bufferlen_>
+
+Saves the contents of the buffer to a C<$file> starting with the data at the
+C<$start> position through the C<$end>. Optionally, a fourth C<$bufferlen> a
+rgument is passed which can limit the amount of data written to the C<$file>.
+
+On error, the return value is C<2>. Otherwise, the return value is C<0>.
+
+=pod 
+
+X<savefile>
+
+=head2 C<my $status = $buffer-E<gt>savefile( $file )>
+
+=for hackers xs/TextBuffer.xs line 326
+
+=back
+
+=head2 C<remove>
+X<remove>
+
+=over
+
+=item C<$textbuffer-E<gt>remove( $start, $end );>X<_textbuffer_E_gt_remove_start_end_>
+
+Deletes the text between C<$start> and C<$end> character positions. Positions
+are C<0> (zero) based and the range does I<not> include the character pointed
+to by C<$end>.
+
+=pod 
+
+X<replace>
+
+=head2 C<$buffer-E<gt>replace( $start, $end, $text )>
+
+=for hackers xs/TextBuffer.xs line 186
+
+=back
+
+=head2 C<replace>
+X<replace>
+
+=over
+
+=item C<$textbuffer-E<gt>replace( $start, $end, $text );>X<_textbuffer_E_gt_replace_start_end_text_>
+
+Deletes the characters between C<$start> and C<$end>, and inserts the string
+C<$text> in their place.
+
+=pod 
+
+X<copy>
+
+=head2 C<$to_buffer-E<gt>copy( $from_buffer, $from_start, $from_end, $to_pos )>
+
+=for hackers xs/TextBuffer.xs line 203
+
+=back
+
+=head2 C<rewind_lines>
+X<rewind_lines>
+
+=over
+
+=item C<my $lines = $textbuffer-E<gt>rewind_lines( $startPos, $nLines );>X<my_lines_textbuffer_E_gt_rewind_lines_startPos_nLines_>
+
+Finds the position of the first character of the line C<$nLines> backwards
+from C<$startPos> (not counting the character pointed to by C<$startPos> if
+that is a newline). C<$nlines == 0> means find the beginning of the line.
+
+=pod 
+
+=begin TODO
+
+bool findchar_forward(int startPos, char searchChar, int* foundPos);
+bool findchar_backward(int startPos, char searchChar, int* foundPos);
+
+bool findchars_forward(int startpos, const char *searchChars, int *foundPos);
+bool findchars_backward(int startpos, const char *searchChars, int *foundPos);
+
+bool search_forward(int startPos, const char* searchString, int* foundPos,
+                    bool matchCase = false);
+
+bool search_backward(int startPos, const char* searchString, int* foundPos,
+                     bool matchCase = false);
+
+char null_substitution_character() { return nullsubschar_; }
+TextSelection* primary_selection() { return &primary_; }
+TextSelection* secondary_selection() { return &secondary_; }
+TextSelection* highlight_selection() { return &highlight_; }
+
+=end TODO
+
+=pod 
+
+=for hackers xs/TextBuffer.xs line 582
+
+=back
+
+=head2 C<savefile>
+X<savefile>
+
+=over
+
+=item C<my $status = $textbuffer-E<gt>savefile( $file, $bufferlen );>X<my_status_textbuffer_E_gt_savefile_file_bufferlen_>
+
+Saves the contents of the buffer to a C<$file>. Optionally, a second
+C<$bufferlen> argument is passed which can limit the amount of data written to
+the C<$file>.
+
+On error, the return value is C<2>. Otherwise, the return value is C<0>.
+
+=pod 
+
+X<expand_character>
+
+=head2 C<my $output = $buffer-E<gt>expand_character( $character, $indent, $tabDist, $nullSubsChar )>
+
+=for hackers xs/TextBuffer.xs line 345
+
+=back
+
+=head2 C<skip_displayed_characters>
+X<skip_displayed_characters>
+
+=over
+
+=item C<my $width = $textbuffer-E<gt>skip_displayed_characters( $startPos, $nChars );>X<my_width_textbuffer_E_gt_skip_displayed_characters_startPos_nChars_>
+
+Count forward from buffer position C<$startPos> in displayed characters.
+Displayed characters are the characters shown on the screen to represent
+characters in the buffer, where tabs and control characters are expanded.
+
+=pod 
+
+X<skip_displayed_characters_utf>
+
+=head2 C<my $width = $buffer-E<gt>skip_displayed_characters_utf( $startPos, $nChars )>
+
+=for hackers xs/TextBuffer.xs line 514
+
+=back
+
+=head2 C<skip_displayed_characters_utf>
+X<skip_displayed_characters_utf>
+
+=over
+
+=item C<my $width = $textbuffer-E<gt>skip_displayed_characters_utf( $startPos, $nChars );>X<my_width_textbuffer_E_gt_skip_displayed_characters_utf_startPos_nChars_>
+
+Count forward from buffer position C<$startPos> in displayed characters.
+Displayed characters are the characters shown on the screen to represent
+characters in the buffer, where tabs and control characters are expanded.
+
+This method is utf8-aware.
+
+=pod 
+
+X<count_lines>
+
+=head2 C<my $lines = $buffer-E<gt>count_lines( $startPos, $endPos )>
+
+=for hackers xs/TextBuffer.xs line 531
+
+=back
+
+=head2 C<skip_lines>
+X<skip_lines>
+
+=over
+
+=item C<my $lines = $textbuffer-E<gt>skip_lines( $startPos, $nLines );>X<my_lines_textbuffer_E_gt_skip_lines_startPos_nLines_>
+
+Finds the first character of the line C<$nLines> forward from C<$startPos> in
+a buffer and returns its position.
+
+=pod 
+
+X<rewind_lines>
+
+=head2 C<my $lines = $buffer-E<gt>rewind_lines( $startPos, $nLines )>
+
+=for hackers xs/TextBuffer.xs line 566
+
+=back
+
+=head2 C<text>
+X<text>
+
+=over
+
+=item C<my $txt = $textbuffer-E<gt>text( );>X<my_txt_textbuffer_E_gt_text_>
+
+Return the entire contents of the text buffer.
+
+=head2 C<< $buffer->text( $txt ) >>
+
+=for hackers xs/TextBuffer.xs line 78
+
+=item C<$textbuffer-E<gt>text( $txt );>X<_textbuffer_E_gt_text_txt_>
+
+Replace the entire contents of the text buffer.
+
+=pod 
+
+X<character>
+
+=head2 C<< my $char = $buffer->character( $pos ) >>
+
+=for hackers xs/TextBuffer.xs line 84
+
+=back
+
+=head2 C<text_in_rectangle>
+X<text_in_rectangle>
+
+=over
+
+=item C<my $txt = $textbuffer-E<gt>text_in_rectangle( $start, $end, $rectStart, $rectEnd );>X<my_txt_textbuffer_E_gt_text_in_rectangle_start_end_rectStart_rectEnd_>
+
+Returns a copy of the text between C<$start> and C<$end> character positions.
+Positions are C<0> (zero) based and the range does I<not> include the
+character pointed to by C<$end>.
+
+=pod 
+
+X<insert>
+
+=head2 C<$buffer-E<gt>insert( $pos, $text )>
+
+=for hackers xs/TextBuffer.xs line 139
+
+=back
+
+=head2 C<text_range>
+X<text_range>
+
+=over
+
+=item C<my $txt = $textbuffer-E<gt>text_range( $start, $end );>X<my_txt_textbuffer_E_gt_text_range_start_end_>
+
+Returns a copy of the text between C<$start> and C<$end> character positions.
+Positions are C<0> (zero) based and the range does I<not> include the
+character pointed to by C<$end>.
+
+=pod 
+
+X<text_in_rectangle>
+
+=head2 C<my $txt = $buffer-E<gt>text_in_rectangle( $start, $end, $rectStart, $rectEnd )>
+
+=for hackers xs/TextBuffer.xs line 122
+
+=back
+
+=head2 C<undo>
+X<undo>
+
+=over
+
+=item C<my @return = $textbuffer-E<gt>undo( );>X<my_return_textbuffer_E_gt_undo_>
+
+Removes text according to the undo variables or inserts text from the undo
+buffer.
+
+The return value is a list of integers indicating is the process was
+successful and the current C<$cursorPosition> after this change.
+
+=pod 
+
+X<canUndo>
+
+=head2 C<$buffer-E<gt>canUndo( $flag ) >
+
+=for hackers xs/TextBuffer.xs line 235
+
+=back
+
+=head1 Constructor
+
+=head1 Methods
+
+=head2 C<< my $length = $buffer->length( ) >>
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: TextBuffer.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

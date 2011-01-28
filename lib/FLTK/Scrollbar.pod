@@ -1,0 +1,149 @@
+=pod
+
+=head1 NAME
+
+FLTK::Scrollbar - Controls an integer position of a window of a given size
+inside a data set of a given total size
+
+=head1 Description
+
+The L<Scrollbar|FLTK::Scrollbar> widget displays a slider with arrow buttons
+at the ends of the scrollbar. Clicking on the arrows move up/left and
+down/right by L<C<linesize( )>|FLTK::Widget/"linesize">. If the scrollbar has
+the keyboard focus the arrows move by
+L<C<linesize( )>|FLTK::Widget/"linesize">, and vertical scrollbars take Page
+Up/Down (they move by the page size minus
+L<C<linesize( )>|FLTK::Widget/"linesize">) and Home/End (they jump to the top
+or bottom). Often a widget that takes focus such as the browser will just send
+keystrokes to the scrollbar directly to get it to move in response.
+
+=head1 Functions
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $scrollbar-E<gt>default_style( );>X<my_style_scrollbar_E_gt_default_style_>
+
+
+
+=for hackers xs/Scrollbar.xs line 59
+
+=item C<$scrollbar-E<gt>default_style( $new_style );>X<_scrollbar_E_gt_default_style_new_style_>
+
+
+
+=for hackers xs/Scrollbar.xs line 63
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $scrollbar-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_scrollbar_E_gt_new_x_y_w_h_label_>
+
+Creates a new L<FLTK::Scrollbar|FLTK::Scrollbar> widget.
+
+=for hackers xs/Scrollbar.xs line 40
+
+=back
+
+=head2 C<pagesize>
+X<pagesize>
+
+=over
+
+=item C<my $size = $scrollbar-E<gt>pagesize( );>X<my_size_scrollbar_E_gt_pagesize_>
+
+
+=for hackers xs/Scrollbar.xs line 127
+
+=item C<$scrollbar-E<gt>pagesize( $size );>X<_scrollbar_E_gt_pagesize_size_>
+
+How much the pageup/down keys and clicking in the empty area move by. If you
+call L<C<value( )>|FLTK::Scrollbar/"value"> this is set to 1
+L<C<linesize( )>|FLTK::Scrollbar/"linesize"> less than the window.
+
+=pod 
+
+=for hackers xs/Scrollbar.xs line 130
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<my $value = $scrollbar-E<gt>value( );>X<my_value_scrollbar_E_gt_value_>
+
+Return the current position of the scrollbar as an integer.
+
+L<Scrollbars|FLTK::Scrollbar> have L<C<step( 1 )>|FLTK::Valuator/"step">
+preset (they always return integers). If desired you can set the
+L<C<step( )>|FLTK::Valuator/"step"> to non-integer values. You will then have
+to use casts to get at the floating-point versions of
+L<C<value( )>|FLTK::Valuator/"value"> from the L<Slider|FLTK::Slider>
+base class.
+
+=for hackers xs/Scrollbar.xs line 80
+
+=item C<my $set = $scrollbar-E<gt>value( $position );>X<my_set_scrollbar_E_gt_value_position_>
+
+Set the current position of the scrollbar.
+
+=for hackers xs/Scrollbar.xs line 91
+
+=item C<my $set = $scrollbar-E<gt>value( $position, $size, $top, $total );>X<my_set_scrollbar_E_gt_value_position_size_top_total_>
+
+Set the current position, the range, the pagesize, and the
+L<C<slider_size( )>|FLTK::Scrollbar/"slider_size"> all at once in a useful
+way.
+
+Parameters include...
+
+=over 
+
+=item * C<position> is the position in the data of the first pixel in the
+window
+
+=item * C<size> is the size of the window
+
+=item * C<top> is the position of the top of your data (typically zero)
+
+=item * C<total> is the total size of your data
+
+=back 
+
+=for hackers xs/Scrollbar.xs line 95
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Scrollbar.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

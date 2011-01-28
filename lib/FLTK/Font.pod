@@ -1,0 +1,213 @@
+=pod
+
+=head1 NAME
+
+FLTK::Font - Font selection code for the Fast Light Tool Kit
+
+=head1 Description
+
+Identifies a font. You can create these with L<C<font(name)>|/"font_name_"> or
+with L<C<list_fonts()>|/"list_fonts">. Do not attempt to create your instances
+or modify it.
+
+=head1 Functions
+
+=head2 C<bold>
+X<bold>
+
+=over
+
+=item C<my $bfont = $font-E<gt>bold( );>X<my_bfont_font_E_gt_bold_>
+
+Same as L<C<plus(BOLD)>|/"plus">, returns a bold version of this font.
+
+=for hackers xs/Font.xs line 157
+
+=back
+
+=head2 C<encodings>
+X<encodings>
+
+=over
+
+=item C<my @encodings = $font-E<gt>encodings( );>X<my_encodings_font_E_gt_encodings_>
+
+Return all the encodings for this font. These strings may be sent to
+L<C<set_encoding()>|/"set_encodings"> before using the font.
+
+=for hackers xs/Font.xs line 200
+
+=back
+
+=head2 C<font>
+X<font>
+
+=over
+
+=item C<my $font = $font-E<gt>font( $name, $attributes );>X<my_font_font_E_gt_font_name_attributes_>
+
+Find a font with the given "nice" name. You can get bold and italic by adding
+a space and "bold" or "italic" (or both) to the name, or by passing them as
+the attributes. Case is ignored and fltk will accept some variations in the
+font name.
+
+The current implementation calls L<C<list_fonts()>|/"list_fonts"> and then
+does a binary search of the returned list. This can make the first call pretty
+slow, especially on X. Directly calling the system has a problem in that we
+want the same structure returned for any call that names the same font. This
+is sufficiently painful that I have not done this yet.
+
+Import this function with the C<:font> tag.
+
+=for hackers xs/Font.xs line 41
+
+=item C<my $font = $font-E<gt>font( $id );>X<my_font_font_E_gt_font_id_>
+
+Find a L<Font|FLTK::Font> from an fltk1 integer font id.
+
+Import this function with the C<:font> tag.
+
+=for hackers xs/Font.xs line 54
+
+=back
+
+=head2 C<italic>
+X<italic>
+
+=over
+
+=item C<my $ifont = $font-E<gt>italic( );>X<my_ifont_font_E_gt_italic_>
+
+Same as L<C<plus(ITALIC)>|/"plus">, returns an italic version of this font.
+
+=for hackers xs/Font.xs line 161
+
+=back
+
+=head2 C<list_fonts>
+X<list_fonts>
+
+=over
+
+=item C<my @fonts = $font-E<gt>list_fonts( );>X<my_fonts_font_E_gt_list_fonts_>
+
+Returns an array containing every font on the server. Each element is a "base"
+font, there may be bold, italic, and bold+italic version of each font pointed
+to by L<C<bold()>|/"bold"> or L<C<italic()>|/"italic">.
+
+Subsequent calls will usually return the same array quickly, but if a signal
+comes in indicating a change it will probably delete the old array and return
+a new one.
+
+Import this function with the C<:font> tag.
+
+=for hackers xs/Font.xs line 82
+
+=back
+
+=head2 C<name>
+X<name>
+
+=over
+
+=item C<my $str = $font-E<gt>name( );>X<my_str_font_E_gt_name_>
+
+Return a single string that names this font. Passing this string and zero for
+the attributes to L<C<find()>|/"find"> will return the same font.
+
+If the font's attributes are non-zero, this is done by appending a space and
+"Bold" and/or "Italic" to the name. This allows a single string rather than a
+string+attribute pair to identify a font, which is really useful for saving
+them in a file.
+
+=for hackers xs/Font.xs line 118
+
+=item C<$font-E<gt>name( $attributes );>X<_font_E_gt_name_attributes_>
+
+Returns a string name for this font with any attributes (C<BOLD>, C<ITALIC>).
+Using the returned string and attributes as arguments to L<C<find()>|/"find">
+will return the same font.
+
+=for hackers xs/Font.xs line 128
+
+=back
+
+=head2 C<plus>
+X<plus>
+
+=over
+
+=item C<my $similar = $font-E<gt>plus( $attributes );>X<my_similar_font_E_gt_plus_attributes_>
+
+Return a font from the same family with the extra attributes turned
+on. This may return the same font if the attributes are already on
+or there is no font with those attributes.
+
+=for hackers xs/Font.xs line 146
+
+=back
+
+=head2 C<sizes>
+X<sizes>
+
+=over
+
+=item C<my @list = $font-E<gt>sizes( );>X<my_list_font_E_gt_sizes_>
+
+Returns list of sizes. The sizes are sorted from smallest to largest and
+indicate what sizes can be given to L<C<setfont()>|FLTK::draw/"setfont"> that
+will be matched exactly (L<C<setfont()>|FLTK::draw/"setfont"> will pick the
+closest size for other sizes). A zero in the first location of the array
+indicates a scalable font, where any size works, although the array may still
+list sizes that work "better" than others. The returned array points at a
+static buffer that is overwritten each call, so you want to copy it if you
+plan to keep it.
+
+=for hackers xs/Font.xs line 173
+
+=back
+
+=head2 C<system_name>
+X<system_name>
+
+=over
+
+=item C<my $name = $font-E<gt>system_name( );>X<my_name_font_E_gt_system_name_>
+
+Returns the string actually passed to the operating system, which may be
+different than L<C<name()>|/"name">.
+
+For Xlib, this is a pattern sent to XListFonts to find all the sizes. For most
+other systems this is the same as L<C<name()>|/"name"> without any attributes.
+
+=pod 
+
+=for hackers xs/Font.xs line 221
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Font.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

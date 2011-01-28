@@ -1,0 +1,110 @@
+=pod
+
+=head1 NAME
+
+FLTK::FloatInput - Subclass of FLTK::NumericInput
+
+=head1 Description
+
+A subclass of L<NumericInput|FLTK::NumericInput> that only allows the user to
+type floating point numbers (sign, digits, decimal point, more digits, 'E' or
+'e', sign, digits), or hex constants that start with "0x". This is done by
+overriding the replace() method. Besides editing the text the user can use the
+up/down arrow keys to change the digits.
+
+You may want a L<ValueInput|FLTK::ValueInput> widget instead. It has up/down
+buttons (what is called a "Spinner" in some toolkits).
+
+If you change L<C<when()>|FLTK::Widget/"when"> to C<WHEN_ENTER_KEY>, the
+callback is only done when the user hits the up/down arrow keys or when the
+user types the Enter key. This may be more useful than the default setting of
+C<WHEN_CHANGED> which can make the callback happen when partially-edited
+numbers are in the field.
+
+The L<C<type()>|FLTK::Widget/"type"> can either be either
+C<FLTK::FloatInput::FLOAT> or C<FLTK::FloatInput::INT>. Setting it to C<INT>
+makes this act like the L<IntInput|FLTK::IntInput> subclass.
+
+=head1 Functions
+
+=head2 C<fvalue()>
+X<fvalue()>
+
+=over
+
+=item C<my $float = $floatinput-E<gt>fvalue()( );>X<my_float_floatinput_E_gt_fvalue_>
+
+Convert the string to a double using C<strtod()>.
+
+=pod 
+
+=for hackers xs/FloatInput.xs line 84
+
+=back
+
+=head2 C<ivalue>
+X<ivalue>
+
+=over
+
+=item C<my $int = $floatinput-E<gt>ivalue( );>X<my_int_floatinput_E_gt_ivalue_>
+
+Convert the string to an integer, using C<int(strtol())>.
+
+=for hackers xs/FloatInput.xs line 76
+
+=back
+
+=head2 C<lvalue()>
+X<lvalue()>
+
+=over
+
+=item C<my $long = $floatinput-E<gt>lvalue()( );>X<my_long_floatinput_E_gt_lvalue_>
+
+Convert the string to a long using C<strtol()>.
+
+=for hackers xs/FloatInput.xs line 80
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $input = $floatinput-E<gt>new( $x, $y, $w, $h, $label );>X<my_input_floatinput_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::FloatInput> object.
+
+=for hackers xs/FloatInput.xs line 57
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: FLTK.xs f1d05fa 2011-01-14 18:59:33Z sanko@cpan.org $
+
+=for git $Id: FloatInput.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,150 @@
+=pod
+
+=head1 NAME
+
+FLTK::BarGroup - A closable strip typically used as a container for toolbars
+
+=head1 Description
+
+The L<BarGroup|FLTK::BarGroup> is a closable strip that can be put in the
+edges of a L<Pack|FLTK::Pack>, usually it contains toolbars or buttons.
+
+Based on Frametab V2 contributed by Curtis Edwards (curt1@trilec.com)
+
+=head1 Functions
+
+=head2 C<close>
+X<close>
+
+=over
+
+=item C<my $is_closed = $bargroup-E<gt>close( );>X<my_is_closed_bargroup_E_gt_close_>
+
+
+=for hackers xs/BarGroup.xs line 104
+
+=back
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $bargroup-E<gt>default_style( );>X<my_style_bargroup_E_gt_default_style_>
+
+Get the style
+
+=for hackers xs/BarGroup.xs line 53
+
+=item C<$bargroup-E<gt>default_style( $style );>X<_bargroup_E_gt_default_style_style_>
+
+Set the style.
+
+=for hackers xs/BarGroup.xs line 57
+
+=back
+
+=head2 C<glyph_size>
+X<glyph_size>
+
+=over
+
+=item C<my $size = $bargroup-E<gt>glyph_size( );>X<my_size_bargroup_E_gt_glyph_size_>
+
+
+
+=for hackers xs/BarGroup.xs line 115
+
+=item C<$bargroup-E<gt>glyph_size( $size );>X<_bargroup_E_gt_glyph_size_size_>
+
+
+
+=pod 
+
+=for hackers xs/BarGroup.xs line 119
+
+=back
+
+=head2 C<layout>
+X<layout>
+
+=over
+
+=item C<$bargroup-E<gt>layout( );>X<_bargroup_E_gt_layout_>
+
+
+
+=for hackers xs/BarGroup.xs line 74
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $bargroup-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_self_bargroup_E_gt_new_x_y_w_h_label_begin_>
+
+Creates a new C<FLTK::BarGroup> object.
+
+=for hackers xs/BarGroup.xs line 34
+
+=back
+
+=head2 C<open>
+X<open>
+
+=over
+
+=item C<my $is_open = $bargroup-E<gt>open( );>X<my_is_open_bargroup_E_gt_open_>
+
+
+
+=for hackers xs/BarGroup.xs line 100
+
+=back
+
+=head2 C<opened>
+X<opened>
+
+=over
+
+=item C<my $is_it = $bargroup-E<gt>opened( );>X<my_is_it_bargroup_E_gt_opened_>
+
+
+
+=for hackers xs/BarGroup.xs line 83
+
+=item C<my $is_it = $bargroup-E<gt>opened( $value );>X<my_is_it_bargroup_E_gt_opened_value_>
+
+
+
+=for hackers xs/BarGroup.xs line 87
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: BarGroup.xs c9c8929 2011-01-22 05:57:50Z sanko@cpan.org $
+
+=cut

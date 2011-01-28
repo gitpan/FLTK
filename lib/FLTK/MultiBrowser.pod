@@ -1,0 +1,79 @@
+=pod
+
+=head1 NAME
+
+FLTK::MultiBrowser - Browser that lets the user select more than one item at a time
+
+=head1 Description
+
+The L<FLTK::MultiBrowser|FLTK::MultiBrowser> class is a subclass of
+L<FLTK::Browser|FLTK::Browser> which lets the user select any set of the
+lines. Clicking on an item selects only that one. Ctrl+click toggles items
+on/off. Shift+drag (or shift+arrows) will extend selections. Normally the call
+ack is done when any item changes it's state, but you can change this with
+L<C<when()>|FLTK::Widget/"when">.
+
+See L<FLTK::Browser|FLTK::Browser> for methods to control the display and
+"current item", and L<FLTK::Menu|FLTK::Menu> for methods to add and remove
+lines from the browser.
+
+The methods on L<FLTK::Browser|FLTK::Browser> for controlling the "value"
+control which item has the keyboard focus in a multi-browser. You must use the
+"select" methods described here to change what items are turned on:
+
+=over 
+
+=item L<C<set_item_selected()>|FLTK::Browser/"set_item_selected">
+
+=item L<C<select_only_this()>|FLTK::Browser/"select_only_this">
+
+=item L<C<deselect()>|FLTK::Browser/"deselect">
+
+=item L<C<select()>|FLTK::Browser/"select">
+
+=item L<C<selected()>|FLTK::Browser/"selected">
+
+=back 
+
+=head1 Functions
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $multibrowser-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_multibrowser_E_gt_new_x_y_w_h_label_>
+
+
+
+=pod 
+
+=for hackers xs/MultiBrowser.xs line 67
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: MultiBrowser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,424 @@
+=pod
+
+=head1 NAME
+
+FLTK::ComboBox - Single line input field with predefined choices via popup menu
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<at>
+X<at>
+
+=over
+
+=item C<my $letter = $combobox-E<gt>at( $index );>X<my_letter_combobox_E_gt_at_index_>
+
+
+
+=for hackers xs/ComboBox.xs line 150
+
+=back
+
+=head2 C<choice>
+X<choice>
+
+=over
+
+=item C<my $picked = $combobox-E<gt>choice( $value );>X<my_picked_combobox_E_gt_choice_value_>
+
+
+
+=for hackers xs/ComboBox.xs line 74
+
+=item C<my $picked = $combobox-E<gt>choice( );>X<my_picked_combobox_E_gt_choice_>
+
+
+
+=for hackers xs/ComboBox.xs line 78
+
+=back
+
+=head2 C<copy>
+X<copy>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>copy( $clipboard );>X<my_okay_combobox_E_gt_copy_clipboard_>
+
+
+
+=for hackers xs/ComboBox.xs line 275
+
+=back
+
+=head2 C<cut>
+X<cut>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>cut( );>X<my_okay_combobox_E_gt_cut_>
+
+
+
+=for hackers xs/ComboBox.xs line 243
+
+=item C<my $okay = $combobox-E<gt>cut( $n );>X<my_okay_combobox_E_gt_cut_n_>
+
+
+
+=for hackers xs/ComboBox.xs line 247
+
+=item C<my $okay = $combobox-E<gt>cut( $n, $b );>X<my_okay_combobox_E_gt_cut_n_b_>
+
+
+
+=for hackers xs/ComboBox.xs line 251
+
+=back
+
+=head2 C<find_choice>
+X<find_choice>
+
+=over
+
+=item C<my $item = $combobox-E<gt>find_choice( );>X<my_item_combobox_E_gt_find_choice_>
+
+
+
+=for hackers xs/ComboBox.xs line 91
+
+=back
+
+=head2 C<input_callback_>
+X<input_callback_>
+
+=over
+
+=item C<$combobox-E<gt>input_callback_( $widget, $d );>X<_combobox_E_gt_input_callback__widget_d_>
+
+
+
+=pod 
+
+=for hackers xs/ComboBox.xs line 355
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>insert( $text, $line );>X<my_okay_combobox_E_gt_insert_text_line_>
+
+
+
+=for hackers xs/ComboBox.xs line 266
+
+=back
+
+=head2 C<layout>
+X<layout>
+
+=over
+
+=item C<$combobox-E<gt>layout( );>X<_combobox_E_gt_layout_>
+
+
+
+=for hackers xs/ComboBox.xs line 55
+
+=back
+
+=head2 C<line_end>
+X<line_end>
+
+=over
+
+=item C<my $pos = $combobox-E<gt>line_end( $index );>X<my_pos_combobox_E_gt_line_end_index_>
+
+
+
+=for hackers xs/ComboBox.xs line 305
+
+=back
+
+=head2 C<line_start>
+X<line_start>
+
+=over
+
+=item C<my $pos = $combobox-E<gt>line_start( $index );>X<my_pos_combobox_E_gt_line_start_index_>
+
+
+
+=for hackers xs/ComboBox.xs line 301
+
+=back
+
+=head2 C<mark>
+X<mark>
+
+=over
+
+=item C<my $position = $combobox-E<gt>mark( );>X<my_position_combobox_E_gt_mark_>
+
+
+
+=for hackers xs/ComboBox.xs line 193
+
+=item C<$combobox-E<gt>mark( $m );>X<_combobox_E_gt_mark_m_>
+
+
+
+=for hackers xs/ComboBox.xs line 197
+
+=back
+
+=head2 C<mouse_position>
+X<mouse_position>
+
+=over
+
+=item C<my $pos = $combobox-E<gt>mouse_position( $rectangle );>X<my_pos_combobox_E_gt_mouse_position_rectangle_>
+
+
+
+=for hackers xs/ComboBox.xs line 327
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $combobox-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_combobox_E_gt_new_x_y_w_h_label_>
+
+
+
+=for hackers xs/ComboBox.xs line 36
+
+=back
+
+=head2 C<popup>
+X<popup>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>popup( $rect, $title, $menubar );>X<my_okay_combobox_E_gt_popup_rect_title_menubar_>
+
+
+
+=for hackers xs/ComboBox.xs line 64
+
+=back
+
+=head2 C<position>
+X<position>
+
+=over
+
+=item C<my $p = $combobox-E<gt>position( );>X<my_p_combobox_E_gt_position_>
+
+
+
+=for hackers xs/ComboBox.xs line 168
+
+=item C<$combobox-E<gt>position( $p );>X<_combobox_E_gt_position_p_>
+
+
+
+=for hackers xs/ComboBox.xs line 172
+
+=item C<$combobox-E<gt>position( $p, $m );>X<_combobox_E_gt_position_p_m_>
+
+
+
+=for hackers xs/ComboBox.xs line 176
+
+=back
+
+=head2 C<replace>
+X<replace>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>replace( $a, $b, $c, $d );>X<my_okay_combobox_E_gt_replace_a_b_c_d_>
+
+
+
+=for hackers xs/ComboBox.xs line 220
+
+=item C<my $okay = $combobox-E<gt>replace( $a, $b, $c );>X<my_okay_combobox_E_gt_replace_a_b_c_>
+
+
+
+=for hackers xs/ComboBox.xs line 224
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<my $length = $combobox-E<gt>size( $ofText );>X<my_length_combobox_E_gt_size_ofText_>
+
+
+
+=for hackers xs/ComboBox.xs line 159
+
+=back
+
+=head2 C<static_text>
+X<static_text>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>static_text( $string );>X<my_okay_combobox_E_gt_static_text_string_>
+
+
+
+=for hackers xs/ComboBox.xs line 133
+
+=item C<my $okay = $combobox-E<gt>static_text( $string, $n );>X<my_okay_combobox_E_gt_static_text_string_n_>
+
+
+
+=for hackers xs/ComboBox.xs line 137
+
+=back
+
+=head2 C<text>
+X<text>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>text( $string );>X<my_okay_combobox_E_gt_text_string_>
+
+
+
+=for hackers xs/ComboBox.xs line 100
+
+=item C<my $okay = $combobox-E<gt>text( $string, $n );>X<my_okay_combobox_E_gt_text_string_n_>
+
+
+
+=for hackers xs/ComboBox.xs line 104
+
+=item C<my $string = $combobox-E<gt>text( );>X<my_string_combobox_E_gt_text_>
+
+
+
+=for hackers xs/ComboBox.xs line 108
+
+=back
+
+=head2 C<undo>
+X<undo>
+
+=over
+
+=item C<my $okay = $combobox-E<gt>undo( );>X<my_okay_combobox_E_gt_undo_>
+
+
+
+=for hackers xs/ComboBox.xs line 284
+
+=back
+
+=head2 C<up_down_position>
+X<up_down_position>
+
+=over
+
+=item C<$combobox-E<gt>up_down_position( $p, $b );>X<_combobox_E_gt_up_down_position_p_b_>
+
+
+
+=for hackers xs/ComboBox.xs line 211
+
+=back
+
+=head2 C<word_end>
+X<word_end>
+
+=over
+
+=item C<my $pos = $combobox-E<gt>word_end( $index );>X<my_pos_combobox_E_gt_word_end_index_>
+
+
+
+=for hackers xs/ComboBox.xs line 297
+
+=back
+
+=head2 C<word_start>
+X<word_start>
+
+=over
+
+=item C<my $pos = $combobox-E<gt>word_start( $index );>X<my_pos_combobox_E_gt_word_start_index_>
+
+
+
+=for hackers xs/ComboBox.xs line 293
+
+=back
+
+=head2 C<xscroll>
+X<xscroll>
+
+=over
+
+=item C<my $x = $combobox-E<gt>xscroll( );>X<my_x_combobox_E_gt_xscroll_>
+
+
+
+=for hackers xs/ComboBox.xs line 337
+
+=back
+
+=head2 C<yscroll>
+X<yscroll>
+
+=over
+
+=item C<my $y = $combobox-E<gt>yscroll( );>X<my_y_combobox_E_gt_yscroll_>
+
+
+
+=for hackers xs/ComboBox.xs line 341
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: ComboBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

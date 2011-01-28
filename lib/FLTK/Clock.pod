@@ -1,0 +1,71 @@
+=pod
+
+=head1 NAME
+
+FLTK::Clock - Clock widget for the Fast Light Tool Kit
+
+=head1 Description
+
+This widget provides a round analog clock display and is provided for Forms
+compatibility. It installs a 1-second timeout callback using
+L<C<FLTK::add_timeout()>|FLTK/"add_timeout">.
+
+The L<C<color()>|FLTK::Color/"color"> fills the background. The
+L<C<selectioncolor()>|FLTK::color/"selectioncolor"> (which defaults to
+C<GRAY85>) fills the hands. The L<C<textcolor()>|FLTK::color/"textcolor"> is
+used to color in the tick marks and outline the hands.
+
+L<C<type()>|FLTK::Widget/"type"> may be set to C<SQUARE>, C<ROUND>, or
+C<DIGITAL>). See the base class L<ClockOutput|FLTK::ClockOutput> for some
+other methods.
+
+=head1 Functions
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $clock-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_clock_E_gt_new_x_y_w_h_label_>
+
+
+
+=pod 
+
+=for hackers xs/Clock.xs line 50
+
+=back
+
+=head1 Design credits
+
+Original clock display written by Paul Haeberli at SGI.
+
+Modifications by Mark Overmars for Forms
+
+Further changes by Bill Spitzak for fltk
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Clock.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,125 @@
+=pod
+
+=head1 NAME
+
+FLTK::Adjuster - FLTK::Valuator subclass
+
+=head1 Description
+
+L<Valuator|FLTK::Valuator> widget that displays three buttons. The user pushes
+down the button and drags left/right to adjust, or clicks the button to step,
+or shift-clicks to step backwards. One button moves in the
+L<C<step()>|FLTK::Valuator/"step"> values, the next in
+C<10 * >L<C<step()>|FLTK::Valuator/"step">, and the third in
+C<100 * >L<C<step()>|FLTK::Valuator/"step">. Holding down shift makes the
+buttons move in the opposite way.
+
+B<Note: This is a depreciated widget. Please see
+L<FLTK::Notes|FLTK::Notes/"NotesDepPol">.>
+
+=head1 Functions
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $adjuster-E<gt>default_style( );>X<my_style_adjuster_E_gt_default_style_>
+
+Returns the current L<style|FLTK::NamedStyle>.
+
+=head3 C<$adjuster-E<gt>default_style( $new_style )>
+
+=for hackers xs/Adjuster.xs line 75
+
+=item C<$adjuster-E<gt>default_style( $style );>X<_adjuster_E_gt_default_style_style_>
+
+Sets the current L<style|FLTK::NamedStyle>.
+
+=head2 soft
+
+=head3 C<$adjuster-E<gt>soft( $x )>
+
+=for hackers xs/Adjuster.xs line 81
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $adjuster-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_adjuster_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::Adjuster> object. This constructor expects integers for
+C<$x, $y, $w, $h> and accepts an optional string for C<$label>.
+
+Usage:
+
+=for markdown {%highlight perl%}
+
+  my $adjustor_1 = FLTK::Adjuster->new( $x, $y, $w, $h, $label );
+  my $adjustor_2 = FLTK::Adjuster->new( 40, 40, 150, 40);
+
+=for markdown {%endhighlight%}
+
+=for hackers xs/Adjuster.xs line 40
+
+=back
+
+=head2 C<soft>
+X<soft>
+
+=over
+
+=item C<$adjuster-E<gt>soft( $x );>X<_adjuster_E_gt_soft_x_>
+
+TODO
+
+=head3 C<my $x = $adjuster-E<gt>soft( )>
+
+=for hackers xs/Adjuster.xs line 102
+
+=item C<my $x = $adjuster-E<gt>soft( );>X<my_x_adjuster_E_gt_soft_>
+
+TODO
+
+=pod 
+
+=for hackers xs/Adjuster.xs line 108
+
+=back
+
+=head1 C<Constructor>
+
+=head1 Methods
+
+=head2 default_style
+
+=head3 C<$style = $adjuster-E<gt>default_style( )>
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Adjuster.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,713 @@
+=pod
+
+=head1 NAME
+
+FLTK::Input - One-line text input field
+
+=head1 Description
+
+This is the FLTK text input widget. It displays a single line of text and lets
+the user edit it. The text may contain any bytes (even C<\0>). The bytes
+C<0..31> are displayed in C<^X> notation, the rest are interpreted as UTF-8
+(see L<C<utf8decode()>|/"utf8decode">).
+
+The default L<C<when()>|FLTK::Widget/"when"> is C<WHEN_RELEASE>. This is fine
+for a popup control panel where nothing happens until the panel is closed. But
+for most other uses of the input field you want to change it. Useful values
+are:
+
+=over 
+
+=item C<WHEN_NEVER>
+
+The callback is not done, but L<C<changed()>|/"changed"> is turned on.
+
+=item C<WHEN_CHANGED>
+
+The callback is done each time the text is changed by the user.
+
+=item C<WHEN_ENTER_KEY>
+
+Hitting the enter key after changing the text will cause the callback.
+
+=item C<WHEN_ENTER_KEY_ALWAYS>
+
+The Enter key will do the callback even if the text has not changed. Useful
+for command fields. Also you need to do this if you want both the enter key
+and either C<WHEN_CHANGED> or C<WHEN_RELEASE>, in this case you can tell if
+Enter was typed by testing C<event_key() == FLTK::EnterKey>.
+
+=back 
+
+If you wish to restrict the text the user can type (such as limiting it to
+numbers, a particular length, etc), you should subclass this and override the
+L<C<replace()>|/"replace"> function with a version that rejects changes you
+don't want to allow.
+
+If you don't like the keybindings you can override
+L<C<handle()>|FLTK::Widget/"handle"> to change them.
+
+All arguments that are lengths or offsets into the strings are in bytes, not
+the UTF-8 characters they represent.
+
+=head1 Functions
+
+=head2 C<at>
+X<at>
+
+=over
+
+=item C<my $chr = $input-E<gt>at( $index );>X<my_chr_input_E_gt_at_index_>
+
+Same as L<C<text()[$index]>|/"text">, but may be faster in plausible
+implementations. No bounds checking is done.
+
+=for hackers xs/Input.xs line 261
+
+=back
+
+=head2 C<copy>
+X<copy>
+
+=over
+
+=item C<my $okay = $input-E<gt>copy( $to_clipboard );>X<my_okay_input_E_gt_copy_to_clipboard_>
+
+Put the current selection between L<C<mark()>|/"mark"> and
+L<C<position()>|/"position"> into the selection or clipboard by calling
+L<C<copy()>|FLTK/"copy">. If L<C<position()>|/"position"> and
+L<C<mark()>|/"mark"> are equal this does nothing (ie it does not clear the
+clipboard).
+
+If C<to_clipboard> is true, the text is put into the user-visible cut & paste
+clipboard (this is probably what you want). If C<to_clipboard> is false, it is
+put into the less-visible selection buffer that is used to do middle-mouse
+paste and drag & drop.
+
+To paste the clipboard, call L<C<paste(1)>|FLTK/"paste"> and fltk will send
+the widget a C<PASTE> event with the text, which will cause it to be inserted.
+
+=for hackers xs/Input.xs line 422
+
+=back
+
+=head2 C<cut>
+X<cut>
+
+=over
+
+=item C<my $okay = $input-E<gt>cut( );>X<my_okay_input_E_gt_cut_>
+
+Wrapper around L<C<replace()>|/"replace">, this deletes the region between the
+point and the mark. It does nothing if they are equal.
+
+=for hackers xs/Input.xs line 374
+
+=item C<my $okay = $input-E<gt>cut( $length );>X<my_okay_input_E_gt_cut_length_>
+
+Wrapper around L<C<replace()>|/"replace"> this deletes up to C<length>
+characters after the point, or before the point if C<length> is negative.
+C<length> is bounds checked.
+
+=for hackers xs/Input.xs line 379
+
+=item C<my $okay = $input-E<gt>cut( $begin, $end );>X<my_okay_input_E_gt_cut_begin_end_>
+
+Wrapper around L<C<replace()>|/"replace"> this deletes the characters between
+C<begin> and C<end>. The values are clamped to the ends of the string, and
+C<end> can be less than C<begin>.
+
+=for hackers xs/Input.xs line 385
+
+=back
+
+=head2 C<handle_key>
+X<handle_key>
+
+=over
+
+=item C<my $handled = $input-E<gt>handle_key( );>X<my_handled_input_E_gt_handle_key_>
+
+Handle C<KEY> events. The default L<C<handle()>|FLTK::Widget/"handle"> method
+calls this. This provides an Emacs and Windows style of editing. Most Emacs
+commands are first run through L<C<try_shortcut()>|/"try_shortcut"> to test if
+they are menu items for the program.
+
+=over 
+
+=item C<Shift>: do not move the mark when moving the point
+
+=item C<LeftKey>, C<Ctrl+B>: move left one character
+
+=item C<Ctrl+LeftKey>, C<Alt+B>: move left one word
+
+=item C<RightKey>, C<Ctrl+F>: move right one character
+
+=item C<Ctrl+RightKey>, C<Alt+F>: move right one word
+
+=item C<Ctrl+A>: go to start of line, if already there select all text
+
+=item C<HomeKey>: go to start of line
+
+=item C<EndKey>, Ctrl+E>: go to end of line
+
+=item C<Ctrl+Insert>: copy
+
+=item C<Shift+Insert>: paste
+
+=item C<Shift+Delete>: cut
+
+=item C<Delete>, C<Ctrl+D>: delete region or one character
+
+=item C<Ctrl+Delete>, C<Alt+D>: delete region or one word
+
+=item C<BackSpace>, C<Ctrl+H>: delete region or left one character
+
+=item C<Ctrl+BackSpace>, C<Alt+H>: delete region or left one word
+
+=item C<Return>, C<KeypadEnter>: if
+L<C<when() & WHEN_ENTER_KEY>|FLTK::Widget/"when">, and no shift keys held
+down, this selects all and does the callback. Otherwise key is ignored.
+
+=item C<Ctrl+K>: cuts from the position to the end of line
+
+=item C<Ctrl+C>: copy
+
+=item C<Ctrl+T>: swap the two characters around point. If point is at end swap
+the last two characters.
+
+=item C<Ctrl+U>: delete all the text
+
+=item C<Ctrl+V>: paste
+
+=item C<Ctrl+X>, C<Ctrl+W>: cut
+
+=item C<Ctrl+Y>: redo
+
+=item C<Ctrl+Z>, C<Ctrl+/>: undo
+
+=item All printing characters are run through L<C<compose()>|/"compose"> and
+the result used to insert text.
+
+=back 
+
+For L<Input|FLTK::Input> widgets in C<WORDWRAP> mode, you can also do these:
+
+=over 
+
+=item C<UpKey>, C<Ctrl+P>: move up one line
+
+=item C<DownKey>, C<Ctrl+N>: move down one line
+
+=item C<PageUpKey>: move up 1 line less than the vertical widget size
+
+=item C<PageDownKey>: move down 1 line less than the vertical widget size
+
+=item C<Ctrl+HomeKey>, C<Alt+A>: got to start of text
+
+=item C<Ctrl+EndKey>, C<Alt+E>: go to end of text
+
+=item C<Return>, C<KeypadEnter>: inserts a newline
+
+=item C<Ctrl+O>: insert a newline and leave the cursor before it.
+
+=back 
+
+This method may be overridden for subclassing.
+
+=for hackers xs/Input.xs line 105
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<my $okay = $input-E<gt>insert( $text );>X<my_okay_input_E_gt_insert_text_>
+
+Wrapper around L<C<replace()>|/"replace">. This inserts the string at the
+point and leaves the point after it.
+
+=for hackers xs/Input.xs line 402
+
+=item C<my $okay = $input-E<gt>insert( $text, $length );>X<my_okay_input_E_gt_insert_text_length_>
+
+Wrapper around L<C<replace()>|/"replace">. This inserts C<length> characters
+from the C<text> (including C<\0> characters!) at the point and leaves the
+point after it.
+
+=for hackers xs/Input.xs line 407
+
+=back
+
+=head2 C<line_end>
+X<line_end>
+
+=over
+
+=item C<my $index = $input-E<gt>line_end( $position );>X<my_index_input_E_gt_line_end_position_>
+
+Returns the location of the next newline or wordwrap space at or after
+C<position>.
+
+=for hackers xs/Input.xs line 468
+
+=back
+
+=head2 C<line_start>
+X<line_start>
+
+=over
+
+=item C<my $index = $input-E<gt>line_start( $position );>X<my_index_input_E_gt_line_start_position_>
+
+Returns the location of the start of the line containing the C<position>.
+
+=for hackers xs/Input.xs line 464
+
+=back
+
+=head2 C<mark>
+X<mark>
+
+=over
+
+=item C<my $mark = $input-E<gt>mark( );>X<my_mark_input_E_gt_mark_>
+
+
+
+=for hackers xs/Input.xs line 326
+
+=item C<$input-E<gt>mark( $new_mark );>X<_input_E_gt_mark_new_mark_>
+
+Same as L<C<$inputE<gt>position($input-E<gt>position(),$index)>|/"position">.
+
+=for hackers xs/Input.xs line 330
+
+=back
+
+=head2 C<mouse_position>
+X<mouse_position>
+
+=over
+
+=item C<my $index = $input-E<gt>mouse_position( $rectangle );>X<my_index_input_E_gt_mouse_position_rectangle_>
+
+Figure out what character the most recent mouse event would be pointing to,
+assumming you drew the text by calling L<C<draw()>|FLTK::draw/"draw"> with the
+same L<C<rectangle>|FLTK::Rectangle>. Returns C<0> if the mouse is before the
+first character, and L<C<size()>|/"size"> if it is after the last one.
+
+=for hackers xs/Input.xs line 487
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $input = $input-E<gt>new( $x, $y, $w, $h, $label );>X<my_input_input_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::Input> object. Obviously.
+
+=for hackers xs/Input.xs line 82
+
+=back
+
+=head2 C<position>
+X<position>
+
+=over
+
+=item C<my $pos = $input-E<gt>position( );>X<my_pos_input_E_gt_position_>
+
+Returns the current location of the cursor.
+
+=for hackers xs/Input.xs line 289
+
+=item C<$input-E<gt>position( $new_position );>X<_input_E_gt_position_new_position_>
+
+Same as
+L<C<position($new_position, $new_position)>|/"position_new_position_new_mark_">.
+
+=for hackers xs/Input.xs line 293
+
+=item C<$input-E<gt>position( $new_position, $new_mark );>X<_input_E_gt_position_new_position_new_mark_>
+
+The input widget maintains two pointers into the string. The "position" is
+where the cursor is. The "mark" is the other end of the selected text. If they
+are equal then there is no selection. Changing this does not affect the X
+selection, call L<C<copy()>|/"copy"> if you want that.
+
+Changing these values causes a L<C<redraw()>|/"redraw">. The new values are
+bounds checked and limited to the size of the string.
+
+It is up to the caller to make sure the position and mark are at the borders
+of UTF-8 characters!
+
+=for hackers xs/Input.xs line 298
+
+=back
+
+=head2 C<replace>
+X<replace>
+
+=over
+
+=item C<my $return = $input-E<gt>replace( $begin, $end, $text, $length );>X<my_return_input_E_gt_replace_begin_end_text_length_>
+
+This call does all editing of the text. It deletes the region between C<begin>
+and C<end> (either one may be less or equal to the other), and then inserts
+C<length> (which may be zero) characters from the string C<text> at that point
+and leaves the L<C<mark()>|/"mark"> and L<C<position()>|/"position"> after the
+insertion. If the text is changed the callback is done if the
+L<C<when()>|FLTK::Widget/"when"> flags indicate it should be done.
+
+C<begin> and C<end> are bounds checked so don't worry about sending values
+outside the length of the string.
+
+=for hackers xs/Input.xs line 357
+
+=back
+
+=head2 C<reserve>
+X<reserve>
+
+=over
+
+=item C<$input-E<gt>reserve( $newsize );>X<_input_E_gt_reserve_newsize_>
+
+Reserve the interal private buffer of at least C<newsize> bytes, even if the
+current L<C<text()>|/"text"> is not that long. Can be used to avoid
+unnecessary memory reallocations if you know you will be replacing the
+L<C<text()>|/"text"> with a longer one later.
+
+=for hackers xs/Input.xs line 271
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<my $length = $input-E<gt>size( );>X<my_length_input_E_gt_size_>
+
+Returns the number of characters in L<C<text()>|/"text">. This may be greater
+than C<length($input->text())> if there are C<NULL> characters in it.
+
+=for hackers xs/Input.xs line 266
+
+=back
+
+=head2 C<static_text>
+X<static_text>
+
+=over
+
+=item C<my $ret = $input-E<gt>static_text( $string, $length );>X<my_ret_input_E_gt_static_text_string_length_>
+
+Same as L<C<text($string, $length)>|/"text_string_length_">, except it does
+not copy the string, instead it makes L<C<text()>|/"text"> return a pointer to
+C<$string> (unless C<$length> is 0, in which case it makes it point to a
+zero-length string).
+
+C<$string> must point to static memory that will not be altered until at least
+the L<Input|FLTK::Input> widget is destroyed or the L<C<text()>|/"text"> is
+changed again. If the user attempts to edit the string it is then copied to
+the internal buffer and the editing done there. This can save a lot of time
+and memory if your program is changing the string to various constants a lot
+but the user rarely edits it.
+
+=for hackers xs/Input.xs line 233
+
+=item C<my $ret = $input-E<gt>static_text( $string );>X<my_ret_input_E_gt_static_text_string_>
+
+Same as
+L<C<$input-E<gt>static_text($string, $string ? length($string) : 0)>|/"static_text">.
+
+=for hackers xs/Input.xs line 247
+
+=back
+
+=head2 C<text>
+X<text>
+
+=over
+
+=item C<my $different = $input-E<gt>text( $string, $length );>X<my_different_input_E_gt_text_string_length_>
+
+Change the L<C<text()>|/"text"> to return the first C<length> bytes of
+C<string> and L<C<size()>|/"size"> to return C<length>, and set the
+L<C<position()>|/"position"> to C<length> and the L<C<mark()>|/"mark"> to zero
+(thus highlighting the entire value).
+
+Returns true if the bytes in the new string are different than the old string.
+
+=for hackers xs/Input.xs line 194
+
+=item C<my $different = $input-E<gt>text( $string );>X<my_different_input_E_gt_text_string_>
+
+Same as
+L<C<$input-E<gt>text($string, $string ? length($string) : 0)>|/"text">.
+
+=for hackers xs/Input.xs line 203
+
+=item C<my $string = $input-E<gt>text( );>X<my_string_input_E_gt_text_>
+
+The current string, as edited by the user. L<C<size()>|/"size"> returns how
+many bytes are in the string.
+
+=for hackers xs/Input.xs line 208
+
+=back
+
+=head2 C<undo>
+X<undo>
+
+=over
+
+=item C<my $okay = $input-E<gt>undo( );>X<my_okay_input_E_gt_undo_>
+
+If this is the most recent widget on which L<C<replace()>|/"replace"> was done
+on, this will undo that L<C<replace()>|/"replace"> and probably several others
+(ie if the user has typed a lot of text it will undo all of it even though
+that was probably many calls to L<C<replace()>|/"replace">). Returns true if
+any change was made.
+
+=for hackers xs/Input.xs line 443
+
+=back
+
+=head2 C<up_down_position>
+X<up_down_position>
+
+=over
+
+=item C<$input-E<gt>up_down_position( $position, $keepmark );>X<_input_E_gt_up_down_position_position_keepmark_>
+
+Does the correct thing for arrow keys. C<position> must be the location of the
+start of a line. Sets the L<position|/"position"> (and L<mark|/"mark"> if
+C<keepmark> is false) to somewhere after C<position>, such that pressing the
+arrows repeatedly will cause the point to move up and down.
+
+=for hackers xs/Input.xs line 345
+
+=back
+
+=head2 C<word_end>
+X<word_end>
+
+=over
+
+=item C<my $index = $input-E<gt>word_end( $position );>X<my_index_input_E_gt_word_end_position_>
+
+Returns the location of the next word boundary at or after C<position>.
+
+=for hackers xs/Input.xs line 460
+
+=back
+
+=head2 C<word_start>
+X<word_start>
+
+=over
+
+=item C<my $index = $input-E<gt>word_start( $position );>X<my_index_input_E_gt_word_start_position_>
+
+Returns the location of the first word boundary at or before C<position>.
+
+=for hackers xs/Input.xs line 456
+
+=back
+
+=head2 C<xscroll>
+X<xscroll>
+
+=over
+
+=item C<my $x = $input-E<gt>xscroll( );>X<my_x_input_E_gt_xscroll_>
+
+
+=for hackers xs/Input.xs line 500
+
+=back
+
+=head2 C<yscroll>
+X<yscroll>
+
+=over
+
+=item C<my $y = $input-E<gt>yscroll( );>X<my_y_input_E_gt_yscroll_>
+
+
+=for hackers xs/Input.xs line 503
+
+=back
+
+=head1 Values for L<C<type>|FLTK::Widget/"type">
+
+=over 
+
+=item C<NORMAL>
+
+=item C<FLOAT_INPUT>
+
+=item C<INT_INPUT>
+
+=item C<SECRET>
+
+=item C<WORDWRAP>
+
+=back 
+
+=head1 Subclassing FLTK::Input
+
+The following methods may be overridden in subclasses of
+L<FLTK::Input|FLTK::Input>:
+
+=head2 C<handle>
+
+You may override C<handle> which accepts an C<event> and a
+L<C<rectangle>|FLTK::Rectangle>. The passed rectangle is the area the text is
+to be drawn into. This method is provided so a subclass can place the text
+into a subrectangle.
+
+The default handle...
+
+=over 
+
+=item * Handles C<FOCUS>, C<UNFOCUS>
+
+=item * May do callback on C<HIDE>
+
+=item * Any keystrokes call L<C<handle_key()>|/"handle_key">
+
+=item * Handles C<PUSH>, C<DRAG>, C<RELEASE> to select regions of text, move
+the cursor, and start drag & drop. Double click selects words, triple click
+selects lines (triple click is broken on Windows).
+
+=item * Receives drag&drop and accepts.
+
+=item * Handles C<PASTE> events caused by accepting the drag&drop or by
+calling L<C<paste()>|FLTK/"paste"> (which L<C<handle_key()>|/"handle_key">
+does for C<^V>)
+
+=back 
+
+=head2 C<handle_key>
+
+Handle C<KEY> events. The default L<C<handle()>|FLTK::Widget/"handle"> method
+calls this. This provides an Emacs and Windows style of editing. Most Emacs
+commands are first run through L<C<try_shortcut()>|/"try_shortcut"> to test if
+they are menu items for the program.
+
+=over 
+
+=item C<Shift>: do not move the mark when moving the point
+
+=item C<LeftKey>, C<Ctrl+B>: move left one character
+
+=item C<Ctrl+LeftKey>, C<Alt+B>: move left one word
+
+=item C<RightKey>, C<Ctrl+F>: move right one character
+
+=item C<Ctrl+RightKey>, C<Alt+F>: move right one word
+
+=item C<Ctrl+A>: go to start of line, if already there select all text
+
+=item C<HomeKey>: go to start of line
+
+=item C<EndKey>, Ctrl+E>: go to end of line
+
+=item C<Ctrl+Insert>: copy
+
+=item C<Shift+Insert>: paste
+
+=item C<Shift+Delete>: cut
+
+=item C<Delete>, C<Ctrl+D>: delete region or one character
+
+=item C<Ctrl+Delete>, C<Alt+D>: delete region or one word
+
+=item C<BackSpace>, C<Ctrl+H>: delete region or left one character
+
+=item C<Ctrl+BackSpace>, C<Alt+H>: delete region or left one word
+
+=item C<Return>, C<KeypadEnter>: if
+L<C<when() & WHEN_ENTER_KEY>|FLTK::Widget/"when">, and no shift keys held
+down, this selects all and does the callback. Otherwise key is ignored.
+
+=item C<Ctrl+K>: cuts from the position to the end of line
+
+=item C<Ctrl+C>: copy
+
+=item C<Ctrl+T>: swap the two characters around point. If point is at end swap
+the last two characters.
+
+=item C<Ctrl+U>: delete all the text
+
+=item C<Ctrl+V>: paste
+
+=item C<Ctrl+X>, C<Ctrl+W>: cut
+
+=item C<Ctrl+Y>: redo
+
+=item C<Ctrl+Z>, C<Ctrl+/>: undo
+
+=item All printing characters are run through L<C<compose()>|/"compose"> and
+the result used to insert text.
+
+=back 
+
+For L<Input|FLTK::Input> widgets in C<WORDWRAP> mode, you can also do these:
+
+=over 
+
+=item C<UpKey>, C<Ctrl+P>: move up one line
+
+=item C<DownKey>, C<Ctrl+N>: move down one line
+
+=item C<PageUpKey>: move up 1 line less than the vertical widget size
+
+=item C<PageDownKey>: move down 1 line less than the vertical widget size
+
+=item C<Ctrl+HomeKey>, C<Alt+A>: got to start of text
+
+=item C<Ctrl+EndKey>, C<Alt+E>: go to end of text
+
+=item C<Return>, C<KeypadEnter>: inserts a newline
+
+=item C<Ctrl+O>: insert a newline and leave the cursor before it.
+
+=back 
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Input.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

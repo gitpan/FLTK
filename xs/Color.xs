@@ -4,230 +4,7 @@ MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
 #ifndef DISABLE_COLOR
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: Color.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::Color - A color value (Wow, yeah, I know...)
-
-=head1 Description
-
-L<FLTK::Color|FLTK::Color> is a typedef for a 32-bit integer containing r,g,b
-bytes and an "index" in the lowest byte (the I<first> byte on a
-little-endian machine such as an x86).  For instance C<0xFF008000> is 255 red,
-zero green, and 128 blue. If rgb are not zero then the low byte is ignored, or
-may be treated as "alpha" by some code.
-
-If the rgb is zero, the N is the color "index". This index is used to look up
-an L<FLTK::Color|FLTK::Color> in an internal table of 255 colors shown here.
-All the indexed colors may be changed by using
-L<C<set_color_index()>|/"set_color_index">.  However FLTK uses the ones
-between 32 and 255 and assummes they are not changed from their default
-values.
-
-A Color of zero (L<C<FLTK::NO_COLOR>|FLTK::Color/"NO_COLOR">) will draw black
-but is ambiguous. It is returned as an error value or to indicate portions of
-a L<Style|FLTK::Style> that should be inherited, and it is also used as the
-default label color for everything so that changing color zero can be used by
-the C<-fg> switch. You should use L<C<FLTK::BLACK>|FLTK::Color/"BLACK"> (56)
-to get black.
-
-=head1 Functions
-
-Symbolic names for some of the indexed colors.
-
-The 24-entry "gray ramp" is modified by
-L<C<FLTK::set_background()>|FLTK/"set_background"> so that the color
-C<FLTK::GRAY75> is the background color, and the others are a nice range from
-black to a lighter version of the gray. These are used to draw box edges. The
-gray levels are chosen to be evenly spaced, listed here is the actual 8-bit
-and decimal gray level assigned by default.  Also listed here is the letter
-used for L<FLTK::FrameBox|FLTK::FrameBox> and the old fltk1.1 names used for
-these levels.
-
-The remiander of the colormap is a C<5x8x5> color cube. This cube is used to
-dither images on 8-bit screens X colormaps to reduce the number of colors
-used.
-
-=begin apidoc
-
-=cut
-
 #include <fltk/Color.h>
-
-=for apidoc T[color]UE||int c|NO_COLOR||
-
-Black, empty place holder in Style
-
-=for apidoc T[color]UE||int c|FREE_COLOR|
-
-Starting from index 16 is the FREE_COLOR area
-
-=for apidoc T[color]UE||int c|NUM_FREE_COLOR|
-
-Number of free color slots starting from index FREE_COLOR
-
-=for apidoc T[color]UE||int c|GRAY00|
-
-hex=00, dec=.00, framebox=A, fltk1 = GRAY0, GRAY_RAMP
-
-=for apidoc T[color]UE||int c|GRAY05|
-
-hex=0d, dec=.05, framebox=B
-
-=for apidoc T[color]UE||int c|GRAY10|
-
-hex=1a, dec=.10, framebox=C
-
-=for apidoc T[color]UE||int c|GRAY15|
-
-hex=27, dec=.15, framebox=D
-
-=for apidoc T[color]UE||int c|GRAY20|
-
-hex=34, dec=.20, framebox=E
-
-=for apidoc T[color]UE||int c|GRAY25|
-
-hex=41, dec=.25, framebox=F
-
-=for apidoc T[color]UE||int c|GRAY30|
-
-hex=4f, dec=.31, framebox=G
-
-=for apidoc T[color]UE||int c|GRAY33|
-
-hex=5c, dec=.36, framebox=H, fltk1 = DARK3
-
-=for apidoc T[color]UE||int c|GRAY35|
-
-hex=69, dec=.41, framebox=I
-
-=for apidoc T[color]UE||int c|GRAY40|
-
-hex=76, dec=.46, framebox=J (18%% gray card)
-
-=for apidoc T[color]UE||int c|GRAY45|
-
-hex=83, dec=.51, framebox=K
-
-=for apidoc T[color]UE||int c|GRAY50|
-
-hex=90, dec=.56, framebox=L
-
-=for apidoc T[color]UE||int c|GRAY55|
-
-hex=9e, dec=.62, framebox=M
-
-=for apidoc T[color]UE||int c|GRAY60|
-
-hex=ab, dec=.67, framebox=N, fltk1 = DARK2
-
-=for apidoc T[color]UE||int c|GRAY65|
-
-hex=b8, dec=.72, framebox=O
-
-=for apidoc T[color]UE||int c|GRAY66||
-
-hex=c5, dec=.77, framebox=P, fltk1 = DARK1, INACTIVE_COLOR
-
-=for apidoc T[color]UE||int c|GRAY70||
-
-hex=d2, dec=.82, framebox=Q
-
-=for apidoc T[color]UE||int c|GRAY75||
-
-hex=e0, dec=.88, framebox=R, fltk1 = GRAY, SELECTION_COLOR
-
-=for apidoc T[color]UE||int c|GRAY80||
-
-hex=e5, dec=.90, framebox=S
-
-=for apidoc T[color]UE||int c|GRAY85||
-
-hex=ea, dec=.92, framebox=T, fltk1 = LIGHT1
-
-=for apidoc T[color]UE||int c|GRAY90||
-
-hex=f4, dec=.96, framebox=V, fltk1 = LIGHT2
-
-=for apidoc T[color]UE||int c|GRAY95||
-
-hex=f9, dec=.98, framebox=W
-
-=for apidoc T[color]UE||int c|GRAY99||
-
-hex=ff, dec=1.0, framebox=X, fltk1 = LIGHT3
-
-=for apidoc T[color]UE||int c|BLACK||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|RED||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|GREEN||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|YELLOW||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|BLUE||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|MAGENTA||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|CYAN||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|WHITE||
-
-Corner of color cube
-
-=for apidoc T[color]UE||int c|DARK_RED||
-
-
-
-=for apidoc T[color]UE||int c|DARK_GREEN||
-
-
-
-=for apidoc T[color]UE||int c|DARK_YELLOW||
-
-
-
-=for apidoc T[color]UE||int c|DARK_BLUE||
-
-
-
-=for apidoc T[color]UE||int c|DARK_MAGENTA||
-
-
-
-=for apidoc T[color]UE||int c|DARK_CYAN||
-
-
-
-=for apidoc T[color]UE||int c|WINDOWS_BLUE||
-
-Default selection_color
-
-=cut
 
 BOOT:
     register_constant( "NO_COLOR", newSViv( fltk::NO_COLOR ));
@@ -313,18 +90,6 @@ BOOT:
     register_constant( "WINDOWS_BLUE", newSViv( fltk::WINDOWS_BLUE ));
     export_tag("WINDOWS_BLUE", "color");
 
-=for apidoc T[color]||FLTK::Color c|color|char * name|
-
-Turn a string into a color. If C<name> is C<undef>, this returns
-L<C<NO_COLOR>|/"NO_COLOR">. Otherwise it returns
-L<C<FLTK::parsecolor(name, strlen(name))>|FLTK/"parsecolor">.
-
-=for apidoc T[color]||FLTK::Color c|color|int r|int g|int b|
-
-
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 fltk::Color
@@ -349,45 +114,6 @@ BOOT:
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
-=for apidoc T[color]||FLTK::Color color|parsecolor|char * name|int length|
-
-Same as the other one.
-
-=for apidoc T[color]||FLTK::Color color|parsecolor|char * name|
-
-Turn the first C<n> bytes of C<name> into an FLTK color. This allows you to
-parse a color out of the middle of a string.
-
-Recognized values are:
-
-=over
-
-=item * "" turns into NO_COLOR
-
-=item * "0"-"99" decimal fltk color number, only works for indexed color range
-
-=item * "0xnnn" hex value of any fltk color number
-
-=item * "rgb" or "#rgb" three hex digits for rgb
-
-=item * "rrggbb" or "#rrggbb" 2 hex digits for each of rgb
-
-=item * "rrggbbaa" or "#rrggbbaa" fltk color number in hex
-
-=item * "rrrgggbbb" or "#rrrgggbbb" 3 hex digits for each of rgb
-
-=item * "rrrrggggbbbb" or "#rrrrggggbbbb" 4 hex digits for each of rgb
-
-=item * 17 "web safe colors" as defined by CSS 2.1
-
-=item * If FLTK is compiled to use X11, then XParseColor() is tried
-
-=item * all other strings return NO_COLOR.
-
-=back
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 fltk::Color
@@ -402,15 +128,6 @@ BOOT:
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
-=for apidoc T[color]||FLTK::Color color|lerp|FLTK::Color color1|FLTK::Color color2|float weight|
-
-Return C<(1-weight)*color1 + weight*color2>. C<weight> is clamped to the 0-1
-range before use.
-
-=for hackers Found in F<src/setcolor.cxx>
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 fltk::Color
@@ -424,19 +141,6 @@ BOOT:
     export_tag("lerp", "color");
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
-
-=for apidoc T[color]||FLTK::Color color|inactive|FLTK::Color fore|FLTK::Color back|
-
-Same as L<C<lerp(fg, bg, .5)>|/"lerp">, it grays out the color.
-
-=for apidoc T[color]||FLTK::Color color|inactive|FLTK::Color fore|
-
-Same as L<C<lerp(fg, getbgcolor(), .5)>|/"lerp">. This is for
-back-compatability only?
-
-=for hackers Found in F<src/setcolor.cxx>
-
-=cut
 
 MODULE = FLTK::Color               PACKAGE = FLTK
 
@@ -458,14 +162,6 @@ BOOT:
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
-=for apidoc T[color]||FLTK::Color color|contrast|FLTK::Color fg|FLTK::Color bg|
-
-Returns C<fg> if fltk decides it can be seen well when drawn against a C<bg>.
-Otherwise it returns either L<C<FLTK::BLACK>|FLTK/"BLACK"> or
-L<C<fltk::WHITE>|FLTK/"WHITE">.
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 fltk::Color
@@ -479,14 +175,6 @@ BOOT:
     export_tag("contrast", "color");
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
-
-=for apidoc T[color]||AV * rgb|split_color|FLTK::Color color|
-
-Set C<r,g,b> to the 8-bit components of this color. If it is an indexed color
-they are looked up in the table, otherwise they are simply copied out of the
-color number.
-
-=cut
 
 MODULE = FLTK::Color               PACKAGE = FLTK
 
@@ -512,13 +200,6 @@ BOOT:
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
-=for apidoc T[color]|||set_color_index|FLTK::Color index|FLTK::Color color|
-
-Set one of the indexed colors to the given rgb color. C<index> must be in the
-range 0-255, and C<color> must be a non-indexed rgb color.
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 void
@@ -530,13 +211,6 @@ BOOT:
     export_tag("set_color_index", "color");
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
-
-=for apidoc T[color]|||get_color_index|FLTK::Color color|
-
-Return the rgb form of C<color>. If it is an indexed color that entry is
-returned. If it is an rgb color it is returned unchanged.
-
-=cut
 
 MODULE = FLTK::Color               PACKAGE = FLTK
 
@@ -552,17 +226,6 @@ BOOT:
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
 
-=for apidoc T[color]|||set_background|FLTK::Color color|
-
-C<FLTK::GRAY75> is replaced with the passed color, and all the other
-C<FLTK::GRAY*> colors are replaced with a color ramp (or sometimes a straight
-line) so that using them for highlighted edges of raised buttons looks
-correct.
-
-=for hackers Found in F<src/Style.cxx>
-
-=cut
-
 MODULE = FLTK::Color               PACKAGE = FLTK
 
 void
@@ -574,13 +237,6 @@ BOOT:
     export_tag("set_background", "color");
 
 MODULE = FLTK::Color               PACKAGE = FLTK::Color
-
-=for apidoc T[color]||FLTK::Color color|nearest_index|FLTK::Color color|
-
-Find an indexed color in the range 56-127 that is closest to this color. If
-this is an indexed color it is returned unchanged.
-
-=cut
 
 MODULE = FLTK::Color               PACKAGE = FLTK
 

@@ -1,0 +1,460 @@
+=pod
+
+=head1 NAME
+
+FLTK::Rectangle - Base class for Widgets, Windows, Monitors, and just about everything else you can see
+
+=head1 Description
+
+TODO
+
+=head1 Functions
+
+=head2 C<b>
+X<b>
+
+=over
+
+=item C<my $b = $rectangle-E<gt>b( );>X<my_b_rectangle_E_gt_b_>
+
+Returns C<L<y( )|FLTK::Rectangle/"y"> + L<h( )|FLTK::Rectangle/"h">>, the
+bottom edge of the rectangle.
+
+=for hackers xs/Rectangle.xs line 167
+
+=back
+
+=head2 C<baseline_y>
+X<baseline_y>
+
+=over
+
+=item C<my $baseline = $rectangle-E<gt>baseline_y( );>X<my_baseline_rectangle_E_gt_baseline_y_>
+
+Where to put baseline to center current font nicely.
+
+=for hackers xs/Rectangle.xs line 327
+
+=back
+
+=head2 C<center_x>
+X<center_x>
+
+=over
+
+=item C<my $x = $rectangle-E<gt>center_x( );>X<my_x_rectangle_E_gt_center_x_>
+
+Integer center position. Rounded to the left if L<C<w( )>|FLTK::Rectangle/"w">
+is odd.
+
+=for hackers xs/Rectangle.xs line 309
+
+=back
+
+=head2 C<center_y>
+X<center_y>
+
+=over
+
+=item C<my $y = $rectangle-E<gt>center_y( );>X<my_y_rectangle_E_gt_center_y_>
+
+Integer center position. Rounded to lower y if L<C<h( )>|FLTK::Rectangle/"h">
+is odd.
+
+=for hackers xs/Rectangle.xs line 314
+
+=back
+
+=head2 C<contains>
+X<contains>
+
+=over
+
+=item C<my $can_has = $rectangle-E<gt>contains( $x, $y );>X<my_can_has_rectangle_E_gt_contains_x_y_>
+
+True if rectangle contains the pixel who's upper-left corner is at C<$x, $y>.
+
+=for hackers xs/Rectangle.xs line 102
+
+=back
+
+=head2 C<empty>
+X<empty>
+
+=over
+
+=item C<my $empty = $rectangle-E<gt>empty( );>X<my_empty_rectangle_E_gt_empty_>
+
+True if L<C<w( )>|FLTK::Rectangle/"w"> or L<C<h( )>|FLTK::Rectangle/"h"> are
+less or equal to zero.
+
+=for hackers xs/Rectangle.xs line 290
+
+=back
+
+=head2 C<h>
+X<h>
+
+=over
+
+=item C<my $h = $rectangle-E<gt>h( );>X<my_h_rectangle_E_gt_h_>
+
+Distance between top and bottom edges.
+
+=for hackers xs/Rectangle.xs line 136
+
+=item C<$rectangle-E<gt>h( $value );>X<_rectangle_E_gt_h_value_>
+
+Change L<C<h( )>|FLTK::Rectangle/"h"> by moving the bottom edge.
+L<C<y( )>|FLTK::Rectangle/"y"> does not change.
+
+=for hackers xs/Rectangle.xs line 140
+
+=back
+
+=head2 C<inset>
+X<inset>
+
+=over
+
+=item C<$rectangle-E<gt>inset( $d );>X<_rectangle_E_gt_inset_d_>
+
+Move all edges in by C<$d>. See also L<Symbol::inset( )|FLTK::Symbol/"inset">.
+
+=for hackers xs/Rectangle.xs line 272
+
+=back
+
+=head2 C<intersect>
+X<intersect>
+
+=over
+
+=item C<$rectangle-E<gt>intersect( $r );>X<_rectangle_E_gt_intersect_r_>
+
+
+
+=pod 
+
+=for hackers xs/Rectangle.xs line 340
+
+=back
+
+=head2 C<merge>
+X<merge>
+
+=over
+
+=item C<$rectangle-E<gt>merge( $r );>X<_rectangle_E_gt_merge_r_>
+
+
+
+=for hackers xs/Rectangle.xs line 336
+
+=back
+
+=head2 C<move>
+X<move>
+
+=over
+
+=item C<$rectangle-E<gt>move( $x, $y );>X<_rectangle_E_gt_move_x_y_>
+
+Move entire rectangle by given distance in C<$x> and C<$y>.
+
+=for hackers xs/Rectangle.xs line 281
+
+=back
+
+=head2 C<move_b>
+X<move_b>
+
+=over
+
+=item C<$rectangle-E<gt>move_b( $d );>X<_rectangle_E_gt_move_b_d_>
+
+Add C<$d> to L<C<b( )>|FLTK::Rectangle/"b"> and
+L<C<h( )>|FLTK::Rectangle/"h">.
+
+=for hackers xs/Rectangle.xs line 253
+
+=back
+
+=head2 C<move_r>
+X<move_r>
+
+=over
+
+=item C<$rectangle-E<gt>move_r( $d );>X<_rectangle_E_gt_move_r_d_>
+
+Add C<$d> to L<C<r( )>|FLTK::Rectangle/"r"> and
+L<C<w( )>|FLTK::Rectangle/"w">.
+
+=for hackers xs/Rectangle.xs line 248
+
+=back
+
+=head2 C<move_x>
+X<move_x>
+
+=over
+
+=item C<$rectangle-E<gt>move_x( $d );>X<_rectangle_E_gt_move_x_d_>
+
+Add C<$d> to L<C<x( )>|FLTK::Rectangle/"x"> without changing
+L<C<r( )>|FLTK::Rectangle/"r"> (it reduces
+L<C<w( )>|FLTK::Rectangle/"w"> by C<$d>).
+
+=for hackers xs/Rectangle.xs line 236
+
+=back
+
+=head2 C<move_y>
+X<move_y>
+
+=over
+
+=item C<$rectangle-E<gt>move_y( $d );>X<_rectangle_E_gt_move_y_d_>
+
+Add C<$d> to L<C<y( )>|FLTK::Rectangle/"y"> without changing
+L<C<b( )>|FLTK::Rectangle/"b"> (it reduces
+L<C<h( )>|FLTK::Rectangle/"h"> by C<$d>).
+
+=for hackers xs/Rectangle.xs line 242
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $rectangle-E<gt>new( );>X<my_self_rectangle_E_gt_new_>
+
+This constructor does not put anything into the fields! You can either call
+L<C<set( )>|FLTK::Rectangle/"set"> or just modify the
+L<x|FLTK::Rectangle/"x">, L<y|FLTK::Rectangle/"y">, L<w|FLTK::Rectangle/"w">,
+and L<h|FLTK::Rectangle/"h"> variables directly.
+
+=for hackers xs/Rectangle.xs line 31
+
+=item C<my $self = $rectangle-E<gt>new( $x, $y, $w, $h );>X<my_self_rectangle_E_gt_new_x_y_w_h_>
+
+Constructor that sets L<C<x( )>|FLTK::Rectangle/"x">,
+L<C<y( )>|FLTK::Rectangle/"y">, L<C<w( )>|FLTK::Rectangle/"w">, and
+L<C<h( )>|FLTK::Rectangle/"h">.
+
+=for hackers xs/Rectangle.xs line 38
+
+=item C<my $self = $rectangle-E<gt>new( $w, $h );>X<my_self_rectangle_E_gt_new_w_h_>
+
+Constructor that sets L<C<x( )>|FLTK::Rectangle/"x"> and
+L<C<y( )>|FLTK::Rectangle/"y"> to zero, and sets
+L<C<w( )>|FLTK::Rectangle/"w"> and L<C<h( )>|FLTK::Rectangle/"h">.
+
+=for hackers xs/Rectangle.xs line 44
+
+=item C<my $clone = $rectangle-E<gt>new( $original );>X<my_clone_rectangle_E_gt_new_original_>
+
+Copy constructor.
+
+=for hackers xs/Rectangle.xs line 50
+
+=item C<my $clone = $rectangle-E<gt>new( $original, $w, $h, $flags );>X<my_clone_rectangle_E_gt_new_original_w_h_flags_>
+
+Constructor that calls L<C<set( )>|FLTK::Rectangle/"set">.
+
+=for hackers xs/Rectangle.xs line 54
+
+=back
+
+=head2 C<not_empty>
+X<not_empty>
+
+=over
+
+=item C<my $not_empty = $rectangle-E<gt>not_empty( );>X<my_not_empty_rectangle_E_gt_not_empty_>
+
+Not exactly the same as L<C<!empty()>|FLTK::Rectangle/"empty">. Returns true
+if L<C<w( )>|FLTK::Rectangle/"w"> and L<C<h( )>|FLTK::Rectangle/"h"> are
+B<both> greater than zero.
+
+=for hackers xs/Rectangle.xs line 295
+
+=back
+
+=head2 C<r>
+X<r>
+
+=over
+
+=item C<my $r = $rectangle-E<gt>r( );>X<my_r_rectangle_E_gt_r_>
+
+Returns C<L<x( )|FLTK::Rectangle/"x"> + L<w( )|FLTK::Rectangle/"w">>, the
+right edge of the rectangle.
+
+=for hackers xs/Rectangle.xs line 162
+
+=back
+
+=head2 C<set>
+X<set>
+
+=over
+
+=item C<$rectangle-E<gt>set( $x, $y, $w, $h );>X<_rectangle_E_gt_set_x_y_w_h_>
+
+Set L<C<x( )>|FLTK::Rectangle/"x">, L<C<y( )>|FLTK::Rectangle/"y">,
+L<C<w( )>|FLTK::Rectangle/"w">, L<C<h( )>|FLTK::Rectangle/"h"> all at once.
+
+=for hackers xs/Rectangle.xs line 214
+
+=item C<$rectangle-E<gt>set( $rect, $w, $h, $flags );>X<_rectangle_E_gt_set_rect_w_h_flags_>
+
+Sets L<x|FLTK::Rectangle/"x">, L<y|FLTK::Rectangle/"y">,
+L<w|FLTK::Rectangle/"w">, L<h|FLTK::Rectangle/"h"> so that's it's centered or
+aligned (if C<$flags != 0>) inside the source C<$rect>.
+
+=for hackers xs/Rectangle.xs line 219
+
+=back
+
+=head2 C<set_b>
+X<set_b>
+
+=over
+
+=item C<$rectangle-E<gt>set_b( $v );>X<_rectangle_E_gt_set_b_v_>
+
+Change L<C<b( )>|FLTK::Rectangle/"b"> without changing
+L<C<y( )>|FLTK::Rectangle/"y">, by changing the height.
+
+=for hackers xs/Rectangle.xs line 195
+
+=back
+
+=head2 C<set_r>
+X<set_r>
+
+=over
+
+=item C<$rectangle-E<gt>set_r( $v );>X<_rectangle_E_gt_set_r_v_>
+
+Change L<C<r( )>|FLTK::Rectangle/"r"> without changing
+L<C<x( )>|FLTK::Rectangle/"x">, by changing the width.
+
+=for hackers xs/Rectangle.xs line 190
+
+=back
+
+=head2 C<set_x>
+X<set_x>
+
+=over
+
+=item C<$rectangle-E<gt>set_x( $v );>X<_rectangle_E_gt_set_x_v_>
+
+Change L<C<x( )>|FLTK::Rectangle/"x"> without changing
+L<C<r( )>|FLTK::Rectangle/"r">, by changing the width.
+
+=for hackers xs/Rectangle.xs line 180
+
+=back
+
+=head2 C<set_y>
+X<set_y>
+
+=over
+
+=item C<$rectangle-E<gt>set_y( $v );>X<_rectangle_E_gt_set_y_v_>
+
+Change L<C<y( )>|FLTK::Rectangle/"y"> without changing
+L<C<b( )>|FLTK::Rectangle/"b">, by changing the height.
+
+=for hackers xs/Rectangle.xs line 185
+
+=back
+
+=head2 C<w>
+X<w>
+
+=over
+
+=item C<my $w = $rectangle-E<gt>w( );>X<my_w_rectangle_E_gt_w_>
+
+Distance between left and right edges.
+
+=for hackers xs/Rectangle.xs line 127
+
+=item C<$rectangle-E<gt>w( $value );>X<_rectangle_E_gt_w_value_>
+
+Change L<C<w( )>|FLTK::Rectangle/"w"> by moving the right edge.
+L<C<x( )>|FLTK::Rectangle/"x"> does not change.
+
+=for hackers xs/Rectangle.xs line 131
+
+=back
+
+=head2 C<x>
+X<x>
+
+=over
+
+=item C<my $x = $rectangle-E<gt>x( );>X<my_x_rectangle_E_gt_x_>
+
+Left edge.
+
+=for hackers xs/Rectangle.xs line 111
+
+=item C<$rectangle-E<gt>x( $value );>X<_rectangle_E_gt_x_value_>
+
+Move the rectangle so that the left edge is at C<$value>.
+
+=for hackers xs/Rectangle.xs line 115
+
+=back
+
+=head2 C<y>
+X<y>
+
+=over
+
+=item C<my $y = $rectangle-E<gt>y( );>X<my_y_rectangle_E_gt_y_>
+
+Top edge.
+
+=for hackers xs/Rectangle.xs line 119
+
+=item C<$rectangle-E<gt>y( $value );>X<_rectangle_E_gt_y_value_>
+
+Move the rectangle so that the top edge is at C<$value>.
+
+=for hackers xs/Rectangle.xs line 123
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Rectangle.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

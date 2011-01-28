@@ -1,0 +1,655 @@
+=pod
+
+=head1 NAME
+
+FLTK::TextDisplay -
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<append>
+X<append>
+
+=over
+
+=item C<$textdisplay-E<gt>append( $text );>X<_textdisplay_E_gt_append_text_>
+
+Append text to the end of the buffer.
+
+=for hackers xs/TextDisplay.xs line 135
+
+=back
+
+=head2 C<at>
+X<at>
+
+=over
+
+=item C<my $chr = $textdisplay-E<gt>at( $index );>X<my_chr_textdisplay_E_gt_at_index_>
+
+Same as L<C<text()[$index]>|/"text">, but may be faster in plausible
+implementations. No bounds checking is done.
+
+=for hackers xs/TextDisplay.xs line 103
+
+=back
+
+=head2 C<buffer>
+X<buffer>
+
+=over
+
+=item C<$textdisplay-E<gt>buffer( $buffer );>X<_textdisplay_E_gt_buffer_buffer_>
+
+Attach a L<text buffer|FLTK::TextBuffer> to display, replacing the current
+buffer (if any).
+
+=for hackers xs/TextDisplay.xs line 113
+
+=item C<my $buffer = $textdisplay-E<gt>buffer( );>X<my_buffer_textdisplay_E_gt_buffer_>
+
+Get the associated L<text buffer|FLTK::TextBuffer>.
+
+=for hackers xs/TextDisplay.xs line 118
+
+=back
+
+=head2 C<cursor_color>
+X<cursor_color>
+
+=over
+
+=item C<my $color = $textdisplay-E<gt>cursor_color( );>X<my_color_textdisplay_E_gt_cursor_color_>
+
+Returns cursor color.
+
+=for hackers xs/TextDisplay.xs line 222
+
+=item C<$textdisplay-E<gt>cursor_color( $color );>X<_textdisplay_E_gt_cursor_color_color_>
+
+Set cursor color.
+
+=for hackers xs/TextDisplay.xs line 226
+
+=back
+
+=head2 C<cursor_on>
+X<cursor_on>
+
+=over
+
+=item C<my $state = $textdisplay-E<gt>cursor_on( );>X<my_state_textdisplay_E_gt_cursor_on_>
+
+Returns cursor visibility state.
+
+=for hackers xs/TextDisplay.xs line 204
+
+=back
+
+=head2 C<cursor_style>
+X<cursor_style>
+
+=over
+
+=item C<$textdisplay-E<gt>cursor_style( $style );>X<_textdisplay_E_gt_cursor_style_style_>
+
+Set cursor style.
+
+=for hackers xs/TextDisplay.xs line 213
+
+=back
+
+=head2 C<find_next_char>
+X<find_next_char>
+
+=over
+
+=item C<my $start = $textdisplay-E<gt>find_next_char( $position );>X<my_start_textdisplay_E_gt_find_next_char_position_>
+
+Finds the start of the next character, starting from C<$position>. If
+C<$position> points to the start of a character, it is returned. This is
+mainly used with UTF-8 strings.
+
+=for hackers xs/TextDisplay.xs line 430
+
+=back
+
+=head2 C<find_prev_char>
+X<find_prev_char>
+
+=over
+
+=item C<my $start = $textdisplay-E<gt>find_prev_char( $position );>X<my_start_textdisplay_E_gt_find_prev_char_position_>
+
+Finds the start of the previous character, starting from C<$position>. If
+C<$position> points to the start of a character, it is returned. This is
+mainly used with UTF-8 strings.
+
+=for hackers xs/TextDisplay.xs line 441
+
+=back
+
+=head2 C<hide_cursor>
+X<hide_cursor>
+
+=over
+
+=item C<$textdisplay-E<gt>hide_cursor( );>X<_textdisplay_E_gt_hide_cursor_>
+
+Hide cursor.
+
+=for hackers xs/TextDisplay.xs line 195
+
+=back
+
+=head2 C<highlight_data>
+X<highlight_data>
+
+=over
+
+=item C<$textdisplay-E<gt>highlight_data( $styleBuffer, $styleTable, $nStyles, $unfinishedStyle, \&unfinishedHighlightCB, $cbArg );>X<_textdisplay_E_gt_highlight_data_styleBuffer_styleTable_nStyles_unfinishedStyle_unfinishedHighlightCB_cbArg_>
+
+Attach (or remove) highlight information in text display and redisplay.
+Highlighting information consists of a style buffer which parallels the normal
+text buffer, but codes font and color information for the display; a style
+table which translates style buffer codes (indexed by buffer character - 'A')
+into fonts and colors; and a callback mechanism for as-needed highlighting,
+triggered by a style buffer entry of "unfinishedStyle". Style buffer can
+trigger additional redisplay during a normal buffer modification if the buffer
+contains a primary TextSelection.
+
+Style buffers, tables and their associated memory are managed by the caller.
+
+=for hackers xs/TextDisplay.xs line 300
+
+=back
+
+=head2 C<hor_offset>
+X<hor_offset>
+
+=over
+
+=item C<my $offset = $textdisplay-E<gt>hor_offset( );>X<my_offset_textdisplay_E_gt_hor_offset_>
+
+Returns the current horizontal offset
+
+=for hackers xs/TextDisplay.xs line 421
+
+=back
+
+=head2 C<in_selection>
+X<in_selection>
+
+=over
+
+=item C<my $inside = $textdisplay-E<gt>in_selection( $X, $Y );>X<my_inside_textdisplay_E_gt_in_selection_X_Y_>
+
+Returns a true value if position C<($X, $Y)> is inside of the primary
+TextSelection.
+
+=for hackers xs/TextDisplay.xs line 377
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<$textdisplay-E<gt>insert( $text );>X<_textdisplay_E_gt_insert_text_>
+
+Insert text to the current cursor position.
+
+=for hackers xs/TextDisplay.xs line 139
+
+=back
+
+=head2 C<insert_position>
+X<insert_position>
+
+=over
+
+=item C<$textdisplay-E<gt>insert_position( $newPos );>X<_textdisplay_E_gt_insert_position_newPos_>
+
+Set new cursor position.
+
+=for hackers xs/TextDisplay.xs line 158
+
+=item C<my $currentPos = $textdisplay-E<gt>insert_position( );>X<my_currentPos_textdisplay_E_gt_insert_position_>
+
+Get current cursor position.
+
+=for hackers xs/TextDisplay.xs line 162
+
+=back
+
+=head2 C<line_end>
+X<line_end>
+
+=over
+
+=item C<my $end = $textdisplay-E<gt>line_end( $position, $start_pos_is_line_start );>X<my_end_textdisplay_E_gt_line_end_position_start_pos_is_line_start_>
+
+Returns the end of the line where C<$position> is located.
+
+=for hackers xs/TextDisplay.xs line 391
+
+=back
+
+=head2 C<line_start>
+X<line_start>
+
+=over
+
+=item C<my $start = $textdisplay-E<gt>line_start( $position );>X<my_start_textdisplay_E_gt_line_start_position_>
+
+Returns the beginning of the line where C<$position> is located.
+
+=for hackers xs/TextDisplay.xs line 387
+
+=back
+
+=head2 C<linenumber_width>
+X<linenumber_width>
+
+=over
+
+=item C<$textdisplay-E<gt>linenumber_width( $width );>X<_textdisplay_E_gt_linenumber_width_width_>
+
+Set line number area width.
+
+=for hackers xs/TextDisplay.xs line 281
+
+=item C<my $width = $textdisplay-E<gt>linenumber_width( );>X<my_width_textdisplay_E_gt_linenumber_width_>
+
+Returns line number area width.
+
+=for hackers xs/TextDisplay.xs line 285
+
+=back
+
+=head2 C<move_down>
+X<move_down>
+
+=over
+
+=item C<my $okay = $textdisplay-E<gt>move_down( );>X<my_okay_textdisplay_E_gt_move_down_>
+
+Move curosr down.
+
+=for hackers xs/TextDisplay.xs line 341
+
+=back
+
+=head2 C<move_left>
+X<move_left>
+
+=over
+
+=item C<my $okay = $textdisplay-E<gt>move_left( );>X<my_okay_textdisplay_E_gt_move_left_>
+
+Move cursor to the left.
+
+=for hackers xs/TextDisplay.xs line 333
+
+=back
+
+=head2 C<move_right>
+X<move_right>
+
+=over
+
+=item C<my $okay = $textdisplay-E<gt>move_right( );>X<my_okay_textdisplay_E_gt_move_right_>
+
+Move cursor to the right.
+
+=for hackers xs/TextDisplay.xs line 329
+
+=back
+
+=head2 C<move_up>
+X<move_up>
+
+=over
+
+=item C<my $okay = $textdisplay-E<gt>move_up( );>X<my_okay_textdisplay_E_gt_move_up_>
+
+Move cursor up.
+
+=for hackers xs/TextDisplay.xs line 337
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $group = $textdisplay-E<gt>new( $x, $y, $w, $h, $label );>X<my_group_textdisplay_E_gt_new_x_y_w_h_label_>
+
+Creates a new L<TextDisplay|FLTK::TextDisplay> widget using the given
+position, size, and label string.
+
+=for hackers xs/TextDisplay.xs line 31
+
+=back
+
+=head2 C<next_word>
+X<next_word>
+
+=over
+
+=item C<$textdisplay-E<gt>next_word( );>X<_textdisplay_E_gt_next_word_>
+
+Go to the next word.
+
+=cor apidoc |||previous_word||
+
+Go to the previous word.
+
+=for hackers xs/TextDisplay.xs line 255
+
+=back
+
+=head2 C<overstrike>
+X<overstrike>
+
+=over
+
+=item C<$textdisplay-E<gt>overstrike( $text );>X<_textdisplay_E_gt_overstrike_text_>
+
+Overstrike text from the current cursor position.
+
+=for hackers xs/TextDisplay.xs line 143
+
+=back
+
+=head2 C<position_to_xy>
+X<position_to_xy>
+
+=over
+
+=item C<my $in_range = $textdisplay-E<gt>position_to_xy( $position, $X, $Y );>X<my_in_range_textdisplay_E_gt_position_to_xy_position_X_Y_>
+
+Translates a buffer text position to the C<XY> location where the top left of
+the cursor would be positioned to point to that character. Returns C<0> if the
+position is not displayed because it is B<vertically> outof view. If the
+position is horizontally out of view, returns the C<X> coordinate where the
+position would be if it were visible.
+
+=for hackers xs/TextDisplay.xs line 496
+
+=back
+
+=head2 C<redisplay_range>
+X<redisplay_range>
+
+=over
+
+=item C<$textdisplay-E<gt>redisplay_range( $start, $end );>X<_textdisplay_E_gt_redisplay_range_start_end_>
+
+Redisplay text in a defined range.
+
+=for hackers xs/TextDisplay.xs line 359
+
+=back
+
+=head2 C<scroll>
+X<scroll>
+
+=over
+
+=item C<$textdisplay-E<gt>scroll( $topLineNum, $horizOffset );>X<_textdisplay_E_gt_scroll_topLineNum_horizOffset_>
+
+Scroll to a new position.
+
+=for hackers xs/TextDisplay.xs line 368
+
+=back
+
+=head2 C<show_cursor>
+X<show_cursor>
+
+=over
+
+=item C<$textdisplay-E<gt>show_cursor( $b );>X<_textdisplay_E_gt_show_cursor_b_>
+
+Show cursor.
+
+=for hackers xs/TextDisplay.xs line 186
+
+=back
+
+=head2 C<show_insert_position>
+X<show_insert_position>
+
+=over
+
+=item C<$textdisplay-E<gt>show_insert_position( );>X<_textdisplay_E_gt_show_insert_position_>
+
+Make cursor position visible in screen.
+
+=for hackers xs/TextDisplay.xs line 177
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<my $length = $textdisplay-E<gt>size( );>X<my_length_textdisplay_E_gt_size_>
+
+Returns the number of characters in L<C<text()>|/"text">. This may be greater
+than C<length($input-E<gt>text())> if there are C<NULL> characters in it.
+
+=for hackers xs/TextDisplay.xs line 51
+
+=back
+
+=head2 C<static_text>
+X<static_text>
+
+=over
+
+=item C<my $ret = $textdisplay-E<gt>static_text( $string );>X<my_ret_textdisplay_E_gt_static_text_string_>
+
+Same as L<C<text($string)>|/"text_string">, except it does not copy the
+string, instead it makes L<C<text()>|/"text"> return a pointer to C<$string>.
+
+C<$string> must point to static memory that will not be altered until at least
+the L<TextDisplay|FLTK::TextDisplay> widget is destroyed or the
+L<C<text()>|/"text"> is changed again. If the user attempts to edit the string
+it is then copied to the internal buffer and the editing done there. This can
+save a lot of time and memory if your program is changing the string to
+various constants a lot but the user rarely edits it.
+
+=for hackers xs/TextDisplay.xs line 84
+
+=back
+
+=head2 C<text>
+X<text>
+
+=over
+
+=item C<my $string = $textdisplay-E<gt>text( );>X<my_string_textdisplay_E_gt_text_>
+
+The current string, as edited by the user. L<C<size()>|/"size"> returns how
+many bytes are in the string.
+
+=for hackers xs/TextDisplay.xs line 61
+
+=item C<$textdisplay-E<gt>text( $string );>X<_textdisplay_E_gt_text_string_>
+
+Set the text.
+
+=for hackers xs/TextDisplay.xs line 66
+
+=back
+
+=head2 C<top_line>
+X<top_line>
+
+=over
+
+=item C<my $index = $textdisplay-E<gt>top_line( );>X<my_index_textdisplay_E_gt_top_line_>
+
+Returns the current visible topline.
+
+=for hackers xs/TextDisplay.xs line 412
+
+=back
+
+=head2 C<total_lines>
+X<total_lines>
+
+=over
+
+=item C<my $count = $textdisplay-E<gt>total_lines( );>X<my_count_textdisplay_E_gt_total_lines_>
+
+Returns the total number of lines.
+
+=begin developers
+
+drag types- they match fltk::event_clicks() so that single clicking to start a
+collection selects by character, double clicking selects by word and triple
+clicking selects by line.
+
+=pod 
+
+=for hackers xs/TextDisplay.xs line 509
+
+=back
+
+=head2 C<visible_lines>
+X<visible_lines>
+
+=over
+
+=item C<my $count = $textdisplay-E<gt>visible_lines( );>X<my_count_textdisplay_E_gt_visible_lines_>
+
+Returns the number of visible lines.
+
+=for hackers xs/TextDisplay.xs line 403
+
+=back
+
+=head2 C<word_end>
+X<word_end>
+
+=over
+
+=item C<my $end = $textdisplay-E<gt>word_end( $pos );>X<my_end_textdisplay_E_gt_word_end_pos_>
+
+=for hackers xs/TextDisplay.xs line 245
+
+=back
+
+=head2 C<word_start>
+X<word_start>
+
+=over
+
+=item C<my $start = $textdisplay-E<gt>word_start( $pos );>X<my_start_textdisplay_E_gt_word_start_pos_>
+
+Returns begining of the word where C<$pos> is located.
+
+=for hackers xs/TextDisplay.xs line 241
+
+=back
+
+=head2 C<wrap_mode>
+X<wrap_mode>
+
+=over
+
+=item C<$textdisplay-E<gt>wrap_mode( $wrap, $wrap_margin );>X<_textdisplay_E_gt_wrap_mode_wrap_wrap_margin_>
+
+Set wrapping mode. C<$wrap_margin> is width to wrap at, zero means use
+L<C<w()>|FLTK::Rectangle/"w">.
+
+=for hackers xs/TextDisplay.xs line 271
+
+=back
+
+=head2 C<xy_to_position>
+X<xy_to_position>
+
+=over
+
+=item C<my $position = $textdisplay-E<gt>xy_to_position( $X, $Y, $PosType );>X<my_position_textdisplay_E_gt_xy_to_position_X_Y_PosType_>
+
+Translates window coordinates to the nearest (insert cursor or character cell)
+text position. The parameter C<$posType> specifies how to interpret the
+position:
+
+=over 
+
+=item C<FLTK::TextDisplay::CURSOR_POS> means translate the coordinates to the
+nearest cursor position
+
+=item C<FLTK::TextDisplay::CHARACTER_POS> means return the position of the
+character closest to C<($X, $Y)>
+
+=back 
+
+=for hackers xs/TextDisplay.xs line 452
+
+=back
+
+=head2 C<xy_to_rowcol>
+X<xy_to_rowcol>
+
+=over
+
+=item C<my @row_col = $textdisplay-E<gt>xy_to_rowcol( $X, $Y, $PosType );>X<my_row_col_textdisplay_E_gt_xy_to_rowcol_X_Y_PosType_>
+
+Translates window coordinates to the nearest row and column number for
+positioning the cursor. This, of course, makes no sense when the font is
+proportional, since there are no absolute columns. The parameter C<$posType>
+specifies how to interpret the position:
+
+
+=over 
+
+=item C<FLTK::TextDisplay::CURSOR_POS> means translate the coordinates to the
+nearest position between characters
+
+=item C<FLTK::TextDisplay::CHARACTER_POS> means translate the position to the
+nearest character cell.
+
+=back 
+
+=for hackers xs/TextDisplay.xs line 473
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: TextDisplay.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,15 +1,3 @@
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: FLTK.xs 34cc05e 2011-01-02 00:47:39Z sanko@cpan.org $
-
-=cut
-
 #include "include/FLTK_pm.h"
 
 HV * FLTK_stash,  // For inserting stuff directly into FLTK's namespace
@@ -25,22 +13,6 @@ void register_constant( const char * package, const char * name, SV * value ) {
     HV * _stash  = gv_stashpv( package, TRUE );
     newCONSTSUB( _stash, name, value );
 }
-
-=begin apidoc
-
-=for apidoc Hx|||_cb_w|WIDGET|(void*)CODE|
-
-This is the callback for all widgets. It expects an C<fltk::Widget> object and
-the C<CODE> should be an HV* containing data that looks a little like this...
-This will eventually replace the AV* based callback system in L<C<_cb_w>>.
-
-  {
-    coderef => CV *, # coderef to call
-    class   => SV *, # string to (re-)bless WIDGET
-    args    => SV *  # optional arguments sent after blessed WIDGET
-  }
-
-=cut
 
 void _cb_w ( fltk::Widget * WIDGET, void * CODE ) {
     dTHX;
@@ -65,19 +37,6 @@ void _cb_w ( fltk::Widget * WIDGET, void * CODE ) {
     LEAVE;
 }
 
-=for apidoc H|||_cb_t|(void *) CODE|
-
-This is the generic callback for just about everything. It expects a single
-C<(void*) CODE> parameter which should be an AV* holding data that looks a
-little like this...
-
-  [
-    SV * coderef,
-    SV * args  # optional arguments sent along to coderef
-  ]
-
-=cut
-
 void _cb_t (void * CODE) { // Callbacks for timers, etc.
     dTHX;
     if ( CODE == NULL )     return;
@@ -96,19 +55,6 @@ void _cb_t (void * CODE) { // Callbacks for timers, etc.
         FREETMPS;
     LEAVE;
 }
-
-=for apidoc H|||_cb_u|int position|(void *) CODE|
-
-This is the callback for FLTK::TextDisplay->highlight_data(...). It expects an
-C<int> parameter which represents a buffer position and a C<(void*) CODE>
-parameter which should be an AV* holding data that looks a little like this...
-
-  [
-    SV * coderef,
-    SV * args  # optional arguments sent along to coderef
-  ]
-
-=cut
 
 void _cb_u ( int position, void * CODE) { // Callback for TextDisplay->highlight_data( ... )
     dTHX;
@@ -131,12 +77,42 @@ void _cb_u ( int position, void * CODE) { // Callback for TextDisplay->highlight
     LEAVE;
 }
 
-=for apidoc H|||isa|const char * package|const char * parent|
-
-This pushes C<parent> onto C<package>'s C<@ISA> list for inheritance. This now
-tries to create the parent package if it is not preexisting.
-
-=cut
+void _cb_f ( int fd, void * CODE) { // Callback for add_fh( ... )
+    dTHX;
+    if ( CODE == NULL )     return;
+    HV * cb         = ( HV * ) CODE;
+    if ( cb        == NULL ) return;
+    SV ** cb_code   = hv_fetch( cb, "coderef", 7, FALSE );
+    if ( cb_code   == ( SV ** ) NULL ) return;
+    SV ** cb_args   = hv_fetch( cb, "args",    4, FALSE );
+    SV ** cb_class  = hv_fetch( cb, "class",   5, FALSE );
+    SV ** cb_fileno = hv_fetch( cb, "fileno",  6, FALSE );
+    PerlIO * _fh = PerlIO_fdopen( SvIV( *cb_fileno ), "rb" );
+    SV * fh;
+	fh = sv_newmortal();
+	{   const char * _class = cb_class != NULL ? SvPV_nolen( * cb_class ) : "FLTK";
+        GV *gv = newGVgen(_class);
+        /* XXX - reopen fd to the correct mode */
+	    if ( do_open(gv, "+<&", 3, FALSE, 0, 0, _fh) )
+            sv_setsv(fh, sv_bless(newRV((SV*)gv), gv_stashpv(_class,1)));
+	    else
+            fh = &PL_sv_undef;
+	}
+    dSP;
+    ENTER;
+        SAVETMPS;
+            PUSHMARK( sp );
+    XPUSHs(sv_2mortal(newSVsv(fh)));
+    if ( cb_args != NULL ) XPUSHs( * cb_args );
+#if FLTK_DEBUG
+    XPUSHs(sv_2mortal(newSViv(fd)));                 // The os fileno
+    XPUSHs(sv_2mortal(newSViv(PerlIO_fileno(_fh)))); // Perl's fileno
+#endif // FLTK_DEBUG
+            PUTBACK;
+    call_sv( * cb_code, G_DISCARD );
+        FREETMPS;
+    LEAVE;
+}
 
 void isa ( const char * package, const char * parent ) {
     dTHX;
@@ -145,12 +121,6 @@ void isa ( const char * package, const char * parent ) {
              newSVpv( parent, 0 ) );
     // TODO: make this spider up the list and make deeper connections?
 }
-
-=for apidoc H|||export_tag|const char * what|const char * _tag|
-
-Adds a function to a specific export tag.
-
-=cut
 
 void export_tag (const char * what, const char * _tag ) {
     dTHX;
@@ -166,18 +136,6 @@ void export_tag (const char * what, const char * _tag ) {
     }
 }
 
-=for TODO This whole magic variable stuff screams "Refactor and rethink me!"
-
-=for apidoc H||I32|magic_ptr_get_int|IV iv|SV * sv|
-
-Gets the value of int-based magical variables.
-
-=for apidoc H||I32|magic_ptr_set_int|IV iv|SV * sv|
-
-Sets the value of int-based magical variables.
-
-=cut
-
 I32 magic_ptr_get_int( pTHX_ IV iv, SV * sv ) {
     int * ptr = INT2PTR( int *, iv );
     sv_setiv( sv, (int) * ptr );
@@ -189,16 +147,6 @@ I32 magic_ptr_set_int( pTHX_ IV iv, SV * sv ) {
     * ptr = SvIV( sv );
     return 1;
 }
-
-=for apidoc H||I32|magic_ptr_get_float|IV iv|SV * sv|
-
-Gets the value of float-based magical variables.
-
-=for apidoc H||I32|magic_ptr_set_float|IV iv|SV * sv|
-
-Sets the value of float-based magical variables.
-
-=cut
 
 I32 magic_ptr_get_float ( pTHX_ IV iv, SV * sv ) {
     float * ptr = INT2PTR( float *, iv );
@@ -212,16 +160,6 @@ I32 magic_ptr_set_float ( pTHX_ IV iv, SV * sv ) {
     return 1;
 }
 
-=for apidoc H||I32|magic_ptr_get_bool|IV iv|SV * sv|
-
-Gets the value of int-based magical variables.
-
-=for apidoc H||I32|magic_ptr_set_bool|IV iv|SV * sv|
-
-Sets the value of int-based magical variables.
-
-=cut
-
 I32 magic_ptr_get_bool ( pTHX_ IV iv, SV * sv ) {
     bool * ptr = INT2PTR( bool *, iv );
     sv_setiv( sv, (bool) * ptr );
@@ -234,16 +172,6 @@ I32 magic_ptr_set_bool ( pTHX_ IV iv, SV * sv ) {
     return 1;
 }
 
-=for apidoc H||I32|magic_ptr_get_char_ptr|IV iv|SV * sv|
-
-Gets the value of string-like magical variables.
-
-=for apidoc H||I32|magic_ptr_set_char_ptr|IV iv|SV * sv|
-
-Sets the value of string-like magical variables.
-
-=cut
-
 I32 magic_ptr_get_char_ptr ( pTHX_ IV iv, SV * sv ) {
     const char ** ptr = INT2PTR( const char **, iv );
     sv_setpv( sv, (const char *) * ptr );
@@ -255,13 +183,6 @@ I32 magic_ptr_set_char_ptr ( pTHX_ IV iv, SV * sv ) {
     * ptr = SvPV_nolen( sv );
     return 1;
 }
-
-=for apidoc H|||magic_ptr_init|const char * var|void ** ptr|
-
-Creates truly magical variables. (This is effectively a C-level equivalent of
-a tied variable).
-
-=cut
 
 void magic_ptr_init( const char * var, int * ptr ) {
     dTHX;
@@ -380,12 +301,6 @@ void boot_subpackage( const char * package ) {
 
 SV * cvrv;
 
-=for apidoc H|W|bool true|DllMain|HINSTANCE hInst|DWORD reason|LPVOID lpRes|
-
-Grabs the process global instance handle.
-
-=cut
-
 #ifdef WIN32
 #include <windows.h>
 HINSTANCE _dllInstance;
@@ -402,10 +317,6 @@ extern "C" BOOL WINAPI DllMain (HINSTANCE hInst, DWORD reason, LPVOID lpRes) {
 #endif // #ifdef WIN32
 
 #include "include/FLTK_pm_boot.h"
-
-=end apidoc
-
-=cut
 
 /* Alright, let's get things started, shall we? */
 

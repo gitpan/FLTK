@@ -1,0 +1,449 @@
+=pod
+
+=head1 NAME
+
+FLTK::Group - Base class for all container widgets
+
+=head1 Description
+
+The L<FLTK::Group|FLTK::Group> class is the FLTK container widget. It
+maintains an array of child widgets. These children can themselves be any
+widget including L<FLTK::Group|FLTK::Group>, nesting groups allows much more
+control over layout and resize behavior. Nested groups are also necessary to
+group radio buttons together.
+
+By default L<FLTK::Group|FLTK::Group> preserves the positions and sizes of all
+it's children, they do not move no matter what sizes or other children are
+added or removed.
+
+Setting L<C<resizable()>|FLTK::Group/"resizable"> will change the layout
+behavior so that it responds to resizing by moving or resizing the children to
+fit. See below for details.
+
+You may want to use an L<FLTK::Pack|FLTK::Pack> or a
+L<FLTK::Scroll|FLTK::Scroll> to get other common layout behavior that can
+respond to changes in the sizes of child widgets.
+
+The most-used subclass of L<FLTK::Group|FLTK::Group> is
+L<FLTK::Window|FLTK::Window>, all the rules about resizing apply to windows.
+Setting L<C<resizable()>|FLTK::Group/"resizable"> on a window will allow the
+user to resize it. If you want different behavior (such as from
+L<FLTK::Pack|FLTK::Pack>) for your window you should make the window have that
+as a single resizable child that fills it.
+
+L<FLTK::Menu|FLTK::Menu> is a subclass and thus all menus and browsers are
+groups and the items in them are widgets.
+
+=head1 Functions
+
+=head2 C<add>
+X<add>
+
+=over
+
+=item C<my $widget = $group-E<gt>add( $widget );>X<my_widget_group_E_gt_add_widget_>
+
+The widget is removed from its current group (if any) and then added to the
+end of this group.
+
+=for hackers xs/Group.xs line 156
+
+=back
+
+=head2 C<add_resizable>
+X<add_resizable>
+
+=over
+
+=item C<$group-E<gt>add_resizable( $widget );>X<_group_E_gt_add_resizable_widget_>
+
+L<Adds|/"add"> a C<widget> and sets it as the L<resizer|/"resizable"> in one
+fell swoop.
+
+=for hackers xs/Group.xs line 326
+
+=back
+
+=head2 C<begin>
+X<begin>
+
+=over
+
+=item C<$group-E<gt>begin( );>X<_group_E_gt_begin_>
+
+Sets the current group so you can build the widget tree by just constructing
+the widgets. L<C<begin()>|/"begin"> is exactly the same as
+L<C<$W-E<gt>current($W)>|/"current">.
+
+B<Don't forget to L<C<end()>|/"end"> the group or window!>
+
+=for hackers xs/Group.xs line 108
+
+=back
+
+=head2 C<child>
+X<child>
+
+=over
+
+=item C<my $kid = $group-E<gt>child( $index );>X<my_kid_group_E_gt_child_index_>
+
+Returns a child, C<index E<gt>= 0 && index E<lt> children()>. B<No range
+checking is done!>
+
+=for hackers xs/Group.xs line 85
+
+=back
+
+=head2 C<children>
+X<children>
+
+=over
+
+=item C<my $kids = $group-E<gt>children( );>X<my_kids_group_E_gt_children_>
+
+Returns how many child widgets the group has.
+
+=for hackers xs/Group.xs line 76
+
+=back
+
+=head2 C<clear>
+X<clear>
+
+=over
+
+=item C<$group-E<gt>clear( );>X<_group_E_gt_clear_>
+
+Deletes all children from the group and makes it empty. B<This calls the
+destructor on all the children.>
+
+See L<C<remove_all()>|/"remove_all">
+
+=for hackers xs/Group.xs line 285
+
+=back
+
+=head2 C<current>
+X<current>
+
+=over
+
+=item C<my $group = $group-E<gt>current( );>X<my_group_group_E_gt_current_>
+
+Returns the group being currently built. The L<Widget|FLTK::Widget>
+constructor automatically does C<current()-E<gt>add($widget)> if this is not
+undef. To prevent new widgets from being added to a group, call
+L<C<FLTK::Group::current(0)>|FLTK::Group/"current">.
+
+=for hackers xs/Group.xs line 129
+
+=item C<$group-E<gt>current( $group );>X<_group_E_gt_current_group_>
+
+Sets the group being currently built.
+
+=for hackers xs/Group.xs line 136
+
+=back
+
+=head2 C<end>
+X<end>
+
+=over
+
+=item C<$group-E<gt>end( );>X<_group_E_gt_end_>
+
+Exactly the same as L<C<$W-E<gt>current($W-E<gt>parent())>|/"current">. Any
+new widgets added to the widget tree will be added to the parent of the group.
+
+=for hackers xs/Group.xs line 116
+
+=back
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $index = $group-E<gt>find( $widget );>X<my_index_group_E_gt_find_widget_>
+
+Searches the children for C<widget>, returns the index of C<widget> or of a
+parent of C<widget> that is a L<C<child()>|/"child"> of this. Returns
+L<C<children()>|/"children"> if the widget is undef or not found.
+
+=for hackers xs/Group.xs line 150
+
+=back
+
+=head2 C<fix_old_positions>
+X<fix_old_positions>
+
+=over
+
+=item C<$group-E<gt>fix_old_positions( );>X<_group_E_gt_fix_old_positions_>
+
+If this is a L<Group|FLTK::Group> and not a L<Window|FLTK::Window>, subtract
+L<C<x()>|FLTK::Widget/"x"> and L<C<y()>|FLTK::Widget/"y"> from the position of
+all children. This will fix the positions of widgets created for fltk1.1 that
+are inside a group.
+
+=for hackers xs/Group.xs line 402
+
+=back
+
+=head2 C<focus_index>
+X<focus_index>
+
+=over
+
+=item C<$group-E<gt>focus_index( $index );>X<_group_E_gt_focus_index_index_>
+
+The index of the widget that contains the focus. You can initialize this
+before the group is displayed. Changing it while it is displayed does not
+work, use L<C<$widget-E<gt>take_focus()>|FLTK::Widget/"take_focus"> instead.
+
+For some subclasses such as L<TabGroup|FLTK::TabGroup>, a negative number
+indicates that the group itself has the focus. In most cases any illegal value
+means it will search for any widget that accepts focus.
+
+This is also used by L<Menu|FLTK::Menu> to locate the item selected by the
+user. See L<C<Menu::get_item()>|FLTK::Menu/"get_item">.
+
+=for hackers xs/Group.xs line 357
+
+=item C<my $index = $group-E<gt>focus_index( );>X<my_index_group_E_gt_focus_index_>
+
+Returns the index of the widget currently having focus.
+
+=for hackers xs/Group.xs line 370
+
+=back
+
+=head2 C<init_sizes>
+X<init_sizes>
+
+=over
+
+=item C<$group-E<gt>init_sizes( );>X<_group_E_gt_init_sizes_>
+
+Indicate that all the remembered child sizes should be reinitialized.
+
+The group remembers the initial size of itself and all it's children, so that
+the layout can be restored even if the group is resized so that some children
+go to zero or negative sizes.
+
+This can produce unwanted behavior if you try to rearrange the child widgets
+yourself, as the next resize will put them right back where they were
+initially. Call this to make it forget all the saved sizes and reinitialize
+them during the next L<C<layout()>|/"layout">.
+
+This is automatically done when any child is added or removed.
+
+=for hackers xs/Group.xs line 337
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<my $widget = $group-E<gt>insert( $widget, $index );>X<my_widget_group_E_gt_insert_widget_index_>
+
+Inserts C<widget> in the <index>th position of this group's stack.
+
+=for hackers xs/Group.xs line 179
+
+=item C<my $widget = $group-E<gt>insert( $widget, $before );>X<my_widget_group_E_gt_insert_widget_before_>
+
+This does L<C<$G-E<gt>insert($widget, $G-E<gt>find($beforethis))>|/"insert">.
+This will append the widget if C<$beforethis> is not in the group.
+
+=for hackers xs/Group.xs line 183
+
+=back
+
+=head2 C<navigation_key>
+X<navigation_key>
+
+=over
+
+=item C<my $key = $group-E<gt>navigation_key( );>X<my_key_group_E_gt_navigation_key_>
+
+Turn Tab into Right or Left for keyboard navigation.
+
+=for hackers xs/Group.xs line 393
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $grp = $group-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_grp_group_E_gt_new_x_y_w_h_label_begin_>
+
+Creates a new C<FLTK::Group> widget using the given position, size, and label
+string. The default boxtype is C<NO_BOX>.
+
+=for hackers xs/Group.xs line 57
+
+=back
+
+=head2 C<remove>
+X<remove>
+
+=over
+
+=item C<$group-E<gt>remove( $index );>X<_group_E_gt_remove_index_>
+
+Remove the C<index>th widget from the group.
+
+=for hackers xs/Group.xs line 213
+
+=item C<$group-E<gt>remove( $widget );>X<_group_E_gt_remove_widget_>
+
+Removes a C<widget> from the group. This does nothing if the widget is not
+currently a child of this group.
+
+=for hackers xs/Group.xs line 217
+
+=back
+
+=head2 C<remove_all>
+X<remove_all>
+
+=over
+
+=item C<$group-E<gt>remove_all( );>X<_group_E_gt_remove_all_>
+
+Removes all widgets from the group. B<This does not call the destructor on the
+child widget.>
+
+See L<C<clear())>|/"clear">
+
+=for hackers xs/Group.xs line 231
+
+=back
+
+=head2 C<replace>
+X<replace>
+
+=over
+
+=item C<my $widget_b = $group-E<gt>replace( $index, $widget_b );>X<my_widget_b_group_E_gt_replace_index_widget_b_>
+
+Remove the C<index>th widget and inserts C<widget_b> in its place.
+
+=for hackers xs/Group.xs line 243
+
+=item C<my $widget_b = $group-E<gt>replace( $widget, $widget_b );>X<my_widget_b_group_E_gt_replace_widget_widget_b_>
+
+Remove the C<widget> and inserts C<widget_b> in its place.
+
+=for hackers xs/Group.xs line 247
+
+=back
+
+=head2 C<resizable>
+X<resizable>
+
+=over
+
+=item C<$group-E<gt>resizable( $widget );>X<_group_E_gt_resizable_widget_>
+
+Sets the resizing widget.
+
+=for hackers xs/Group.xs line 297
+
+=item C<my $elastic = $group-E<gt>resizable( );>X<my_elastic_group_E_gt_resizable_>
+
+The resizable widget defines the resizing box for the group. When the group is
+resized it calculates a new size and position for all of its children. Widgets
+that are horizontally or vertically inside the dimensions of the box are
+scaled to the new size. Widgets outside the box are moved.
+
+The resizable may be set to the group itself, in which case all the contents
+are resized. If the resizable is undef (the default) then all widgets remain a
+fixed size and distance from the top-left corner.
+
+It is possible to achieve any type of resize behavior by using an
+L<InvisibleBox|FLTK::InvisibleBox> as the resizable and/or by using a
+hierarchy of child L<Group|FLTK::Group>'s.
+
+=for hackers xs/Group.xs line 301
+
+=back
+
+=head2 C<resize_align>
+X<resize_align>
+
+=over
+
+=item C<my $flags = $group-E<gt>resize_align( );>X<my_flags_group_E_gt_resize_align_>
+
+
+
+=for hackers xs/Group.xs line 414
+
+=item C<$group-E<gt>resize_align( $flags );>X<_group_E_gt_resize_align_flags_>
+
+
+
+=pod 
+
+=for hackers xs/Group.xs line 418
+
+=back
+
+=head2 C<set_focus>
+X<set_focus>
+
+=over
+
+=item C<$group-E<gt>set_focus( $widget );>X<_group_E_gt_set_focus_widget_>
+
+Same as L<C<focus_index( $index )>|/"focus_index_index">.
+
+=for hackers xs/Group.xs line 384
+
+=back
+
+=head2 C<swap>
+X<swap>
+
+=over
+
+=item C<$group-E<gt>swap( $indexA, $indexB );>X<_group_E_gt_swap_indexA_indexB_>
+
+Swaps the C<indexA>th widget with the C<indexB>th widget.
+
+=for hackers xs/Group.xs line 276
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Group.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+
+=cut

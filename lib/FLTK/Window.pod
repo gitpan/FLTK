@@ -1,0 +1,778 @@
+=pod
+
+=head1 NAME
+
+FLTK::Window - Where you put stuff
+
+=head1 Description
+
+This widget produces an actual window. This can either be a main window, with
+a border and title and all the window management controls, or a "subwindow"
+inside a window. This is controlled by whether or not the window has a
+L<C<parent()>|FLTK::Widget/"parent">. Internally there are now significant
+differences between "main" windows and "subwindows" and these really should be
+different classes, they are the same for historic reasons.
+
+Once you create a window, you usually add children Widgets to it by using
+L<C<add(child)>|FLTK::Group/add> or by using L<C<begin()>|FLTK::Group/begin>
+and then constructing the children. See L<C<FLTK::Group>|FLTK::Group> for more
+information on how to add and remove children.
+
+There are several subclasses of L<C<FLTK::Window>|FLTK::Window> that provide
+double-buffering, overlay, menu, and OpenGL support.
+
+The window's callback is done if the user tries to close a window using the
+window manager and L<C<FLTK::modal()>|FLTK/"modal"> is zero or equal to the
+window. Window has a default callback that calls
+L<C<hide()>|FLTK::Widget/"hide"> and calls L<C<exit(0)>|FLTK/"exit"> if this
+is the last top-level window.
+
+You can set the L<C<shortcut()>|FLTK::Widget/"shortcut"> and then that key
+will call the callback. If you don't change it then that key will close the
+window.
+
+=head1 Synopsis
+
+=for markdown {%highlight perl linenos%}
+
+  use FLTK;
+  my $win = FLTK::Window->new(100, 100, 500, 800);
+  $win->show();
+  FLTK::run();
+
+=for markdown {%endhighlight%}
+
+=head1 Functions
+
+=head2 C<border>
+X<border>
+
+=over
+
+=item C<$window-E<gt>border( $set );>X<_window_E_gt_border_set_>
+
+If C<set> is a true value, then a window border will be set, otherwise the
+window will have neither border nor caption.
+
+=for hackers xs/Window.xs line 112
+
+=item C<my $set = $window-E<gt>border( );>X<my_set_window_E_gt_border_>
+
+
+
+=for hackers xs/Window.xs line 117
+
+=back
+
+=head2 C<borders>
+X<borders>
+
+=over
+
+=item C<$window-E<gt>borders( $rect );>X<_window_E_gt_borders_rect_>
+
+C<$rect> is set to the the size of the borders that will be added around this
+window. This is done by querying the window system. Because it is more
+convienent for most code the result is actually the rectangle that would be
+around the border if this window was zero in size and placed at C<0,0>. C<x,y>
+are typically negative and C<w,h> are typically positive. To get the actual
+rectangle around your window, add these values to the window's size.
+
+=for hackers xs/Window.xs line 134
+
+=back
+
+=head2 C<child_of>
+X<child_of>
+
+=over
+
+=item C<$window-E<gt>child_of( $parent );>X<_window_E_gt_child_of_parent_>
+
+Tell the system that this window will not have an icon, it will dissappear and
+reappear when C<parent> is iconized or shown, and it is forced to always be
+above C<parent>. On X this is called a "Transient window", and Windows calls
+this a "overlapping child". C<parent> is different than the
+L<C<parent()>|FLTK::Widget/"parent">, which must be zero.
+
+Changing this value causes L<C<DESTROY()>|/"DESTROY"> to be called, due to
+stupid limitations in X and Windows.
+
+Win32 and some X window managers have an annoying bug where calling
+L<C<show()>|/"show"> on this will also raise the parent window to right below
+this, making many useful user interface designs impossible!
+
+If you want a dialog that blocks interaction with the other windows of your
+application or with all other applications, you need to look at
+L<C<exec()>|/"exec"> (or possibly L<C<FLTK::modal()>|FLTK/"modal">).
+
+=for hackers xs/Window.xs line 148
+
+=back
+
+=head2 C<clear_double_border>
+X<clear_double_border>
+
+=over
+
+=item C<$window-E<gt>clear_double_border( );>X<_window_E_gt_clear_double_border_>
+
+Turn off double buffering, so that drawing directly goes to the visible image
+on the screen. Not all systems can do this, they will remain double buffered
+even if this is off.
+
+=for hackers xs/Window.xs line 196
+
+=back
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $window-E<gt>default_style( );>X<my_style_window_E_gt_default_style_>
+
+By default a window has box() set to C<FLAT_BOX>, and the color() set to
+C<GRAY75>, which is a special color cell that is altered by
+L<C<FLTK::set_background()>|FLTK/"set_background">.
+
+If you plan to turn the L<C<border()>|/"border"> off you may want to change
+the box() to C<UP_BOX>. You can also produce something that looks like an
+arbitrary shape (though really it is showing the original screen contents in
+the "outside" area, so the window had better be temporary and the user cannot
+move it) by setting the box() to NO_BOX and making draw() only draw the opaque
+part.
+
+=for hackers xs/Window.xs line 684
+
+=item C<$window-E<gt>default_style( $style );>X<_window_E_gt_default_style_style_>
+
+Set the style.
+
+=for hackers xs/Window.xs line 697
+
+=back
+
+=head2 C<double_buffer>
+X<double_buffer>
+
+=over
+
+=item C<my $db_set = $window-E<gt>double_buffer( );>X<my_db_set_window_E_gt_double_buffer_>
+
+Returns a true value if L<C<set_double_buffer()>|/"set_double_buffer"> was
+called, returns a false value if
+L<C<clear_double_buffer()>|/"clear_double_buffer"> was called. If neither has
+been called, this returns a machine-dependant state (systems where double
+buffering is efficient turn it on by default).
+
+=for hackers xs/Window.xs line 284
+
+=back
+
+=head2 C<drawing_window>
+X<drawing_window>
+
+=over
+
+=item C<my $window = $window-E<gt>drawing_window( );>X<my_window_window_E_gt_drawing_window_>
+
+Returns the L<Window|FLTK::Window> currently being drawn into. To set this use
+L<C<make_current()>|FLTK::Widget/"make_current">. It will already be set when
+C<draw()> is called.
+
+=for hackers xs/Window.xs line 297
+
+=back
+
+=head2 C<erase_overlay>
+X<erase_overlay>
+
+=over
+
+=item C<$window-E<gt>erase_overlay( );>X<_window_E_gt_erase_overlay_>
+
+Indicate that the overlay drawn with L<C<draw_overlay()>|/"draw_overlay"> is
+blank. L<C<draw_overlay()>|/"draw_overlay"> will not be called until
+L<C<redraw_overlay()>|/"redraw_overlay"> is called again.
+
+=for hackers xs/Window.xs line 207
+
+=back
+
+=head2 C<exec>
+X<exec>
+
+=over
+
+=item C<my $return = $window-E<gt>exec( $parent, $grab );>X<my_return_window_E_gt_exec_parent_grab_>
+
+The window is popped up and this function does not return until
+L<C<make_exec_return()>|/"make_exec_return"> is called, or the window is
+destroyed or L<C<hide()>|FLTK::Widget/"hide"> is called, or
+L<C<FLTK::exit_modal()>|FLTK/"exit_modal"> is called. During this time events
+to other windows in this application are either thrown away or redirected to
+this window.
+
+This does L<C<child_of(parent)>|/"child_of"> (using first() if parent is
+undefined), so this window is a floating panel that is kept above the parent.
+It then uses L<C<FLTK::modal(this,grab)>|FLTK/"modal"> to make all events go
+to this window.
+
+The return value is the argument to
+L<C<make_exec_return()>|/"make_exec_return">, or a false value if any other
+method is used to exit the loop.
+
+If C<parent> is undefined, the window that last received an event is used as
+the parent. This is convenient for popups that appear in response to a mouse
+or key click.
+
+See L<C<FLTK::modal()>|FLTK/"modal"> for what grab does. This is useful for
+popup menus.
+
+=for hackers xs/Window.xs line 308
+
+=back
+
+=head2 C<first>
+X<first>
+
+=over
+
+=item C<my $win = FLTK::first( );>X<my_win_FLTK_first_>
+
+Returns the id of some L<C<visible()>|/"visible"> window. If there is more
+than one, the last one to receive an event is returned. This is useful as a
+default value for L<C<FLTK::Window::child_of()>|FLTK::Window/"child_of">.
+L<C<FLTK::Window::exec()>|FLTK::Window/"exec"> uses it for this if no other
+parent is specified. This is also used by L<C<FLTK::run()>|FLTK/"run"> to see
+if any windows still exist.
+
+=for hackers xs/Window.xs line 714
+
+=item C<FLTK::first( $window );>X<FLTK_first_window_>
+
+If this C<window> is visible, this removes it from wherever it is in the list
+and inserts it at the top, as though it received an event. This can be used to
+change the parent of dialog boxes run by
+L<C<FLTK::Window::exec()>|FLTK::Window/"exec"> or
+L<C<FLTK::ask()>|FLTK/"ask">.
+
+=for hackers xs/Window.xs line 723
+
+=back
+
+=head2 C<free_backbuffer>
+X<free_backbuffer>
+
+=over
+
+=item C<$window-E<gt>free_backbuffer( );>X<_window_E_gt_free_backbuffer_>
+
+Get rid of extra storage created by drawing when
+L<C<double_buffer()>|/"double_buffer"> was turned on.
+
+=for hackers xs/Window.xs line 218
+
+=back
+
+=head2 C<fullscreen>
+X<fullscreen>
+
+=over
+
+=item C<$window-E<gt>fullscreen( $monitor );>X<_window_E_gt_fullscreen_monitor_>
+
+Make the window completely fill the monitor, without any window manager border
+or taskbar or anything else visible. Use
+L<C<fullscreen_off()>|/"fullscreen_off"> to undo this.
+
+Known bugs:
+
+=over 
+
+=item *
+
+Older versions of both Linux and Windows will refuse to hide the taskbar.
+Proposed solutions for this tend to have detrimental effects, such as making
+it impossible to switch tasks or to put another window atop this one. It
+appears that newer versions of both Linux and Windows work correctly, so we
+will not fix this.
+
+=item *
+
+Many older X window managers will refuse to position the window correctly and
+instead place them so the top-left of the border in the screen corner. You may
+be able to fix this by calling L<C<hide()>|FLTK::Widget/"hide"> first, then
+L<C<fullscreen()>|/"fullscreen">, then L<C<show()>|/"show">. We don't do this
+because it causes newer window systems to blink unnecessarily.
+
+=item *
+
+Some X window managers will raise the window when you change the size.
+
+=item *
+
+Calling L<C<resize()>|FLTK::Widget/"resize"> before calling
+L<C<fullscreen_off()>|/"fullscreen_off"> will result in unpredictable effects,
+and should be avoided.
+
+=back 
+
+=for hackers xs/Window.xs line 338
+
+=item C<$window-E<gt>fullscreen( );>X<_window_E_gt_fullscreen_>
+
+Chooses the L<Monitor|FLTK::Monitor> that the center of the window is on to be
+the one to resize to.
+
+=for hackers xs/Window.xs line 378
+
+=back
+
+=head2 C<fullscreen_off>
+X<fullscreen_off>
+
+=over
+
+=item C<$window-E<gt>fullscreen_off( $x, $y, $w, $h );>X<_window_E_gt_fullscreen_off_x_y_w_h_>
+
+Turns off any side effects of L<C<fullscreen()>|/"fullscreen">, then does
+C<resize($x,$y,$w,$h)>.
+
+=for hackers xs/Window.xs line 399
+
+=back
+
+=head2 C<hotspot>
+X<hotspot>
+
+=over
+
+=item C<$window-E<gt>hotspot( $widget, $offscreen );>X<_window_E_gt_hotspot_widget_offscreen_>
+
+L<C<position()>|FLTK::Widget/"position"> the window so that the mouse is
+pointing at the center of the widget, which may be the window itself. If
+C<offscreen> is a true value, the window is allowed to extend off the
+L<Monitor|FLTK::Monitor> (some X window managers do not allow this).
+
+=for hackers xs/Window.xs line 430
+
+=item C<$window-E<gt>hotspot( $CX, $CY, $offscreen );>X<_window_E_gt_hotspot_CX_CY_offscreen_>
+
+L<C<position()>|FLTK::Widget/"position"> the window so that the mouse is
+pointing at the C<cx,cy> position. If C<offscreen> is a true value, the window
+is allowed to extend off the L<Monitor|FLTK::Monitor> (some X window managers
+do not allow this.
+
+=for hackers xs/Window.xs line 439
+
+=back
+
+=head2 C<icon>
+X<icon>
+
+=over
+
+=item C<$window-E<gt>icon( $path );>X<_window_E_gt_icon_path_>
+
+This loads an icon (F<.ico>) in the window.
+
+=for hackers xs/Window.xs line 753
+
+=back
+
+=head2 C<iconic>
+X<iconic>
+
+=over
+
+=item C<my $is_it = $window-E<gt>iconic( );>X<my_is_it_window_E_gt_iconic_>
+
+Returns a true value if the window is currently displayed as an icon. Returns
+a false value if the window is not L<C<shown()>|/"shown"> or
+L<C<hide()>|FLTK::Widget/"hide"> has been called.
+
+I<On X this will return true in the time between when L<C<show()>|/"show"> is
+called and when the window manager finally puts the window on the screen and
+causes an expose event.>
+
+Returns true if the window is L<C<shown>|/"shown"> but is
+L<C<iconized>|/"iconize">.
+
+=for hackers xs/Window.xs line 460
+
+=back
+
+=head2 C<iconize>
+X<iconize>
+
+=over
+
+=item C<$window-E<gt>iconize( );>X<_window_E_gt_iconize_>
+
+Iconifies the window. If you call this when L<C<shown()>|/"shown"> is false it
+will L<C<show()>|/"show"> it as an icon. If the window is already iconified
+this does nothing.
+
+Call L<C<show()>|/"show"> to restore the window.
+
+Currently there are only X and Win32 system-specific ways to control what is
+drawn in the icon. You should not rely on window managers displaying the
+icons.
+
+=for hackers xs/Window.xs line 228
+
+=back
+
+=head2 C<iconlabel>
+X<iconlabel>
+
+=over
+
+=item C<$window-E<gt>iconlabel( $iname );>X<_window_E_gt_iconlabel_iname_>
+
+Sets the text displayed below the icon (or in the taskbar). If you don't set
+this it defaults to the L<C<label()>|/"label"> but if that appears to be a
+filename, it defaults to the last portion after the last C</> character.
+
+=for hackers xs/Window.xs line 495
+
+=back
+
+=head2 C<iconlable>
+X<iconlable>
+
+=over
+
+=item C<my $label = $window-E<gt>iconlable( );>X<my_label_window_E_gt_iconlable_>
+
+=for hackers xs/Window.xs line 501
+
+=back
+
+=head2 C<label>
+X<label>
+
+=over
+
+=item C<$window-E<gt>label( $name, $iname );>X<_window_E_gt_label_name_iname_>
+
+Sets both the L<C<label()>|/"label"> and the L<C<iconlabel()>|/"iconlabel">.
+
+=for hackers xs/Window.xs line 516
+
+=item C<$window-E<gt>label( $name );>X<_window_E_gt_label_name_>
+
+Sets the window title, which is drawn in the titlebar by the system.
+
+=for hackers xs/Window.xs line 522
+
+=item C<my $title = $window-E<gt>label( );>X<my_title_window_E_gt_label_>
+
+Returns the window title.
+
+=for hackers xs/Window.xs line 526
+
+=back
+
+=head2 C<make_exec_return>
+X<make_exec_return>
+
+=over
+
+=item C<$window-E<gt>make_exec_return( $return_value );>X<_window_E_gt_make_exec_return_return_value_>
+
+If L<C<exec()>|/"exec"> is currently being called, make it hide this window
+and return C<return_value>.
+
+Does nothing if L<C<exec()>|/"exec"> is not being called.
+
+Results are undefined if the innermost L<C<exec()>|/"exec"> is being called on
+a window other than this one. Current behavior is to cause that exec to return
+false.
+
+=for hackers xs/Window.xs line 546
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $win = $window-E<gt>new( $x, $y, $w, $h, $label );>X<my_win_window_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::Window> object.
+
+=for hackers xs/Window.xs line 63
+
+=item C<my $win = $window-E<gt>new( $w, $h, $label );>X<my_win_window_E_gt_new_w_h_label_>
+
+Same but window is placed by OS.
+
+=for hackers xs/Window.xs line 67
+
+=back
+
+=head2 C<next>
+X<next>
+
+=over
+
+=item C<my $win = $window-E<gt>next( );>X<my_win_window_E_gt_next_>
+
+Returns the next L<C<visible()>|/"visible"> top-level window, returns C<undef>
+after the last one. You can use this and L<C<first()>|FLTK::Window/"first"> to
+iterate through all the visible windows.
+
+=for hackers xs/Window.xs line 742
+
+=back
+
+=head2 C<redraw_overlay>
+X<redraw_overlay>
+
+=over
+
+=item C<$window-E<gt>redraw_overlay( );>X<_window_E_gt_redraw_overlay_>
+
+Indicate that the image made by L<C<draw_overlay()>|/"draw_overlay"> has
+changed and must be drawn or redrawn. If the image is blank you should call
+L<C<erase_overlay()>|/"erase_overlay">.
+
+This does nothing if the window is not L<C<shown()>|/"shown">, it is assummed
+that overlays are only drawn in response to user input.
+
+=for hackers xs/Window.xs line 245
+
+=back
+
+=head2 C<resize>
+X<resize>
+
+=over
+
+=item C<$window-E<gt>resize( $x, $y, $w, $h );>X<_window_E_gt_resize_x_y_w_h_>
+
+Change the size and position of the window. If L<C<shown()>|/"shown"> is true,
+these changes are communicated to the window server (which may refuse that
+size and cause a further resize). If L<C<shown()>|/"shown"> is false, the size
+and position are used when L<C<show()>|/"show"> is called. See
+L<FLTK::Group|FLTK::Group> for the effect of resizing on the child widgets.
+
+The special value C<FLTK::USEDEFAULT> may be used for C<X> and C<Y> indicate
+that the system should choose the window's position. This will only work
+before L<C<show()>|/"show"> is called.
+
+=for hackers xs/Window.xs line 406
+
+=back
+
+=head2 C<set_double_buffer>
+X<set_double_buffer>
+
+=over
+
+=item C<$window-E<gt>set_double_buffer( );>X<_window_E_gt_set_double_buffer_>
+
+If the window is double-buffered, all drawing is done first to some offscreen
+image, and then copied to the screen as a single block. This eliminates
+blinking as the window is updated, and often the application looks faster,
+even if it actually is slower.
+
+=for hackers xs/Window.xs line 259
+
+=back
+
+=head2 C<show>
+X<show>
+
+=over
+
+=item C<$window-E<gt>show( $parent );>X<_window_E_gt_show_parent_>
+
+Same as C<child_of(parent); show()>.
+
+=for hackers xs/Window.xs line 562
+
+=item C<$window-E<gt>show( $argc, @argv );>X<_window_E_gt_show_argc_argv_>
+
+This must be called after L<C<FLTK::args($argc,@argv)>|FLTK/"args"> to show
+the "main" window, this indicates which window should be affected by any
+C<-geometry> switches. In addition if L<C<FLTK::args()>|FLTK/"args"> has not
+been called yet this does so, this is a useful shortcut for the main window in
+a small program.
+
+=for hackers xs/Window.xs line 568
+
+=item C<$window-E<gt>show( );>X<_window_E_gt_show_>
+
+Cause the window to become visible. It is harmless to call this multiple
+times.
+
+For subwindows (with a L<C<parent()>|FLTK::Widget/"parent">) this just causes
+the window to appear. Currently no guarantee about stacking order is made.
+
+For a outer window (one with no L<C<parent()>|FLTK::Widget/"parent">) this
+causes the window to appear on the screen, be de-iconized, and be raised to
+the top. Depending on L<C<child_of()>|/"child_of"> settings of this window and
+of windows pointing to it, and on system and window manager settings, this may
+cause other windows to also be deiconized and raised, or if this window is a
+L<C<child_of()>|/"child_of"> then this window may remain iconized.
+
+I<L<C<Window::show()>|/"show"> is not a virtual override of
+L<C<Widget::show()>|FLTK::Widget/"show">.> You can call either one. The only
+difference is that if an outer window has had L<C<show()>|/"show"> called
+already, L<C<Window::show()>|/"show"> will raise and deiconize it, while
+L<C<Widget::show()>|FLTK::Widget/"show"> will only
+un-L<hide()|FLTK::Widget/"hide"> it, making it appear in the same stacking
+order as before but not changing the iconization state (on some X window
+managers it will deiconize anyway).
+
+The first time this is called is when the actual "system" window (ie the X
+window) is created. Before that an fltk window is simply an internal data
+structure and is not visible outside your program. To return to the
+non-system-window state call C<DESTROY()>. L<C<hide()>|FLTK::Widget/"hide">
+will "unmap" the system window.
+
+The first time L<C<show()>|/"show"> is called on any window is when fltk will
+call L<C<FLTK::open_display()>|FLTK/"open_display"> and
+L<C<FLTK::load_theme()>|FLTK/"load_theme">, unless you have already called
+them. This allows these expensive operations to be deferred as long as
+possible, and allows fltk programs to be written that will run without an X
+server as long as they don't actually show a window.
+
+=for hackers xs/Window.xs line 578
+
+=back
+
+=head2 C<show_inside>
+X<show_inside>
+
+=over
+
+=item C<$window-E<gt>show_inside( $parent );>X<_window_E_gt_show_inside_parent_>
+
+Make the window with a normal system border and behavior, but place it inside
+the C<parent> as though that was the desktop. This is what Windows calls
+"MDI". Typically the other window (which must already be shown) is a child
+window so that space can remain around it for a menu/tool bar.
+
+Notice that L<C<parent()>|FLTK::Widget/"parent"> of the window must be zero
+and it will remain zero after this is called. Fltk uses a zero parent to
+indicate that the system is managing the window.
+
+On systems that don't support nested desktops (i.e. X) this does
+L<C<child_of(parent)>|/"child_of"> and L<C<show()>|/"show">, which produces an
+overlapping window that will remain above the frame window.
+
+=for hackers xs/Window.xs line 169
+
+=back
+
+=head2 C<shown>
+X<shown>
+
+=over
+
+=item C<my $was_it = $window-E<gt>shown( );>X<my_was_it_window_E_gt_shown_>
+
+Returns non-zero if L<C<show()>|/"show"> has been called, but C<DESTROY()> has
+not been called. Note that this returns true if L<C<hide()>|/"hide"> was
+called or if the user has iconized the window.
+
+=for hackers xs/Window.xs line 475
+
+=back
+
+=head2 C<size_range>
+X<size_range>
+
+=over
+
+=item C<$window-E<gt>size_range( $minW, $minH, $maxW, $maxH, $dw, $dh );>X<_window_E_gt_size_range_minW_minH_maxW_maxH_dw_dh_>
+
+Set the allowable range the user can resize this window to. This only works
+for top-level windows.
+
+=over 
+
+=item C<$minW> and C<$minH> are the smallest the window can be.
+
+=item C<$maxW> and C<$maxH> are the largest the window can be. If either is
+equal to the minimum then you cannot resize in that direction. If either is
+zero then FLTK picks a maximum size in that direction such that the window
+will fill the screen.
+
+=item C<$dw> and C<$dh> are size increments. The window will be constrained to
+widths of C<$minW + N * $dw>, where C<N> is any non-negative integer. If these
+are less or equal to 1 they are ignored. (this is ignored on WIN32)
+
+=back 
+
+It is undefined what happens if the current size does not fit in the
+constraints passed to L<C<size_range()>|/"size_range">.
+
+If this function is not called, FLTK tries to figure out the range from the
+setting of C<resizeable()>:
+
+=over 
+
+=item If L<C<resizeable()>|/"resizable"> is undefined (this is the default),
+then the window cannot be resized.
+
+=item If either dimension of L<C<resizeable()>|/"resizable"> is less than
+C<100>, then that is considered the minimum size. Otherwise the
+L<C<resizeable()>|/"resizable"> has a minimum size of C<100>.
+
+=item If either dimension of L<C<resizeable()>|/"resizable"> is zero, then
+that is also the maximum size (so the window cannot resize in that direction).
+
+=back 
+
+=for hackers xs/Window.xs line 639
+
+=back
+
+=head2 C<system_layout>
+X<system_layout>
+
+=over
+
+=item C<$window-E<gt>system_layout( );>X<_window_E_gt_system_layout_>
+
+Resizes the actual system window to match the current size of the fltk widget.
+You should call this in your C<layout()> method if xywh have changed. The
+L<C<layout_damage()>|FLTK::Widget/"layout_damage"> flags must be on or it
+won't work.
+
+=for hackers xs/Window.xs line 271
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Window.xs fb01b98 2011-01-14 19:32:30Z sanko@cpan.org $
+
+=cut

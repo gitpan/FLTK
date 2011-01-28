@@ -1,0 +1,724 @@
+=pod
+
+=head1 NAME
+
+FLTK::Menu - Utility functions for Menu type widgets
+
+=head1 Description
+
+The L<Menu|FLTK::Menu> base class is used by L<Browser|FLTK::Browser>,
+L<Choice|FLTK::Choice>, L<MenuBar|FLTK::MenuBar>,
+L<PopupMenu|FLTK::PopupMenu>, L<ComboBox|FLTK::ComboBox>, and other widgets.
+It is simply a L<Group|FLTK::Group> and each item is a child
+L<Widget|FLTK::Widget>, but it provides functions to select and identify one
+of the widgets in the hierarchy below it and do that widget's callback
+directly, and functions to create and add L<Item|FLTK::Item> and
+L<ItemGroup|FLTK::ItemGroup> widgets to a hierarchy.
+
+A L<Menu|FLTK::Menu> can take a pointer to a L<List|FLTK::List> object, which
+allows the user program to dynamically provide the items as they are needed.
+This is much easier than trying to maintain an array of
+L<Widgets|FLTK::Widget> in parallel with your own data structures.
+
+It also provides several convienence functions for creating, rearranging, and
+deleting child L<Item|FLTK::Item> and L<ItemGroup|ItemGroup> widgets.
+
+=head1 Functions
+
+=head2 C<add>
+X<add>
+
+=over
+
+=item C<my $item = $menu-E<gt>add( $label, $shortcut, \&callback, $data, $flags );>X<my_item_menu_E_gt_add_label_shortcut_callback_data_flags_>
+
+Split label at C</> characters and add a hierachial L<Item|FLTK::Item>.
+
+Adds new items and hierarchy to a L<Menu|FLTK::Menu> or
+L<Browser|FLTK::Browser>.
+
+=over 
+
+=item C<$label>
+
+The label is split at C</> characters to automatically produce
+submenus. The submenus are created if they do not exist yet, and a new
+L<Item|FLTK::Item> widget is added to the end of it.
+
+A trailing C</> can be used to create an empty submenu (useful for forcing a
+certain ordering of menus before you know what items are in them).
+
+Backslashes in the string "quote" the next character, which allows you to put
+forward slashes into a menu item.
+
+=item C<$shortcut>
+
+C<0> for no shortcut, C<FLTK::CTRL | ord 'a'> for C<Ctrl-a>,
+etc.
+
+=item C<$callback>
+
+Function to call when item picked. If undef, the callback for
+the L<Menu|FLTK::Menu> widget itself is called.
+
+=item C<data>
+
+Second argument passed to the callback.
+
+=item C<flags>
+
+Useful flags are:
+
+=over 
+
+=item C<INACTIVE> makes the item grayed out and unpickable
+
+=item C<INVISIBLE> makes it not visible to the user, as though it was not
+there. This is most useful for making extra shortcuts that do the same thing.
+
+=item C<RAW_LABEL> stops it from interpreting C<&> and C<@> characters in the
+label.
+
+=back 
+
+Import these with the L<C<:flags>|FLTK::Flags> label.
+
+=back 
+
+Returns a pointer to the new L<Item|FLTK::Item>. You can further modify it to
+get results that can't be gotten from these function arguments.
+
+=for hackers xs/Menu.xs line 518
+
+=item C<my $item = $menu-E<gt>add( $label, $data );>X<my_item_menu_E_gt_add_label_data_>
+
+Create a new L<Item|FLTK::Item> and add it to the top-level of the hierarchy.
+
+Unlike the L<C<add()>|FLTK::Menu/"add"> with more arguments, this one does
+*not* split the label at C</> characters. The label is used unchanged.
+
+=for hackers xs/Menu.xs line 576
+
+=item C<$menu-E<gt>add( $widget );>X<_menu_E_gt_add_widget_>
+
+Add a widget to the menu.
+
+=for hackers xs/Menu.xs line 583
+
+=back
+
+=head2 C<add_group>
+X<add_group>
+
+=over
+
+=item C<my $newgroup = $menu-E<gt>add_group( $label, $parent, $data );>X<my_newgroup_menu_E_gt_add_group_label_parent_data_>
+
+Add a parent widget to a (possibly) lower level of the hierarchy, such as
+returned by L<C<add_group()>|FLTK::Menu/"add_group">.
+
+=for hackers xs/Menu.xs line 727
+
+=back
+
+=head2 C<add_leaf>
+X<add_leaf>
+
+=over
+
+=item C<my $widget = $menu-E<gt>add_leaf( $label, $parent, $data );>X<my_widget_menu_E_gt_add_leaf_label_parent_data_>
+
+Add a non-parent widget to a (possibly) lower level of the
+hierarchy, such as returned by add_group(). If parent is null
+or this then this is the same as add(label,data).
+
+=for hackers xs/Menu.xs line 738
+
+=back
+
+=head2 C<add_many>
+X<add_many>
+
+=over
+
+=item C<my $last = $menu-E<gt>add_many( $string );>X<my_last_menu_E_gt_add_many_string_>
+
+This is a Forms (and SGI GL library) compatable add function, it adds many
+menu items, with C<|> seperating the menu items, and tab seperating the menu
+item names from an optional shortcut string.
+
+=pod 
+
+=for hackers xs/Menu.xs line 750
+
+=back
+
+=head2 C<char * label>
+X<char * label>
+
+=over
+
+=item C<my $item = $menu-E<gt>char * label( );>X<my_item_menu_E_gt_char_label_>
+
+Returns the item with the given label.
+
+This searches both the top level for an exact match, and splits the label at
+'/' to find an item in a hierarchy. Thus it matches the strings passed to both
+the long and short forms of L<C<add()>|FLTK::Menu/"add">.
+
+If the item is found, a pointer to it is returned, otherwise undef is
+returned.
+
+=for hackers xs/Menu.xs line 476
+
+=back
+
+=head2 C<child>
+X<child>
+
+=over
+
+=item C<my $kid = $menu-E<gt>child( @indexes, $level );>X<my_kid_menu_E_gt_child_indexes_level_>
+
+! Calls list()->child(this, indexes, level).
+If an fltk::List is used, the returned widget may be a temporary data
+structure and may be overwritten by another call to child() in this
+<i>or any other Menu</i>!
+
+=for hackers xs/Menu.xs line 149
+
+=item C<my $kid = $menu-E<gt>child( $index );>X<my_kid_menu_E_gt_child_index_>
+
+Returns the given top-level child. Same as
+L<C<child($index, 0)>|FLTK::Menu/"child_indexes_level_">.
+
+I<This overrides the method of the same name on L<FLTK::Group|FLTK::Group>>.
+This is so that an L<FLTK::List|FLTK::List> can be used. However if no
+L<FLTK::List|FLTK::List> is specified the action is identical to
+L<C<FLTK::Group::child( $index )>|FLTK::Group/"child_index_">.
+
+=for hackers xs/Menu.xs line 156
+
+=back
+
+=head2 C<children>
+X<children>
+
+=over
+
+=item C<my $total = $menu-E<gt>children( @indexes, $level );>X<my_total_menu_E_gt_children_indexes_level_>
+
+Calls
+L<$self-E<gt>list()-E<gt>child($self, $indexes, $level)>|FLTK::Menu/"list">.
+If an L<FLTK::List|FLTK::List> is used, the returned widget may be a temporary
+data structure and may be overwritten by another call to
+L<C<child( )>|FLTK::List/"child"> in this I<or any other L<Menu|FLTK::Menu>!>
+
+=for hackers xs/Menu.xs line 110
+
+=item C<my $total = $menu-E<gt>children( $index );>X<my_total_menu_E_gt_children_index_>
+
+Returns the number of children of some child. Same as
+L<C<children([$i], 1)>|FLTK::Menu/"children_indexes_level_">.
+
+=for hackers xs/Menu.xs line 118
+
+=item C<my $total = $menu-E<gt>children( );>X<my_total_menu_E_gt_children_>
+
+Returns the number of children at the top level. Same as C<children(0,0)>.
+
+I<This overrides the method of the same name on L<FLTK::Group|FLTK::Group>>.
+This is so that an L<FLTK::List|FLTK::List> can be used. However if no
+L<FLTK::List|FLTK::List> is specified the action is identical to
+L<C<FLTK::Group::children( )>|FLTK::Group/"children">.
+
+=for hackers xs/Menu.xs line 123
+
+=back
+
+=head2 C<default_callback>
+X<default_callback>
+
+=over
+
+=item C<$menu-E<gt>default_callback( $widget, $data );>X<_menu_E_gt_default_callback_widget_data_>
+
+The default callback for L<Menu|FLTK::Menu> calls
+L<C<item()->do_callback()>|FLTK::Widget/"do_callback"> but if
+L<C<user_data()>|FLTK::Widget/"user_data"> is not null it is used instead of
+the item's L<C<user_data()>|FLTK::Widget/"user_data">.
+
+=for hackers xs/Menu.xs line 421
+
+=back
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $menu-E<gt>default_style( );>X<my_style_menu_E_gt_default_style_>
+
+Get the style
+
+=for hackers xs/Menu.xs line 66
+
+=item C<$menu-E<gt>default_style( $style );>X<_menu_E_gt_default_style_style_>
+
+Set the style.
+
+=for hackers xs/Menu.xs line 70
+
+=back
+
+=head2 C<draw_in>
+X<draw_in>
+
+=over
+
+=item C<$menu-E<gt>draw_in( $widget, @indexes, $level, $selected, $drawn_selected );>X<_menu_E_gt_draw_in_widget_indexes_level_selected_drawn_selected_>
+
+Draw the menu items inside the widget.
+
+The widget's L<C<box()>|FLTK::Menu/"box"> is drawn and the items are laid out
+exactly the same as for L<C<layout()>|FLTK::Menu/"layout">.
+
+If C<$selected> is greater or equal to zero then that item is drawn in a
+selected manner.
+
+If C<$widget->damage()==DAMAGE_CHILD> then it is assummed that only the items
+indicated by C<$selected> and C<$drawn_selected> need to be redrawn. This is
+used for minimal update to move the selection from one item to the next.
+
+=for hackers xs/Menu.xs line 307
+
+=back
+
+=head2 C<execute>
+X<execute>
+
+=over
+
+=item C<$menu-E<gt>execute( $widget );>X<_menu_E_gt_execute_widget_>
+
+Calls L<C<do_callback()>|FLTK::Widget/"do_callback">. First it sets
+L<C<item()>|FLTK::Menu/"item"> to the given widget, so the callback code can
+see it.
+
+Notice that this calls the callback on the L<Menu|FLTK::Menu> widget itself,
+not on the menu item. However the default callback for Menu widget does
+L<C<item()->do_callback()>|FLTK::Widget/"do_callback"> so by default the
+callback for each menu item is done.
+
+Callbacks for items can be disabled, so
+L<C<item()->when(WHEN_NEVER)>|FLTK::Widget/"when"> will disable it for named
+item, but calling L<C<when(WHEN_NEVER)>|FLTK::Widget/"when"> with menu
+instance will disable callbacks for all menu items (but not for the menu
+itself).
+
+=for hackers xs/Menu.xs line 434
+
+=back
+
+=head2 C<find_selected>
+X<find_selected>
+
+=over
+
+=item C<my $index = $menu-E<gt>find_selected( $widget, @indexes, $level, $mx, $my );>X<my_index_menu_E_gt_find_selected_widget_indexes_level_mx_my_>
+
+Return the index of the item that is under the location C<$mx, $my> in the
+given widget, if the L<C<draw()>|FLTK::Widget/"draw"> method had been used to
+draw the items into the widget.
+
+=for hackers xs/Menu.xs line 331
+
+=back
+
+=head2 C<get_item>
+X<get_item>
+
+=over
+
+=item C<my $item = $menu-E<gt>get_item( );>X<my_item_menu_E_gt_get_item_>
+
+Sets and returns L<C<item()>|FLTK::Menu/"item"> based on the
+L<C<focus_index()>|FLTK::Group/"focus_index"> in this and each child group,
+thus restoring the value saved with L<C<set_item()>|FLTK::Menu/"set_item">.
+
+This either returns a non-group node, or child group that has an illegal
+L<C<Group::focus_index()>|FLTK::Group/"focus_index">, or undef if this
+L<C<focus_index()>|FLTK::Group/"focus_index"> is illegal.
+
+If an L<FLTK::List|FLTK::List> is used this will probably only go to the first
+child and not descend any further.
+
+=for hackers xs/Menu.xs line 238
+
+=back
+
+=head2 C<get_location>
+X<get_location>
+
+=over
+
+=item C<my $location = $menu-E<gt>get_location( $widget, @indexes, $level, $index );>X<my_location_menu_E_gt_get_location_widget_indexes_level_index_>
+
+Return the bounding box of the given item inside the widget, if the
+L<C<draw()>|FLTK::Widget/"draw"> method had been used to draw the items into
+the widget.
+
+=for hackers xs/Menu.xs line 347
+
+=back
+
+=head2 C<global>
+X<global>
+
+=over
+
+=item C<$menu-E<gt>global( );>X<_menu_E_gt_global_>
+
+Make the shortcuts for this menu work no matter what window has the focus when
+you type it (as long as L<C<FLTK::modal()>|FLTK/"modal"> is off). This is done
+by using L<C<FLTK::add_handler()>|FLTK/"add_handler">. This
+L<FLTK::Menu|FLTK::Menu> widget does not have to be visible (ie the window it
+is in can be hidden, or it does not have to be put in a window at all).
+
+Currently there can be only one L<C<global()>|FLTK::Menu/"global"> menu.
+Setting a new one will replace the old one. There is no way to remove the
+L<C<global()>|FLTK::Menu/"global"> setting, and you cannot destroy the
+L<Menu|FLTK::Menu>!
+
+This should probably also put the items on the the Mac menubar.
+
+=for hackers xs/Menu.xs line 456
+
+=back
+
+=head2 C<handle_shortcut>
+X<handle_shortcut>
+
+=over
+
+=item C<my $handled = $menu-E<gt>handle_shortcut( );>X<my_handled_menu_E_gt_handle_shortcut_>
+
+Respond to the current C<FLTK::SHORTCUT> or C<FLTK::KEY> event by finding a
+menu item it matches and calling L<C<execute()>|FLTK::MenuItem/"execute"> on
+it. True is returned if a menu item is found, false if none.
+L<Items|FLTK::MenuItem> are searched for a matching
+L<C<shortcut()>|FLTK::Menu/"shortcut"> value. C<&x> shortcuts are ignored,
+they are used only for navigating when the menu is visible.
+
+If you use a List, only the top-most level items are searched for shortcuts.
+Recursion is done only if the children are L<Group|FLTK::Group> widgets, and
+then only the actual children of that L<Group|FLTK::Group> (not any
+L<List|FLTK::List> it may contain if it is another L<Menu|FLTK::Menu>) are
+searched. This is necessary because some L<Lists|FLTK::List> are infinite in
+size, and usually they don't have shortcuts anyway.
+
+This will return invisible (but active) items, even though it is impossible to
+select these items with the gui. This is done so that more than one shortcut
+for an action may be given by putting multiple copies of the item in, where
+only the first is visible.
+
+=for hackers xs/Menu.xs line 395
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<my $item = $menu-E<gt>insert( $index, $label, $shortcut, \&callback, $args, $flags );>X<my_item_menu_E_gt_insert_index_label_shortcut_callback_args_flags_>
+
+Split label at C</> characters and add a hierachial Item.
+
+Same rules as L<C<add()>|FLTK::Menu/"add"> except the item is inserted at
+C<$index> of the final menu. Use 0 to put it at the start. Any number larger
+or equal to the current item count adds the new item to the end.
+
+=for hackers xs/Menu.xs line 678
+
+=item C<my $item = $menu-E<gt>insert( $index, $label, $data );>X<my_item_menu_E_gt_insert_index_label_data_>
+
+Create a new L<Item|FLTK::Item> and add it to the top-level of the hierarchy.
+
+Unlike the L<C<insert()>|FLTK::Menu/"insert"> with more arguments, this one
+does B<not> split the label at C</> characters. The label is used unchanged.
+
+=for hackers xs/Menu.xs line 686
+
+=item C<$menu-E<gt>insert( $widget, $index );>X<_menu_E_gt_insert_widget_index_>
+
+Insert a widget into the menu.
+
+=for hackers xs/Menu.xs line 693
+
+=back
+
+=head2 C<item>
+X<item>
+
+=over
+
+=item C<my $current = $menu-E<gt>item( );>X<my_current_menu_E_gt_item_>
+
+The "current item". In callbacks, this is the item the user clicked on.
+Otherwise you probably can't make any assumptions about it's value.
+
+L<C<Browser::goto_index()>|FLTK::Browser/"goto_index"> sets this to the
+current item.
+
+Since this may be the result of calling L<C<child()>|FLTK::Menu/"child"> the
+returned structure may be short-lived if an L<FLTK::List|FLTK::List> is used.
+
+
+=for hackers xs/Menu.xs line 181
+
+=item C<my $item = $menu-E<gt>item( $value );>X<my_item_menu_E_gt_item_value_>
+
+You can set L<C<item()>|FLTK::Menu/"item_"> with the second call, useful for
+outwitting the callback. This does not produce any visible change for the
+user.
+
+=for hackers xs/Menu.xs line 193
+
+=back
+
+=head2 C<layout_in>
+X<layout_in>
+
+=over
+
+=item C<$menu-E<gt>layout_in( $widget, @indexes, $level );>X<_menu_E_gt_layout_in_widget_indexes_level_>
+
+Resize the widget to contain the menu items that are the children of the item
+indicated by indexes and level (use 0 for the immediate children).
+
+If the widget has L<C<vertical()>|FLTK::Widget/"vertical"> true the menu items
+are laid out one above the other, as is usally done in the pull-down menu
+below a menubar. L<C<w()>|FLTK::Widget/"w"> is set to the widest item, and
+L<C<h()>|FLTK::Widget/"h"> to the sum of all the heights.
+
+If the widget has L<C<horizontal()>|FLTK::Widget/"horizontal"> true then the
+items are laid out in rows, wrapping only when L<C<w()>|FLTK::Widget/"w"> is
+exceeded. L<C<w()>|FLTK::Widget/"w"> is changed only if it is too small to
+contain the smallest item. L<C<h()>|FLTK::Widget/"h"> is set to the total
+height of all the rows.
+
+The L<C<box()>|FLTK::Menu/"box">, L<C<leading()>|FLTK::Menu/"leading">,
+L<C<textfont()>|FLTK::Menu/"textfont">,
+L<C<textsize()>|FLTK::Menu/"textsize">, and perhaps other style attributes of
+the widget are used when figuring out the total size and the size of each
+item.
+
+=for hackers xs/Menu.xs line 275
+
+=back
+
+=head2 C<list>
+X<list>
+
+=over
+
+=item C<my $lst = $menu-E<gt>list( );>X<my_lst_menu_E_gt_list_>
+
+Returns the L<List|FLTK::List> that generates widgets for the menu.
+
+=for hackers xs/Menu.xs line 87
+
+=item C<$menu-E<gt>list( $list );>X<_menu_E_gt_list_list_>
+
+Set the L<List|FLTK::List> that generates widgets for the menu. By default
+this is a dummy L<List|FLTK::List> that returns the child widgets of the
+L<Menu|FLTK::Menu>.
+
+=for hackers xs/Menu.xs line 91
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $menu-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_self_menu_E_gt_new_x_y_w_h_label_begin_>
+
+
+
+=for hackers xs/Menu.xs line 47
+
+=back
+
+=head2 C<popup>
+X<popup>
+
+=over
+
+=item C<my $selected = $menu-E<gt>popup( $rect, $title, $menubar );>X<my_selected_menu_E_gt_popup_rect_title_menubar_>
+
+Create and display a pop-up menu (or hierarchy of menus) showing the
+children of this L<Menu|FLTK::Menu>, then wait until the user picks an item or
+dismisses the menu. If the user picks an item then
+L<C<execute()>|FLTK::Menu/"execute"> is called for it and true is returned.
+False is returned if the user cancels the menu.
+
+If there is a selected item in the menu (as determined by
+L<C<get_item()>|FLTK::Menu/"get_item">) then submenus are opened and all of
+them are positioned intitially so the mouse cursor is pointing at the selected
+item. This is incredibly useful and one of the main features of fltk that is
+missing from other toolkits.
+
+C<rect> describes a rectangle (C<$x, $y, $w, $h>) that the current menu item
+should be centered over, and the menu is widened horizontally to C<$w> if it
+is narrower. The coordinates are measured relative to the widget whose
+L<C<handle()>|FLTK::Widget/"handle"> method is being executed now.
+
+C<$title> is a widget (usually an L<FLTK::Item|FLTK::Item>) that is used to
+make a title atop the menu, in the style of SGI's popup menus. You cannot use
+a L<List|FLTK::List> child, as the drawing of the menu may navigate that list
+to other children, overwriting the original widget.
+
+C<$menubar> is for internal use by menubars and should be left false.
+
+=for hackers xs/Menu.xs line 363
+
+=back
+
+=head2 C<remove>
+X<remove>
+
+=over
+
+=item C<$menu-E<gt>remove( $label );>X<_menu_E_gt_remove_label_>
+
+Does L<C<$menu->find( $label )>|FLTK::Menu/"find"> and then deletes that
+widget.
+
+=for hackers xs/Menu.xs line 493
+
+=item C<$menu-E<gt>remove( $index );>X<_menu_E_gt_remove_index_>
+
+Deletes the C<$index>th widget.
+
+=for hackers xs/Menu.xs line 498
+
+=item C<$menu-E<gt>remove( $widget );>X<_menu_E_gt_remove_widget_>
+
+Deletes C<$widget>.
+
+=for hackers xs/Menu.xs line 502
+
+=back
+
+=head2 C<replace>
+X<replace>
+
+=over
+
+=item C<my $widget = $menu-E<gt>replace( $label, $shortcut, \&callback, $data, $flags );>X<my_widget_menu_E_gt_replace_label_shortcut_callback_data_flags_>
+
+Split label at C</> characters and add or replace a hierachial
+L<Item|FLTK::Item>.
+
+Same rules as L<C<add()>|FLTK::Menu/"add"> except if the item already exists
+it is changed to this new data, instead of a second item with the same label
+being created.
+
+If the C<$label> has any C<@> or C<&> commands in any portion, that portion is
+relabelled, thus you can use this to change the appearance of existing menu
+items. However if the new label does not have any such commands, the label
+remains as before, with any older C<@>-commands.
+
+=for hackers xs/Menu.xs line 615
+
+=item C<my $widget = $menu-E<gt>replace( $label, $shortcut );>X<my_widget_menu_E_gt_replace_label_shortcut_>
+
+Create or replace an L<Item|FLTK::Item> at the top-level of the hierarchy.
+
+The top level is searched for an item that matches the given label. If found
+it's data is changed to the passed data, if not found a new Item is created
+and added at the end.
+
+=for hackers xs/Menu.xs line 629
+
+=item C<$menu-E<gt>replace( $index, $widget );>X<_menu_E_gt_replace_index_widget_>
+
+Replace the C<$index>th item with C<$widget>.
+
+=for hackers xs/Menu.xs line 637
+
+=item C<$menu-E<gt>replace( $old, $new );>X<_menu_E_gt_replace_old_new_>
+
+Replace the C<$old> widget with the C<$new> widget.
+
+=for hackers xs/Menu.xs line 641
+
+=back
+
+=head2 C<set_item>
+X<set_item>
+
+=over
+
+=item C<my $changed = $menu-E<gt>set_item( @indexes, $level );>X<my_changed_menu_E_gt_set_item_indexes_level_>
+
+Remembers a currently selected item in a hierarchy by setting the
+L<C<focus_index()>|FLTK::Group/"focus_index"> of each group to point to the
+next one. The widget can then be recovered with
+L<C<get_item()>|FLTK::Menu/"get_item">. A
+L<C<redraw(DAMAGE_VALUE)>|FLTK::Widget/"redraw"> is done so pulldown menus
+redraw their display.
+
+=for hackers xs/Menu.xs line 217
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<my $index = $menu-E<gt>value( );>X<my_index_menu_E_gt_value_>
+
+Same as L<C<FLTK::Group::focus_index>|FLTK::Group/"focus_index">.
+
+=for hackers xs/Menu.xs line 256
+
+=item C<my $changed = $menu-E<gt>value( $index );>X<my_changed_menu_E_gt_value_index_>
+
+Convienence function to do L<C<set_item()>|FLTK::Menu/"set_item"> when there
+is only one level of hierarchy. In this case you can consider the menu items
+to be indexes starting at zero.
+
+=for hackers xs/Menu.xs line 260
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Menu.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

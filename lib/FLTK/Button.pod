@@ -1,0 +1,160 @@
+=pod
+
+=head1 NAME
+
+FLTK::Button - Push button widget
+
+=head1 Description
+
+Buttons generate callbacks when they are clicked by the user. You control
+exactly when and how by changing the values for
+L<C<when()>|FLTK::Widget/"when">:
+
+=over 8
+
+=item C<FLTK::WHEN_NEVER>
+The callback is not done, instead L<C<changed()>|FLTK::Widget/"changed"> is
+turned on.
+
+=item C<FLTK::WHEN_RELEASE>
+This is the default, the callback is done after the user successfully clicks
+the button (i.e. they let it go with the mouse still pointing at it), or when
+a shortcut is typed.
+
+=item C<FLTK::WHEN_CHANGED>
+The callback is done each time the L<C<value()>|FLTK::Widget/"value"> changes
+(when the user pushes and releases the button, and as the mouse is dragged
+around in and out of the button).
+
+=back 
+
+Buttons can also generate callbacks in response to C<FLTK::SHORTCUT> events.
+The button can either have an explicit
+L<C<shortcut()>|FLTK::Widget/"shortcut"> value or a letter shortcut can be
+indicated in the L<C<label()>|FLTK::Widget/"label"> with an C<&> character
+before it. For the label shortcut it does not matter if C<Alt> is held down,
+but if you have an input field in the same window, the user will have to hold
+down the C<Alt> key so that the input field does not eat the event first as an
+C<FLTK::KEY> event.
+
+=head1 Functions
+
+=head2 C<HIDDEN>
+X<HIDDEN>
+
+=over
+
+=item C<HIDDEN( );>X<HIDDEN_>
+
+Back-comptability value to hide the button
+
+=for hackers xs/Button.xs line 79
+
+=back
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $button-E<gt>default_style( );>X<my_style_button_E_gt_default_style_>
+
+Get the style
+
+=for hackers xs/Button.xs line 126
+
+=item C<$button-E<gt>default_style( $style );>X<_button_E_gt_default_style_style_>
+
+Set the style.
+
+=for hackers xs/Button.xs line 130
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $button-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_button_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::Button> object. Obviously.
+
+=for hackers xs/Button.xs line 60
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<$button-E<gt>value( $val );>X<_button_E_gt_value_val_>
+
+Change the L<C<value()>|/"value">. Redraws the button and returns true if the
+new value is different. This is the same function as
+L<C<Widget::state()>|FLTK::Widget/"state">. See also
+L<C<Widget::set()>|FLTK::Widget/"set">,
+L<C<Widget::clear()>|FLTK::Widget/"clear">, and
+L<C<Widget::setonly()>|FLTK::Widget/"setonly">.
+
+If you turn it on, a normal button will draw pushed-in, until the user clicks
+it and releases it.
+
+=for hackers xs/Button.xs line 92
+
+=item C<my $val = $button-E<gt>value( );>X<my_val_button_E_gt_value_>
+
+The current value. C<true> means it is pushed down, C<false> means it is not
+pushed down. The L<ToggleButton|FLTK::ToggleButton> subclass provides the
+ability for the user to change this value permanently, otherwise it is just
+temporary while the user is holding the button down.
+
+This is the same as L<Widget::state()|FLTK::Widget/"state">.
+
+=for hackers xs/Button.xs line 104
+
+=back
+
+=head1 Subclassing C<FLTK::Button>
+
+Blah, blah, blah...
+
+=head2 C<draw( $glyph_width )>
+
+This function provides a mess of back-compatabilty and Windows emulation to
+subclasses of L<Button|FLTK::Button> to draw with. It will draw the button
+according to the current state of being pushed and it's
+L<C<state()>|FLTK::Widget/"state">. If non-zero is passed for C<GLYPH_WIDTH>
+then the L<C<glyph()>|FLTK::Widget/"glyph"> is drawn in that space on the left
+(or on the right if negative), and it assummes the glyph indicates the
+L<C<state()>|FLTK::Widget/"state">, so the box is only used to indicate the
+pushed state.
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Button.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+
+=cut

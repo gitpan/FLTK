@@ -1,0 +1,140 @@
+=pod
+
+=head1 NAME
+
+FLTK::TextDisplay::StyleTableEntry -
+
+=head1 Description
+
+TODO
+
+=head1 Functions
+
+=head2 C<attr>
+X<attr>
+
+=over
+
+=item C<$styletableentry-E<gt>attr( $attr );>X<_styletableentry_E_gt_attr_attr_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 117
+
+=item C<my $attr = $styletableentry-E<gt>attr( );>X<my_attr_styletableentry_E_gt_attr_>
+
+
+
+=pod 
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 121
+
+=back
+
+=head2 C<color>
+X<color>
+
+=over
+
+=item C<$styletableentry-E<gt>color( $color );>X<_styletableentry_E_gt_color_color_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 51
+
+=item C<my $color = $styletableentry-E<gt>color( );>X<my_color_styletableentry_E_gt_color_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 55
+
+=back
+
+=head2 C<destroy>
+X<destroy>
+
+=over
+
+=item C<$styletableentry-E<gt>destroy( );>X<_styletableentry_E_gt_destroy_>
+
+Destroy the object.
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 39
+
+=back
+
+=head2 C<font>
+X<font>
+
+=over
+
+=item C<$styletableentry-E<gt>font( $color );>X<_styletableentry_E_gt_font_color_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 73
+
+=item C<my $font = $styletableentry-E<gt>font( );>X<my_font_styletableentry_E_gt_font_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 77
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $styletableentry-E<gt>new( );>X<my_self_styletableentry_E_gt_new_>
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 31
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<$styletableentry-E<gt>size( $size );>X<_styletableentry_E_gt_size_size_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 95
+
+=item C<my $size = $styletableentry-E<gt>size( );>X<my_size_styletableentry_E_gt_size_>
+
+
+
+=for hackers xs/TextDisplay/StyleTableEntry.xs line 99
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: StyleTableEntry.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

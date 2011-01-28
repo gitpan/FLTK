@@ -1,0 +1,1360 @@
+=pod
+
+=head1 NAME
+
+FLTK::events - Event types and data
+
+=head1 Description
+
+Event types and data. A L<C<Widget::handle()>|FLTK::Widget/"handle"> method
+needs this.
+
+=head1 Functions
+
+=head2 C<BUTTON>
+X<BUTTON>
+
+=over
+
+=item C<my $flags = FLTK::BUTTON( $number );>X<my_flags_FLTK_BUTTON_number_>
+
+The function C<BUTTON(n)> will turn C<number> (1 .. 8) into the
+L<flag|/"Flags"> for a mouse button.
+
+=pod 
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 662
+
+=back
+
+=head2 C<belowmouse>
+X<belowmouse>
+
+=over
+
+=item C<my $under = FLTK::belowmouse( );>X<my_under_FLTK_belowmouse_>
+
+Get the widget that is below the mouse. This is the last widget to respond to
+an C<ENTER> event as long as the mouse is still pointing at it. This is for
+highlighting buttons and bringing up tooltips. It is not used to send C<PUSH>
+or C<MOVE> directly, for several obscure reasons, but those events typically
+go to this widget.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1384
+
+=item C<FLTK::belowmouse( $widget );>X<FLTK_belowmouse_widget_>
+
+Change the L<C<belowmouse()>|/"belowmouse"> widget, the previous one and all
+parents (that don't contain the new widget) are sent C<LEAVE> events. Changing
+this does not send C<ENTER> to this or any widget, because sending C<ENTER> is
+supposed to test if the widget wants the mouse (by it returning non-zero from
+handle()).
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1392
+
+=back
+
+=head2 C<compose>
+X<compose>
+
+=over
+
+=item C<my $changed = FLTK::compose( $del );>X<my_changed_FLTK_compose_del_>
+
+Use of this function is very simple. Any text editing widget should call this
+for each C<KEY> event.
+
+If a true value is returned, then it has modified the
+L<C<event_text()>|/"event_text"> and L<C<event_length()>|/"event_length"> to a
+set of bytes to insert (it may be of zero length!). It will also set the
+C<del> parameter to the number of bytes to the left of the cursor to delete,
+this is used to delete the results of the previous call to
+L<C<compose()>|/"compose">. Compose may consume the key, which is indicated by
+returning true, but both the length and C<del> are set to zero.
+
+Compose returns a false value if it thinks the key is a function key that the
+widget should handle itself, and not an attempt by the user to insert text.
+
+Though the current implementation returns immediately, future versions may
+take quite awhile, as they may pop up a window or do other user-interface
+things to allow international characters to be selected.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1082
+
+=back
+
+=head2 C<compose_reset>
+X<compose_reset>
+
+=over
+
+=item C<FLTK::compose_reset( );>X<FLTK_compose_reset_>
+
+If the user moves the cursor, be sure to call
+L<C<compose_reset()>|/"compose_reset">. The next call to
+L<C<compose()>|/"compose"> will start out in an initial state. In particular
+it will not set "del" to non-zero. This call is very fast so it is ok to call
+it many times and in many places.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1118
+
+=back
+
+=head2 C<copy>
+X<copy>
+
+=over
+
+=item C<FLTK::copy( $stuff, $length, $clipboard );>X<FLTK_copy_stuff_length_clipboard_>
+
+Change the current selection. The block of text is copied to an internal
+buffer by FLTK (be careful if doing this in response to a C<PASTE> as this may
+be the same buffer returned by L<C<event_text()>|/"event_text">).
+
+The block of text may be retrieved (from this program or whatever program last
+set it) with L<C<paste()>|/"paste">.
+
+There are actually two buffers. If C<clipboard> is true then the text goes
+into the user-visible selection that is moved around with cut/copy/paste
+commands (on X this is the CLIPBOARD selection). If C<clipboard> is false then
+the text goes into a less-visible buffer used for temporarily selecting text
+with the mouse and for drag & drop (on X this is the XA_PRIMARY selection).
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1487
+
+=back
+
+=head2 C<dnd>
+X<dnd>
+
+=over
+
+=item C<my $drag = FLTK::dnd( );>X<my_drag_FLTK_dnd_>
+
+Drag and drop the data set by the most recent L<C<copy()>|/"copy"> (with the
+C<clipboard> argument false). Returns true if the data was dropped on
+something that accepted it.
+
+By default only blocks of text are dragged. You can use system-specific
+variables to change the type of data.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1550
+
+=back
+
+=head2 C<event>
+X<event>
+
+=over
+
+=item C<my $event = FLTK::event( );>X<my_event_FLTK_event_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 741
+
+=back
+
+=head2 C<event_button>
+X<event_button>
+
+=over
+
+=item C<my $button = FLTK::event_button( );>X<my_button_FLTK_event_button_>
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 894
+
+=back
+
+=head2 C<event_clicks>
+X<event_clicks>
+
+=over
+
+=item C<FLTK::event_clicks( $i );>X<FLTK_event_clicks_i_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 806
+
+=item C<my $clicks = FLTK::event_clicks( );>X<my_clicks_FLTK_event_clicks_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 810
+
+=back
+
+=head2 C<event_device>
+X<event_device>
+
+=over
+
+=item C<my $id = FLTK::event_device( );>X<my_id_FLTK_event_device_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1037
+
+=back
+
+=head2 C<event_dx>
+X<event_dx>
+
+=over
+
+=item C<my $dx = FLTK::event_dx( );>X<my_dx_FLTK_event_dx_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 753
+
+=back
+
+=head2 C<event_dy>
+X<event_dy>
+
+=over
+
+=item C<my $dy = FLTK::event_dy( );>X<my_dy_FLTK_event_dy_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 757
+
+=back
+
+=head2 C<event_inside>
+X<event_inside>
+
+=over
+
+=item C<my $in = FLTK::event_inside( $rectangle );>X<my_in_FLTK_event_inside_rectangle_>
+
+Returns true if the current L<C<event_x()>|/"event_x"> and
+L<C<event_y()>|/"event_y"> put it inside the L<Rectangle|FLTK::Rectangle>. You
+should always call this rather than doing your own comparison so you are
+consistent about edge effects.
+
+=for hackers Found in C<src/run.cxx>
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1057
+
+=back
+
+=head2 C<event_is_click>
+X<event_is_click>
+
+=over
+
+=item C<my $click = FLTK::event_is_click( );>X<my_click_FLTK_event_is_click_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 834
+
+=item C<FLTK::event_is_click( $value );>X<FLTK_event_is_click_value_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 838
+
+=back
+
+=head2 C<event_key>
+X<event_key>
+
+=over
+
+=item C<my $key = FLTK::event_key( );>X<my_key_FLTK_event_key_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 890
+
+=back
+
+=head2 C<event_key_repeated>
+X<event_key_repeated>
+
+=over
+
+=item C<my $repeated = FLTK::event_key_repeated( );>X<my_repeated_FLTK_event_key_repeated_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 965
+
+=back
+
+=head2 C<event_key_state>
+X<event_key_state>
+
+=over
+
+=item C<my $state = FLTK::event_key_state( $state );>X<my_state_FLTK_event_key_state_state_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 921
+
+=back
+
+=head2 C<event_length>
+X<event_length>
+
+=over
+
+=item C<my $length = FLTK::event_length( );>X<my_length_FLTK_event_length_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 961
+
+=back
+
+=head2 C<event_name>
+X<event_name>
+
+=over
+
+=item C<my $string = FLTK::event_name( $event );>X<my_string_FLTK_event_name_event_>
+
+Return the corresponding name of an event, should not consume memory if api is
+not used. This is really only good for debugging.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1698
+
+=back
+
+=head2 C<event_pressure>
+X<event_pressure>
+
+=over
+
+=item C<my $pressure = FLTK::event_pressure( );>X<my_pressure_FLTK_event_pressure_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 993
+
+=back
+
+=head2 C<event_state>
+X<event_state>
+
+=over
+
+=item C<my $state = FLTK::event_state( );>X<my_state_FLTK_event_state_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 862
+
+=item C<my $state = FLTK::event_state( $state );>X<my_state_FLTK_event_state_state_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 866
+
+=back
+
+=head2 C<event_text>
+X<event_text>
+
+=over
+
+=item C<my $string = FLTK::event_text( );>X<my_string_FLTK_event_text_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 941
+
+=back
+
+=head2 C<event_x>
+X<event_x>
+
+=over
+
+=item C<my $x = FLTK::event_x( );>X<my_x_FLTK_event_x_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 745
+
+=back
+
+=head2 C<event_x_root>
+X<event_x_root>
+
+=over
+
+=item C<my $x = FLTK::event_x_root( );>X<my_x_FLTK_event_x_root_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 761
+
+=back
+
+=head2 C<event_x_tilt>
+X<event_x_tilt>
+
+=over
+
+=item C<my $tilt_x = FLTK::event_x_tilt( );>X<my_tilt_x_FLTK_event_x_tilt_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 997
+
+=back
+
+=head2 C<event_y>
+X<event_y>
+
+=over
+
+=item C<my $y = FLTK::event_y( );>X<my_y_FLTK_event_y_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 749
+
+=back
+
+=head2 C<event_y_root>
+X<event_y_root>
+
+=over
+
+=item C<my $y = FLTK::event_y_root( );>X<my_y_FLTK_event_y_root_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 765
+
+=back
+
+=head2 C<event_y_tilt>
+X<event_y_tilt>
+
+=over
+
+=item C<my $tilt_y = FLTK::event_y_tilt( );>X<my_tilt_y_FLTK_event_y_tilt_>
+
+
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1001
+
+=back
+
+=head2 C<exit_modal>
+X<exit_modal>
+
+=over
+
+=item C<FLTK::exit_modal( );>X<FLTK_exit_modal_>
+
+Turns on L<C<exit_modal_flag()>|/"exit_modal_flag">. This may be used by user
+callbacks to cancel modal state. See also
+L<C<Window::make_exec_return()>|FLTK::Window/"make_exec_return">.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1656
+
+=back
+
+=head2 C<exit_modal_flag>
+X<exit_modal_flag>
+
+=over
+
+=item C<my $eh = FLTK::exit_modal_flag( );>X<my_eh_FLTK_exit_modal_flag_>
+
+True if L<C<exit_modal()>|/"exit_modal"> has been called. The flag is also set
+by the destruction or hiding of the modal widget, and on Windows by other
+applications taking the focus when grab is on.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1676
+
+=back
+
+=head2 C<focus>
+X<focus>
+
+=over
+
+=item C<my $widget = FLTK::focus( );>X<my_widget_FLTK_focus_>
+
+Returns the widgets that will receive C<KEY> events. This is undef if the
+application does not have focus now, or if no widgets accepted focus.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1450
+
+=item C<FLTK::focus( $widget );>X<FLTK_focus_widget_>
+
+Change L<C<focus()>|/"focus"> to the given widget, the previous widget and all
+parents (that don't contain the new widget) are sent C<UNFOCUS> events, the
+new widget is sent an C<FOCUS> event, and all parents of it get
+C<FOCUS_CHANGE> events.
+
+L<C<focus()>|/"focus"> is set whether or not the applicaton has the focus or
+if the widgets accept the focus. You may want to use
+L<C<FLTK::Widget::take_focus()>|FLTK::Widget/"take_focus"> instead, it will
+test first.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1455
+
+=back
+
+=head2 C<foreachShortcut>
+X<foreachShortcut>
+
+=over
+
+=item C<my $value = FLTK::foreachShortcut( $SF, $widget );>X<my_value_FLTK_foreachShortcut_SF_widget_>
+
+Calls the L<C<handle()>|FLTK::Subclass/"handle"> method from the passed
+ShortcutFunctor object for every
+L<C<Widget::shortcut()>|FLTK::Widget/"shortcut"> assignment known. If any
+return true then this immediately returns that shortcut value, else this
+returns zero after calling it for the last one. This is most useful for making
+a display of shortcuts for the user, or implementing a shortcut editor.
+
+If C<widget> is not null, only do assignments for that widget, this is much
+faster than searching the entire list. This is useful for drawing the
+shortcuts on a widget (though most fltk widgets only draw the first one).
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1238
+
+=item C<my $value = FLTK::foreachShortcut( $SF );>X<my_value_FLTK_foreachShortcut_SF_>
+
+Same. But without widget NULL by default.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1251
+
+=back
+
+=head2 C<get_key_state>
+X<get_key_state>
+
+=over
+
+=item C<my $state = FLTK::get_key_state( $key );>X<my_state_FLTK_get_key_state_key_>
+
+Returns true if the given key was held down (or pressed) I<during the last
+event>. This is constant until the next event is read from the server. The
+possible values for the key are listed under C<SpaceKey>.
+
+Note: On Win32, C<event_key_state(KeypadEnter)> does not work.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1274
+
+=back
+
+=head2 C<get_mouse>
+X<get_mouse>
+
+=over
+
+=item C<my @xy = FLTK::get_mouse( );>X<my_xy_FLTK_get_mouse_>
+
+Return where the mouse is on the screen by doing a round-trip query to the
+server. You should use L<C<event_x_root()>|/"event_x_root"> and
+L<C<event_y_root()>|/"event_y_root"> if possible, but this is necessary if you
+are not sure if a mouse event has been processed recently (such as to position
+your first window). If the display is not open, this will open it.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1298
+
+=back
+
+=head2 C<grab>
+X<grab>
+
+=over
+
+=item C<my $cvalue = FLTK::grab( );>X<my_cvalue_FLTK_grab_>
+
+Returns the current value of grab (this is always false if
+L<C<modal()>|/"modal"> is undef).
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1635
+
+=back
+
+=head2 C<handle>
+X<handle>
+
+=over
+
+=item C<my $handled = FLTK::handle( $event, $window );>X<my_handled_FLTK_handle_event_window_>
+
+This is the function called from the system-specific code for all events that
+can be passed to L<C<Widget::handle()>|FLTK::Subclass/"handle">.
+
+You can call it directly to fake events happening to your widgets. Currently
+data other than the event number can only be faked by writing to the
+undocumented C<fltk::e_*> variables, for instance to make
+L<C<event_x()>|/"event_x"> return C<5>, you whould do C<fltk::e_x = 5>. This
+may change in future versions of fltk toolkit and is currently not supported
+by the FLTK module.
+
+This will redirect events to the L<C<modal()>|/"modal">,
+L<C<pushed()>|/"pushed">, L<C<belowmouse()>|/"belowmouse">, or
+L<C<focus()>|/"focus"> widget depending on those settings and the event type.
+It will turn C<MOVE> into C<DRAG> if any buttons are down. If the resulting
+widget returns 0 (or the window or widget is undef) then the functions pointed
+to by L<C<add_event_handler()>|/"add_event_handler"> are called.
+
+=for hackers xs/events.xs line 1352
+
+=back
+
+=head2 C<key>
+X<key>
+
+=over
+
+=item C<my $key = FLTK::key( $name );>X<my_key_FLTK_key_name_>
+
+Turn a string into a L<C<event_key()>|/"event_key"> value or'd with
+L<C<event_shift()>|/"event_shift"> flags. The returned value can be used by by
+L<C<FLTK::Widget::add_shortcut()>|FLTK::Widget/"add_shortcut">.  Any error, or
+a null or zero-length string, returns 0.
+
+Currently this understands prefixes of "Alt+", "Shift+", and "Ctrl+" to turn
+on C<ALT>, C<SHIFT>, and C<CTRL>. Case is ignored and the '+' can be a '-'
+instead and the prefixes can be in any order.  You can also use '#' instead of
+"Alt+", '+' instead of "Shift+", and '^' instead of "Ctrl+".
+
+After the shift prefixes there can either be a single ASCII letter, "Fn" where
+C<n> is a number to indicate a function key, or "0xnnnn" to get an arbitrary
+L<C<event_key()>|/"event_kay"> enumeration value.
+
+The inverse function to turn a number into a string is
+L<C<key_name()>|/"key_name">. Currently this function does not parse some
+strings L<C<key_name()>|/"key_name"> can return, such as the names of arrow
+keys!
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1201
+
+=back
+
+=head2 C<key_name>
+X<key_name>
+
+=over
+
+=item C<my $string = FLTK::key_name( $hotkey );>X<my_string_FLTK_key_name_hotkey_>
+
+Unparse a L<C<FLTK::Widget::shortcut()>|FLTK::Widget/"shortcut">, an
+L<C<event_key()>|/"event_key">, or an L<C<event_key()>|/"event_key"> or'd with
+L<C<event_state()>|/"event_state">. Returns a human-readable string like
+"Alt+N". If C<hotkey> is zero an empty string is returned.
+
+The opposite function is L<C<key()>|/"key">.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1176
+
+=back
+
+=head2 C<modal>
+X<modal>
+
+=over
+
+=item C<FLTK::modal( $widget, $grab );>X<FLTK_modal_widget_grab_>
+
+Restricts events to a certain widget.
+
+First thing: much of the time L<C<Window::exec()>|FLTK::Window/"exec"> will do
+what you want, so try using that.
+
+This function sets the passed widget as the "modal widget". All user events
+are directed to it or a child of it, preventing the user from messing with
+other widgets. The modal widget does not have to be visible or even a child of
+a L<Window|FLTK::Window> for this to work (but if it not visible,
+L<C<event_x()>|/"event_x"> and L<C<event_y()>|/"event_y"> are meaningless, use
+L<C<event_x_root()>|/"event_x_root"> and
+L<C<event_y_root()>|/"event_y_root">).
+
+The calling code is responsible for saving the current value of
+L<C<modal()>|/"modal"> and L<C<grab()>|/"grab"> and restoring them by calling
+this after it is done. The code calling this should then loop calling
+L<C<wait()>|FLTK/"wait"> until L<C<exit_modal_flag()>|/"exit_modal_flag"> is
+set or you otherwise decide to get out of the modal state. It is the calling
+code's responsibility to monitor this flag and restore the modal widget to
+it's previous value when it turns on.
+
+C<grab> indicates that the modal widget should get events from anywhere on the
+screen. This is done by messing with the window system. If
+L<C<exit_modal()>|/"exit_modal"> is called in response to a C<PUSH> event
+(rather than waiting for the drag or release event) fltk will "repost" the
+event so that it is handled after modal state is exited. This may also be done
+for keystrokes in the future. On both X and WIN32 grab will not work unless
+you have some visible window because the system interface needs a visible
+window id. On X be careful that your program does not enter an infinite loop
+while L<C<grab()>|/"grab"> is on, it will lock up your screen!
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1575
+
+=item C<my $current = FLTK::modal( );>X<my_current_FLTK_modal_>
+
+Returns the current modal widget, or undef if there isn't one. It is useful to
+test these in timeouts and file descriptor callbacks in order to block actions
+that should not happen while the modal window is up. You also need these in
+order to save and restore the modal state.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1608
+
+=back
+
+=head2 C<paste>
+X<paste>
+
+=over
+
+=item C<FLTK::paste( $widget, $clipboard );>X<FLTK_paste_widget_clipboard_>
+
+This is what a widget does when a "paste" command (like Ctrl+V or the middle
+mouse click) is done to it. Cause a C<PASTE> event to be sent to the receiver
+with the contents of the current selection in the
+L<C<event_text()>|/"event_text">. The selection can be set by
+L<C<copy()>|/"copy">.
+
+There are actually two buffers. If C<clipboard> is true then the text is from
+the user-visible selection that is moved around with cut/copy/paste commands
+(on X this is the CLIPBOARD selection). If C<clipboard> is false then the text
+is from a less-visible buffer used for temporarily selecting text with the
+mouse and for drag & drop (on X this is the XA_PRIMARY selection).
+
+The reciever should be prepared to be called I<directly> by this or, for it to
+happen later, or possibly not at all. This allows the window system to take as
+long as necessary to retrieve the paste buffer (or even to screw up
+completely) without complex and error-prone synchronization code most toolkits
+require.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1516
+
+=back
+
+=head2 C<pushed>
+X<pushed>
+
+=over
+
+=item C<my $current = FLTK::pushed( );>X<my_current_FLTK_pushed_>
+
+Get the widget that is being pushed. C<DRAG> or C<RELEASE> (and any more
+C<PUSH>) events will be sent to this widget. This is null if no mouse button
+is being held down, or if no widget responded to the C<PUSH> event.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1420
+
+=item C<FLTK::pushed( $widget );>X<FLTK_pushed_widget_>
+
+Change the L<C<pushed()>|/"pushed"> widget. This sends no events.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1426
+
+=back
+
+=head2 C<try_shortcut>
+X<try_shortcut>
+
+=over
+
+=item C<my $handled = FLTK::try_shortcut( );>X<my_handled_FLTK_try_shortcut_>
+
+Try sending the current C<KEY> event as a C<SHORTCUT> event.
+
+Normally the L<C<focus()>|/"focus"> gets all keystrokes, and shortcuts are
+only tested if that widget indicates it is uninterested by returning zero from
+L<C<Widget::handle()>|FLTK::Subclass/"handle">.  However in some cases the
+focus wants to use the keystroke I<only if it is not a shortcut>. The most
+common example is Emacs-style editing keystrokes in text editing widgets,
+which conflict with Microsoft-compatable menu key bindings, but we want the
+editing keys to work if there is no conflict.
+
+This will send a C<SHORTCUT> event just like the focus returned zero, to every
+widget in the focus window, and to the L<C<add_handler()>|/"add_handler">
+calls, if any. It will return true if any widgets were found that were
+interested in it. A C<handle()> method can call this in a C<KEY> event. If it
+returns true, return 1 B<immediatly>, as the shortcut will have executed and
+may very well have destroyed your widget. If this returns false, then do what
+you want the key to do.
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1140
+
+=back
+
+=head2 C<warp_mouse>
+X<warp_mouse>
+
+=over
+
+=item C<my $worked = FLTK::warp_mouse( $x, $y );>X<my_worked_FLTK_warp_mouse_x_y_>
+
+Change where the mouse is on the screen.
+
+Returns true if successful, false on failure (exactly what success and failure
+means depends on the os).
+
+Import this function with the C<:events> tag.
+
+=for hackers xs/events.xs line 1329
+
+=back
+
+=head1 Events
+
+FLTK's event system passes numbered arguments to
+L<C<Widget::handle()>|FLTK::Subclass/handle> and returns the same from
+L<C<event()>|FLTK::Widget/"event">. These events may be imported with the
+C<events> tag and include the following:
+
+=over 
+
+=item C<NO_EVENT>
+
+=item C<PUSH>
+
+=item C<RELEASE>
+
+=item C<ENTER>
+
+=item C<LEAVE>
+
+=item C<DRAG>
+
+=item C<FOCUS>
+
+=item C<UNFOCUS>
+
+=item C<KEY>
+
+=item C<KEYUP>
+
+=item C<FOCUS_CHANGE>
+
+=item C<MOVE>
+
+=item C<SHORTCUT>
+
+=item C<DEACTIVATE>
+
+=item C<ACTIVATE>
+
+=item C<HIDE>
+
+=item C<SHOW>
+
+=item C<PASTE>
+
+=item C<TIMEOUT>
+
+=item C<MOUSEWHEEL>
+
+=item C<DND_ENTER>
+
+=item C<DND_DRAG>
+
+=item C<DND_LEAVE>
+
+=item C<DND_RELEASE>
+
+=item C<TOOLTIP>
+
+=back 
+
+If you're rolling your own event system (See
+L<FLTK::Subclass|FLTK::Subclass>), you're gonna need these.
+
+=pod 
+
+=head1 Event Keys
+
+Values returned by C<event_key()>, passed to C<event_key_state()> and
+C<get_key_state()>, and used for the low 16 bits of C<add_shortcut()>.
+
+The actual values returned are based on X11 keysym values, though fltk always
+returns "unshifted" values much like Windows does. A given key always returns
+the same value no matter what shift keys are held down. Use C<event_text()> to
+see the results of any shift keys.
+
+The lowercase letters 'a' through 'z' and the ascii symbols '`', '-', '=',
+'[', ']', '\\', ',', '.', '/', ';', '\'' and space are used to identify the
+keys in the main keyboard.
+
+On X systems unrecognized keys are returned unchanged as their X keysym value.
+If they have no keysym it uses the scan code or'd with C<0x8000>, this is what
+all those blue buttons on a Microsoft keyboard will do. I don't know how to
+get those buttons on Windows.
+
+Supported keys may be imported with the C<events> tag and include...
+
+=over 
+
+=item C<LeftButton>
+
+=item C<MiddleButton>
+
+=item C<RightButton>
+
+=item C<SpaceKey>
+
+=item C<BackSpaceKey>
+
+=item C<TabKey>
+
+=item C<ClearKey>
+
+On some systems with NumLock off '5' produces this.
+
+=item C<ReturnKey>
+
+Main Enter key, Windows and X documentation calls this "Return"
+
+=item C<PauseKey>
+
+Pause / Break button
+
+=item C<ScrollLockKey>
+
+=item C<EscapeKey>
+
+=item C<HomeKey>
+
+=item C<LeftKey>
+
+=item C<UpKey>
+
+=item C<RightKey>
+
+=item C<DownKey>
+
+=item C<PageUpKey>
+
+=item C<PageDownKey>
+
+=item C<EndKey>
+
+=item C<PrintKey>
+
+Print Scr / Sys Rq key
+
+=item C<InsertKey>
+
+=item C<MenuKey>
+
+Key in lower-right (between Ctrl and Win) with picture of popup menu
+
+=item C<HelpKey>
+
+Help key on Macintosh keyboards
+
+=item C<NumLockKey>
+
+=item C<Keypad>
+
+Add ASCII to this to get keypad keys.
+
+As in C<Keypad + "+"> is the same as C<AddKey>.
+
+=item C<KeypadEnter>
+
+Enter on the keypad. Same as C<Keypad + "\r">
+
+=item C<MultiplyKey>
+
+C<*> on the keypad. Same as C<Keypad + "*">
+
+=item C<AddKey>
+
+C<+> on the keypad. Same as C<Keypad + "+">
+
+=item C<SubtractKey>
+
+C<-> on the keypad. Same as C<Keypad + "-">
+
+=item C<DecimalKey>
+
+C<.> on the keypad
+
+=item C<DivideKey>
+
+C</> on the keypad
+
+=item C<Keypad0>
+
+C<0> on the keypad
+
+=item C<Keypad1>
+
+C<1> on the keypad
+
+=item C<Keypad2>
+
+C<2> on the keypad
+
+=item C<Keypad3>
+
+C<3> on the keypad
+
+=item C<Keypad4>
+
+C<4> on the keypad
+
+=item C<Keypad5>
+
+C<5> on the keypad
+
+=item C<Keypad6>
+
+C<6> on the keypad
+
+=item C<Keypad7>
+
+C<7> on the keypad
+
+=item C<Keypad8>
+
+C<8> on the keypad
+
+=item C<Keypad9>
+
+C<9> on the keypad
+
+=item C<KeypadLast>
+
+C<Keypad + '='>, largest legal keypad key
+
+=item C<F0Key>
+
+Add a number to get function key.
+
+As in C<F0Key + 3> is the same as C<F3Key>
+
+=item C<F1Key>
+
+=item C<F2Key>
+
+=item C<F3Key>
+
+=item C<F4Key>
+
+=item C<F5Key>
+
+=item C<F6Key>
+
+=item C<F7Key>
+
+=item C<F8Key>
+
+=item C<F9Key>
+
+=item C<F10Key>
+
+=item C<F11Key>
+
+=item C<F12Key>
+
+=item C<LastFunctionKey>
+
+Largest legal function key. Same as C<F0Key + 35>
+
+=item C<LeftShiftKey>
+
+Left-hand Shift
+
+=item C<RightShiftKey>
+
+Right-hand Shift
+
+=item C<LeftCtrlKey>
+
+Left-hand Ctrl
+
+=item C<RightCtrlKey>
+
+Right-hand Ctrl
+
+=item C<CapsLockKey>
+
+Caps Lock
+
+=item C<LeftMetaKey>
+
+The left "Windows" or "Apple" key
+
+=item C<RightMetaKey>
+
+The right "Windows" or "Apple" key
+
+=item C<LeftAltKey>
+
+Left-hand Alt (option on Mac)
+
+=item C<RightAltKey>
+
+Right-hand Alt (option on Mac)
+
+=item C<DeleteKey>
+
+Delete
+
+=item C<LeftAccKey>
+
+Same as C<LeftCtrlKey> on Mac, C<LeftAltKey> on other systems.
+
+=item C<RightAccKey>
+
+Same as C<RightCtrlKey> on Mac, C<RightAltKey> on other systems.
+
+=item C<LeftCmdKey>
+
+Same as C<LeftMetaKey> on Mac, C<LeftCtrlKey> on other systems.
+
+=item C<RightCmdKey>
+
+Same as C<RightMetaKey> on Mac, C<RightCtrlKey> on other systems.
+
+=back 
+
+...in addition to the above, letters C<a .. z> and all punctuation are passed
+by their ordinal values.
+
+=pod 
+
+=head1 Flags
+
+Flags returned by C<event_state()>, and used as the high 16 bits of
+L<C<Widget::add_shortcut()>|FLTK::Widget/"add_shortcut"> values (the low 16
+bits are all zero, so these may be or'd with key values).
+
+The function C<BUTTON(n)> will turn C<n> (1 .. 8) into the flag for a mouse
+button.
+
+The current flags imported with the C<:events> targ are...
+
+=over 
+
+=item C<SHIFT>
+
+Either shift key held down
+
+=item C<CAPSLOCK>
+
+Caps lock is toggled on
+=item C<CTRL>
+
+Either ctrl key held down
+
+=item C<ALT>
+
+Either alt key held down
+
+=item C<NUMLOCK>
+
+Num Lock turned on.
+
+=item C<META>
+
+"Windows" or the "Apple" keys held down.
+
+=item C<SCROLLLOCK>
+
+Scroll Lock turned on.
+
+=item C<BUTTON1>
+
+Left mouse button held down.
+
+=item C<BUTTON2>
+
+Middle mouse button held down.
+
+=item C<BUTTON3>
+
+Right mouse button held down.
+
+=item C<ANY_BUTTON>
+
+Any mouse button (up to 8).
+
+=item C<ACCELERATOR>
+
+C<ALT> on Windows/Linux, C<CTRL> on OS/X, use for menu accelerators.
+
+=item C<COMMAND>
+
+C<CTRL> on Windows/Linux, C<META> on OS/X, use for menu shortcuts.
+
+=item C<OPTION>
+
+C<ALT|META> on Windows/Linux, just C<ALT> on OS/X, use as a drag modifier.
+
+=back 
+
+=head1 Devices
+
+Device identifiers are returned by C<event_device()>. This is useful to get
+the device type that caused a C<PUSH>, C<RELEASE>, C<DRAG> or C<MOVE> event.
+
+Current devices (which are imported with the C<events> tag) include...
+
+=over 
+
+=item C<DEVICE_MOUSE>
+
+Event triggered by the system mouse.
+
+=item C<DEVICE_STYLUS>
+
+Event triggered by a pen on a tablet, givin pressure and tilt information.
+
+=item C<DEVICE_ERASER>
+
+Event triggered by an eraser on a tablet, givin pressure and tilt information.
+
+=item C<DEVICE_CURSOR>
+
+Event triggered by a puck style device on a tablet.
+
+=item C<DEVICE_AIRBRUSH>
+
+Event triggered by an airbrush on a tablet, giving pressure and tilt
+information.
+
+=item C<DEVICE_TOUCH>
+
+Event triggered by touch a touch screen device.
+
+=back 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: events.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

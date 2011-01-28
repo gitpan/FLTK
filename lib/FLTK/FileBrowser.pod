@@ -1,0 +1,191 @@
+=pod
+
+=head1 NAME
+
+FLTK::FileBrowser - Subclass of FLTK::Browser
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<add>
+X<add>
+
+=over
+
+=item C<$filebrowser-E<gt>add( $line, $icon );>X<_filebrowser_E_gt_add_line_icon_>
+
+
+
+=for hackers xs/FileBrowser.xs line 160
+
+=back
+
+=head2 C<directory>
+X<directory>
+
+=over
+
+=item C<my $dir = $filebrowser-E<gt>directory( );>X<my_dir_filebrowser_E_gt_directory_>
+
+
+=for hackers xs/FileBrowser.xs line 135
+
+=back
+
+=head2 C<filetype>
+X<filetype>
+
+=over
+
+=item C<my $type = $filebrowser-E<gt>filetype( );>X<my_type_filebrowser_E_gt_filetype_>
+
+
+
+=for hackers xs/FileBrowser.xs line 117
+
+=item C<$filebrowser-E<gt>filetype( $type );>X<_filebrowser_E_gt_filetype_type_>
+
+
+
+=for hackers xs/FileBrowser.xs line 121
+
+=back
+
+=head2 C<filter>
+X<filter>
+
+=over
+
+=item C<my $pattern = $filebrowser-E<gt>filter( );>X<my_pattern_filebrowser_E_gt_filter_>
+
+
+
+=for hackers xs/FileBrowser.xs line 81
+
+=item C<$filebrowser-E<gt>filter( $pattern );>X<_filebrowser_E_gt_filter_pattern_>
+
+
+
+=for hackers xs/FileBrowser.xs line 85
+
+=back
+
+=head2 C<icon_size>
+X<icon_size>
+
+=over
+
+=item C<my $size = $filebrowser-E<gt>icon_size( );>X<my_size_filebrowser_E_gt_icon_size_>
+
+
+
+=for hackers xs/FileBrowser.xs line 63
+
+=item C<$filebrowser-E<gt>icon_size( $size );>X<_filebrowser_E_gt_icon_size_size_>
+
+
+
+=for hackers xs/FileBrowser.xs line 67
+
+=back
+
+=head2 C<insert>
+X<insert>
+
+=over
+
+=item C<$filebrowser-E<gt>insert( $n, $label, $icon );>X<_filebrowser_E_gt_insert_n_label_icon_>
+
+
+
+=for hackers xs/FileBrowser.xs line 143
+
+=item C<$filebrowser-E<gt>insert( $n, $label, $data );>X<_filebrowser_E_gt_insert_n_label_data_>
+
+
+
+=for hackers xs/FileBrowser.xs line 147
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $fb = $filebrowser-E<gt>new( $x, $y, $w, $h, $label );>X<my_fb_filebrowser_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::FileBrowser> object.
+
+=for hackers xs/FileBrowser.xs line 44
+
+=back
+
+=head2 C<show_hidden>
+X<show_hidden>
+
+=over
+
+=item C<$filebrowser-E<gt>show_hidden( $show );>X<_filebrowser_E_gt_show_hidden_show_>
+
+Set this flag if you want to see the hidden files in the browser.
+
+=for hackers xs/FileBrowser.xs line 169
+
+=item C<my $show = $filebrowser-E<gt>show_hidden( );>X<my_show_filebrowser_E_gt_show_hidden_>
+
+
+
+=pod 
+
+=for hackers xs/FileBrowser.xs line 173
+
+=back
+
+=head2 C<textsize>
+X<textsize>
+
+=over
+
+=item C<my $size = $filebrowser-E<gt>textsize( );>X<my_size_filebrowser_E_gt_textsize_>
+
+
+
+=for hackers xs/FileBrowser.xs line 99
+
+=item C<$filebrowser-E<gt>textsize( $size );>X<_filebrowser_E_gt_textsize_size_>
+
+
+
+=for hackers xs/FileBrowser.xs line 103
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: FileBrowser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

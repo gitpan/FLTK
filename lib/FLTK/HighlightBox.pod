@@ -1,0 +1,93 @@
+=pod
+
+=head1 NAME
+
+FLTK::HightlightBox - Draw a box only when highlighted or selected
+
+=head1 Description
+
+Draws nothing normally, this can draw as any other box (passed to the
+constructor) when C<HIGHLIGHT>, C<STATE>, or C<PUSHED> is turned on in the
+flags. This can be used to make frames appear when the mouse points at widgets
+or when the widget is turned on.
+
+=head1 Functions
+
+=head2 C<_draw>
+X<_draw>
+
+=over
+
+=item C<$highlightbox-E<gt>_draw( $rect );>X<_highlightbox_E_gt__draw_rect_>
+
+
+
+=for hackers xs/HighlightBox.xs line 51
+
+=back
+
+=head2 C<fills_rectangle>
+X<fills_rectangle>
+
+=over
+
+=item C<my $eh = $highlightbox-E<gt>fills_rectangle( );>X<my_eh_highlightbox_E_gt_fills_rectangle_>
+
+
+
+=for hackers xs/HighlightBox.xs line 61
+
+=back
+
+=head2 C<is_frame>
+X<is_frame>
+
+=over
+
+=item C<my $eh = $highlightbox-E<gt>is_frame( );>X<my_eh_highlightbox_E_gt_is_frame_>
+
+
+=pod 
+
+=for hackers xs/HighlightBox.xs line 65
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $box = $highlightbox-E<gt>new( $name, $box );>X<my_box_highlightbox_E_gt_new_name_box_>
+
+Creates a new C<FLTK::HighlightBox> object.
+
+=for hackers xs/HighlightBox.xs line 34
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: HighlightBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

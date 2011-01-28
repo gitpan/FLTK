@@ -1,0 +1,194 @@
+=pod
+
+=head1 NAME
+
+FLTK::ProgressBar - Widget meant to display progress of some operation
+
+=head1 Description
+
+L<ProgressBar|FLTK::ProgressBar> is an indicator with a bar that fills up and
+text showing the job being done and expected time to go.
+L<C<maximum( )>|FLTK::ProgressBar/"maximum"> and optionally
+L<C<minimum( )>|FLTK::ProgressBar/"minimum"> values should be set, and for
+each step of operation L<C<step( )>|FLTK::ProgressBar/"step"> should be
+called.
+
+=head1 Functions
+
+=head2 C<maximum>
+X<maximum>
+
+=over
+
+=item C<$progressbar-E<gt>maximum( $maximum );>X<_progressbar_E_gt_maximum_maximum_>
+
+Set maximum value for the progess widget. It should represent operation
+length.
+
+=for hackers xs/ProgressBar.xs line 108
+
+=item C<my $min = $progressbar-E<gt>maximum( );>X<my_min_progressbar_E_gt_maximum_>
+
+Returns maximum value for the progress widget.
+
+=for hackers xs/ProgressBar.xs line 113
+
+=back
+
+=head2 C<minimum>
+X<minimum>
+
+=over
+
+=item C<$progressbar-E<gt>minimum( $minimum );>X<_progressbar_E_gt_minimum_minimum_>
+
+Set minimal value for the progess widget.
+
+=for hackers xs/ProgressBar.xs line 88
+
+=item C<my $min = $progressbar-E<gt>minimum( );>X<my_min_progressbar_E_gt_minimum_>
+
+Returns theminimal value for the progress widget.
+
+=for hackers xs/ProgressBar.xs line 92
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $progressbar-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_progressbar_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::ProgressBar> object.
+
+=for hackers xs/ProgressBar.xs line 36
+
+=back
+
+=head2 C<position>
+X<position>
+
+=over
+
+=item C<$progressbar-E<gt>position( $value );>X<_progressbar_E_gt_position_value_>
+
+Set position of bar in progress widget and redraw it. If C<$value> goes out of
+L<C<minimum( )>|FLTK::ProgressBar/"minimum"> and
+L<C<maximum( )>|FLTK::ProgressBar/"maximum"> bounds, it will be ignored.
+
+=for hackers xs/ProgressBar.xs line 129
+
+=item C<my $min = $progressbar-E<gt>position( );>X<my_min_progressbar_E_gt_position_>
+
+Returns position value for the progress widget.
+
+=for hackers xs/ProgressBar.xs line 135
+
+=back
+
+=head2 C<range>
+X<range>
+
+=over
+
+=item C<$progressbar-E<gt>range( $min, $max, $step );>X<_progressbar_E_gt_range_min_max_step_>
+
+A shorthand for L<C<minimum( )>|FLTK::ProgressBar/"minimum">,
+L<C<maximum( )>|FLTK::ProgressBar/"maximum">, and
+L<C<step( )>|FLTK::ProgressBar/"step">.
+
+=for hackers xs/ProgressBar.xs line 55
+
+=back
+
+=head2 C<showtext>
+X<showtext>
+
+=over
+
+=item C<$progressbar-E<gt>showtext( $show );>X<_progressbar_E_gt_showtext_show_>
+
+Shows completition percentage inside progress widget.
+
+=for hackers xs/ProgressBar.xs line 151
+
+=item C<my $shown = $progressbar-E<gt>showtext( );>X<my_shown_progressbar_E_gt_showtext_>
+
+Returns wheather or not completion percentage is displayed inside progress
+widget.
+
+=for hackers xs/ProgressBar.xs line 155
+
+=back
+
+=head2 C<step>
+X<step>
+
+=over
+
+=item C<$progressbar-E<gt>step( $step );>X<_progressbar_E_gt_step_step_>
+
+Increase bar length with given step and redraw widget. If value goes out of
+L<C<minimum( )>|FLTK::ProgressBar/"minimum"> and
+L<C<maximum( )>|FLTK::ProgressBar/"maximum"> bounds, it will be ignored.
+
+=for hackers xs/ProgressBar.xs line 66
+
+=item C<my $step = $progressbar-E<gt>step( );>X<my_step_progressbar_E_gt_step_>
+
+Returns the bar length.
+
+=for hackers xs/ProgressBar.xs line 72
+
+=back
+
+=head2 C<text_color>
+X<text_color>
+
+=over
+
+=item C<$progressbar-E<gt>text_color( $color );>X<_progressbar_E_gt_text_color_color_>
+
+Changes the color of text hiddien/displayed by
+L<C<showtext( )>|FLTK::ProgressBar/"showtext">.
+
+=for hackers xs/ProgressBar.xs line 172
+
+=item C<my $color = $progressbar-E<gt>text_color( );>X<my_color_progressbar_E_gt_text_color_>
+
+Returns the color of text hiddien/displayed by
+L<C<showtext( )>|FLTK::ProgressBar/"showtext">.
+
+=pod 
+
+=for hackers xs/ProgressBar.xs line 177
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: ProgressBar.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

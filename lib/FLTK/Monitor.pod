@@ -1,0 +1,143 @@
+=pod
+
+=head1 NAME
+
+FLTK::Monitor - Represents the entire viewing area
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<all>
+X<all>
+
+=over
+
+=item C<my $large = $monitor-E<gt>all( );>X<my_large_monitor_E_gt_all_>
+
+
+
+=for hackers xs/Monitor.xs line 88
+
+=back
+
+=head2 C<depth>
+X<depth>
+
+=over
+
+=item C<my $depth = $monitor-E<gt>depth( );>X<my_depth_monitor_E_gt_depth_>
+
+
+
+=for hackers xs/Monitor.xs line 42
+
+=back
+
+=head2 C<dpi>
+X<dpi>
+
+=over
+
+=item C<my $y = $monitor-E<gt>dpi( );>X<my_y_monitor_E_gt_dpi_>
+
+Same as L<C<dpi_y>|FLTK::Monitor/"dpi_y">.
+
+=for hackers xs/Monitor.xs line 59
+
+=back
+
+=head2 C<dpi_x>
+X<dpi_x>
+
+=over
+
+=item C<my $x = $monitor-E<gt>dpi_x( );>X<my_x_monitor_E_gt_dpi_x_>
+
+
+
+=for hackers xs/Monitor.xs line 51
+
+=back
+
+=head2 C<dpi_y>
+X<dpi_y>
+
+=over
+
+=item C<my $y = $monitor-E<gt>dpi_y( );>X<my_y_monitor_E_gt_dpi_y_>
+
+
+
+=for hackers xs/Monitor.xs line 55
+
+=back
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $location = $monitor-E<gt>find( $x, $y );>X<my_location_monitor_E_gt_find_x_y_>
+
+
+
+=pod 
+
+=for hackers xs/Monitor.xs line 97
+
+=back
+
+=head2 C<list>
+X<list>
+
+=over
+
+=item C<my $count = $monitor-E<gt>list( @monitors );>X<my_count_monitor_E_gt_list_monitors_>
+
+
+
+=for hackers xs/Monitor.xs line 74
+
+=back
+
+=head2 C<work>
+X<work>
+
+=over
+
+=item C<my $rect = $monitor-E<gt>work( );>X<my_rect_monitor_E_gt_work_>
+
+Allows you to do C<$rect->work->x()>, etc.
+
+=for hackers xs/Monitor.xs line 29
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Monitor.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

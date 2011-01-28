@@ -1,0 +1,81 @@
+=pod
+
+=head1 NAME
+
+FLTK::Output - One-line text output
+
+=head1 Description
+
+This widget displays a piece of text. When you set the
+L<C<value()>|FLTK::Widget/"value">, it does a C<strcpy()> to it's own storage,
+which is useful for program-generated values. You can also call
+L<C<static_value( )>|FLTK::Widget/"static_value"> if you know the original
+text will not be deleted. The text may contain any characters except C<\0>.
+Any control characters less than 32 will display in C<^X> notation. Other
+characters are drawn without any changes.
+
+The user may select portions of the text using the mouse and paste the
+contents into other fields or programs.
+
+=head1 Functions
+
+=head2 C<default_style>
+X<default_style>
+
+=over
+
+=item C<my $style = $output-E<gt>default_style( );>X<my_style_output_E_gt_default_style_>
+
+L<Output|FLTK::Output> has it's own style so the color can be set to gray like
+Motif-style programs want.
+
+=for hackers xs/Output.xs line 68
+
+=item C<$output-E<gt>default_style( $style );>X<_output_E_gt_default_style_style_>
+
+Set the style.
+
+=pod 
+
+=for hackers xs/Output.xs line 73
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $output = $output-E<gt>new( $x, $y, $w, $h, $label );>X<my_output_output_E_gt_new_x_y_w_h_label_>
+
+Creates a new C<FLTK::Output> object.
+
+=for hackers xs/Output.xs line 49
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Output.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,124 @@
+=pod
+
+=head1 NAME
+
+FLTK::Browser::Mark - Subclass of FLTK::Menu
+
+=head1 Description
+
+TODO
+
+=head1 Functions
+
+=head2 C<compare>
+X<compare>
+
+=over
+
+=item C<my $result = $mark-E<gt>compare( $mark2 );>X<my_result_mark_E_gt_compare_mark2_>
+
+Returns...
+
+=over 
+
+=item ...C<-2> or less if this is before C<mark2>
+
+=item ...C<-1> if this is a parent of C<mark2>
+
+=item ...C<0> if this is equal to C<mark2>
+
+=item ...C<1> if this is a child of C<mark2>
+
+=item ...C<2> or greater if this is after C<mark2>
+
+=back 
+
+=for hackers xs/Browser/Mark.xs line 75
+
+=back
+
+=head2 C<destroy>
+X<destroy>
+
+=over
+
+=item C<$mark-E<gt>destroy( );>X<_mark_E_gt_destroy_>
+
+Destroy the mark.
+
+=for hackers xs/Browser/Mark.xs line 63
+
+=back
+
+=head2 C<is_set>
+X<is_set>
+
+=over
+
+=item C<my $set = $mark-E<gt>is_set( );>X<my_set_mark_E_gt_is_set_>
+
+
+
+=pod 
+
+=for hackers xs/Browser/Mark.xs line 108
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $mark-E<gt>new( );>X<my_self_mark_E_gt_new_>
+
+
+
+=for hackers xs/Browser/Mark.xs line 40
+
+=item C<my $self = $mark-E<gt>new( $to_clone );>X<my_self_mark_E_gt_new_to_clone_>
+
+
+
+=for hackers xs/Browser/Mark.xs line 44
+
+=back
+
+=head2 C<unset>
+X<unset>
+
+=over
+
+=item C<$mark-E<gt>unset( );>X<_mark_E_gt_unset_>
+
+
+
+=for hackers xs/Browser/Mark.xs line 99
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Mark.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

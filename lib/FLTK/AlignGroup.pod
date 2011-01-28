@@ -1,0 +1,215 @@
+=pod
+
+=head1 NAME
+
+FLTK::AlignGroup - Align layout manager
+
+=head1 Description
+
+The L<AlignGroup|FLTK::AlignGroup> overrides all group's children's label
+alignments to it's own L<C<align()>|FLTK::Group/"align"> value, tiles and
+L<C<resize()>|FLTK::Group/"resize">s the children to fit in the space not
+required by the (outsize) labels.
+
+=head1 Functions
+
+=head2 C<align>
+X<align>
+
+=over
+
+=item C<my $flags = $aligngroup-E<gt>align( );>X<my_flags_aligngroup_E_gt_align_>
+
+
+
+=for hackers xs/AlignGroup.xs line 182
+
+=item C<$aligngroup-E<gt>align( $flags );>X<_aligngroup_E_gt_align_flags_>
+
+
+
+=pod 
+
+=for hackers xs/AlignGroup.xs line 186
+
+=back
+
+=head2 C<dh>
+X<dh>
+
+=over
+
+=item C<my $h = $aligngroup-E<gt>dh( );>X<my_h_aligngroup_E_gt_dh_>
+
+
+
+=for hackers xs/AlignGroup.xs line 146
+
+=item C<$aligngroup-E<gt>dh( $value );>X<_aligngroup_E_gt_dh_value_>
+
+
+
+=pod 
+
+X<align>
+
+=for hackers xs/AlignGroup.xs line 150
+
+=back
+
+=head2 C<dw>
+X<dw>
+
+=over
+
+=item C<my $w = $aligngroup-E<gt>dw( );>X<my_w_aligngroup_E_gt_dw_>
+
+
+
+=for hackers xs/AlignGroup.xs line 136
+
+=item C<$aligngroup-E<gt>dw( $value );>X<_aligngroup_E_gt_dw_value_>
+
+
+
+=pod X<dh>
+
+=for hackers xs/AlignGroup.xs line 140
+
+=back
+
+=head2 C<layout>
+X<layout>
+
+=over
+
+=item C<$aligngroup-E<gt>layout( );>X<_aligngroup_E_gt_layout_>
+
+=pod X<vertical>
+
+=head2 C<$v = $group_1-E<gt>vertical( )>
+
+=for hackers xs/AlignGroup.xs line 91
+
+=back
+
+=head2 C<n_to_break>
+X<n_to_break>
+
+=over
+
+=item C<my $n = $aligngroup-E<gt>n_to_break( );>X<my_n_aligngroup_E_gt_n_to_break_>
+
+
+
+=head2 C<$group_1-E<gt>n_to_break( $value )>
+
+=for hackers xs/AlignGroup.xs line 125
+
+=item C<$aligngroup-E<gt>n_to_break( $value );>X<_aligngroup_E_gt_n_to_break_value_>
+
+
+=pod X<dw>
+
+=for hackers xs/AlignGroup.xs line 131
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $aligngroup-E<gt>new( $x, $y, $width, $height, $label, $n_to_break, $vertical, $align, $dw, $dh );>X<my_self_aligngroup_E_gt_new_x_y_width_height_label_n_to_break_vertical_align_dw_dh_>
+
+Creates a new C<FLTK::AlignGroup> object. This constructor expects integers
+for C<$x, $y, $w, $h> and accepts an optional string for C<$label>. Other
+optional arguments include:
+
+=over 
+
+=item * C<$n_to_break>
+
+Default value is an empty string.
+
+=item * C<$vertical>
+
+A boolean who's default value is a true value.
+
+=item * C<$align>
+
+L<FLTK::Flags|FLTK::Flags> value which defaults to
+L<FLTK::ALIGN_LEFT|FLTK::Flags/"FLTK::ALIGN_LEFT">
+
+=item * C<$dw>
+
+=item * C<$dh>
+
+=back 
+
+=head2 Usage
+
+=for markdown {%highlight perl%}
+
+  my $group_1 = FLTK::AlignGroup->new( $x, $y, $w, $h, $label );
+  my $group_2 = FLTK::AlignGroup->new( 40, 40, 150, 40);
+
+=for markdown {%endhighlight%}
+
+=for hackers xs/AlignGroup.xs line 34
+
+=back
+
+=head2 C<vertical>
+X<vertical>
+
+=over
+
+=item C<my $vert = $aligngroup-E<gt>vertical( );>X<my_vert_aligngroup_E_gt_vertical_>
+
+=head2 C<$group_1-E<gt>vertical( $value )>
+
+=for hackers xs/AlignGroup.xs line 102
+
+=item C<$aligngroup-E<gt>vertical( $vert );>X<_aligngroup_E_gt_vertical_vert_>
+
+=pod X<n_to_break>
+
+=head2 C<my $n = $group_1-E<gt>n_to_break( )>
+
+=for hackers xs/AlignGroup.xs line 106
+
+=back
+
+=head1 Constructor
+
+=head1 Methods
+X<layout>
+
+=head2 C<$group_1-E<gt>layout( )>
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: AlignGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

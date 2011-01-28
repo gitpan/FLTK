@@ -4,53 +4,7 @@ MODULE = FLTK::ShapedWindow               PACKAGE = FLTK::ShapedWindow
 
 #ifndef DISABLE_SHAPEDWINDOW
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for git $Id: ShapedWindow.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=for version 0.532006
-
-=head1 NAME
-
-FLTK::ShapedWindow - Custom shaped window
-
-=head1 Description
-
-This window's shape is clipped to an area defined by the alpha from an
-L<Image|FLTK::Image> object. Current implementation insists that this be an
-L<FLTK::xbmImage|FLTK::xbmImage>, which limits you to 1-bit alpha which must
-be supplied by the program. It should not be hard to modify this on newer
-systems to accept an arbitrary L<Image|FLTK::Image>.
-
-The layout and widgets inside are unaware of the mask shape, and most will act
-as though the bounding box is available to them. Therefore this window type is
-usally sublassed or occupied by a single widget.
-
-If the window will be short-lived and does not have to move, you may be much
-better off using a L<MenuWindow|FLTK::MenuWindow>. This is a normal window but
-with no border and no pixels are changed unless you draw into them. Thus you
-can get arbitrary shapes by the simple expediency of not drawing where it
-should be "transparent".
-
-The window borders and caption created by the window system are turned off by
-default for a L<ShapedWindow|FLTK::ShapedWindow> object. They can be
-re-enabled by calling L<C<Window::border( $set )>|FLTK::Window/"border">.
-
-=begin apidoc
-
-=cut
-
 #include <fltk/ShapedWindow.h>
-
-=for apidoc ||FLTK::ShapedWindow * self|new|int x|int y|int w|int h|char * label = ''|
-
-Creates a new L<FLTK::ShapedWindow|FLTK::ShapedWindow> widget.
-
-=cut
 
 #include "include/WidgetSubclass.h"
 
@@ -81,19 +35,6 @@ fltk::ShapedWindow::new( ... )
             sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
             XSRETURN(1);
         }
-
-=for apidoc |||shape|FLTK::xbmImage * img|
-
-The alpha channel of the supplied image is used as the shape of the window. A
-pointer to the image is stored, so it must remain in existence until
-L<C<shape( )>|FLTK::ShapedWindow/"shape"> is called again or the
-L<ShapedWindow|FLTK::ShapedWindow> is destroyed.
-
-If you want your window to resize you should subclass and make a
-C<layout( )> method that draws a new image and calls
-L<C<shape( )>|FLTK::ShapedWindow/"shape">.
-
-=cut
 
 void
 fltk::ShapedWindow::shape( fltk::xbmImage * img )

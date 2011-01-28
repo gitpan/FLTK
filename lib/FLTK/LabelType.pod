@@ -1,0 +1,107 @@
+=pod
+
+=head1 NAME
+
+FLTK::LabelType - Determines how to draw a label's text
+
+=head1 Description
+
+A L<LabelType|FLTK::LabelType> determines how to draw the text of the label.
+This is not used very much, it can be used to draw engraved or shadowed
+labels. You could also put in code that interprets the text of the label and
+draws anything you want with it.
+
+=head1 Functions
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $type = $labeltype-E<gt>find( $name );>X<my_type_labeltype_E_gt_find_name_>
+
+
+
+=pod 
+
+=for hackers xs/LabelType.xs line 80
+
+=back
+
+=head2 C<first>
+X<first>
+
+=over
+
+=item C<my $type = $labeltype-E<gt>first( );>X<my_type_labeltype_E_gt_first_>
+
+
+
+=for hackers xs/LabelType.xs line 60
+
+=back
+
+=head2 C<name>
+X<name>
+
+=over
+
+=item C<my $string = $labeltype-E<gt>name( );>X<my_string_labeltype_E_gt_name_>
+
+
+
+=for hackers xs/LabelType.xs line 43
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $type = $labeltype-E<gt>new( $name );>X<my_type_labeltype_E_gt_new_name_>
+
+
+
+=for hackers xs/LabelType.xs line 34
+
+=back
+
+=head2 C<next>
+X<next>
+
+=over
+
+=item C<my $type = $labeltype-E<gt>next( );>X<my_type_labeltype_E_gt_next_>
+
+
+
+=for hackers xs/LabelType.xs line 56
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: LabelType.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

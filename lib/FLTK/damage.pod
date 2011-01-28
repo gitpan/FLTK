@@ -1,0 +1,96 @@
+=pod
+
+=head1 NAME
+
+FLTK::damage - Values of the bits stored in C<FLTK::Widget::damage( )>
+
+=pod 
+
+=head1 Description
+
+When redrawing your widgets you should look at the damage bits to see what
+parts of your widget need redrawing. The
+L<C<Widget::handle()>|FLTK::Widget/"handle"> method can then set individual
+damage bits to limit the amount of drawing that needs to be done, and the
+L<C<Widget::draw()>|FLTK::Widget/"draw"> method can test these bits to decide
+what to draw:
+
+=for markdown {%highlight perl linenos%}
+
+  package MyClass;
+
+  sub handle {
+      my ($self, $event) =@_;
+      $self->damage(1) if change_to_part1();
+      $self->damage(2) if change_to_part2();
+      $self->damage(3) if change_to_part3();
+  }
+
+  sub draw {
+      my ($self) = @_;
+      if ($self->damage() & DAMAGE_ALL()) {
+          # draw frame/box and other static stuff...
+      }
+      draw_part1() if ($self->damage() & (DAMAGE_ALL() | 1));
+      draw_part2() if ($self->damage() & (DAMAGE_ALL() | 2));
+      draw_part3() if ($self->damage() & (DAMAGE_ALL() | 4));
+  }
+
+=for markdown {%endhighlight%}
+
+Except for C<DAMAGE_ALL>, each widget is allowed to assign any meaning to any
+of the bits it wants. The enumerations are just to provide suggested meanings.
+
+The folowing default may be imported using the C<damage> tag:
+
+=over 
+
+=item C<DAMAGE_VALUE>
+
+=item C<DAMAGE_PUSHED>
+
+=item C<DAMAGE_SCROLL>
+
+=item C<DAMAGE_OVERLAY>
+
+=item C<DAMAGE_HIGHLIGHT>
+
+=item C<DAMAGE_CHILD>
+
+=item C<DAMAGE_CHILD_LABEL>
+
+=item C<DAMAGE_EXPOSE>
+
+=item C<DAMAGE_CONTENTS>
+
+=item C<DAMAGE_ALL>
+
+=back 
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: damage.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

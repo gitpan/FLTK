@@ -1,0 +1,111 @@
+=pod
+
+=head1 NAME
+
+FLTK::PixelType - Describes how colors are stored in a pixel
+
+=head1 Description
+
+Enumeration describing how colors are stored in an array of bytes that is a
+pixel. This is used as an argument for L<drawimage()|FLTK::Image/"drawimage">,
+L<readimage()|FLTK::Image/"readimage">, and L<FLTK::Image|FLTK::Image>.
+
+Notice that the order of the bytes in memory of ARGB32 or RGB32 is C<a,r,g,b>
+on a little-endian machine and C<b,g,r,a> on a big-endian machine. Due to the
+use of these types by Windows, this is often the fastest form of data, if you
+have a choice. To convert an L<FLTK::Color|FLTK::Color> to RGB32, shift it
+right by 8 (for ARGB32 shift the alpha left 24 and or it in).
+
+More types may be added in the future. The set is as minimal as possible while
+still covering the types I have actually encountered.
+
+=head1 Functions
+
+=head2 C<depth>
+X<depth>
+
+=over
+
+=item C<my $d = FLTK::depth( $type );>X<my_d_FLTK_depth_type_>
+
+Turn a L<PixelType|FLTK::PixelType> into the number of bytes needed to hold a
+pixel.
+
+=pod 
+
+Import this function with the C<:pixeltype> tag.
+
+=for hackers xs/PixelType.xs line 114
+
+=back
+
+=head1 PixelTypes
+
+These are the currently supported types:
+
+=over 
+
+=item * C<MASK>
+
+1 byte os inverted mask, filled with current color
+
+=item * C<MONO>
+
+1 byte of gray scale
+
+=item * C<RGBx>
+
+bytes in C<r,g,b,a,r,g,b,a...> order, C<a> byte is ignored
+
+=item * C<RGB>
+
+bytes in C<r,g,b,r,g,b...> order
+
+=item * C<RGBA>
+
+bytes in C<r,g,b,a,r,g,b,a...> order
+
+=item * C<RGB32>
+
+32-bit words containing C<0xaarrggbb> (aa is ignored)
+
+=item * C<ARGB32>
+
+32-bit words containing C<0xaarrggbb>
+
+=item * C<RGBM>
+
+Unpremultiplied bytes in C<r,g,b,a> order. Not yet implemented, acts like
+RGBA.
+
+=item * C<MRGB32>
+
+Unpremultiplied <0xaarrggbb>. Not yet implemented, acts like ARGB32.
+
+=back 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: PixelType.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

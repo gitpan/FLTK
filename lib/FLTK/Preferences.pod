@@ -1,0 +1,298 @@
+=pod
+
+=head1 NAME
+
+FLTK::Preferences - Application preferences
+
+=head1 Description
+
+Preferences are data trees containing a root, branches and leaves.
+
+=head1 Functions
+
+=head2 C<deleteEntry>
+X<deleteEntry>
+
+=over
+
+=item C<my $gone = $preferences-E<gt>deleteEntry( $entry );>X<my_gone_preferences_E_gt_deleteEntry_entry_>
+
+Delete a group.
+
+=for hackers xs/Preferences.xs line 202
+
+=back
+
+=head2 C<deleteGroup>
+X<deleteGroup>
+
+=over
+
+=item C<my $removed = $preferences-E<gt>deleteGroup( $group );>X<my_removed_preferences_E_gt_deleteGroup_group_>
+
+Delete a group.
+
+=for hackers xs/Preferences.xs line 166
+
+=back
+
+=head2 C<destroy>
+X<destroy>
+
+=over
+
+=item C<$preferences-E<gt>destroy( );>X<_preferences_E_gt_destroy_>
+
+Destroy individual keys.
+
+Destroying the base L<preferences|FLTK::Preferences> will flush changes to the
+prefs file. After destroying the base, none of the depending
+L<preferences|FLTK::Preferences> must be read or written.
+
+=for hackers xs/Preferences.xs line 123
+
+=back
+
+=head2 C<entries>
+X<entries>
+
+=over
+
+=item C<my $count = $preferences-E<gt>entries( );>X<my_count_preferences_E_gt_entries_>
+
+Returns the number of entries (key/value) pairs for a group.
+
+=for hackers xs/Preferences.xs line 178
+
+=back
+
+=head2 C<entry>
+X<entry>
+
+=over
+
+=item C<my $key = $preferences-E<gt>entry( $index );>X<my_key_preferences_E_gt_entry_index_>
+
+Returns the name of an entry. There is no guaranteed order of entry names and
+C<$index> must be within the range given by
+L<C<entries()>|FLTK::Preferences/"entries">.
+
+=for hackers xs/Preferences.xs line 187
+
+=back
+
+=head2 C<entryExists>
+X<entryExists>
+
+=over
+
+=item C<my $exists = $preferences-E<gt>entryExists( $entry );>X<my_exists_preferences_E_gt_entryExists_entry_>
+
+Returns C<1>, if a group with this name exists.
+
+=for hackers xs/Preferences.xs line 198
+
+=back
+
+=head2 C<flush>
+X<flush>
+
+=over
+
+=item C<$preferences-E<gt>flush( );>X<_preferences_E_gt_flush_>
+
+Writes all preferences to disk. This method works only with the base
+L<preference|FLTK::Preferences> group.
+
+Note: This method is rarely used as the L<preferences|FLTK::Preferences> flush
+automatically when L<C<destroy( )>|FLTK::Preferences/"destroy"> is called or
+when the base L<preferences|FLTK::Preferences> go out of scope.
+
+=pod 
+
+=for hackers xs/Preferences.xs line 261
+
+=back
+
+=head2 C<get>
+X<get>
+
+=over
+
+=item C<my $value = $preferences-E<gt>get( $key, $value, $defaultValue );>X<my_value_preferences_E_gt_get_key_value_defaultValue_>
+
+Get an entry (key/value) pair.
+
+=for hackers xs/Preferences.xs line 223
+
+=back
+
+=head2 C<getUserdataPath>
+X<getUserdataPath>
+
+=over
+
+=item C<my $path = $preferences-E<gt>getUserdataPath( );>X<my_path_preferences_E_gt_getUserdataPath_>
+
+Creates a path that is related to the preferences file and that is usable for
+application data beyond what is covered by L<Preferences|FLTK::Preferences>.
+
+=for hackers xs/Preferences.xs line 242
+
+=back
+
+=head2 C<group>
+X<group>
+
+=over
+
+=item C<my $name = $preferences-E<gt>group( $index );>X<my_name_preferences_E_gt_group_index_>
+
+Returns the group name of the C<$index>th group. There is no guaranteed order
+of group names and C<$index> must be within the range given by
+L<C<groups( )>|FLTK::Preferences/"groups">.
+
+=for hackers xs/Preferences.xs line 151
+
+=back
+
+=head2 C<groupExists>
+X<groupExists>
+
+=over
+
+=item C<my $exists = $preferences-E<gt>groupExists( $group );>X<my_exists_preferences_E_gt_groupExists_group_>
+
+Returns C<1>, if a group with this name exists.
+
+=for hackers xs/Preferences.xs line 162
+
+=back
+
+=head2 C<groups>
+X<groups>
+
+=over
+
+=item C<my $count = $preferences-E<gt>groups( );>X<my_count_preferences_E_gt_groups_>
+
+Returns the number of groups that are contained within a group.
+
+=for hackers xs/Preferences.xs line 142
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $tree = $preferences-E<gt>new( $root, $vendor, $application );>X<my_tree_preferences_E_gt_new_root_vendor_application_>
+
+Creates a new L<preferences|FLTK::Preferences> object.
+
+=over 
+
+=item * C<$root> is a value representing either per machine
+(C<FLTK::Preferences::SYSTEM>) or per user (C<FLTK::Preferences::USER>)
+settings.
+
+=item * C<vendor> is the unique identification of the author or vendor of
+C<$application>.
+
+Note: vendor must be a valid directory name.
+
+=item * C<$application> is a vendor unique application name, for example,
+C<PreferencesTest>. Multiple preferences files can be created per application.
+
+Note: application name must be a valid file name.
+
+=back 
+
+=for hackers xs/Preferences.xs line 43
+
+=item C<my $node = $preferences-E<gt>new( $parent, $group );>X<my_node_preferences_E_gt_new_parent_group_>
+
+Creates a L<Preferences|FLTK::Preferences> node in relation to a parent node
+for reading and writing
+
+=over 
+
+=item * C<$parent> is the base name for the group.
+
+=item * C<$group> is a group name which may contain C</> separated group
+names.
+
+=back 
+
+Example:
+
+  my $colors = FLTK::Preferences->new( $prefs, 'setup/colors' );
+
+=for hackers xs/Preferences.xs line 65
+
+=item C<my $prefs = $preferences-E<gt>new( $path, $vendor, $application );>X<my_prefs_preferences_E_gt_new_path_vendor_application_>
+
+Creates a L<Preferences|FLTK::Preferences> object.
+
+=over 
+
+=item * C<$path> is an application-supplied path.
+
+=back 
+
+=for hackers xs/Preferences.xs line 83
+
+=back
+
+=head2 C<set>
+X<set>
+
+=over
+
+=item C<my $okay = $preferences-E<gt>set( $entry, $value );>X<my_okay_preferences_E_gt_set_entry_value_>
+
+Set an entry (key/value) pair.
+
+=for hackers xs/Preferences.xs line 214
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<my $length = $preferences-E<gt>size( $key );>X<my_length_preferences_E_gt_size_key_>
+
+Returns the size of the value part of an entry.
+
+=for hackers xs/Preferences.xs line 233
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Preferences.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+
+=cut

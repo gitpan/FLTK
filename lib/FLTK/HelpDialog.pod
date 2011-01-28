@@ -1,0 +1,253 @@
+=pod
+
+=head1 NAME
+
+FLTK::HelpDialog - Help dialog with basic HTML viewing capabilities
+
+=head1 Description
+
+Uses L<HelpView|FLTK::HelpView> to display basic HTML in a standard dialog.
+
+=head1 Functions
+
+=head2 C<destroy>
+X<destroy>
+
+=over
+
+=item C<$helpdialog-E<gt>destroy( );>X<_helpdialog_E_gt_destroy_>
+
+Destroy the L<HelpDialog|FLTK::HelpDialog>.
+
+=for hackers xs/HelpDialog.xs line 49
+
+=back
+
+=head2 C<h>
+X<h>
+
+=over
+
+=item C<my $h = $helpdialog-E<gt>h( );>X<my_h_helpdialog_E_gt_h_>
+
+Returns the vertical size of the help dialog.
+
+=for hackers xs/HelpDialog.xs line 61
+
+=back
+
+=head2 C<hide>
+X<hide>
+
+=over
+
+=item C<$helpdialog-E<gt>hide( );>X<_helpdialog_E_gt_hide_>
+
+Hides the L<HelpDialog|FLTK::HelpDialog>.
+
+=for hackers xs/HelpDialog.xs line 91
+
+=back
+
+=head2 C<load>
+X<load>
+
+=over
+
+=item C<$helpdialog-E<gt>load( $filename );>X<_helpdialog_E_gt_load_filename_>
+
+Load the specified HTML file into the L<HelpView|FLTK::HelpView>.
+
+=for hackers xs/HelpDialog.xs line 107
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $hd = $helpdialog-E<gt>new( );>X<my_hd_helpdialog_E_gt_new_>
+
+Creates a new L<HelpDialog|FLTK::HelpDialog>.
+
+=for hackers xs/HelpDialog.xs line 40
+
+=back
+
+=head2 C<position>
+X<position>
+
+=over
+
+=item C<$helpdialog-E<gt>position( $x, $y );>X<_helpdialog_E_gt_position_x_y_>
+
+Move the L<HelpDialog|FLTK::HelpDialog> to a new position.
+
+=for hackers xs/HelpDialog.xs line 116
+
+=back
+
+=head2 C<resize>
+X<resize>
+
+=over
+
+=item C<$helpdialog-E<gt>resize( $x, $y, $w, $h );>X<_helpdialog_E_gt_resize_x_y_w_h_>
+
+Set the screen position and size of the L<HelpDialog|FLTK::HelpDialog> of the
+dialog.
+
+=for hackers xs/HelpDialog.xs line 125
+
+=back
+
+=head2 C<show>
+X<show>
+
+=over
+
+=item C<$helpdialog-E<gt>show( );>X<_helpdialog_E_gt_show_>
+
+Shows the main L<HelpDialog|FLTK::HelpDialog>'s L<window|FLTK::Window>.
+
+=for hackers xs/HelpDialog.xs line 95
+
+=back
+
+=head2 C<textsize>
+X<textsize>
+
+=over
+
+=item C<$helpdialog-E<gt>textsize( $size );>X<_helpdialog_E_gt_textsize_size_>
+
+Sets the default text size for the help view.
+
+=for hackers xs/HelpDialog.xs line 135
+
+=item C<my $size = $helpdialog-E<gt>textsize( );>X<my_size_helpdialog_E_gt_textsize_>
+
+Gets the default text size for the help view.
+
+=for hackers xs/HelpDialog.xs line 139
+
+=back
+
+=head2 C<topline>
+X<topline>
+
+=over
+
+=item C<$helpdialog-E<gt>topline( $string );>X<_helpdialog_E_gt_topline_string_>
+
+Sets the top line in the L<HelpView|FLTK::HelpView> widget to the named line.
+
+=for hackers xs/HelpDialog.xs line 153
+
+=item C<$helpdialog-E<gt>topline( $index );>X<_helpdialog_E_gt_topline_index_>
+
+Sets the top line in the L<HelpView|FLTK::HelpView> widget to the I<index>th line.
+
+=for hackers xs/HelpDialog.xs line 157
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<$helpdialog-E<gt>value( $string );>X<_helpdialog_E_gt_value_string_>
+
+Sets the current buffer to the string provided and reformats the text.
+
+=for hackers xs/HelpDialog.xs line 170
+
+=item C<my $string = $helpdialog-E<gt>value( );>X<my_string_helpdialog_E_gt_value_>
+
+Returns the current buffer.
+
+=for hackers xs/HelpDialog.xs line 174
+
+=back
+
+=head2 C<visible>
+X<visible>
+
+=over
+
+=item C<my $visible = $helpdialog-E<gt>visible( );>X<my_visible_helpdialog_E_gt_visible_>
+
+Returns C<1> if the L<HelpDialog|FLTK::HelpDialog> window is visible.
+
+=pod 
+
+=for hackers xs/HelpDialog.xs line 188
+
+=back
+
+=head2 C<w>
+X<w>
+
+=over
+
+=item C<my $w = $helpdialog-E<gt>w( );>X<my_w_helpdialog_E_gt_w_>
+
+Returns the horizontal size of the help dialog.
+
+=for hackers xs/HelpDialog.xs line 65
+
+=back
+
+=head2 C<x>
+X<x>
+
+=over
+
+=item C<my $x = $helpdialog-E<gt>x( );>X<my_x_helpdialog_E_gt_x_>
+
+Returns the position of the help dialog.
+
+=for hackers xs/HelpDialog.xs line 69
+
+=back
+
+=head2 C<y>
+X<y>
+
+=over
+
+=item C<my $y = $helpdialog-E<gt>y( );>X<my_y_helpdialog_E_gt_y_>
+
+Returns the position of the help dialog.
+
+=for hackers xs/HelpDialog.xs line 73
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: HelpDialog.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

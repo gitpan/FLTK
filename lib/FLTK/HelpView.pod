@@ -1,0 +1,263 @@
+=pod
+
+=head1 NAME
+
+FLTK::HelpView - Basic HTML viewer
+
+=head1 Description
+
+Most HTML 2.0 elements are supported, as well as a primitive implementation of
+tables. GIF, JPEG, and PNG images are displayed inline.
+
+=head1 Functions
+
+=head2 C<directory>
+X<directory>
+
+=over
+
+=item C<my $dir = $helpview-E<gt>directory( );>X<my_dir_helpview_E_gt_directory_>
+
+
+
+=for hackers xs/HelpView.xs line 50
+
+=back
+
+=head2 C<filename>
+X<filename>
+
+=over
+
+=item C<my $file = $helpview-E<gt>filename( );>X<my_file_helpview_E_gt_filename_>
+
+
+
+=for hackers xs/HelpView.xs line 54
+
+=back
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $ok = $helpview-E<gt>find( $string, $start );>X<my_ok_helpview_E_gt_find_string_start_>
+
+Find the specified string in the current help text. This is a plain text
+search.
+
+Returns C<0> on success. Returns C<-1> on failure.
+
+=pod 
+
+=for hackers xs/HelpView.xs line 210
+
+=back
+
+=head2 C<leftline>
+X<leftline>
+
+=over
+
+=item C<$helpview-E<gt>leftline( $col );>X<_helpview_E_gt_leftline_col_>
+
+Set the left position.
+
+=for hackers xs/HelpView.xs line 174
+
+=item C<my $col = $helpview-E<gt>leftline( );>X<my_col_helpview_E_gt_leftline_>
+
+Get the left position.
+
+=for hackers xs/HelpView.xs line 178
+
+=back
+
+=head2 C<load>
+X<load>
+
+=over
+
+=item C<my $result = $helpview-E<gt>load( $filename );>X<my_result_helpview_E_gt_load_filename_>
+
+Load the specified file. Returns C<0> on success and C<-1> on error
+
+=for hackers xs/HelpView.xs line 66
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $hv = $helpview-E<gt>new( $x, $y, $w, $h, $label );>X<my_hv_helpview_E_gt_new_x_y_w_h_label_>
+
+Creates a new L<HelpView|FLTK::HelpView>.
+
+=for hackers xs/HelpView.xs line 41
+
+=back
+
+=head2 C<size>
+X<size>
+
+=over
+
+=item C<my $pixels = $helpview-E<gt>size( );>X<my_pixels_helpview_E_gt_size_>
+
+
+
+=for hackers xs/HelpView.xs line 75
+
+=back
+
+=head2 C<textcolor>
+X<textcolor>
+
+=over
+
+=item C<$helpview-E<gt>textcolor( $color );>X<_helpview_E_gt_textcolor_color_>
+
+
+
+=for hackers xs/HelpView.xs line 84
+
+=item C<my $color = $helpview-E<gt>textcolor( );>X<my_color_helpview_E_gt_textcolor_>
+
+
+
+=for hackers xs/HelpView.xs line 88
+
+=back
+
+=head2 C<textfont>
+X<textfont>
+
+=over
+
+=item C<$helpview-E<gt>textfont( $font );>X<_helpview_E_gt_textfont_font_>
+
+
+
+=for hackers xs/HelpView.xs line 102
+
+=item C<my $font = $helpview-E<gt>textfont( );>X<my_font_helpview_E_gt_textfont_>
+
+
+
+=for hackers xs/HelpView.xs line 106
+
+=back
+
+=head2 C<textsize>
+X<textsize>
+
+=over
+
+=item C<$helpview-E<gt>textsize( $size );>X<_helpview_E_gt_textsize_size_>
+
+
+
+=for hackers xs/HelpView.xs line 120
+
+=item C<my $size = $helpview-E<gt>textsize( );>X<my_size_helpview_E_gt_textsize_>
+
+
+
+=for hackers xs/HelpView.xs line 124
+
+=back
+
+=head2 C<title>
+X<title>
+
+=over
+
+=item C<my $str = $helpview-E<gt>title( );>X<my_str_helpview_E_gt_title_>
+
+
+
+=for hackers xs/HelpView.xs line 138
+
+=back
+
+=head2 C<topline>
+X<topline>
+
+=over
+
+=item C<$helpview-E<gt>topline( $string );>X<_helpview_E_gt_topline_string_>
+
+Sets the top line to the named line.
+
+=for hackers xs/HelpView.xs line 147
+
+=item C<$helpview-E<gt>topline( $index );>X<_helpview_E_gt_topline_index_>
+
+Sets the top line to the I<index>th line.
+
+=for hackers xs/HelpView.xs line 151
+
+=item C<my $num = $helpview-E<gt>topline( );>X<my_num_helpview_E_gt_topline_>
+
+Retusn the index of the current top line.
+
+=for hackers xs/HelpView.xs line 155
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<$helpview-E<gt>value( $string );>X<_helpview_E_gt_value_string_>
+
+Set the help text directly.
+
+=for hackers xs/HelpView.xs line 192
+
+=item C<my $string = $helpview-E<gt>value( );>X<my_string_helpview_E_gt_value_>
+
+Get the current help text.
+
+=for hackers xs/HelpView.xs line 196
+
+=back
+
+=head1 Subclassing
+
+Note that L<C<HelpView>|FLTK::HelpView> may not be subclassed like every other
+widget in FLTK because fltk::HelpView::draw( ) and
+fltk::HelpView::handle( ... ) are private. If I subclass them, I lose basic
+functionality because I cannot access those functions from a child class.
+
+This is a "bug" and I'll report it when I have the time.
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: HelpView.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

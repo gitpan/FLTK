@@ -11,11 +11,13 @@
 
 =for abstract Global include
 
-=for git $Id: FLTK_pm.h 34cc05e 2011-01-02 00:47:39Z sanko@cpan.org $
+=for git $Id: FLTK_pm.h 2ca6d2b 2011-01-15 05:54:32Z sanko@cpan.org $
 
 =cut
 
 */
+
+#define FLTK_DEBUG 0
 
 #define PERL_NO_GET_CONTEXT 1
 
@@ -37,7 +39,9 @@
 #define DISABLE_ASSOCIATIONTYPE     // Requires subclass
 #define DISABLE_TEXTBUFFER          // Floating on a sea of bugs
 
-#undef HAVE_GL                      // Testing!!!!!!!!!!!!!!
+#if !WIN32                          // Disable GL on Win32. I have some thing
+#undef HAVE_GL                      // to figure out first
+#endif // !WIN32                    // http://www.mail-archive.com/fltk@easysw.com/msg08519.html
 
 #if !HAVE_GL
 #define DISABLE_GL       1
@@ -112,6 +116,22 @@ parameter which should be an AV* holding data that looks a little like this...
 =cut
 */
 void _cb_u ( int position, void * CODE ); // Callback for TextDisplay->highlight_data( ... )
+
+/*
+=for apidoc H|||_cb_f|int fd|(void *) CODE|
+
+This is the callback for FLTK::add_fh(...). It expects an C<int> parameter
+which represents a filehandle's fileno and a C<(void*) CODE> parameter which
+should be an AV* holding data that looks a little like this...
+
+  [
+    SV * coderef,
+    SV * args  # optional arguments sent along to coderef
+  ]
+
+=cut
+*/
+void _cb_f ( int fd, void * CODE ); // Callback for add_fh( ... )
 
 /*
 =for apidoc H|||isa|const char * package|const char * parent|

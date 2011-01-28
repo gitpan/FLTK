@@ -1,0 +1,613 @@
+=pod
+
+=head1 NAME
+
+FLTK::Image - Basic image handling
+
+=head1 Description
+
+A rectangular buffer of pixels that can be efficiently drawn on the screen.
+The L<C<draw()>|/"draw"> functions will copy (or "over" composite if there is
+alpha in the L<C<pixeltype()>|/"pixeltype">) onto the output, transformed by
+the current transform.
+
+NOTE: If you already have a set of pixels sitting in your own memory,
+L<C<drawimage()>|/"drawimage"> can draw it and is \e much easier to use. You
+should use this class I<only> if you will be drawing the I<same> image
+multiple times, with no changes to the pixels.
+
+The buffer is created and filled in by setting the type of pixels with
+L<C<setpixeltype()>|/"setpixeltype">, the size with
+L<C<setsize()>|/"setsize">, and then calling L<C<buffer()>|/"buffer"> (note
+that L<C<setpixels()>|/"setpixels"> calls L<C<buffer()>|/"buffer"> for you).
+The initial buffer is filled with undefined contents.
+
+The best way to put data into the buffer is to make one or more calls to
+L<C<setpixels()>|/"setpixels">, to replace rectangular regions.
+
+You can directly address the L<C<buffer()>|/"buffer"> to read and write the
+pixels. The size of the buffer is in L<C<buffer_width()>|/"buffer_width"> and
+L<C<buffer_height()>|/"buffer_height"> (this may be much larger than
+L<C<width()>|/"width"> and L<C<height()>|/"height">) and the distance between
+lines is in L<C<buffer_linedelta()>|/"buffer_linedelta">. If you change any
+pixels you should call L<C<buffer_changed()>|/"buffer_changed"> before the
+next L<C<draw()>|/"draw">.
+
+Due to operating system limitations, L<C<buffer()>|/"buffer"> is usually not
+an array of L<C<pixeltype()>|/"pixeltype"> pixels. Instead
+L<C<setpixels()>|/"setpixels"> converts pixels into a type the operating
+system can use. The type of pixels in the buffer is retured by
+L<C<buffer_pixeltype()>|/"buffer_pixeltype">. This is really inconvienent, so
+you can also call the method L<C<force_ARGB32()>|/"force_ARGB32">. This will
+cause L<C<buffer_pixeltype()>|/"buffer_pixeltype"> to return C<ARGB32>, so you
+can assume this at compile time. The implementation of L<Image|FLTK::Image>
+may be less efficient (actually the overhead is zero on Windows and close to
+zero on most other systems).
+
+If L<C<buffer()>|/"buffer"> has not been called, L<C<draw()>|/"draw"> will
+call the L<C<fetch()>|/"fetch"> virtual method. It should call
+L<C<setpixeltype()>|/"setpixeltype">, L<C<setsize()>|/"setsize"> and
+L<C<setpixels()>|/"setpixels">. This is used to defer reading image files or
+decompressing data until needed. L<C<fetch()>|/"fetch"> will also restore the
+buffer contents to the original values if you have written to the buffer. If
+L<C<fetch()>|/"fetch"> does not allocate a buffer, L<C<draw()>|/"draw"> will
+draw a solid rectangle in the current color.
+
+Because L<Image|FLTK::Image> is a subclass of L<Symbol|FLTK::Symbol>, it may
+be used as a L<C<Widget::image()>|FLTK::Widget/"image"> or as the
+L<C<box()>|FLTK::Style/"box"> in a L<Style|FLTK::Style>. If you give it a name
+it can be drawn with C<@name;> in a label. If resized, the
+L<C<Symbol::_draw()>|FLTK::Symbol/"_draw"> method will use the
+L<C<inset()>|/"inset"> call to decide on edge thicknesses and will dice the
+image up into 9 individually-scaled pieces, which is very useful for GUI
+buttons and background images (this is similar to how Flash draws buttons).
+
+There are a number of subclasses such as L<jpgImage|FLTK::jpgImage> and
+L<pngImage|FLTK::pngImage> that display compressed image data, either from
+in-memory data buffers or from files.
+
+=head1 Functions
+
+=head2 C<buffer>
+X<buffer>
+
+=over
+
+=item C<my $data = $image-E<gt>buffer( );>X<my_data_image_E_gt_buffer_>
+
+Creates (if necessary) and returns a pointer to the internal pixel buffer.
+This is probably going to be shared memory with the graphics system, it may
+have a different pixeltype, size, and linedelta than the
+L<C<Image>|FLTK::Image>. If you are able to figure out the type you can read
+and write the pixels directly.
+
+=for hackers xs/Image.xs line 305
+
+=back
+
+=head2 C<buffer_changed>
+X<buffer_changed>
+
+=over
+
+=item C<$image-E<gt>buffer_changed( );>X<_image_E_gt_buffer_changed_>
+
+Call this if you modify the contents of L<C<buffer()>|/"buffer">. On some
+systems the memory is not actually shared with the window system, and this
+will cause L<C<draw()>|/"draw"> to copy the buffer to the system's memory.
+L<C<setpixels()>|/"setpixels"> calls this for you.
+
+=for hackers xs/Image.xs line 388
+
+=back
+
+=head2 C<buffer_depth>
+X<buffer_depth>
+
+=over
+
+=item C<my $depth = $image-E<gt>buffer_depth( );>X<my_depth_image_E_gt_buffer_depth_>
+
+Returns the number of bytes per pixel stored in L<C<buffer()>|/"buffer">. This
+is the same as L<C<depth(buffer_pixeltype())>|FLTK/"depth">.
+
+=for hackers xs/Image.xs line 357
+
+=back
+
+=head2 C<buffer_height>
+X<buffer_height>
+
+=over
+
+=item C<my $height = $image-E<gt>buffer_height( );>X<my_height_image_E_gt_buffer_height_>
+
+Return the height in pixels of L<C<buffer()>|/"buffer">;
+
+=for hackers xs/Image.xs line 366
+
+=back
+
+=head2 C<buffer_linedelta>
+X<buffer_linedelta>
+
+=over
+
+=item C<my $distance = $image-E<gt>buffer_linedelta( );>X<my_distance_image_E_gt_buffer_linedelta_>
+
+Return the distance between each row of pixels in L<C<buffer()>|/"buffer">.
+
+=for hackers xs/Image.xs line 370
+
+=back
+
+=head2 C<buffer_pixeltype>
+X<buffer_pixeltype>
+
+=over
+
+=item C<my $pt = $image-E<gt>buffer_pixeltype( );>X<my_pt_image_E_gt_buffer_pixeltype_>
+
+Return the type of pixels stored in L<C<buffer()>|/"buffer">. Likely to be
+C<ARGB32>. On older (non-XRender) X system the types 1 and 2 indicate 1 and
+2-byte data, but there is no api to figure out anything more about this data.
+
+=for hackers xs/Image.xs line 346
+
+=back
+
+=head2 C<buffer_width>
+X<buffer_width>
+
+=over
+
+=item C<my $width = $image-E<gt>buffer_width( );>X<my_width_image_E_gt_buffer_width_>
+
+Return the width in pixels of L<C<buffer()>|/"buffer">.
+
+=for hackers xs/Image.xs line 362
+
+=back
+
+=head2 C<clear_forceARGB32>
+X<clear_forceARGB32>
+
+=over
+
+=item C<$image-E<gt>clear_forceARGB32( );>X<_image_E_gt_clear_forceARGB32_>
+
+
+=for hackers xs/Image.xs line 326
+
+=back
+
+=head2 C<depth>
+X<depth>
+
+=over
+
+=item C<my $d = $image-E<gt>depth( );>X<my_d_image_E_gt_depth_>
+
+Same as L<C<FLTK::depth($img-E<gt>pixeltype())>|FLTK/"depth">, this returns
+how many bytes each pixel takes in the buffer sent to
+L<C<setpixels()>|/"setpixels">.
+
+=for hackers xs/Image.xs line 170
+
+=back
+
+=head2 C<destroy>
+X<destroy>
+
+=over
+
+=item C<$image-E<gt>destroy( );>X<_image_E_gt_destroy_>
+
+Destroys the L<C<buffer()>|/"buffer"> and any related system structures.
+
+=for hackers xs/Image.xs line 400
+
+=back
+
+=head2 C<draw>
+X<draw>
+
+=over
+
+=item C<$image-E<gt>draw( $x, $y );>X<_image_E_gt_draw_x_y_>
+
+Does L<C<measure()>|/"measure"> and then
+C<$image-E<gt>draw(FLTK::Rectangle-E<gt>new( 0, 0, $w, $h), FLTK::Rectangle-E<gt>new( ( $x, $y, $w, $h ) )>.
+Thus the top-left corner is placed at C<$x, $y> and no scaling (other than due
+to the current transformation) is done.
+
+=for hackers xs/Image.xs line 412
+
+=item C<$image-E<gt>draw( $rect );>X<_image_E_gt_draw_rect_>
+
+Resizes the image to fit in the rectangle. This is what is called if the image
+is used as a label or box type.
+
+If the destination rectangle is not the same size, L<C<inset()>|/"inset"> is
+used to figure out the edge thicknesses. The image is then diced into 9
+rectangles in a 3x3 grid by the insets, and each piece is scaled individually.
+This is very useful for scaling paintings of buttons. Note that if the insets
+are zero (the default) then the whole image is scaled as one piece. If you
+want, L<C<inset()>|/"inset"> can return different thicknesses depending on the
+size, producing very interesting scaling.
+
+It is possible this will use L<C<drawflags(INACTIVE)>|/"drawflags"> to gray
+out the image in a system-specific way.
+
+=for hackers xs/Image.xs line 419
+
+=item C<$image-E<gt>draw( $from, $destination );>X<_image_E_gt_draw_from_destination_>
+
+Draws the subrectangle C<from> of the image, transformed to fill the rectangle
+C<destination> (as transformed by the CTM). If the image has an alpha channel,
+an "over" operation is done.
+
+Due to lame graphics systems, this is not fully operational on all systems:
+
+=over 
+
+=item * X11 without XRender extension: no transformations are done, the image
+is centered in the output area.
+
+
+=item * X11 with XRender: rotations fill the bounding box of the destination
+rectangle, drawing extra triangular areas outside the source rectangle.
+Somewhat bad filtering when making images smaller. xbmImage does
+not transform.
+
+=item * Windows: Only scaling, no rotations. Bad filtering.
+L<xbmImage|FLTK::xbmImage> does not do any transformations.
+
+=item * OS/X: works well in all cases.
+
+=back 
+
+=for hackers xs/Image.xs line 435
+
+=back
+
+=head2 C<fetch_if_needed>
+X<fetch_if_needed>
+
+=over
+
+=item C<$image-E<gt>fetch_if_needed( );>X<_image_E_gt_fetch_if_needed_>
+
+Call L<C<fetch()>|/"fetch"> if it has not been called or if
+L<C<refetch()>|/"refetch"> was called.
+
+=for hackers xs/Image.xs line 486
+
+=back
+
+=head2 C<fills_rectangle>
+X<fills_rectangle>
+
+=over
+
+=item C<my $filled = $image-E<gt>fills_rectangle( );>X<my_filled_image_E_gt_fills_rectangle_>
+
+Returns true if hte pixeltype does not support alpha.
+
+=for hackers xs/Image.xs line 477
+
+=back
+
+=head2 C<forceARGB32>
+X<forceARGB32>
+
+=over
+
+=item C<my $ret = $image-E<gt>forceARGB32( );>X<my_ret_image_E_gt_forceARGB32_>
+
+
+
+=for hackers xs/Image.xs line 337
+
+=back
+
+=head2 C<h>
+X<h>
+
+=over
+
+=item C<my $height = $image-E<gt>h( );>X<my_height_image_E_gt_h_>
+
+Same as L<C<height()>|/"height">.
+
+=for hackers xs/Image.xs line 190
+
+=back
+
+=head2 C<height>
+X<height>
+
+=over
+
+=item C<my $h = $image-E<gt>height( );>X<my_h_image_E_gt_height_>
+
+Return the height of the image in pixels. You can change this with
+<C<setsize()>|/"setsize">.
+
+=for hackers xs/Image.xs line 185
+
+=back
+
+=head2 C<linebuffer>
+X<linebuffer>
+
+=over
+
+=item C<my $data = $image-E<gt>linebuffer( $y );>X<my_data_image_E_gt_linebuffer_y_>
+
+Return a pointer to a buffer that you can write up to L<C<width()>|/"width">
+pixels in L<C<pixeltype()>|/"pixeltype"> to and then call
+L<C<setpixels($buffer, $y)>|/"setpixels"> with. This can avoid doing any
+copying of the data if the internal format and L<C<pixeltype()>|/"pixeltype">
+are compatable, because it will return a pointer directly into the buffer and
+setpixels will detect this and do nothing.
+
+=for hackers xs/Image.xs line 261
+
+=back
+
+=head2 C<make_current>
+X<make_current>
+
+=over
+
+=item C<$image-E<gt>make_current( );>X<_image_E_gt_make_current_>
+
+See L<GSave|FLTK::GSave>.
+
+=for hackers xs/Image.xs line 528
+
+=back
+
+=head2 C<mem_used>
+X<mem_used>
+
+=over
+
+=item C<my $bytes = $image-E<gt>mem_used( );>X<my_bytes_image_E_gt_mem_used_>
+
+Returns how much memory the image is using for L<C<buffer()>|/"buffer"> and
+for any other structures it created. Returns zero if L<C<buffer()>|/"buffer">
+has not been called.
+
+=for hackers xs/Image.xs line 506
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $image-E<gt>new( $name );>X<my_self_image_E_gt_new_name_>
+
+The default constructor sets L<C<pixeltype()>|/"pixeltype"> to C<RGB32>
+(0x00rrggbb) and L<C<width()>|/"width"> and L<C<height()>|/"height"> to 12.
+This means that 12x12 square with the current color will be drawn if not able
+to draw anything else.
+
+The optional C<name> is passed to the L<Symbol|FLTK::Symbol/"new"> constructor
+and allows the image to be drawn by putting C<@name;> into a label.
+
+=for hackers xs/Image.xs line 89
+
+=back
+
+=head2 C<pixeltype>
+X<pixeltype>
+
+=over
+
+=item C<my $type = $image-E<gt>pixeltype( );>X<my_type_image_E_gt_pixeltype_>
+
+Returns the type of pixels that are put into the image with
+L<C<setpixels()>|/"setpixels">. You can change this with
+L<C<setpixeltype()>|/"setpixeltype">. It is possible the internal data is in a
+different type, use L<C<buffer_pixeltype()>|/"buffer_pixeltype"> to find out
+what that is.
+
+=for hackers xs/Image.xs line 157
+
+=back
+
+=head2 C<refetch>
+X<refetch>
+
+=over
+
+=item C<$image-E<gt>refetch( );>X<_image_E_gt_refetch_>
+
+Cause L<C<fetch()>|/"fetch"> to be called again. This is useful for a file
+image if the file name or contents have changed.
+
+=for hackers xs/Image.xs line 496
+
+=back
+
+=head2 C<set_forceARGB32>
+X<set_forceARGB32>
+
+=over
+
+=item C<$image-E<gt>set_forceARGB32( );>X<_image_E_gt_set_forceARGB32_>
+
+It pretty much does this already except for mono.
+
+=for hackers xs/Image.xs line 322
+
+=back
+
+=head2 C<setimage>
+X<setimage>
+
+=over
+
+=item C<$image-E<gt>setimage( $source, $pixeltype, $w, $h, $linedelta );>X<_image_E_gt_setimage_source_pixeltype_w_h_linedelta_>
+
+This is equivalent to...
+
+  $image->setsize( $w, $h );
+  $image->setpixeltype( $p );
+  $image->setpixels( $source, FLTK::Rectangle->new( $w, $h ), $iamge->linedelta );
+
+...except, if possible, C<source> is used as L<C<buffer()>|/"buffer">
+(throwing away the current data!). This will happen if the C<pixeltype> and
+C<linedelta> are of types that it can handle unchanged and if the image memory
+does not need to be allocated by the system.
+
+=for hackers xs/Image.xs line 279
+
+=item C<$image-E<gt>setimage( $source, $pixeltype, $w, $h );>X<_image_E_gt_setimage_source_pixeltype_w_h_>
+
+Figures out C<$linedelta> for you as C<$w * $image-E<gt>depth($p)>.
+
+=for hackers xs/Image.xs line 292
+
+=back
+
+=head2 C<setpixels>
+X<setpixels>
+
+=over
+
+=item C<$image-E<gt>setpixels( $data, $rect, $linedelta );>X<_image_E_gt_setpixels_data_rect_linedelta_>
+
+Replace the given rectangle of L<C<buffer()>|/"buffer"> with the supplied
+data, which must be in the L<C<pixeltype()>|/"pixeltype">. C<linedelta> is the
+distance between each row of pixels in C<data>. The rectangle is assummed to
+fit inside the L<C<width()>|/"width"> and L<C<height()>|/"height">.
+
+=for hackers xs/Image.xs line 230
+
+=item C<$image-E<gt>setpixels( $data, $rect );>X<_image_E_gt_setpixels_data_rect_>
+
+Figures out the linedelta for you as C<$image->depth() * $rect->w()>.
+
+=for hackers xs/Image.xs line 237
+
+=item C<$image-E<gt>setpixels( $data, $y );>X<_image_E_gt_setpixels_data_y_>
+
+Same as
+L<C<$image-E<gt>setpixels($data, FLTK::Rectangle-E<gt>new(0, $y, $image-E<gt>width(), 1))>|/"setpixels">,
+sets one entire row of pixels.
+
+=for hackers xs/Image.xs line 241
+
+=back
+
+=head2 C<setpixeltype>
+X<setpixeltype>
+
+=over
+
+=item C<$image-E<gt>setpixeltype( $pixeltype );>X<_image_E_gt_setpixeltype_pixeltype_>
+
+Change the stored pixeltype. If it is not compatable then the
+L<Image|FLTK::Image> is destroyed.
+
+=for hackers xs/Image.xs line 209
+
+=back
+
+=head2 C<setsize>
+X<setsize>
+
+=over
+
+=item C<$image-E<gt>setsize( $w, $h );>X<_image_E_gt_setsize_w_h_>
+
+Change the size of the stored image. If it is not compatable with the current
+data size (generally if it is larger) then the L<Image|FLTK::Image> is
+destroyed.
+
+=for hackers xs/Image.xs line 219
+
+=back
+
+=head2 C<total_mem_used>
+X<total_mem_used>
+
+=over
+
+=item C<my $bytes = $image-E<gt>total_mem_used( );>X<my_bytes_image_E_gt_total_mem_used_>
+
+Sum of all L<C<mem_used()>|/"mem_used"> calls to all L<C<Images>|FLTK::Image>.
+This is used by L<SharedImage|FLTK::SharedImage> to decide when to clear out
+cached images.
+
+=for hackers xs/Image.xs line 517
+
+=back
+
+=head2 C<w>
+X<w>
+
+=over
+
+=item C<my $width = $image-E<gt>w( );>X<my_width_image_E_gt_w_>
+
+Same as L<C<width()>|/"width">.
+
+=for hackers xs/Image.xs line 181
+
+=back
+
+=head2 C<width>
+X<width>
+
+=over
+
+=item C<my $w = $image-E<gt>width( );>X<my_w_image_E_gt_width_>
+
+Return the width of the image in pixels. You can change this with
+L<C<setsize()>|/"setsize">.
+
+=for hackers xs/Image.xs line 176
+
+=back
+
+=head1 See Also
+
+=over 
+
+=item L<drawimage()|FLTK::draw/"drawimage">
+
+=back 
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Image.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

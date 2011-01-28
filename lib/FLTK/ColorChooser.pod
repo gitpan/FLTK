@@ -1,0 +1,321 @@
+=pod
+
+=head1 NAME
+
+FLTK::ColorChooser - Color chooser for the Fast Light Tool Kit
+
+=head1 Description
+
+The color chooser object and the color chooser popup.  The popup is just a
+window containing a single color chooser and some boxes to indicate the
+current and cancelled color.
+
+=head1 Functions
+
+=head2 C<a>
+X<a>
+
+=over
+
+=item C<my $alpha = $colorchooser-E<gt>a( );>X<my_alpha_colorchooser_E_gt_a_>
+
+
+
+=for hackers xs/ColorChooser.xs line 160
+
+=item C<my $set = $colorchooser-E<gt>a( $alpha );>X<my_set_colorchooser_E_gt_a_alpha_>
+
+
+
+=for hackers xs/ColorChooser.xs line 164
+
+=back
+
+=head2 C<b>
+X<b>
+
+=over
+
+=item C<my $blue = $colorchooser-E<gt>b( );>X<my_blue_colorchooser_E_gt_b_>
+
+
+
+=for hackers xs/ColorChooser.xs line 72
+
+=back
+
+=head2 C<color_chooser>
+X<color_chooser>
+
+=over
+
+=item C<my $okay = $colorchooser-E<gt>color_chooser( $name, $r, $g, $b );>X<my_okay_colorchooser_E_gt_color_chooser_name_r_g_b_>
+
+L<C<FLTK::color_chooser()>|/"color_chooser"> pops up a window to let the user
+pick an arbitrary RGB color. They can pick the hue and saturation in the "hue
+box" on the left (hold down C<CTRL> to just change the saturation), and the
+brighness using the vertical slider. Or they can type the 8-bit numbers into
+the RGB L<FLTK::ValueInput|FLTK::ValueInput> fields, or drag the mouse across
+them to adjust them. The pull-down menu lets the user set the input fields to
+show RGB, HSV, or 8-bit RGB (0 to 255).
+
+This returns non-zero if the user picks ok, and updates the RGB values. If the
+user picks cancel or closes the window this returns zero and leaves RGB
+unchanged.
+
+This version takes and returns numbers in the 0-1 range.
+
+If you which to embed a color chooser into another control panel, use an
+L<FLTK::ColorChooser|FLTK::ColorChooser/"new"> object.
+
+=for hackers xs/ColorChooser.xs line 226
+
+=item C<my $okay = $colorchooser-E<gt>color_chooser( $name, $r, $g, $b, $a );>X<my_okay_colorchooser_E_gt_color_chooser_name_r_g_b_a_>
+
+Same but user can also select an alpha value. Currently the color chips do not
+remember or set the alpha!
+
+=for hackers xs/ColorChooser.xs line 245
+
+=item C<my $okay = $colorchooser-E<gt>color_chooser( $name, $color );>X<my_okay_colorchooser_E_gt_color_chooser_name_color_>
+
+Same but it takes and returns an L<FLTK::Color|FLTK::Color> number. No alpha.
+
+=pod 
+
+=for hackers xs/ColorChooser.xs line 250
+
+=back
+
+=head2 C<g>
+X<g>
+
+=over
+
+=item C<my $green = $colorchooser-E<gt>g( );>X<my_green_colorchooser_E_gt_g_>
+
+
+
+=for hackers xs/ColorChooser.xs line 68
+
+=back
+
+=head2 C<h>
+X<h>
+
+=over
+
+=item C<my $hue = $colorchooser-E<gt>h( );>X<my_hue_colorchooser_E_gt_h_>
+
+
+
+=for hackers xs/ColorChooser.xs line 52
+
+=back
+
+=head2 C<hide_a>
+X<hide_a>
+
+=over
+
+=item C<$colorchooser-E<gt>hide_a( );>X<_colorchooser_E_gt_hide_a_>
+
+
+
+=for hackers xs/ColorChooser.xs line 177
+
+=back
+
+=head2 C<hide_no_value>
+X<hide_no_value>
+
+=over
+
+=item C<$colorchooser-E<gt>hide_no_value( );>X<_colorchooser_E_gt_hide_no_value_>
+
+
+
+=for hackers xs/ColorChooser.xs line 181
+
+=back
+
+=head2 C<hsv>
+X<hsv>
+
+=over
+
+=item C<my $set = $colorchooser-E<gt>hsv( $h, $s, $v );>X<my_set_colorchooser_E_gt_hsv_h_s_v_>
+
+
+
+=for hackers xs/ColorChooser.xs line 142
+
+=back
+
+=head2 C<hsv2rgb>
+X<hsv2rgb>
+
+=over
+
+=item C<my @rbg = $colorchooser-E<gt>hsv2rgb( $h, $s, $v );>X<my_rbg_colorchooser_E_gt_hsv2rgb_h_s_v_>
+
+
+
+=for hackers xs/ColorChooser.xs line 197
+
+=back
+
+=head2 C<layout>
+X<layout>
+
+=over
+
+=item C<$colorchooser-E<gt>layout( );>X<_colorchooser_E_gt_layout_>
+
+
+
+=for hackers xs/ColorChooser.xs line 217
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $colorchooser-E<gt>new( $x, $y, $w, $h, $label );>X<my_self_colorchooser_E_gt_new_x_y_w_h_label_>
+
+
+
+=for hackers xs/ColorChooser.xs line 33
+
+=back
+
+=head2 C<no_value>
+X<no_value>
+
+=over
+
+=item C<my $no_val = $colorchooser-E<gt>no_value( );>X<my_no_val_colorchooser_E_gt_no_value_>
+
+
+
+=for hackers xs/ColorChooser.xs line 98
+
+=item C<my $no_val = $colorchooser-E<gt>no_value( $value );>X<my_no_val_colorchooser_E_gt_no_value_value_>
+
+
+
+=for hackers xs/ColorChooser.xs line 102
+
+=back
+
+=head2 C<r>
+X<r>
+
+=over
+
+=item C<my $red = $colorchooser-E<gt>r( );>X<my_red_colorchooser_E_gt_r_>
+
+
+
+=for hackers xs/ColorChooser.xs line 64
+
+=back
+
+=head2 C<rgb>
+X<rgb>
+
+=over
+
+=item C<my $set = $colorchooser-E<gt>rgb( $r, $g, $b );>X<my_set_colorchooser_E_gt_rgb_r_g_b_>
+
+
+
+=for hackers xs/ColorChooser.xs line 151
+
+=back
+
+=head2 C<rgb2hsv>
+X<rgb2hsv>
+
+=over
+
+=item C<my @hsv = $colorchooser-E<gt>rgb2hsv( $r, $g, $b );>X<my_hsv_colorchooser_E_gt_rgb2hsv_r_g_b_>
+
+
+
+=for hackers xs/ColorChooser.xs line 207
+
+=back
+
+=head2 C<s>
+X<s>
+
+=over
+
+=item C<my $saturation = $colorchooser-E<gt>s( );>X<my_saturation_colorchooser_E_gt_s_>
+
+
+
+=for hackers xs/ColorChooser.xs line 56
+
+=back
+
+=head2 C<v>
+X<v>
+
+=over
+
+=item C<my $v = $colorchooser-E<gt>v( );>X<my_v_colorchooser_E_gt_v_>
+
+
+
+=for hackers xs/ColorChooser.xs line 60
+
+=back
+
+=head2 C<value>
+X<value>
+
+=over
+
+=item C<my $color = $colorchooser-E<gt>value( );>X<my_color_colorchooser_E_gt_value_>
+
+
+
+=for hackers xs/ColorChooser.xs line 118
+
+=item C<my $val = $colorchooser-E<gt>value( $color );>X<my_val_colorchooser_E_gt_value_color_>
+
+
+
+=for hackers xs/ColorChooser.xs line 122
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: ColorChooser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,258 @@
+=pod
+
+=head1 NAME
+
+FLTK::TextSelection -
+
+=head1 Description
+
+
+
+=head1 Functions
+
+=head2 C<end>
+X<end>
+
+=over
+
+=item C<my $end = $textselection-E<gt>end( );>X<my_end_textselection_E_gt_end_>
+
+Position of end of selection or, if rectangular, selections from keyboard.
+
+=head2 C<< my $rectstart = $selection->rectstart( ) >>
+
+=for hackers xs/TextSelection.xs line 107
+
+=back
+
+=head2 C<includes>
+X<includes>
+
+=over
+
+=item C<my $bool = $textselection-E<gt>includes( $pos, $lineStartPos, $dispIndex );>X<my_bool_textselection_E_gt_includes_pos_lineStartPos_dispIndex_>
+
+=head2 C<< my $pos = $selection->position( $start, $end ) >>
+
+=for hackers xs/TextSelection.xs line 188
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $selection = $textselection-E<gt>new( );>X<my_selection_textselection_E_gt_new_>
+
+
+
+=head2 Usage
+
+=for markdown {%highlight perl%}
+
+  my $selection = FLTK::TextSelection->new( );
+
+=for markdown {%endhighlight%}
+
+=for hackers xs/TextSelection.xs line 31
+
+=back
+
+=head2 C<position>
+X<position>
+
+=over
+
+=item C<my $pos = $textselection-E<gt>position( $start, $end );>X<my_pos_textselection_E_gt_position_start_end_>
+
+=head2 C<< my $pos = $selection->position( $start, $end, $isrect, $rectstart, $rectend ) >>
+
+=for hackers xs/TextSelection.xs line 197
+
+=item C<my $pos = $textselection-E<gt>position( $start, $end, $isrect, $rectstart, $rectend );>X<my_pos_textselection_E_gt_position_start_end_isrect_rectstart_rectend_>
+
+=pod 
+
+=for hackers xs/TextSelection.xs line 201
+
+=back
+
+=head2 C<rectangular>
+X<rectangular>
+
+=over
+
+=item C<my $is_rect = $textselection-E<gt>rectangular( );>X<my_is_rect_textselection_E_gt_rectangular_>
+
+Returns a true value if the selection is rectangular.
+
+=head2 C<< my $start = $selection->start( ) >>
+
+=for hackers xs/TextSelection.xs line 90
+
+=back
+
+=head2 C<rectend>
+X<rectend>
+
+=over
+
+=item C<my $rectend = $textselection-E<gt>rectend( );>X<my_rectend_textselection_E_gt_rectend_>
+
+Ident of right edge of rectangular selection.
+
+=head2 C<< my $bool = $selection->selected( ) >>
+
+=for hackers xs/TextSelection.xs line 119
+
+=back
+
+=head2 C<rectstart>
+X<rectstart>
+
+=over
+
+=item C<my $rectstart = $textselection-E<gt>rectstart( );>X<my_rectstart_textselection_E_gt_rectstart_>
+
+Indent of left edge of rectangular selection.
+
+=head2 C<< my $rectend = $selection->rectend( ) >>
+
+=for hackers xs/TextSelection.xs line 113
+
+=back
+
+=head2 C<selected>
+X<selected>
+
+=over
+
+=item C<my $bool = $textselection-E<gt>selected( );>X<my_bool_textselection_E_gt_selected_>
+
+Returns a true value if the selection is active.
+
+=head2 C<< $selection->selected( $bool ) >>
+
+=for hackers xs/TextSelection.xs line 139
+
+=item C<$textselection-E<gt>selected( $bool );>X<_textselection_E_gt_selected_bool_>
+
+Sets the selection as active or inactive.
+
+=head2 C<< my $bool = $selection->zerowidth( ) >>
+
+=for hackers xs/TextSelection.xs line 145
+
+=back
+
+=head2 C<set>
+X<set>
+
+=over
+
+=item C<$textselection-E<gt>set( $start, $end );>X<_textselection_E_gt_set_start_end_>
+
+
+=head2 C<< $selection->set_rectangular( $start, $end, $rectstart, $rectend ) >>
+
+=for hackers xs/TextSelection.xs line 62
+
+=back
+
+=head2 C<set_rectangular>
+X<set_rectangular>
+
+=over
+
+=item C<$textselection-E<gt>set_rectangular( $start, $end, $rectstart, $rectend );>X<_textselection_E_gt_set_rectangular_start_end_rectstart_rectend_>
+
+
+=head2 C<< $selection->update( position, ndeleted, ninserted ) >>
+
+=for hackers xs/TextSelection.xs line 67
+
+=back
+
+=head2 C<start>
+X<start>
+
+=over
+
+=item C<my $start = $textselection-E<gt>start( );>X<my_start_textselection_E_gt_start_>
+
+Position of start selection or, if rectangular, selections from keyboard.
+
+=head2 C<< my $end = $selection->end( ) >>
+
+=for hackers xs/TextSelection.xs line 101
+
+=back
+
+=head2 C<update>
+X<update>
+
+=over
+
+=item C<$textselection-E<gt>update( $pos, $ndeleted, $ninserted );>X<_textselection_E_gt_update_pos_ndeleted_ninserted_>
+
+
+=head2 C<< my $is_rect = $selection->rectangular( ) >>
+
+=for hackers xs/TextSelection.xs line 80
+
+=back
+
+=head2 C<zerowidth>
+X<zerowidth>
+
+=over
+
+=item C<my $bool = $textselection-E<gt>zerowidth( );>X<my_bool_textselection_E_gt_zerowidth_>
+
+Zero width selctions aren't I<real> selections, but they can be useful when
+creating rectangular selections from the keyboard.
+
+=head2 C<< $selection->zerowidth( $bool ) >>
+
+=for hackers xs/TextSelection.xs line 164
+
+=item C<$textselection-E<gt>zerowidth( $bool );>X<_textselection_E_gt_zerowidth_bool_>
+
+=head2 C<< my $bool = $selection->includes( $pos, $lineStartPos, $dispIndex ) >>
+
+=for hackers xs/TextSelection.xs line 171
+
+=back
+
+=head1 Constructor
+
+=head1 Methods
+
+=head2 C<< $selection->set( $start, $end ) >>
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: TextSelection.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

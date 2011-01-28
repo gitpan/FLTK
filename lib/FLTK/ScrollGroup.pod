@@ -1,0 +1,179 @@
+=pod
+
+=head1 NAME
+
+FLTK::ScrollGroup - Group that adds scrollbars so you can scroll around the
+area
+
+=head1 Description
+
+This container widget lets you maneuver around a set of widgets much larger
+than your window. If the child widgets are larger than the size of this object
+then scrollbars will appear so that you can scroll over to them.
+
+The default L<C<type( )>|FLTK::Widget/"type"> will just scroll a whole
+arrangement of widgets and never resize them. This is useful if you just want
+to get a big control panel into a smaller window. The bounding box of the
+widgets are the area it can scroll, this will remove any borders, if you want
+the borders preserved put some invisible widgets there as placeholders.
+
+This can be used to pan around a large drawing by making a single child widget
+"canvas". This child widget should be of your own class, with a C<draw( )>
+method that draws everything. The scrolling is done by changing the
+L<C<x( )>|FLTK::Rectangle/"x"> and L<C<y( )>|FLTK::Rectangle/"y"> of the
+widget and drawing it with the fltk clip region set to the newly exposed
+rectangles. You can speed things up by using C<FLTK::not_clipped( )> or
+C<FLTK::intersect_with_clip( )> to detect and skip the clipped portions of the
+drawing.
+
+By default you can scroll in both directions, and the scrollbars disappear if
+the data will fit in the area of the scroll. L<C<type( )>|FLTK::Widget/"type">
+can change this:
+
+=over 
+
+=item * C<HORIZONTAL> resize vertically but scroll horizontally
+
+=item * C<VERTICAL> resize horizontally but scroll vertically
+
+=item * C<BOTH> this is the default
+
+=item * C<HORIZONTAL_ALWAYS> resize vertically but always show horizontal
+scrollbar
+
+=item * C<VERTICAL_ALWAYS> resize horizontally but always show vertical
+scrollbar
+
+=item * C<BOTH_ALWAYS> always show both scrollbars
+
+=back 
+
+If you use C<HORIZONTAL> or C<VERTICAL> you must initally position and size
+your child widgets as though the scrollbar is off (ie fill the
+L<C<box( )>|FLTK::Widget/"box"> width entirely if
+L<C<type( )>|FLTK::Widget/"type"> is C<VERTICAL>). The first time
+L<C<layout( )>|FLTK::Widget/"layout"> is called it will resize the widgets to
+fit inside the scrollbars.
+
+It is very useful to put a single L<PackedGroup|FLTK::PackedGroup> child into
+a C<VERTICAL> L<ScrollGroup|FLTK::ScrollGroup>.
+
+Also note that L<C<scrollbar_align( )>|FLTK::ScrollGroup/"scrollbar_align"> (a
+L<Style|FLTK::Style> parameter) can put the scrollbars on different sides of
+the widget.
+
+Currently you cannot use L<Window|FLTK::Window> or any subclass (including
+L<GlWindow|FLTK::GlWindow>) as a child of this. The clipping is not conveyed
+to the operating system's window and it will draw over the scrollbars and
+neighboring objects.
+
+=head1 Functions
+
+=head2 C<bbox>
+X<bbox>
+
+=over
+
+=item C<$scrollgroup-E<gt>bbox( $rect );>X<_scrollgroup_E_gt_bbox_rect_>
+
+Set the rectangle to the scrolling area (in the
+L<ScrollGroup|FLTK::ScrollGroup>'s coordinate system). This removes the border
+of the L<C<box( )>|FLTK::Widget/"box"> and the space needed for any visible
+scrollbars.
+
+=for hackers xs/ScrollGroup.xs line 131
+
+=back
+
+=head2 C<enable_drag_scroll>
+X<enable_drag_scroll>
+
+=over
+
+=item C<$scrollgroup-E<gt>enable_drag_scroll( $enable );>X<_scrollgroup_E_gt_enable_drag_scroll_enable_>
+
+
+
+=for hackers xs/ScrollGroup.xs line 144
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $scrollgroup-E<gt>new( $x, $y, $w, $h, $label, $begin );>X<my_self_scrollgroup_E_gt_new_x_y_w_h_label_begin_>
+
+Creates a new L<FLTK::ScrollGroup|FLTK::ScrollGroup> widget.
+
+=for hackers xs/ScrollGroup.xs line 90
+
+=back
+
+=head2 C<scrollTo>
+X<scrollTo>
+
+=over
+
+=item C<$scrollgroup-E<gt>scrollTo( $x, $y );>X<_scrollgroup_E_gt_scrollTo_x_y_>
+
+
+
+=pod 
+
+=for hackers xs/ScrollGroup.xs line 169
+
+=back
+
+=head2 C<xposition>
+X<xposition>
+
+=over
+
+=item C<my $x = $scrollgroup-E<gt>xposition( );>X<my_x_scrollgroup_E_gt_xposition_>
+
+
+
+=for hackers xs/ScrollGroup.xs line 153
+
+=back
+
+=head2 C<yposition>
+X<yposition>
+
+=over
+
+=item C<my $y = $scrollgroup-E<gt>yposition( );>X<my_y_scrollgroup_E_gt_yposition_>
+
+
+
+=for hackers xs/ScrollGroup.xs line 157
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: ScrollGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

@@ -1,0 +1,425 @@
+=pod
+
+=head1 NAME
+
+FLTK::AnsiWidget - Displays ANSI escape codes
+
+=head1 Description
+
+Displays ANSI escape codes.
+
+Escape sequences start with the characters C<ESC> (ASCII 27d/1Bh/033o) and
+C<[> (left bracket). This sequence is called CSI for "Control Sequence
+Introducer".
+
+=head2 Supported control codes:
+
+=over 
+
+=item C<\t>
+
+tab (20 px)
+
+=item C<\a>
+
+beep
+
+=item C<\r>
+
+return
+
+=item C<\n>
+
+next line
+
+=item C<\xC>
+
+clear screen
+
+=item C<\e[K>
+
+clear to end of line
+
+=item C<\e[0m>
+
+reset all attributes to their defaults
+
+=item C<\e[1m>
+
+set bold on
+
+=item C<\e[4m>
+
+set underline on
+
+=item C<\e[7m>
+
+reverse video
+
+=item C<\e[21m>
+
+set bold off
+
+=item C<\e[24m>
+
+set underline off
+
+=item C<\e[27m>
+
+set reverse off
+
+=back 
+
+=head1 Functions
+
+=head2 C<ansiToFltk>
+X<ansiToFltk>
+
+=over
+
+=item C<my $color = $ansiwidget-E<gt>ansiToFltk( $color );>X<my_color_ansiwidget_E_gt_ansiToFltk_color_>
+
+Converts ANSI colors to FLTK colors.
+
+=pod 
+
+=for hackers xs/AnsiWidget.xs line 322
+
+=back
+
+=head2 C<beep>
+X<beep>
+
+=over
+
+=item C<$ansiwidget-E<gt>beep( );>X<_ansiwidget_E_gt_beep_>
+
+Create audible beep sound.
+
+=for hackers xs/AnsiWidget.xs line 137
+
+=back
+
+=head2 C<clearScreen>
+X<clearScreen>
+
+=over
+
+=item C<$ansiwidget-E<gt>clearScreen( );>X<_ansiwidget_E_gt_clearScreen_>
+
+Clear the offscreen buffer.
+
+=for hackers xs/AnsiWidget.xs line 133
+
+=back
+
+=head2 C<drawImage>
+X<drawImage>
+
+=over
+
+=item C<$ansiwidget-E<gt>drawImage( $img, $x, $y, $sx, $sy, $w, $h );>X<_ansiwidget_E_gt_drawImage_img_x_y_sx_sy_w_h_>
+
+Draws the given image onto the offscreen buffer.
+
+=for hackers xs/AnsiWidget.xs line 188
+
+=back
+
+=head2 C<drawLine>
+X<drawLine>
+
+=over
+
+=item C<$ansiwidget-E<gt>drawLine( $x1, $y1, $x2, $y2 );>X<_ansiwidget_E_gt_drawLine_x1_y1_x2_y2_>
+
+Draw a line onto the offscreen buffer.
+
+=for hackers xs/AnsiWidget.xs line 162
+
+=back
+
+=head2 C<drawRect>
+X<drawRect>
+
+=over
+
+=item C<$ansiwidget-E<gt>drawRect( $x1, $y1, $x2, $y2 );>X<_ansiwidget_E_gt_drawRect_x1_y1_x2_y2_>
+
+Draw a rectangle onto the offscreen buffer.
+
+=for hackers xs/AnsiWidget.xs line 170
+
+=back
+
+=head2 C<drawRectFilled>
+X<drawRectFilled>
+
+=over
+
+=item C<$ansiwidget-E<gt>drawRectFilled( $x1, $y1, $x2, $y2 );>X<_ansiwidget_E_gt_drawRectFilled_x1_y1_x2_y2_>
+
+Draw a filled rectangle onto the offscreen buffer.
+
+=for hackers xs/AnsiWidget.xs line 166
+
+=back
+
+=head2 C<getFontSize>
+X<getFontSize>
+
+=over
+
+=item C<my $size = $ansiwidget-E<gt>getFontSize( );>X<my_size_ansiwidget_E_gt_getFontSize_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 313
+
+=back
+
+=head2 C<getHeight>
+X<getHeight>
+
+=over
+
+=item C<my $h = $ansiwidget-E<gt>getHeight( );>X<my_h_ansiwidget_E_gt_getHeight_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 237
+
+=back
+
+=head2 C<getPixel>
+X<getPixel>
+
+=over
+
+=item C<my $color = $ansiwidget-E<gt>getPixel( $x, $y );>X<my_color_ansiwidget_E_gt_getPixel_x_y_>
+
+Returns the color of the pixel at the given C<x, y> location.
+
+=for hackers xs/AnsiWidget.xs line 268
+
+=back
+
+=head2 C<getWidth>
+X<getWidth>
+
+=over
+
+=item C<my $w = $ansiwidget-E<gt>getWidth( );>X<my_w_ansiwidget_E_gt_getWidth_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 233
+
+=back
+
+=head2 C<getX>
+X<getX>
+
+=over
+
+=item C<my $x = $ansiwidget-E<gt>getX( );>X<my_x_ansiwidget_E_gt_getX_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 225
+
+=back
+
+=head2 C<getY>
+X<getY>
+
+=over
+
+=item C<my $y = $ansiwidget-E<gt>getY( );>X<my_y_ansiwidget_E_gt_getY_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 229
+
+=back
+
+=head2 C<layout>
+X<layout>
+
+=over
+
+=item C<$ansiwidget-E<gt>layout( );>X<_ansiwidget_E_gt_layout_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 124
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $self = $ansiwidget-E<gt>new( $x, $y, $w, $h, $defsize );>X<my_self_ansiwidget_E_gt_new_x_y_w_h_defsize_>
+
+Creates a new C<FLTK::AnsiWidget> object.
+
+=for hackers xs/AnsiWidget.xs line 105
+
+=back
+
+=head2 C<print>
+X<print>
+
+=over
+
+=item C<$ansiwidget-E<gt>print( $str );>X<_ansiwidget_E_gt_print_str_>
+
+Prints the contents of the given string onto the backbuffer.
+
+=for hackers xs/AnsiWidget.xs line 153
+
+=back
+
+=head2 C<saveImage>
+X<saveImage>
+
+=over
+
+=item C<$ansiwidget-E<gt>saveImage( $filename, $x, $y, $w, $h );>X<_ansiwidget_E_gt_saveImage_filename_x_y_w_h_>
+
+Save the offscreen buffer to the given filename.
+
+=for hackers xs/AnsiWidget.xs line 198
+
+=back
+
+=head2 C<setColor>
+X<setColor>
+
+=over
+
+=item C<$ansiwidget-E<gt>setColor( $color );>X<_ansiwidget_E_gt_setColor_color_>
+
+Sets the current drawing color.
+
+=for hackers xs/AnsiWidget.xs line 216
+
+=back
+
+=head2 C<setFontSize>
+X<setFontSize>
+
+=over
+
+=item C<$ansiwidget-E<gt>setFontSize( $i );>X<_ansiwidget_E_gt_setFontSize_i_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 304
+
+=back
+
+=head2 C<setPixel>
+X<setPixel>
+
+=over
+
+=item C<$ansiwidget-E<gt>setPixel( $x, $y, $color );>X<_ansiwidget_E_gt_setPixel_x_y_color_>
+
+Sets the pixel to the given color at the given C<X, Y> location.
+
+=for hackers xs/AnsiWidget.xs line 259
+
+=back
+
+=head2 C<setTextColor>
+X<setTextColor>
+
+=over
+
+=item C<$ansiwidget-E<gt>setTextColor( $fore, $back );>X<_ansiwidget_E_gt_setTextColor_fore_back_>
+
+Sets the current text drawing color.
+
+=for hackers xs/AnsiWidget.xs line 207
+
+=back
+
+=head2 C<setXY>
+X<setXY>
+
+=over
+
+=item C<$ansiwidget-E<gt>setXY( $x, $y );>X<_ansiwidget_E_gt_setXY_x_y_>
+
+
+
+=for hackers xs/AnsiWidget.xs line 277
+
+=back
+
+=head2 C<textHeight>
+X<textHeight>
+
+=over
+
+=item C<my $height = $ansiwidget-E<gt>textHeight( );>X<my_height_ansiwidget_E_gt_textHeight_>
+
+Returns the height in pixels using the current font setting.
+
+=for hackers xs/AnsiWidget.xs line 295
+
+=back
+
+=head2 C<textWidth>
+X<textWidth>
+
+=over
+
+=item C<my $width = $ansiwidget-E<gt>textWidth( $string );>X<my_width_ansiwidget_E_gt_textWidth_string_>
+
+Returns the width in pixels using the current font setting.
+
+=for hackers xs/AnsiWidget.xs line 286
+
+=back
+
+=head1 See Also
+
+For more information about ANSI code see:
+
+=over 
+
+=item * http://en.wikipedia.org/wiki/ANSI_escape_code
+
+=item * http://www.uv.tietgen.dk/staff/mlha/PC/Soft/Prog/BAS/VB/Function.html
+
+=back 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: AnsiWidget.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

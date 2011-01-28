@@ -1,0 +1,912 @@
+=pod
+
+=head1 NAME
+
+FLTK::Color - A color value (Wow, yeah, I know...)
+
+=head1 Description
+
+L<FLTK::Color|FLTK::Color> is a typedef for a 32-bit integer containing r,g,b
+bytes and an "index" in the lowest byte (the I<first> byte on a
+little-endian machine such as an x86).  For instance C<0xFF008000> is 255 red,
+zero green, and 128 blue. If rgb are not zero then the low byte is ignored, or
+may be treated as "alpha" by some code.
+
+If the rgb is zero, the N is the color "index". This index is used to look up
+an L<FLTK::Color|FLTK::Color> in an internal table of 255 colors shown here.
+All the indexed colors may be changed by using
+L<C<set_color_index()>|/"set_color_index">.  However FLTK uses the ones
+between 32 and 255 and assummes they are not changed from their default
+values.
+
+A Color of zero (L<C<FLTK::NO_COLOR>|FLTK::Color/"NO_COLOR">) will draw black
+but is ambiguous. It is returned as an error value or to indicate portions of
+a L<Style|FLTK::Style> that should be inherited, and it is also used as the
+default label color for everything so that changing color zero can be used by
+the C<-fg> switch. You should use L<C<FLTK::BLACK>|FLTK::Color/"BLACK"> (56)
+to get black.
+
+=head1 Functions
+
+=head2 C<BLACK>
+X<BLACK>
+
+=over
+
+=item C<BLACK( );>X<BLACK_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 170
+
+=back
+
+=head2 C<BLUE>
+X<BLUE>
+
+=over
+
+=item C<BLUE( );>X<BLUE_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 186
+
+=back
+
+=head2 C<CYAN>
+X<CYAN>
+
+=over
+
+=item C<CYAN( );>X<CYAN_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 194
+
+=back
+
+=head2 C<DARK_BLUE>
+X<DARK_BLUE>
+
+=over
+
+=item C<DARK_BLUE( );>X<DARK_BLUE_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 214
+
+=back
+
+=head2 C<DARK_CYAN>
+X<DARK_CYAN>
+
+=over
+
+=item C<DARK_CYAN( );>X<DARK_CYAN_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 222
+
+=back
+
+=head2 C<DARK_GREEN>
+X<DARK_GREEN>
+
+=over
+
+=item C<DARK_GREEN( );>X<DARK_GREEN_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 206
+
+=back
+
+=head2 C<DARK_MAGENTA>
+X<DARK_MAGENTA>
+
+=over
+
+=item C<DARK_MAGENTA( );>X<DARK_MAGENTA_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 218
+
+=back
+
+=head2 C<DARK_RED>
+X<DARK_RED>
+
+=over
+
+=item C<DARK_RED( );>X<DARK_RED_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 202
+
+=back
+
+=head2 C<DARK_YELLOW>
+X<DARK_YELLOW>
+
+=over
+
+=item C<DARK_YELLOW( );>X<DARK_YELLOW_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 210
+
+=back
+
+=head2 C<FREE_COLOR>
+X<FREE_COLOR>
+
+=over
+
+=item C<FREE_COLOR( );>X<FREE_COLOR_>
+
+Starting from index 16 is the FREE_COLOR area
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 70
+
+=back
+
+=head2 C<GRAY00>
+X<GRAY00>
+
+=over
+
+=item C<GRAY00( );>X<GRAY00_>
+
+hex=00, dec=.00, framebox=A, fltk1 = GRAY0, GRAY_RAMP
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 78
+
+=back
+
+=head2 C<GRAY05>
+X<GRAY05>
+
+=over
+
+=item C<GRAY05( );>X<GRAY05_>
+
+hex=0d, dec=.05, framebox=B
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 82
+
+=back
+
+=head2 C<GRAY10>
+X<GRAY10>
+
+=over
+
+=item C<GRAY10( );>X<GRAY10_>
+
+hex=1a, dec=.10, framebox=C
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 86
+
+=back
+
+=head2 C<GRAY15>
+X<GRAY15>
+
+=over
+
+=item C<GRAY15( );>X<GRAY15_>
+
+hex=27, dec=.15, framebox=D
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 90
+
+=back
+
+=head2 C<GRAY20>
+X<GRAY20>
+
+=over
+
+=item C<GRAY20( );>X<GRAY20_>
+
+hex=34, dec=.20, framebox=E
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 94
+
+=back
+
+=head2 C<GRAY25>
+X<GRAY25>
+
+=over
+
+=item C<GRAY25( );>X<GRAY25_>
+
+hex=41, dec=.25, framebox=F
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 98
+
+=back
+
+=head2 C<GRAY30>
+X<GRAY30>
+
+=over
+
+=item C<GRAY30( );>X<GRAY30_>
+
+hex=4f, dec=.31, framebox=G
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 102
+
+=back
+
+=head2 C<GRAY33>
+X<GRAY33>
+
+=over
+
+=item C<GRAY33( );>X<GRAY33_>
+
+hex=5c, dec=.36, framebox=H, fltk1 = DARK3
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 106
+
+=back
+
+=head2 C<GRAY35>
+X<GRAY35>
+
+=over
+
+=item C<GRAY35( );>X<GRAY35_>
+
+hex=69, dec=.41, framebox=I
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 110
+
+=back
+
+=head2 C<GRAY40>
+X<GRAY40>
+
+=over
+
+=item C<GRAY40( );>X<GRAY40_>
+
+hex=76, dec=.46, framebox=J (18%% gray card)
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 114
+
+=back
+
+=head2 C<GRAY45>
+X<GRAY45>
+
+=over
+
+=item C<GRAY45( );>X<GRAY45_>
+
+hex=83, dec=.51, framebox=K
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 118
+
+=back
+
+=head2 C<GRAY50>
+X<GRAY50>
+
+=over
+
+=item C<GRAY50( );>X<GRAY50_>
+
+hex=90, dec=.56, framebox=L
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 122
+
+=back
+
+=head2 C<GRAY55>
+X<GRAY55>
+
+=over
+
+=item C<GRAY55( );>X<GRAY55_>
+
+hex=9e, dec=.62, framebox=M
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 126
+
+=back
+
+=head2 C<GRAY60>
+X<GRAY60>
+
+=over
+
+=item C<GRAY60( );>X<GRAY60_>
+
+hex=ab, dec=.67, framebox=N, fltk1 = DARK2
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 130
+
+=back
+
+=head2 C<GRAY65>
+X<GRAY65>
+
+=over
+
+=item C<GRAY65( );>X<GRAY65_>
+
+hex=b8, dec=.72, framebox=O
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 134
+
+=back
+
+=head2 C<GRAY66>
+X<GRAY66>
+
+=over
+
+=item C<GRAY66( );>X<GRAY66_>
+
+hex=c5, dec=.77, framebox=P, fltk1 = DARK1, INACTIVE_COLOR
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 138
+
+=back
+
+=head2 C<GRAY70>
+X<GRAY70>
+
+=over
+
+=item C<GRAY70( );>X<GRAY70_>
+
+hex=d2, dec=.82, framebox=Q
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 142
+
+=back
+
+=head2 C<GRAY75>
+X<GRAY75>
+
+=over
+
+=item C<GRAY75( );>X<GRAY75_>
+
+hex=e0, dec=.88, framebox=R, fltk1 = GRAY, SELECTION_COLOR
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 146
+
+=back
+
+=head2 C<GRAY80>
+X<GRAY80>
+
+=over
+
+=item C<GRAY80( );>X<GRAY80_>
+
+hex=e5, dec=.90, framebox=S
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 150
+
+=back
+
+=head2 C<GRAY85>
+X<GRAY85>
+
+=over
+
+=item C<GRAY85( );>X<GRAY85_>
+
+hex=ea, dec=.92, framebox=T, fltk1 = LIGHT1
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 154
+
+=back
+
+=head2 C<GRAY90>
+X<GRAY90>
+
+=over
+
+=item C<GRAY90( );>X<GRAY90_>
+
+hex=f4, dec=.96, framebox=V, fltk1 = LIGHT2
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 158
+
+=back
+
+=head2 C<GRAY95>
+X<GRAY95>
+
+=over
+
+=item C<GRAY95( );>X<GRAY95_>
+
+hex=f9, dec=.98, framebox=W
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 162
+
+=back
+
+=head2 C<GRAY99>
+X<GRAY99>
+
+=over
+
+=item C<GRAY99( );>X<GRAY99_>
+
+hex=ff, dec=1.0, framebox=X, fltk1 = LIGHT3
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 166
+
+=back
+
+=head2 C<GREEN>
+X<GREEN>
+
+=over
+
+=item C<GREEN( );>X<GREEN_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 178
+
+=back
+
+=head2 C<MAGENTA>
+X<MAGENTA>
+
+=over
+
+=item C<MAGENTA( );>X<MAGENTA_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 190
+
+=back
+
+=head2 C<NO_COLOR>
+X<NO_COLOR>
+
+=over
+
+=item C<NO_COLOR( );>X<NO_COLOR_>
+
+Black, empty place holder in Style
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 66
+
+=back
+
+=head2 C<NUM_FREE_COLOR>
+X<NUM_FREE_COLOR>
+
+=over
+
+=item C<NUM_FREE_COLOR( );>X<NUM_FREE_COLOR_>
+
+Number of free color slots starting from index FREE_COLOR
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 74
+
+=back
+
+=head2 C<RED>
+X<RED>
+
+=over
+
+=item C<RED( );>X<RED_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 174
+
+=back
+
+=head2 C<WHITE>
+X<WHITE>
+
+=over
+
+=item C<WHITE( );>X<WHITE_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 198
+
+=back
+
+=head2 C<WINDOWS_BLUE>
+X<WINDOWS_BLUE>
+
+=over
+
+=item C<WINDOWS_BLUE( );>X<WINDOWS_BLUE_>
+
+Default selection_color
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 226
+
+=back
+
+=head2 C<YELLOW>
+X<YELLOW>
+
+=over
+
+=item C<YELLOW( );>X<YELLOW_>
+
+Corner of color cube
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 182
+
+=back
+
+=head2 C<color>
+X<color>
+
+=over
+
+=item C<my $c = $color-E<gt>color( $name );>X<my_c_color_E_gt_color_name_>
+
+Turn a string into a color. If C<name> is C<undef>, this returns
+L<C<NO_COLOR>|/"NO_COLOR">. Otherwise it returns
+L<C<FLTK::parsecolor(name, strlen(name))>|FLTK/"parsecolor">.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 316
+
+=item C<my $c = $color-E<gt>color( $r, $g, $b );>X<my_c_color_E_gt_color_r_g_b_>
+
+
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 322
+
+=back
+
+=head2 C<contrast>
+X<contrast>
+
+=over
+
+=item C<my $color = $color-E<gt>contrast( $fg, $bg );>X<my_color_color_E_gt_contrast_fg_bg_>
+
+Returns C<fg> if fltk decides it can be seen well when drawn against a C<bg>.
+Otherwise it returns either L<C<FLTK::BLACK>|FLTK/"BLACK"> or
+L<C<fltk::WHITE>|FLTK/"WHITE">.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 461
+
+=back
+
+=head2 C<get_color_index>
+X<get_color_index>
+
+=over
+
+=item C<$color-E<gt>get_color_index( $color );>X<_color_E_gt_get_color_index_color_>
+
+Return the rgb form of C<color>. If it is an indexed color that entry is
+returned. If it is an rgb color it is returned unchanged.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 534
+
+=back
+
+=head2 C<inactive>
+X<inactive>
+
+=over
+
+=item C<my $color = $color-E<gt>inactive( $fore, $back );>X<my_color_color_E_gt_inactive_fore_back_>
+
+Same as L<C<lerp(fg, bg, .5)>|/"lerp">, it grays out the color.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 428
+
+=item C<my $color = $color-E<gt>inactive( $fore );>X<my_color_color_E_gt_inactive_fore_>
+
+Same as L<C<lerp(fg, getbgcolor(), .5)>|/"lerp">. This is for
+back-compatability only?
+
+=for hackers Found in F<src/setcolor.cxx>
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 432
+
+=back
+
+=head2 C<lerp>
+X<lerp>
+
+=over
+
+=item C<my $color = $color-E<gt>lerp( $color1, $color2, $weight );>X<my_color_color_E_gt_lerp_color1_color2_weight_>
+
+Return C<(1-weight)*color1 + weight*color2>. C<weight> is clamped to the 0-1
+range before use.
+
+=for hackers Found in F<src/setcolor.cxx>
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 405
+
+=back
+
+=head2 C<nearest_index>
+X<nearest_index>
+
+=over
+
+=item C<my $color = $color-E<gt>nearest_index( $color );>X<my_color_color_E_gt_nearest_index_color_>
+
+Find an indexed color in the range 56-127 that is closest to this color. If
+this is an indexed color it is returned unchanged.
+
+=pod 
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 578
+
+=back
+
+=head2 C<parsecolor>
+X<parsecolor>
+
+=over
+
+=item C<my $color = $color-E<gt>parsecolor( $name, $length );>X<my_color_color_E_gt_parsecolor_name_length_>
+
+Same as the other one.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 352
+
+=item C<my $color = $color-E<gt>parsecolor( $name );>X<my_color_color_E_gt_parsecolor_name_>
+
+Turn the first C<n> bytes of C<name> into an FLTK color. This allows you to
+parse a color out of the middle of a string.
+
+Recognized values are:
+
+=over 
+
+=item * "" turns into NO_COLOR
+
+=item * "0"-"99" decimal fltk color number, only works for indexed color range
+
+=item * "0xnnn" hex value of any fltk color number
+
+=item * "rgb" or "#rgb" three hex digits for rgb
+
+=item * "rrggbb" or "#rrggbb" 2 hex digits for each of rgb
+
+=item * "rrggbbaa" or "#rrggbbaa" fltk color number in hex
+
+=item * "rrrgggbbb" or "#rrrgggbbb" 3 hex digits for each of rgb
+
+=item * "rrrrggggbbbb" or "#rrrrggggbbbb" 4 hex digits for each of rgb
+
+=item * 17 "web safe colors" as defined by CSS 2.1
+
+=item * If FLTK is compiled to use X11, then XParseColor() is tried
+
+=item * all other strings return NO_COLOR.
+
+=back 
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 356
+
+=back
+
+=head2 C<set_background>
+X<set_background>
+
+=over
+
+=item C<$color-E<gt>set_background( $color );>X<_color_E_gt_set_background_color_>
+
+C<FLTK::GRAY75> is replaced with the passed color, and all the other
+C<FLTK::GRAY*> colors are replaced with a color ramp (or sometimes a straight
+line) so that using them for highlighted edges of raised buttons looks
+correct.
+
+=for hackers Found in F<src/Style.cxx>
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 555
+
+=back
+
+=head2 C<set_color_index>
+X<set_color_index>
+
+=over
+
+=item C<$color-E<gt>set_color_index( $index, $color );>X<_color_E_gt_set_color_index_index_color_>
+
+Set one of the indexed colors to the given rgb color. C<index> must be in the
+range 0-255, and C<color> must be a non-indexed rgb color.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 515
+
+=back
+
+=head2 C<split_color>
+X<split_color>
+
+=over
+
+=item C<my @rgb = $color-E<gt>split_color( $color );>X<my_rgb_color_E_gt_split_color_color_>
+
+Set C<r,g,b> to the 8-bit components of this color. If it is an indexed color
+they are looked up in the table, otherwise they are simply copied out of the
+color number.
+
+Import this function with the C<:color> tag.
+
+=for hackers xs/Color.xs line 483
+
+=back
+
+=head1 Functions
+
+Symbolic names for some of the indexed colors.
+
+The 24-entry "gray ramp" is modified by
+L<C<FLTK::set_background()>|FLTK/"set_background"> so that the color
+C<FLTK::GRAY75> is the background color, and the others are a nice range from
+black to a lighter version of the gray. These are used to draw box edges. The
+gray levels are chosen to be evenly spaced, listed here is the actual 8-bit
+and decimal gray level assigned by default.  Also listed here is the letter
+used for L<FLTK::FrameBox|FLTK::FrameBox> and the old fltk1.1 names used for
+these levels.
+
+The remiander of the colormap is a C<5x8x5> color cube. This cube is used to
+dither images on 8-bit screens X colormaps to reduce the number of colors
+used.
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Color.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

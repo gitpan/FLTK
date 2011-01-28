@@ -4,43 +4,7 @@ MODULE = FLTK::RadioItem               PACKAGE = FLTK::RadioItem
 
 #ifndef DISABLE_RADIOITEM
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: RadioItem.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::RadioItem - This widget makes a radio item in a popup or pulldown Menu
-
-=head1 Description
-
-This widget makes a radio item in a popup or pulldown L<Menu|FLTK::Menu>. Its
-behavior in a L<Browser|FLTK::Browser> or L<MultiBrowser|FLTK::MultiBrowser>
-is that it changes its status on multiple clicks (e.g. double click).
-
-=begin apidoc
-
-=cut
-
 #include <fltk/RadioItem.h>
-
-=for apidoc ||FLTK::RadioItem self|new|char * label = ""|
-
-Unlike other widgets the constructor does not take any dimensions, since it is
-assummed the container widget will size this correctly.
-
-=for apidoc ||FLTK::RadioItem self|new|char * label|int shortcut|CV * callback = 0|SV * user_data = 0|FLTK::Flags flags = 0|
-
-This constructor is provided to match the L<C<Menu::add()>|FLTK::Menu/"add">
-function arguments. See L<C<Menu::add()>|FLTK::Menu/"add"> for more details.
-
-=cut
 
 #include "include/WidgetSubclass.h"
 

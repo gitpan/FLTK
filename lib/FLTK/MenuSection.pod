@@ -1,0 +1,82 @@
+=pod
+
+=head1 NAME
+
+FLTK::MenuSection - Makes dynamic (& hand-made) menu code less painful
+
+=head1 Description
+
+This class will elegantly facilitate dynamic (& hand-made) menu code writing
+by creating and calling L<C<begin()>|FLTK::Group/"begin"> on an ItemGroup in
+the constructor and calling L<C<end()>|FLTK::Group/"end"> in the destructor:
+
+  $mymenu->begin( );
+  my $mnuMain = FLTK::ItemGroup->new('in main menu');
+  {
+    my $mnuMainSub = FLTK::MenuSection->new('submenu title');
+    FLTK::Item->new('in submenu');
+    FLTK::Item->new('also in submenu');
+  } # destructor ends the submenu
+
+=head1 Functions
+
+=head2 C<group>
+X<group>
+
+=over
+
+=item C<my $group = $menusection-E<gt>group( );>X<my_group_menusection_E_gt_group_>
+
+Returns the L<ItemGroup>|FLTK::ItemGroup> created by this.
+
+=pod 
+
+=for hackers xs/MenuSection.xs line 78
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $group = $menusection-E<gt>new( $label );>X<my_group_menusection_E_gt_new_label_>
+
+Builds a typical submenu group section, then calls
+L<C<begin()>|FLTK::Group/"begin">.
+
+=for hackers xs/MenuSection.xs line 41
+
+=item C<my $group = $menusection-E<gt>new( $label, $symbol );>X<my_group_menusection_E_gt_new_label_symbol_>
+
+This constructor also sets L<C<image()>|FLTK::Widget/"image">.
+
+=for hackers xs/MenuSection.xs line 46
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: MenuSection.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+
+=cut

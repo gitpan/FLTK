@@ -1,0 +1,61 @@
+=pod
+
+=head1 NAME
+
+FLTK::Divider - Widget to draw a divider line in a menu
+
+=head1 Description
+
+This widget is designed to go into L<Menu|FLTK::Menu> and
+L<Browser|FLTK::Browser> widgets and draw an inset horizontal line across
+them. It has the C<OUTPUT> flag set so the user cannot choose it.
+
+=head2 Notes for subclassing
+
+C<FLTK::Divider->handle()> must C<always> return C<0>. Items do not accept
+I<any> events. Any results of clicking on them is handled by the parent
+L<Menu|FLTK::Menu> or L<Browser|FLTK::Browser>.
+
+=head1 Functions
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $div = $divider-E<gt>new( );>X<my_div_divider_E_gt_new_>
+
+Unlike other widgets the constructor does not take any dimensions, since it is
+assummed the container widget will size this correctly.
+
+=pod 
+
+=for hackers xs/Divider.xs line 37
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Divider.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

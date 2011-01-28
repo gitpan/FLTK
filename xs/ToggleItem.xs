@@ -4,50 +4,7 @@ MODULE = FLTK::ToggleItem               PACKAGE = FLTK::ToggleItem
 
 #ifndef DISABLE_TOGGLEITEM
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532007
-
-=for git $Id: ToggleItem.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::ToggleItem - FLTK::Item with an on/off indicator
-
-=head1 Description
-
-This widget makes a checkmark in a popup or pulldown L<Menu|FLTK::Menu>. It's
-behavior in a L<Browser|FLTK::Browser> or L<MultiBrowser|FLTK::MultiBrowser>
-is that it changes its status on multiple clicks (e.g. double click).
-
-=begin apidoc
-
-=cut
-
 #include <fltk/ToggleItem.h>
-
-=begin apidoc
-
-=for apidoc ||FLTK::ToggleItem self|new|char * label = ""|
-
-Unlike other widgets the constructor does not take any dimensions, since it is
-assummed the container widget will size this correctly.
-
-=for apidoc ||FLTK::ToggleItem self|new|char * label|FLTK::Symbol image|
-
-This constructor also sets the L<C<image()>|FLTK::Widget/"image">, useful for
-a browser item.
-
-=for apidoc ||FLTK::ToggleItem self|new|char * label|int shortcut|CV * callback = 0|SV * user_data = 0|FLTK::Flags flags = 0|
-
-This constructor is provided to match the L<C<Menu::add()>|FLTK::Menu/"add">
-function arguments. See L<C<Menu::add()>|FLTK::Menu/"add"> for more details.
-
-=cut
 
 #include "include/WidgetSubclass.h"
 

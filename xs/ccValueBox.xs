@@ -4,33 +4,7 @@ MODULE = FLTK::ccValueBox               PACKAGE = FLTK::ccValueBox
 
 #ifndef DISABLE_CCVALUEBOX
 
-=pod
-
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
-
-=for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
-
-=for version 0.532006
-
-=for git $Id: ccValueBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
-
-=head1 NAME
-
-FLTK::ccValueBox - Part of the FLTK::ColorChooser megawidget
-
-=head1 Description
-
-
-
-=cut
-
 #include <fltk/ColorChooser.h>
-
-=for apidoc ||FLTK::ccValueBox vb|new|int x|int y|int w|int h|
-
-
-
-=cut
 
 #include "include/WidgetSubclass.h"
 

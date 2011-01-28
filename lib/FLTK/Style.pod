@@ -1,0 +1,1213 @@
+=pod
+
+=head1 NAME
+
+FLTK::Style - Simulate themes for the Fast Light Toolkit
+
+=head1 Description
+
+Each widget has a pointer to an instance of Style. Usually many widgets share
+pointers to the same one. Styles are linked into a hierarchy tree by the
+C<parent_> pointers.
+
+When you look up a value from a style (such as when
+L<C<box( )>|FLTK::Widget/"box"> is called) it looks at that style and each
+parent up until it finds a non-zero value to return, or until there are no
+more parents, in which case zero is returned. Thus changing a parent style
+can make global changes as long as widgets do not have local values set.
+
+When you "set" a style (such as by calling
+L<C<box(UP_BOX)>|FLTK::Widget/"box">) then the local member variable is set.
+Notice that by setting a zero value you will indicate that it should return
+the parent value.
+
+The method L<C<Widget::box(BOX)>|FLTK::Widget/"box"> will create a
+L<C<dynamic( )>|FLTK::Style/"dynamic"> style for that widget, which is a child
+of the original style, and set the box in that style. This "unique" style is
+reused for any other changes to that widget and it is deleted when the widget
+is deleted. Thus changes to a single widget do not affect other widgets, but
+the majority of widgets all share a Style structure.
+
+Occasionally it is useful to see if a field has been set. To do this you can
+directly access the local member variables using names like C<box_>.
+
+=head1 Functions
+
+=head2 C<BORDER_BOX>
+X<BORDER_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>BORDER_BOX( );>X<my_box_style_E_gt_BORDER_BOX_>
+
+
+
+=for hackers xs/Style.xs line 102
+
+=back
+
+=head2 C<BORDER_FRAME>
+X<BORDER_FRAME>
+
+=over
+
+=item C<my $box = $style-E<gt>BORDER_FRAME( );>X<my_box_style_E_gt_BORDER_FRAME_>
+
+
+
+=for hackers xs/Style.xs line 162
+
+=back
+
+=head2 C<COURIER>
+X<COURIER>
+
+=over
+
+=item C<my $font = $style-E<gt>COURIER( );>X<my_font_style_E_gt_COURIER_>
+
+
+
+=for hackers xs/Style.xs line 282
+
+=back
+
+=head2 C<COURIER_BOLD>
+X<COURIER_BOLD>
+
+=over
+
+=item C<my $font = $style-E<gt>COURIER_BOLD( );>X<my_font_style_E_gt_COURIER_BOLD_>
+
+
+
+=for hackers xs/Style.xs line 286
+
+=back
+
+=head2 C<COURIER_BOLD_ITALIC>
+X<COURIER_BOLD_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>COURIER_BOLD_ITALIC( );>X<my_font_style_E_gt_COURIER_BOLD_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 294
+
+=back
+
+=head2 C<COURIER_ITALIC>
+X<COURIER_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>COURIER_ITALIC( );>X<my_font_style_E_gt_COURIER_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 290
+
+=back
+
+=head2 C<DIAMOND_DOWN_BOX>
+X<DIAMOND_DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>DIAMOND_DOWN_BOX( );>X<my_box_style_E_gt_DIAMOND_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 130
+
+=back
+
+=head2 C<DIAMOND_UP_BOX>
+X<DIAMOND_UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>DIAMOND_UP_BOX( );>X<my_box_style_E_gt_DIAMOND_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 126
+
+=back
+
+=head2 C<DOWN_BOX>
+X<DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>DOWN_BOX( );>X<my_box_style_E_gt_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 70
+
+=item C<my $box = $style-E<gt>DOWN_BOX( );>X<my_box_style_E_gt_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 82
+
+=back
+
+=head2 C<EMBOSSED_BOX>
+X<EMBOSSED_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>EMBOSSED_BOX( );>X<my_box_style_E_gt_EMBOSSED_BOX_>
+
+
+
+=for hackers xs/Style.xs line 98
+
+=back
+
+=head2 C<EMBOSSED_LABEL>
+X<EMBOSSED_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>EMBOSSED_LABEL( );>X<my_type_style_E_gt_EMBOSSED_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 414
+
+=back
+
+=head2 C<ENGRAVED_BOX>
+X<ENGRAVED_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>ENGRAVED_BOX( );>X<my_box_style_E_gt_ENGRAVED_BOX_>
+
+
+
+=for hackers xs/Style.xs line 94
+
+=back
+
+=head2 C<ENGRAVED_LABEL>
+X<ENGRAVED_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>ENGRAVED_LABEL( );>X<my_type_style_E_gt_ENGRAVED_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 410
+
+=back
+
+=head2 C<FLAT_BOX>
+X<FLAT_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>FLAT_BOX( );>X<my_box_style_E_gt_FLAT_BOX_>
+
+
+
+=for hackers xs/Style.xs line 106
+
+=back
+
+=head2 C<HELVETICA>
+X<HELVETICA>
+
+=over
+
+=item C<my $font = $style-E<gt>HELVETICA( );>X<my_font_style_E_gt_HELVETICA_>
+
+
+
+=for hackers xs/Style.xs line 266
+
+=back
+
+=head2 C<HELVETICA_BOLD>
+X<HELVETICA_BOLD>
+
+=over
+
+=item C<my $font = $style-E<gt>HELVETICA_BOLD( );>X<my_font_style_E_gt_HELVETICA_BOLD_>
+
+
+
+=for hackers xs/Style.xs line 270
+
+=back
+
+=head2 C<HELVETICA_BOLD_ITALIC>
+X<HELVETICA_BOLD_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>HELVETICA_BOLD_ITALIC( );>X<my_font_style_E_gt_HELVETICA_BOLD_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 278
+
+=back
+
+=head2 C<HELVETICA_ITALIC>
+X<HELVETICA_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>HELVETICA_ITALIC( );>X<my_font_style_E_gt_HELVETICA_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 274
+
+=back
+
+=head2 C<HIGHLIGHT_DOWN_BOX>
+X<HIGHLIGHT_DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>HIGHLIGHT_DOWN_BOX( );>X<my_box_style_E_gt_HIGHLIGHT_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 114
+
+=back
+
+=head2 C<HIGHLIGHT_UP_BOX>
+X<HIGHLIGHT_UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>HIGHLIGHT_UP_BOX( );>X<my_box_style_E_gt_HIGHLIGHT_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 110
+
+=back
+
+=head2 C<NORMAL_LABEL>
+X<NORMAL_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>NORMAL_LABEL( );>X<my_type_style_E_gt_NORMAL_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 398
+
+=back
+
+=head2 C<NO_LABEL>
+X<NO_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>NO_LABEL( );>X<my_type_style_E_gt_NO_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 394
+
+=back
+
+=head2 C<OFLAT_BOX>
+X<OFLAT_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>OFLAT_BOX( );>X<my_box_style_E_gt_OFLAT_BOX_>
+
+
+
+=for hackers xs/Style.xs line 158
+
+=back
+
+=head2 C<OSHADOW_BOX>
+X<OSHADOW_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>OSHADOW_BOX( );>X<my_box_style_E_gt_OSHADOW_BOX_>
+
+
+
+=for hackers xs/Style.xs line 154
+
+=back
+
+=head2 C<OVAL_BOX>
+X<OVAL_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>OVAL_BOX( );>X<my_box_style_E_gt_OVAL_BOX_>
+
+
+
+=for hackers xs/Style.xs line 150
+
+=back
+
+=head2 C<PLASTIC_DOWN_BOX>
+X<PLASTIC_DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>PLASTIC_DOWN_BOX( );>X<my_box_style_E_gt_PLASTIC_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 170
+
+=back
+
+=head2 C<PLASTIC_UP_BOX>
+X<PLASTIC_UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>PLASTIC_UP_BOX( );>X<my_box_style_E_gt_PLASTIC_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 166
+
+=back
+
+=head2 C<RFLAT_BOX>
+X<RFLAT_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>RFLAT_BOX( );>X<my_box_style_E_gt_RFLAT_BOX_>
+
+
+
+=for hackers xs/Style.xs line 146
+
+=back
+
+=head2 C<ROUNDED_BOX>
+X<ROUNDED_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>ROUNDED_BOX( );>X<my_box_style_E_gt_ROUNDED_BOX_>
+
+
+
+=for hackers xs/Style.xs line 138
+
+=back
+
+=head2 C<ROUND_DOWN_BOX>
+X<ROUND_DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>ROUND_DOWN_BOX( );>X<my_box_style_E_gt_ROUND_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 122
+
+=back
+
+=head2 C<ROUND_UP_BOX>
+X<ROUND_UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>ROUND_UP_BOX( );>X<my_box_style_E_gt_ROUND_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 118
+
+=back
+
+=head2 C<RSHADOW_BOX>
+X<RSHADOW_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>RSHADOW_BOX( );>X<my_box_style_E_gt_RSHADOW_BOX_>
+
+
+
+=for hackers xs/Style.xs line 142
+
+=back
+
+=head2 C<SCREEN_BOLD_FONT>
+X<SCREEN_BOLD_FONT>
+
+=over
+
+=item C<my $font = $style-E<gt>SCREEN_BOLD_FONT( );>X<my_font_style_E_gt_SCREEN_BOLD_FONT_>
+
+
+
+=for hackers xs/Style.xs line 322
+
+=back
+
+=head2 C<SCREEN_FONT>
+X<SCREEN_FONT>
+
+=over
+
+=item C<my $font = $style-E<gt>SCREEN_FONT( );>X<my_font_style_E_gt_SCREEN_FONT_>
+
+
+
+=for hackers xs/Style.xs line 318
+
+=back
+
+=head2 C<SHADOW_BOX>
+X<SHADOW_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>SHADOW_BOX( );>X<my_box_style_E_gt_SHADOW_BOX_>
+
+
+
+=for hackers xs/Style.xs line 134
+
+=back
+
+=head2 C<SHADOW_LABEL>
+X<SHADOW_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>SHADOW_LABEL( );>X<my_type_style_E_gt_SHADOW_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 406
+
+=back
+
+=head2 C<SYMBOL_FONT>
+X<SYMBOL_FONT>
+
+=over
+
+=item C<my $font = $style-E<gt>SYMBOL_FONT( );>X<my_font_style_E_gt_SYMBOL_FONT_>
+
+
+
+=for hackers xs/Style.xs line 314
+
+=back
+
+=head2 C<SYMBOL_LABEL>
+X<SYMBOL_LABEL>
+
+=over
+
+=item C<my $type = $style-E<gt>SYMBOL_LABEL( );>X<my_type_style_E_gt_SYMBOL_LABEL_>
+
+
+
+=for hackers xs/Style.xs line 402
+
+=back
+
+=head2 C<THIN_DOWN_BOX>
+X<THIN_DOWN_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>THIN_DOWN_BOX( );>X<my_box_style_E_gt_THIN_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 78
+
+=item C<my $box = $style-E<gt>THIN_DOWN_BOX( );>X<my_box_style_E_gt_THIN_DOWN_BOX_>
+
+
+
+=for hackers xs/Style.xs line 90
+
+=back
+
+=head2 C<THIN_UP_BOX>
+X<THIN_UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>THIN_UP_BOX( );>X<my_box_style_E_gt_THIN_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 74
+
+=item C<my $box = $style-E<gt>THIN_UP_BOX( );>X<my_box_style_E_gt_THIN_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 86
+
+=back
+
+=head2 C<TIMES>
+X<TIMES>
+
+=over
+
+=item C<my $font = $style-E<gt>TIMES( );>X<my_font_style_E_gt_TIMES_>
+
+
+
+=for hackers xs/Style.xs line 298
+
+=back
+
+=head2 C<TIMES_BOLD>
+X<TIMES_BOLD>
+
+=over
+
+=item C<my $font = $style-E<gt>TIMES_BOLD( );>X<my_font_style_E_gt_TIMES_BOLD_>
+
+
+
+=for hackers xs/Style.xs line 302
+
+=back
+
+=head2 C<TIMES_BOLD_ITALIC>
+X<TIMES_BOLD_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>TIMES_BOLD_ITALIC( );>X<my_font_style_E_gt_TIMES_BOLD_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 310
+
+=back
+
+=head2 C<TIMES_ITALIC>
+X<TIMES_ITALIC>
+
+=over
+
+=item C<my $font = $style-E<gt>TIMES_ITALIC( );>X<my_font_style_E_gt_TIMES_ITALIC_>
+
+
+
+=for hackers xs/Style.xs line 306
+
+=back
+
+=head2 C<UP_BOX>
+X<UP_BOX>
+
+=over
+
+=item C<my $box = $style-E<gt>UP_BOX( );>X<my_box_style_E_gt_UP_BOX_>
+
+
+
+=for hackers xs/Style.xs line 66
+
+=back
+
+=head2 C<ZAPF_DINGBATS>
+X<ZAPF_DINGBATS>
+
+=over
+
+=item C<my $font = $style-E<gt>ZAPF_DINGBATS( );>X<my_font_style_E_gt_ZAPF_DINGBATS_>
+
+
+
+=for hackers xs/Style.xs line 326
+
+=back
+
+=head2 C<box>
+X<box>
+
+=over
+
+=item C<my $box = $style-E<gt>box( );>X<my_box_style_E_gt_box_>
+
+The type of box to draw around the outer edge of the widget (for the majority
+of widgets, some classes ignore this or use it to draw only text fields inside
+the widget). The default is C<FLTK::DOWN_BOX>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 474
+
+=item C<$style-E<gt>box( $box );>X<_style_E_gt_box_box_>
+
+Sets the type of box to draw around the outer edge of widget.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 482
+
+=back
+
+=head2 C<buttonbox>
+X<buttonbox>
+
+=over
+
+=item C<my $box = $style-E<gt>buttonbox( );>X<my_box_style_E_gt_buttonbox_>
+
+The type of box to draw buttons internal the widget (notice that
+L<FLTK::Button|FLTK::Button> uses box, however). The default is
+C<FLTK::UP_BOX>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 488
+
+=item C<$style-E<gt>buttonbox( $box );>X<_style_E_gt_buttonbox_box_>
+
+Returns the type of box to draw buttions internal the widget.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 496
+
+=back
+
+=head2 C<buttoncolor>
+X<buttoncolor>
+
+=over
+
+=item C<my $color = $style-E<gt>buttoncolor( );>X<my_color_style_E_gt_buttoncolor_>
+
+Color used when drawing buttons. Default is C<FLTK::GRAY75>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 672
+
+=item C<$style-E<gt>buttoncolor( $color );>X<_style_E_gt_buttoncolor_color_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 678
+
+=back
+
+=head2 C<color>
+X<color>
+
+=over
+
+=item C<my $color = $style-E<gt>color( );>X<my_color_style_E_gt_color_>
+
+Color of the widgets. The default is C<FLTK::WHITE>. You may think most
+widgets are gray, but this is because L<Group|FLTK::Group> and
+L<Window|FLTK::Window> have their own L<Style|FLTK::Style> with this set to
+C<FLTK::GRAY75>, and also because many parts of widgets are drawn with the
+L<C<buttoncolor( )>|/"buttoncolor">.
+
+If you want to change the overall color of all the gray parts of the interface
+you want to call L<C<FLTK::set_background(color)>|FLTK/"set_background">
+instead, as this will set the entry for C<FLTK::GRAY75> and also set the "gray
+ramp" so that the edges of buttons are the same color.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 617
+
+=item C<$style-E<gt>color( $color );>X<_style_E_gt_color_color_>
+
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 632
+
+=back
+
+=head2 C<draw_boxes_inactive>
+X<draw_boxes_inactive>
+
+=over
+
+=item C<my $drawn = $style-E<gt>draw_boxes_inactive( );>X<my_drawn_style_E_gt_draw_boxes_inactive_>
+
+If false then most of the built-in box types draw the same even if
+C<FLTK::INACTIVE_R> is passed to them. This repliates Windows appearance. If
+true (the default) then the boxes themselves gray out.
+
+=for hackers xs/Style.xs line 859
+
+=item C<$style-E<gt>draw_boxes_inactive( $value );>X<_style_E_gt_draw_boxes_inactive_value_>
+
+=for hackers xs/Style.xs line 865
+
+=back
+
+=head2 C<dynamic>
+X<dynamic>
+
+=over
+
+=item C<my $unique = $style-E<gt>dynamic( );>X<my_unique_style_E_gt_dynamic_>
+
+True if this Style is unique to the Widget that owns it, and is not shared
+with other Widgets.
+
+=for hackers xs/Style.xs line 452
+
+=back
+
+=head2 C<find>
+X<find>
+
+=over
+
+=item C<my $style = FLTK::find( $name );>X<my_style_FLTK_find_name_>
+
+
+=for hackers xs/Style.xs line 462
+
+=back
+
+=head2 C<glyph>
+X<glyph>
+
+=over
+
+=item C<my $image = $style-E<gt>glyph( );>X<my_image_style_E_gt_glyph_>
+
+A small image that some Widgets use to draw part of themselves. For instance
+the L<FLTK::CheckButton|FLTK::CheckButton> class has this set to a Symbol that
+draws the white box and the checkmark if C<VALUE> is true.
+
+Im most cases the L<C<FLTK::drawflags( )>|FLTK/"drawflags"> are examined to
+decide between differnt symbols. The default value draws empty squares and
+arrow buttons if C<ALIGN> flags are on, see
+L<Widget::default_glpyh|FLTK::Widget/"default_glyph">.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 523
+
+=item C<$style-E<gt>glyph( $image );>X<_style_E_gt_glyph_image_>
+
+Sets a small image that some Widgets use to draw part of themselves.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 536
+
+=back
+
+=head2 C<hide_underscore>
+X<hide_underscore>
+
+=over
+
+=item C<my $looks_awesome = $style-E<gt>hide_underscore( );>X<my_looks_awesome_style_E_gt_hide_underscore_>
+
+If false, draw C<&x> in labels as an underscore. If true (the default) then
+the underscores are not drawn. In this case you should limit your C<&x>
+hotkeys to menubar items, as underscores in buttons are not visible. The
+menubar will show them when C<Alt> is held down.
+
+=for hackers xs/Style.xs line 850
+
+=item C<$style-E<gt>hide_underscore( $value );>X<_style_E_gt_hide_underscore_value_>
+
+=for hackers xs/Style.xs line 857
+
+=back
+
+=head2 C<highlight_color>
+X<highlight_color>
+
+=over
+
+=item C<my $color = $style-E<gt>highlight_color( );>X<my_color_style_E_gt_highlight_color_>
+
+The color to draw the widget when the mouse is over it (for scrollbars and
+sliders this is used to color the buttons). Depending on the widget this will
+either recolor the buttons that are normally colored with
+L<C<buttoncolor( )>|/"buttoncolor">, or will recolor the main area that is
+normally colored with L<C<color( )>|/"color">.
+
+The default value is zero, which indicates that highlighting is disabled.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 690
+
+=item C<$style-E<gt>highlight_color( $color );>X<_style_E_gt_highlight_color_color_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 702
+
+=back
+
+=head2 C<highlight_textcolor>
+X<highlight_textcolor>
+
+=over
+
+=item C<my $color = $style-E<gt>highlight_textcolor( );>X<my_color_style_E_gt_highlight_textcolor_>
+
+Color used to draw the labels or text when the background is drawn in the
+L<C<highlight_color>|/"highlight_color">. The default of zero indicates that
+fltk will choose a contrasting color (either the same as the original color or
+white or black). I recommend you use the default if possible.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 706
+
+=item C<$style-E<gt>highlight_textcolor( $color );>X<_style_E_gt_highlight_textcolor_color_>
+
+=for hackers xs/Style.xs line 715
+
+=back
+
+=head2 C<labelcolor>
+X<labelcolor>
+
+=over
+
+=item C<my $color = $style-E<gt>labelcolor( );>X<my_color_style_E_gt_labelcolor_>
+
+Color used to draw labels. Default is C<FLTK::BLACK>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 682
+
+=item C<$style-E<gt>labelcolor( $color );>X<_style_E_gt_labelcolor_color_>
+
+=for hackers xs/Style.xs line 688
+
+=back
+
+=head2 C<labelfont>
+X<labelfont>
+
+=over
+
+=item C<my $font = $style-E<gt>labelfont( );>X<my_font_style_E_gt_labelfont_>
+
+The font used to draw the label. Default is C<FLTK::HELVETICA>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 555
+
+=item C<$style-E<gt>labelfont( $font );>X<_style_E_gt_labelfont_font_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 561
+
+=back
+
+=head2 C<labelsize>
+X<labelsize>
+
+=over
+
+=item C<my $size = $style-E<gt>labelsize( );>X<my_size_style_E_gt_labelsize_>
+
+Size of L<C<labelfont( )>|/"labelfont">. Default is 12.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 756
+
+=item C<$style-E<gt>labelsize( $size );>X<_style_E_gt_labelsize_size_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 779
+
+=back
+
+=head2 C<labeltype>
+X<labeltype>
+
+=over
+
+=item C<my $type = $style-E<gt>labeltype( );>X<my_type_style_E_gt_labeltype_>
+
+How to draw the label. This provides things like inset, shadow, and the
+symbols. C<FLTK::NORMAL_LABEL>.
+
+=for hackers xs/Style.xs line 597
+
+=item C<$style-E<gt>labeltype( $type );>X<_style_E_gt_labeltype_type_>
+
+=for hackers xs/Style.xs line 602
+
+=back
+
+=head2 C<leading>
+X<leading>
+
+=over
+
+=item C<my $size = $style-E<gt>leading( );>X<my_size_style_E_gt_leading_>
+
+Extra spacing added between text lines or other things that are stacked
+vertically. The default is 2. The function
+L<C<FLTK::drawtext( )>|FLTK/"drawtext"> will use the value from
+L<C<Widget::default_style>|FLTK::Widget/"default_style">, but text editors and
+browsers and menus and similar widgets will use the local value.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 769
+
+=item C<$style-E<gt>leading( $size );>X<_style_E_gt_leading_size_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 787
+
+=back
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $style = $style-E<gt>new( );>X<my_style_style_E_gt_new_>
+
+The constructor clears the style to entirely zeros, including the C<parent_>
+pointer. You probably want to set the parent to
+L<C<Widget::default_style>|FLTK::Widget/"default_style"> in order to inherit
+the global settings.
+
+=for hackers xs/Style.xs line 54
+
+=back
+
+=head2 C<scrollbar_align>
+X<scrollbar_align>
+
+=over
+
+=item C<my $location = $style-E<gt>scrollbar_align( );>X<my_location_style_E_gt_scrollbar_align_>
+
+Where to place scrollbars around a L<Browser|FLTK::Browser> or other scrolling
+widget. The default is C<FLTK::ALIGN_RIGHT|FLTK::ALIGN_BOTTOM>.
+
+=for hackers xs/Style.xs line 815
+
+=item C<$style-E<gt>scrollbar_align( $value );>X<_style_E_gt_scrollbar_align_value_>
+
+=for hackers xs/Style.xs line 825
+
+=back
+
+=head2 C<scrollbar_width>
+X<scrollbar_width>
+
+=over
+
+=item C<my $width = $style-E<gt>scrollbar_width( );>X<my_width_style_E_gt_scrollbar_width_>
+
+How wide the scrollbars are around a Browser or other scrolling widget. The
+default is 15.
+
+=for hackers xs/Style.xs line 820
+
+=item C<$style-E<gt>scrollbar_width( $value );>X<_style_E_gt_scrollbar_width_value_>
+
+=for hackers xs/Style.xs line 827
+
+=back
+
+=head2 C<selection_color>
+X<selection_color>
+
+=over
+
+=item C<my $color = $style-E<gt>selection_color( );>X<my_color_style_E_gt_selection_color_>
+
+Color drawn behind selected text in inputs, or selected browser or menu items,
+or lit light buttons. The default is C<FLTK::WINDOWS_BLUE>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 650
+
+=item C<$style-E<gt>selection_color( $color );>X<_style_E_gt_selection_color_color_>
+
+=for hackers xs/Style.xs line 657
+
+=back
+
+=head2 C<selection_textcolor>
+X<selection_textcolor>
+
+=over
+
+=item C<my $color = $style-E<gt>selection_textcolor( );>X<my_color_style_E_gt_selection_textcolor_>
+
+The color to draw text atop the L<C<selection_color>|/"selection_color">. The
+default of zero indicates that fltk will choose a contrasting color (either
+the same as the original color or white or black). I recommend you use the
+default if possible.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 659
+
+=item C<$style-E<gt>selection_textcolor( $color );>X<_style_E_gt_selection_textcolor_color_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 668
+
+=back
+
+=head2 C<textcolor>
+X<textcolor>
+
+=over
+
+=item C<my $color = $style-E<gt>textcolor( );>X<my_color_style_E_gt_textcolor_>
+
+Color to draw text inside the widget. Default is black. This is also used by
+many widgets to control the color when they draw the L<C<glyph( )>|/"glyph">,
+thus it can control the color of checkmarks in
+L<FLTK::CheckButton|FLTK::CheckButton>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 637
+
+=item C<$style-E<gt>textcolor( $color );>X<_style_E_gt_textcolor_color_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 646
+
+=back
+
+=head2 C<textfont>
+X<textfont>
+
+=over
+
+=item C<my $font = $style-E<gt>textfont( );>X<my_font_style_E_gt_textfont_>
+
+Font to use to draw information inside the widget, such as the text in a text
+editor or menu or browser. Default is C<FLTK::HELVETICA>.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 565
+
+=item C<$style-E<gt>textfont( $font );>X<_style_E_gt_textfont_font_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 572
+
+=back
+
+=head2 C<textsize>
+X<textsize>
+
+=over
+
+=item C<my $size = $style-E<gt>textsize( );>X<my_size_style_E_gt_textsize_>
+
+Size of L<C<textfont( )>|/"textfont">. This is also used by many Widgets to
+control the size they draw the L<C<glyph( )>|/"glyph">. Default is 12.
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 762
+
+=item C<$style-E<gt>textsize( $size );>X<_style_E_gt_textsize_size_>
+
+=for hackers Found in F<src/Style.cxx>
+
+=for hackers xs/Style.xs line 783
+
+=back
+
+=head2 C<wheel_scroll_lines>
+X<wheel_scroll_lines>
+
+=over
+
+=item C<my $lines = $style-E<gt>wheel_scroll_lines( );>X<my_lines_style_E_gt_wheel_scroll_lines_>
+
+How many lines to move for one click of a mouse wheel. The default is 3.
+
+=for hackers xs/Style.xs line 888
+
+=item C<$style-E<gt>wheel_scroll_lines( $lines );>X<_style_E_gt_wheel_scroll_lines_lines_>
+
+
+
+=pod 
+
+=for todo Subclass this like Widget
+
+=for hackers xs/Style.xs line 892
+
+=back
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: Style.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+
+=cut

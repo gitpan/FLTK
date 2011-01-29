@@ -8,12 +8,14 @@
 
 =for abstract Tests for add_fd( ... ) and related functions
 
-=for git $Id: 20050_fd.t 4aa7e11 2011-01-28 15:36:24Z sanko@cpan.org $
+=for git $Id: 20050_fd.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
 
 =cut
+
 use strict;
 use warnings;
-use Test::More tests => 18;
+use Test::More 0.82;
+plan tests => 18;
 use Module::Build qw[];
 use Time::HiRes qw[];
 use Socket;

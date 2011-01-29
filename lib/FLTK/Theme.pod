@@ -63,6 +63,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Theme.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Theme.xs dac33df 2011-01-28 16:54:36Z sanko@cpan.org $
 
 =cut

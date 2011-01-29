@@ -252,6 +252,7 @@ lib/FLTK/TextBuffer.pod                            Added by APIdoc
 lib/FLTK/TextDisplay.pod                           Added by APIdoc
 lib/FLTK/TextDisplay/StyleTableEntry.pod           Added by APIdoc
 lib/FLTK/TextSelection.pod                         Added by APIdoc
+lib/FLTK/Theme.pod                                 Added by APIdoc
 lib/FLTK/ToggleButton.pod                          Added by APIdoc
 lib/FLTK/ToggleItem.pod                            Added by APIdoc
 lib/FLTK/Valuator.pod                              Added by APIdoc
@@ -271,5 +272,4 @@ lib/FLTK/events.pod                                Added by APIdoc
 lib/FLTK/file_chooser.pod                          Added by APIdoc
 lib/FLTK/pnmImage.pod                              Added by APIdoc
 lib/FLTK/run.pod                                   Added by APIdoc
-lib/FLTK/theme.pod                                 Added by APIdoc
 lib/FLTK/xpmImage.pod                              Added by APIdoc

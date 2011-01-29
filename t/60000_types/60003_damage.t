@@ -8,16 +8,17 @@
 
 =for abstract Tests for xs/damage.xsi
 
-=for git $Id: 60003_damage.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
+=for git $Id: 60003_damage.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
 
 =cut
 
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More 0.82;
 use Module::Build qw[];
 use Time::HiRes qw[];
 use Test::NeedsDisplay ':skip_all';
+plan tests => 10;
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';

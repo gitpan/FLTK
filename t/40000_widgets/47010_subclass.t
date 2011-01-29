@@ -8,7 +8,7 @@
 
 =for abstract Tests for (Subclassed Widgets)
 
-=for git $Id: 47010_subclass.t 5d51ae9 2010-12-02 22:10:48Z sanko@cpan.org $
+=for git $Id: 47010_subclass.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
 
 =cut
 
@@ -18,6 +18,7 @@ use Test::More 0.82;
 use Module::Build qw[];
 use Time::HiRes qw[];
 use Test::NeedsDisplay ':skip_all';
+plan tests => 6;
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';
@@ -27,7 +28,6 @@ my $verbose         = $build->notes('verbose');
 my $interactive     = $build->notes('interactive');
 
 #
-plan tests => 6;
 use FLTK qw[:events];
 
 #

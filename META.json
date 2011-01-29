@@ -39,7 +39,7 @@
    "provides" : {
       "FLTK" : {
          "file" : "lib/FLTK.pm",
-         "version" : "0.532006_004"
+         "version" : "0.532006_005"
       },
       "FLTK::Adjuster" : {
          "file" : "xs/Adjuster.xs",
@@ -389,6 +389,10 @@
          "file" : "xs/TextSelection.xs",
          "version" : "0.532006"
       },
+      "FLTK::Theme" : {
+         "file" : "xs/Theme.xs",
+         "version" : "0.532006"
+      },
       "FLTK::ToggleButton" : {
          "file" : "xs/ToggleButton.xs",
          "version" : "0.532007"
@@ -465,10 +469,6 @@
          "file" : "xs/run.xs",
          "version" : "0.532006"
       },
-      "FLTK::theme" : {
-         "file" : "xs/Theme.xs",
-         "version" : "0.532006"
-      },
       "FLTK::xpmImage" : {
          "file" : "xs/xpmImage.xs",
          "version" : "0.532006"
@@ -491,5 +491,5 @@
       },
       "x_ChangeLog" : "http://github.com/sanko/perl-fltk/commits/master/"
    },
-   "version" : "0.532006_004"
+   "version" : "0.532006_005"
 }

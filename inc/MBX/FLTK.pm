@@ -145,8 +145,9 @@ package inc::MBX::FLTK;
                                    )
                 )
                 )
-            {   my ($dll, @cleanup) =
-                    $CC->link(objects => \@obj,
+            {   my ($dll, @cleanup)
+                    = $CC->link(
+                              objects => \@obj,
                               lib_file =>
                                   catdir(qw[blib arch auto FLTK],
                                          'FLTK.' . $Config{'so'}
@@ -203,15 +204,15 @@ package inc::MBX::FLTK;
 
 =pod
 
-=for $Rev: dc0579b $
+=for $Rev: 0eccecd $
 
-=for $Revision: dc0579b9ce8a56ad533f957577b017c1a6d15e15 $
+=for $Revision: 0eccecdb90f40ba44af05a50fe819598edfbcef3 $
 
-=for $Date: 2011-01-28 03:32:45Z (Fri, 28 Jan 2011) $ | Last $Modified: 12 hours ago $
+=for $Date: 2011-01-29 05:18:37Z (Sat, 29 Jan 2011) $ | Last $Modified: 23 seconds ago $
 
 =for $URL: http://github.com/sanko/perl-fltk/raw/master/inc/MBX/FLTK.pm $
 
-=for $ID: FLTK.pm dc0579b 2011-01-28 03:32:45Z sanko@cpan.org $
+=for $ID: FLTK.pm 0eccecd 2011-01-29 05:18:37Z sanko@cpan.org $
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 

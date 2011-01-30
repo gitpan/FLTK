@@ -9,12 +9,12 @@ package FLTK;
 
 =for abstract Perl bindings to the Fast Light Toolkit
 
-=for git $Id: FLTK.pm 85ec193 2011-01-29 05:18:04Z sanko@cpan.org $
+=for git $Id: FLTK.pm 1b5a7f3 2011-01-30 04:24:08Z sanko@cpan.org $
 
 =cut
     use strict;
     use warnings;
-    our $MAJOR = 532; our $MINOR = 6; our $DEV = 5; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
+    our $MAJOR = 532; our $MINOR = 6; our $DEV = 6; our $VERSION = sprintf('%1.3f%03d' . ($DEV ? (($DEV < 0 ? '' : '_') . '%03d') : ('')), $MAJOR / 1000, $MINOR, abs $DEV);
     use XSLoader;
     use vars qw[@EXPORT_OK @EXPORT %EXPORT_TAGS];
     use Exporter qw[import];
@@ -103,6 +103,6 @@ L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.or
 See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
-=for git $Id: FLTK.pm 85ec193 2011-01-29 05:18:04Z sanko@cpan.org $
+=for git $Id: FLTK.pm 1b5a7f3 2011-01-30 04:24:08Z sanko@cpan.org $
 
 =cut

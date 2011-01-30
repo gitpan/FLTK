@@ -8,7 +8,7 @@
 
 =for abstract Tests for add_fd( ... ) and related functions
 
-=for git $Id: 20050_fd.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
+=for git $Id: 20050_fd.t 1b5a7f3 2011-01-30 04:24:08Z sanko@cpan.org $
 
 =cut
 
@@ -111,5 +111,5 @@ SKIP: {
             ),
             'added $client to watch list for read';
     }
-    for (1 .. 60) { FLTK::wait(1); last if $i; }
 }
+for (1 .. 60) { FLTK::wait(1); last if $i; }

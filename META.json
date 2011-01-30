@@ -39,7 +39,7 @@
    "provides" : {
       "FLTK" : {
          "file" : "lib/FLTK.pm",
-         "version" : "0.532006_006"
+         "version" : "0.532006_007"
       },
       "FLTK::Adjuster" : {
          "file" : "xs/Adjuster.xs",
@@ -491,5 +491,5 @@
       },
       "x_ChangeLog" : "http://github.com/sanko/perl-fltk/commits/master/"
    },
-   "version" : "0.532006_006"
+   "version" : "0.532006_007"
 }

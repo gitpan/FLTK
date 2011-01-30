@@ -53,7 +53,7 @@ SKIP: {
                 "] at port $port\n";
             ok add_fd(
                 $peer, READ,
-                sub {
+                sub {warn join ', ', @_;
                     my $p = shift;
                     my $read = sysread $p, my $data, 16384;
                     ok $read, "read $read bytes from peer";

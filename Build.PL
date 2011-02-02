@@ -1,13 +1,13 @@
 
 =pod
 
-=for license Artistic License 2.0 | Copyright (C) 2009,2010 by Sanko Robinson
+=for license Artistic License 2.0 | Copyright (C) 2009-2011 by Sanko Robinson
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 7c48fb9 2010-12-02 22:13:34Z sanko@cpan.org $
+=for git $Id: Build.PL 3d6d95a 2011-02-02 21:48:26Z sanko@cpan.org $
 
 =cut
 
@@ -37,7 +37,7 @@ my $mb = $class->new(
     requires => {DynaLoader => 0, Exporter => 0, XSLoader => 0},
     configure_requires => {'Module::Build' => 0.36},
     build_requires     => {
-                       'Alien::FLTK2' => 0.07704001,
+                       'Alien::FLTK2' => 0.08323,
                        base           => 0,
                        Config         => 0,
                        Cwd            => 0,

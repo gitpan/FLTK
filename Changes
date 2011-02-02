@@ -1,4 +1,4 @@
-Version 0.XXXXX | Next Sunday AD | 1b5a7f3
+Version 0.532007 | 2011-02-02 21:48:26Z (Wed, 02 Feb 2011) | 3d6d95a
 
     Resolved Issues/Bug Fixes:
      * $group->child( $i ) no longer crashes when $group has less than $i kids
@@ -12,6 +12,7 @@ Version 0.XXXXX | Next Sunday AD | 1b5a7f3
      * New Widgets/Types
        - StatusBarGroup, ToggleButton, ToggleItem, ValueSlider
      * Add support for add_fd( ... ) and remove_fd( ... )
+     * FLTK::GLWindow is no longer disabled on Win32 (try the example)
 
     Documentation/Sample Code/Test Suite/Metadata:
      * Updated repo URLs
@@ -23,6 +24,9 @@ Version 0.XXXXX | Next Sunday AD | 1b5a7f3
      * New, simple add_fd( ... ) and remove_fd( ... ) tests
      * Final docs are generated on Build dist rather than Build install
      * Delay test plan until we know Test::NeedsDisplay is finished
+
+    Notes:
+     * Requires AF2 0.08323
 
 Version 0.532006 | 2010-09-27 04:13:25Z (Mon, 27 Sep 2010) | 04ca288
 
@@ -105,6 +109,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk/commits/master/
 
-$Ver: 0.532006_007 $ from git $Rev: 6858aff $
-$Date: 2011-01-29 05:17:25Z (Sat, 29 Jan 2011) $
+$Ver: 0.532007 $ from git $Rev: 3d6d95a $
+$Date: 2011-02-02 21:48:26Z (Wed, 02 Feb 2011) $
 $Url: http://github.com/sanko/perl-fltk/raw/master/Changes $

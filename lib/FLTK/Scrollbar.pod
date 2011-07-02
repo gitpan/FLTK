@@ -28,13 +28,13 @@ X<default_style>
 
 
 
-=for hackers xs/Scrollbar.xs line 59
+=for hackers xs/Scrollbar.xs line 55
 
 =item C<$scrollbar-E<gt>default_style( $new_style );>X<_scrollbar_E_gt_default_style_new_style_>
 
 
 
-=for hackers xs/Scrollbar.xs line 63
+=for hackers xs/Scrollbar.xs line 59
 
 =back
 
@@ -59,7 +59,7 @@ X<pagesize>
 =item C<my $size = $scrollbar-E<gt>pagesize( );>X<my_size_scrollbar_E_gt_pagesize_>
 
 
-=for hackers xs/Scrollbar.xs line 127
+=for hackers xs/Scrollbar.xs line 123
 
 =item C<$scrollbar-E<gt>pagesize( $size );>X<_scrollbar_E_gt_pagesize_size_>
 
@@ -69,7 +69,7 @@ L<C<linesize( )>|FLTK::Scrollbar/"linesize"> less than the window.
 
 =pod 
 
-=for hackers xs/Scrollbar.xs line 130
+=for hackers xs/Scrollbar.xs line 126
 
 =back
 
@@ -89,13 +89,13 @@ to use casts to get at the floating-point versions of
 L<C<value( )>|FLTK::Valuator/"value"> from the L<Slider|FLTK::Slider>
 base class.
 
-=for hackers xs/Scrollbar.xs line 80
+=for hackers xs/Scrollbar.xs line 76
 
 =item C<my $set = $scrollbar-E<gt>value( $position );>X<my_set_scrollbar_E_gt_value_position_>
 
 Set the current position of the scrollbar.
 
-=for hackers xs/Scrollbar.xs line 91
+=for hackers xs/Scrollbar.xs line 87
 
 =item C<my $set = $scrollbar-E<gt>value( $position, $size, $top, $total );>X<my_set_scrollbar_E_gt_value_position_size_top_total_>
 
@@ -118,7 +118,7 @@ window
 
 =back 
 
-=for hackers xs/Scrollbar.xs line 95
+=for hackers xs/Scrollbar.xs line 91
 
 =back
 
@@ -144,6 +144,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Scrollbar.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Scrollbar.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

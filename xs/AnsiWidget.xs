@@ -6,18 +6,14 @@ MODULE = FLTK::AnsiWidget               PACKAGE = FLTK::AnsiWidget
 
 #include <fltk/AnsiWidget.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+AnsiWidget *
 AnsiWidget::new( int x, int y, int w, int h, int defsize )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<AnsiWidget>(CLASS,x,y,w,h,defsize);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal( );
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<AnsiWidget>(CLASS,x,y,w,h,defsize);
+    OUTPUT:
+        RETVAL
 
 void
 AnsiWidget::layout( )
@@ -49,7 +45,6 @@ AnsiWidget::drawLine( int x1, int y1, int x2, int y2 )
 
 void
 AnsiWidget::drawImage( fltk::Image * img, int x, int y, int sx, int sy, int w, int h )
-
 
 void
 AnsiWidget::saveImage( char * filename, int x, int y, int w, int h )

@@ -6,23 +6,24 @@ MODULE = FLTK::StatusBarGroup               PACKAGE = FLTK::StatusBarGroup
 
 #include <fltk/StatusBarGroup.h>
 
-#include "include/WidgetSubclass.h"
+#include <fltk/Box.h>
 
-void
+#include <fltk/Symbol.h>
+
+#include "include/RectangleSubclass.h"
+
+fltk::StatusBarGroup *
 fltk::StatusBarGroup::new( int x = 24, int y = NO_INIT, int w = NO_INIT, int h = NO_INIT, char * label = 0, bool begin = false )
-    PPCODE:
-        void * RETVAL = NULL;
-        if ( items <= 2 ) {
-            RETVAL = (void *) new WidgetSubclass<fltk::StatusBarGroup>(CLASS,x);
-        }
-        else {
-            RETVAL = (void *) new WidgetSubclass<fltk::StatusBarGroup>(CLASS,x,y,w,h,label,begin);
-        }
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CASE: ( items <= 2 )
+        CODE:
+            RETVAL = new RectangleSubclass<fltk::StatusBarGroup>(CLASS,x);
+        OUTPUT:
+            RETVAL
+    CASE:
+        CODE:
+            RETVAL = new RectangleSubclass<fltk::StatusBarGroup>(CLASS,x,y,w,h,label,begin);
+        OUTPUT:
+            RETVAL
 
 void
 fltk::StatusBarGroup::child_box( fltk::Box * b, fltk::StatusBarGroup::Position pos = NO_INIT )

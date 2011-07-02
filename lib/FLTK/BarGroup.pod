@@ -21,7 +21,7 @@ X<close>
 =item C<my $is_closed = $bargroup-E<gt>close( );>X<my_is_closed_bargroup_E_gt_close_>
 
 
-=for hackers xs/BarGroup.xs line 104
+=for hackers xs/BarGroup.xs line 100
 
 =back
 
@@ -34,13 +34,13 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/BarGroup.xs line 53
+=for hackers xs/BarGroup.xs line 49
 
 =item C<$bargroup-E<gt>default_style( $style );>X<_bargroup_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/BarGroup.xs line 57
+=for hackers xs/BarGroup.xs line 53
 
 =back
 
@@ -53,7 +53,7 @@ X<glyph_size>
 
 
 
-=for hackers xs/BarGroup.xs line 115
+=for hackers xs/BarGroup.xs line 111
 
 =item C<$bargroup-E<gt>glyph_size( $size );>X<_bargroup_E_gt_glyph_size_size_>
 
@@ -61,7 +61,7 @@ X<glyph_size>
 
 =pod 
 
-=for hackers xs/BarGroup.xs line 119
+=for hackers xs/BarGroup.xs line 115
 
 =back
 
@@ -74,7 +74,7 @@ X<layout>
 
 
 
-=for hackers xs/BarGroup.xs line 74
+=for hackers xs/BarGroup.xs line 70
 
 =back
 
@@ -100,7 +100,7 @@ X<open>
 
 
 
-=for hackers xs/BarGroup.xs line 100
+=for hackers xs/BarGroup.xs line 96
 
 =back
 
@@ -113,13 +113,13 @@ X<opened>
 
 
 
-=for hackers xs/BarGroup.xs line 83
+=for hackers xs/BarGroup.xs line 79
 
 =item C<my $is_it = $bargroup-E<gt>opened( $value );>X<my_is_it_bargroup_E_gt_opened_value_>
 
 
 
-=for hackers xs/BarGroup.xs line 87
+=for hackers xs/BarGroup.xs line 83
 
 =back
 
@@ -145,6 +145,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: BarGroup.xs c9c8929 2011-01-22 05:57:50Z sanko@cpan.org $
+=for git $Id: BarGroup.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

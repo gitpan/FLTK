@@ -42,7 +42,7 @@ X<BORDER_BOX>
 
 
 
-=for hackers xs/Style.xs line 102
+=for hackers xs/Style.xs line 106
 
 =back
 
@@ -55,7 +55,7 @@ X<BORDER_FRAME>
 
 
 
-=for hackers xs/Style.xs line 162
+=for hackers xs/Style.xs line 166
 
 =back
 
@@ -68,7 +68,7 @@ X<COURIER>
 
 
 
-=for hackers xs/Style.xs line 282
+=for hackers xs/Style.xs line 286
 
 =back
 
@@ -81,7 +81,7 @@ X<COURIER_BOLD>
 
 
 
-=for hackers xs/Style.xs line 286
+=for hackers xs/Style.xs line 290
 
 =back
 
@@ -94,7 +94,7 @@ X<COURIER_BOLD_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 294
+=for hackers xs/Style.xs line 298
 
 =back
 
@@ -107,7 +107,7 @@ X<COURIER_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 290
+=for hackers xs/Style.xs line 294
 
 =back
 
@@ -120,7 +120,7 @@ X<DIAMOND_DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 130
+=for hackers xs/Style.xs line 134
 
 =back
 
@@ -133,7 +133,7 @@ X<DIAMOND_UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 126
+=for hackers xs/Style.xs line 130
 
 =back
 
@@ -146,13 +146,13 @@ X<DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 70
+=for hackers xs/Style.xs line 74
 
 =item C<my $box = $style-E<gt>DOWN_BOX( );>X<my_box_style_E_gt_DOWN_BOX_>
 
 
 
-=for hackers xs/Style.xs line 82
+=for hackers xs/Style.xs line 86
 
 =back
 
@@ -165,7 +165,7 @@ X<EMBOSSED_BOX>
 
 
 
-=for hackers xs/Style.xs line 98
+=for hackers xs/Style.xs line 102
 
 =back
 
@@ -178,7 +178,7 @@ X<EMBOSSED_LABEL>
 
 
 
-=for hackers xs/Style.xs line 414
+=for hackers xs/Style.xs line 418
 
 =back
 
@@ -191,7 +191,7 @@ X<ENGRAVED_BOX>
 
 
 
-=for hackers xs/Style.xs line 94
+=for hackers xs/Style.xs line 98
 
 =back
 
@@ -204,7 +204,7 @@ X<ENGRAVED_LABEL>
 
 
 
-=for hackers xs/Style.xs line 410
+=for hackers xs/Style.xs line 414
 
 =back
 
@@ -217,7 +217,7 @@ X<FLAT_BOX>
 
 
 
-=for hackers xs/Style.xs line 106
+=for hackers xs/Style.xs line 110
 
 =back
 
@@ -230,7 +230,7 @@ X<HELVETICA>
 
 
 
-=for hackers xs/Style.xs line 266
+=for hackers xs/Style.xs line 270
 
 =back
 
@@ -243,7 +243,7 @@ X<HELVETICA_BOLD>
 
 
 
-=for hackers xs/Style.xs line 270
+=for hackers xs/Style.xs line 274
 
 =back
 
@@ -256,7 +256,7 @@ X<HELVETICA_BOLD_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 278
+=for hackers xs/Style.xs line 282
 
 =back
 
@@ -269,7 +269,7 @@ X<HELVETICA_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 274
+=for hackers xs/Style.xs line 278
 
 =back
 
@@ -282,7 +282,7 @@ X<HIGHLIGHT_DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 114
+=for hackers xs/Style.xs line 118
 
 =back
 
@@ -295,7 +295,7 @@ X<HIGHLIGHT_UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 110
+=for hackers xs/Style.xs line 114
 
 =back
 
@@ -308,7 +308,7 @@ X<NORMAL_LABEL>
 
 
 
-=for hackers xs/Style.xs line 398
+=for hackers xs/Style.xs line 402
 
 =back
 
@@ -321,7 +321,7 @@ X<NO_LABEL>
 
 
 
-=for hackers xs/Style.xs line 394
+=for hackers xs/Style.xs line 398
 
 =back
 
@@ -334,7 +334,7 @@ X<OFLAT_BOX>
 
 
 
-=for hackers xs/Style.xs line 158
+=for hackers xs/Style.xs line 162
 
 =back
 
@@ -347,7 +347,7 @@ X<OSHADOW_BOX>
 
 
 
-=for hackers xs/Style.xs line 154
+=for hackers xs/Style.xs line 158
 
 =back
 
@@ -360,7 +360,7 @@ X<OVAL_BOX>
 
 
 
-=for hackers xs/Style.xs line 150
+=for hackers xs/Style.xs line 154
 
 =back
 
@@ -373,7 +373,7 @@ X<PLASTIC_DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 170
+=for hackers xs/Style.xs line 174
 
 =back
 
@@ -386,7 +386,7 @@ X<PLASTIC_UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 166
+=for hackers xs/Style.xs line 170
 
 =back
 
@@ -399,7 +399,7 @@ X<RFLAT_BOX>
 
 
 
-=for hackers xs/Style.xs line 146
+=for hackers xs/Style.xs line 150
 
 =back
 
@@ -412,7 +412,7 @@ X<ROUNDED_BOX>
 
 
 
-=for hackers xs/Style.xs line 138
+=for hackers xs/Style.xs line 142
 
 =back
 
@@ -425,7 +425,7 @@ X<ROUND_DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 122
+=for hackers xs/Style.xs line 126
 
 =back
 
@@ -438,7 +438,7 @@ X<ROUND_UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 118
+=for hackers xs/Style.xs line 122
 
 =back
 
@@ -451,7 +451,7 @@ X<RSHADOW_BOX>
 
 
 
-=for hackers xs/Style.xs line 142
+=for hackers xs/Style.xs line 146
 
 =back
 
@@ -464,7 +464,7 @@ X<SCREEN_BOLD_FONT>
 
 
 
-=for hackers xs/Style.xs line 322
+=for hackers xs/Style.xs line 326
 
 =back
 
@@ -477,7 +477,7 @@ X<SCREEN_FONT>
 
 
 
-=for hackers xs/Style.xs line 318
+=for hackers xs/Style.xs line 322
 
 =back
 
@@ -490,7 +490,7 @@ X<SHADOW_BOX>
 
 
 
-=for hackers xs/Style.xs line 134
+=for hackers xs/Style.xs line 138
 
 =back
 
@@ -503,7 +503,7 @@ X<SHADOW_LABEL>
 
 
 
-=for hackers xs/Style.xs line 406
+=for hackers xs/Style.xs line 410
 
 =back
 
@@ -516,7 +516,7 @@ X<SYMBOL_FONT>
 
 
 
-=for hackers xs/Style.xs line 314
+=for hackers xs/Style.xs line 318
 
 =back
 
@@ -529,7 +529,7 @@ X<SYMBOL_LABEL>
 
 
 
-=for hackers xs/Style.xs line 402
+=for hackers xs/Style.xs line 406
 
 =back
 
@@ -542,13 +542,13 @@ X<THIN_DOWN_BOX>
 
 
 
-=for hackers xs/Style.xs line 78
+=for hackers xs/Style.xs line 82
 
 =item C<my $box = $style-E<gt>THIN_DOWN_BOX( );>X<my_box_style_E_gt_THIN_DOWN_BOX_>
 
 
 
-=for hackers xs/Style.xs line 90
+=for hackers xs/Style.xs line 94
 
 =back
 
@@ -561,13 +561,13 @@ X<THIN_UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 74
+=for hackers xs/Style.xs line 78
 
 =item C<my $box = $style-E<gt>THIN_UP_BOX( );>X<my_box_style_E_gt_THIN_UP_BOX_>
 
 
 
-=for hackers xs/Style.xs line 86
+=for hackers xs/Style.xs line 90
 
 =back
 
@@ -580,7 +580,7 @@ X<TIMES>
 
 
 
-=for hackers xs/Style.xs line 298
+=for hackers xs/Style.xs line 302
 
 =back
 
@@ -593,7 +593,7 @@ X<TIMES_BOLD>
 
 
 
-=for hackers xs/Style.xs line 302
+=for hackers xs/Style.xs line 306
 
 =back
 
@@ -606,7 +606,7 @@ X<TIMES_BOLD_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 310
+=for hackers xs/Style.xs line 314
 
 =back
 
@@ -619,7 +619,7 @@ X<TIMES_ITALIC>
 
 
 
-=for hackers xs/Style.xs line 306
+=for hackers xs/Style.xs line 310
 
 =back
 
@@ -632,7 +632,7 @@ X<UP_BOX>
 
 
 
-=for hackers xs/Style.xs line 66
+=for hackers xs/Style.xs line 70
 
 =back
 
@@ -645,7 +645,7 @@ X<ZAPF_DINGBATS>
 
 
 
-=for hackers xs/Style.xs line 326
+=for hackers xs/Style.xs line 330
 
 =back
 
@@ -662,7 +662,7 @@ the widget). The default is C<FLTK::DOWN_BOX>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 474
+=for hackers xs/Style.xs line 478
 
 =item C<$style-E<gt>box( $box );>X<_style_E_gt_box_box_>
 
@@ -670,7 +670,7 @@ Sets the type of box to draw around the outer edge of widget.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 482
+=for hackers xs/Style.xs line 486
 
 =back
 
@@ -687,7 +687,7 @@ C<FLTK::UP_BOX>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 488
+=for hackers xs/Style.xs line 492
 
 =item C<$style-E<gt>buttonbox( $box );>X<_style_E_gt_buttonbox_box_>
 
@@ -695,7 +695,7 @@ Returns the type of box to draw buttions internal the widget.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 496
+=for hackers xs/Style.xs line 500
 
 =back
 
@@ -710,13 +710,13 @@ Color used when drawing buttons. Default is C<FLTK::GRAY75>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 672
+=for hackers xs/Style.xs line 676
 
 =item C<$style-E<gt>buttoncolor( $color );>X<_style_E_gt_buttoncolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 678
+=for hackers xs/Style.xs line 682
 
 =back
 
@@ -740,14 +740,14 @@ ramp" so that the edges of buttons are the same color.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 617
+=for hackers xs/Style.xs line 621
 
 =item C<$style-E<gt>color( $color );>X<_style_E_gt_color_color_>
 
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 632
+=for hackers xs/Style.xs line 636
 
 =back
 
@@ -762,11 +762,11 @@ If false then most of the built-in box types draw the same even if
 C<FLTK::INACTIVE_R> is passed to them. This repliates Windows appearance. If
 true (the default) then the boxes themselves gray out.
 
-=for hackers xs/Style.xs line 859
+=for hackers xs/Style.xs line 863
 
 =item C<$style-E<gt>draw_boxes_inactive( $value );>X<_style_E_gt_draw_boxes_inactive_value_>
 
-=for hackers xs/Style.xs line 865
+=for hackers xs/Style.xs line 869
 
 =back
 
@@ -780,7 +780,7 @@ X<dynamic>
 True if this Style is unique to the Widget that owns it, and is not shared
 with other Widgets.
 
-=for hackers xs/Style.xs line 452
+=for hackers xs/Style.xs line 456
 
 =back
 
@@ -792,7 +792,7 @@ X<find>
 =item C<my $style = FLTK::find( $name );>X<my_style_FLTK_find_name_>
 
 
-=for hackers xs/Style.xs line 462
+=for hackers xs/Style.xs line 466
 
 =back
 
@@ -814,7 +814,7 @@ L<Widget::default_glpyh|FLTK::Widget/"default_glyph">.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 523
+=for hackers xs/Style.xs line 527
 
 =item C<$style-E<gt>glyph( $image );>X<_style_E_gt_glyph_image_>
 
@@ -822,7 +822,7 @@ Sets a small image that some Widgets use to draw part of themselves.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 536
+=for hackers xs/Style.xs line 540
 
 =back
 
@@ -838,11 +838,11 @@ the underscores are not drawn. In this case you should limit your C<&x>
 hotkeys to menubar items, as underscores in buttons are not visible. The
 menubar will show them when C<Alt> is held down.
 
-=for hackers xs/Style.xs line 850
+=for hackers xs/Style.xs line 854
 
 =item C<$style-E<gt>hide_underscore( $value );>X<_style_E_gt_hide_underscore_value_>
 
-=for hackers xs/Style.xs line 857
+=for hackers xs/Style.xs line 861
 
 =back
 
@@ -863,13 +863,13 @@ The default value is zero, which indicates that highlighting is disabled.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 690
+=for hackers xs/Style.xs line 694
 
 =item C<$style-E<gt>highlight_color( $color );>X<_style_E_gt_highlight_color_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 702
+=for hackers xs/Style.xs line 706
 
 =back
 
@@ -887,11 +887,11 @@ white or black). I recommend you use the default if possible.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 706
+=for hackers xs/Style.xs line 710
 
 =item C<$style-E<gt>highlight_textcolor( $color );>X<_style_E_gt_highlight_textcolor_color_>
 
-=for hackers xs/Style.xs line 715
+=for hackers xs/Style.xs line 719
 
 =back
 
@@ -906,11 +906,11 @@ Color used to draw labels. Default is C<FLTK::BLACK>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 682
+=for hackers xs/Style.xs line 686
 
 =item C<$style-E<gt>labelcolor( $color );>X<_style_E_gt_labelcolor_color_>
 
-=for hackers xs/Style.xs line 688
+=for hackers xs/Style.xs line 692
 
 =back
 
@@ -925,13 +925,13 @@ The font used to draw the label. Default is C<FLTK::HELVETICA>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 555
+=for hackers xs/Style.xs line 559
 
 =item C<$style-E<gt>labelfont( $font );>X<_style_E_gt_labelfont_font_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 561
+=for hackers xs/Style.xs line 565
 
 =back
 
@@ -946,13 +946,13 @@ Size of L<C<labelfont( )>|/"labelfont">. Default is 12.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 756
+=for hackers xs/Style.xs line 760
 
 =item C<$style-E<gt>labelsize( $size );>X<_style_E_gt_labelsize_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 779
+=for hackers xs/Style.xs line 783
 
 =back
 
@@ -966,11 +966,11 @@ X<labeltype>
 How to draw the label. This provides things like inset, shadow, and the
 symbols. C<FLTK::NORMAL_LABEL>.
 
-=for hackers xs/Style.xs line 597
+=for hackers xs/Style.xs line 601
 
 =item C<$style-E<gt>labeltype( $type );>X<_style_E_gt_labeltype_type_>
 
-=for hackers xs/Style.xs line 602
+=for hackers xs/Style.xs line 606
 
 =back
 
@@ -989,13 +989,13 @@ browsers and menus and similar widgets will use the local value.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 769
+=for hackers xs/Style.xs line 773
 
 =item C<$style-E<gt>leading( $size );>X<_style_E_gt_leading_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 787
+=for hackers xs/Style.xs line 791
 
 =back
 
@@ -1011,7 +1011,7 @@ pointer. You probably want to set the parent to
 L<C<Widget::default_style>|FLTK::Widget/"default_style"> in order to inherit
 the global settings.
 
-=for hackers xs/Style.xs line 54
+=for hackers xs/Style.xs line 58
 
 =back
 
@@ -1025,11 +1025,11 @@ X<scrollbar_align>
 Where to place scrollbars around a L<Browser|FLTK::Browser> or other scrolling
 widget. The default is C<FLTK::ALIGN_RIGHT|FLTK::ALIGN_BOTTOM>.
 
-=for hackers xs/Style.xs line 815
+=for hackers xs/Style.xs line 819
 
 =item C<$style-E<gt>scrollbar_align( $value );>X<_style_E_gt_scrollbar_align_value_>
 
-=for hackers xs/Style.xs line 825
+=for hackers xs/Style.xs line 829
 
 =back
 
@@ -1043,11 +1043,11 @@ X<scrollbar_width>
 How wide the scrollbars are around a Browser or other scrolling widget. The
 default is 15.
 
-=for hackers xs/Style.xs line 820
+=for hackers xs/Style.xs line 824
 
 =item C<$style-E<gt>scrollbar_width( $value );>X<_style_E_gt_scrollbar_width_value_>
 
-=for hackers xs/Style.xs line 827
+=for hackers xs/Style.xs line 831
 
 =back
 
@@ -1063,11 +1063,11 @@ or lit light buttons. The default is C<FLTK::WINDOWS_BLUE>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 650
+=for hackers xs/Style.xs line 654
 
 =item C<$style-E<gt>selection_color( $color );>X<_style_E_gt_selection_color_color_>
 
-=for hackers xs/Style.xs line 657
+=for hackers xs/Style.xs line 661
 
 =back
 
@@ -1085,13 +1085,13 @@ default if possible.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 659
+=for hackers xs/Style.xs line 663
 
 =item C<$style-E<gt>selection_textcolor( $color );>X<_style_E_gt_selection_textcolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 668
+=for hackers xs/Style.xs line 672
 
 =back
 
@@ -1109,13 +1109,13 @@ L<FLTK::CheckButton|FLTK::CheckButton>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 637
+=for hackers xs/Style.xs line 641
 
 =item C<$style-E<gt>textcolor( $color );>X<_style_E_gt_textcolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 646
+=for hackers xs/Style.xs line 650
 
 =back
 
@@ -1131,13 +1131,13 @@ editor or menu or browser. Default is C<FLTK::HELVETICA>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 565
+=for hackers xs/Style.xs line 569
 
 =item C<$style-E<gt>textfont( $font );>X<_style_E_gt_textfont_font_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 572
+=for hackers xs/Style.xs line 576
 
 =back
 
@@ -1153,13 +1153,13 @@ control the size they draw the L<C<glyph( )>|/"glyph">. Default is 12.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 762
+=for hackers xs/Style.xs line 766
 
 =item C<$style-E<gt>textsize( $size );>X<_style_E_gt_textsize_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Style.xs line 783
+=for hackers xs/Style.xs line 787
 
 =back
 
@@ -1172,7 +1172,7 @@ X<wheel_scroll_lines>
 
 How many lines to move for one click of a mouse wheel. The default is 3.
 
-=for hackers xs/Style.xs line 888
+=for hackers xs/Style.xs line 892
 
 =item C<$style-E<gt>wheel_scroll_lines( $lines );>X<_style_E_gt_wheel_scroll_lines_lines_>
 
@@ -1182,7 +1182,7 @@ How many lines to move for one click of a mouse wheel. The default is 3.
 
 =for todo Subclass this like Widget
 
-=for hackers xs/Style.xs line 892
+=for hackers xs/Style.xs line 896
 
 =back
 
@@ -1208,6 +1208,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Style.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Style.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

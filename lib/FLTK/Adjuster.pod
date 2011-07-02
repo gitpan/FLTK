@@ -30,7 +30,7 @@ Returns the current L<style|FLTK::NamedStyle>.
 
 =head3 C<$adjuster-E<gt>default_style( $new_style )>
 
-=for hackers xs/Adjuster.xs line 75
+=for hackers xs/Adjuster.xs line 71
 
 =item C<$adjuster-E<gt>default_style( $style );>X<_adjuster_E_gt_default_style_style_>
 
@@ -40,7 +40,7 @@ Sets the current L<style|FLTK::NamedStyle>.
 
 =head3 C<$adjuster-E<gt>soft( $x )>
 
-=for hackers xs/Adjuster.xs line 81
+=for hackers xs/Adjuster.xs line 77
 
 =back
 
@@ -78,7 +78,7 @@ TODO
 
 =head3 C<my $x = $adjuster-E<gt>soft( )>
 
-=for hackers xs/Adjuster.xs line 102
+=for hackers xs/Adjuster.xs line 98
 
 =item C<my $x = $adjuster-E<gt>soft( );>X<my_x_adjuster_E_gt_soft_>
 
@@ -86,7 +86,7 @@ TODO
 
 =pod 
 
-=for hackers xs/Adjuster.xs line 108
+=for hackers xs/Adjuster.xs line 104
 
 =back
 
@@ -120,6 +120,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Adjuster.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Adjuster.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

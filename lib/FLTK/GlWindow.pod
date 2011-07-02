@@ -94,14 +94,14 @@ Returns true if the hardware supports the current value of
 L<C<mode()>|/"mode">. If false, attempts to show or draw this window will
 cause an L<C<error()>|FLTK/"error">.
 
-=for hackers xs/GlWindow.xs line 259
+=for hackers xs/GlWindow.xs line 260
 
 =item C<my $can = $glwindow-E<gt>can_do( $mode );>X<my_can_glwindow_E_gt_can_do_mode_>
 
 Returns true if the hardware supports C<mode>, see L<C<mode()>|/"mode"> for
 the meaning of the bits.
 
-=for hackers xs/GlWindow.xs line 265
+=for hackers xs/GlWindow.xs line 266
 
 =back
 
@@ -119,7 +119,7 @@ setup to draw these overlay planes, and
 L<C<redraw_overlay()>|/"redraw_overlay"> will not cause the main
 L<C<draw()>|FLTK::Widget/"draw"> to be called.
 
-=for hackers xs/GlWindow.xs line 349
+=for hackers xs/GlWindow.xs line 350
 
 =back
 
@@ -133,7 +133,7 @@ X<context>
 Return the current L<OpenGL|OpenGL> context object being used by this window,
 or C<0> if there is none.
 
-=for hackers xs/GlWindow.xs line 279
+=for hackers xs/GlWindow.xs line 280
 
 =item C<$glwindow-E<gt>context( $glc, $destroy_flag );>X<_glwindow_E_gt_context_glc_destroy_flag_>
 
@@ -151,7 +151,7 @@ be destroyed by it when no longer needed. It will be destroyed when the window
 is destroyed, or when the L<C<mode()>|/"mode"> is changed, or if the context
 is changed to a new value with this call.
 
-=for hackers xs/GlWindow.xs line 284
+=for hackers xs/GlWindow.xs line 285
 
 =back
 
@@ -165,7 +165,7 @@ X<destroy>
 Besides getting rid of the window, this will destroy the L<context|/"context">
 if it belongs to the window.
 
-=for hackers xs/GlWindow.xs line 392
+=for hackers xs/GlWindow.xs line 393
 
 =back
 
@@ -178,7 +178,7 @@ X<hide_overlay>
 
 
 
-=for hackers xs/GlWindow.xs line 370
+=for hackers xs/GlWindow.xs line 371
 
 =back
 
@@ -191,7 +191,7 @@ X<invalidate>
 
 Turn off L<C<valid()>|FLTK::Widget/"valid">.
 
-=for hackers xs/GlWindow.xs line 183
+=for hackers xs/GlWindow.xs line 184
 
 =back
 
@@ -208,7 +208,7 @@ method being called. You can call it in L<C<handle()>|/"handle"> to set things
 up to do L<OpenGL|OpenGL> hit detection, or call it other times to do
 incremental update of the window.
 
-=for hackers xs/GlWindow.xs line 314
+=for hackers xs/GlWindow.xs line 315
 
 =back
 
@@ -224,7 +224,7 @@ used to do incremental L<OpenGL|OpenGL> drawing into the overlay. If hardware
 overlay is not supported, this sets things to draw into the front buffer,
 which is probably not good enough emulation to be usable.
 
-=for hackers xs/GlWindow.xs line 374
+=for hackers xs/GlWindow.xs line 375
 
 =back
 
@@ -237,7 +237,7 @@ X<mode>
 
 
 
-=for hackers xs/GlWindow.xs line 192
+=for hackers xs/GlWindow.xs line 193
 
 =item C<my $can = $glwindow-E<gt>mode( $newmode );>X<my_can_glwindow_E_gt_mode_newmode_>
 
@@ -293,7 +293,7 @@ this will unfortunately also cause the window to blink, raise to the top, and
 be de-iconized, and the ID will change, possibly breaking other code. It is
 best to make the GL window a child of another window if you wish to do this!
 
-=for hackers xs/GlWindow.xs line 196
+=for hackers xs/GlWindow.xs line 197
 
 =back
 
@@ -330,7 +330,7 @@ pixel is 1 unit wide/tall. If you are drawing 2D images, your
 L<C<draw()>|FLTK::Widget/"draw"> method may want to call this when
 L<C<valid()>|FLTK::Widget/"valid"> is false.
 
-=for hackers xs/GlWindow.xs line 331
+=for hackers xs/GlWindow.xs line 332
 
 =back
 
@@ -346,7 +346,7 @@ Initially the overlay is clear, if you want the window to display something in
 the overlay when it first appears, you must call this immediately after you
 L<C<show()>|/"show"> your window.
 
-=for hackers xs/GlWindow.xs line 363
+=for hackers xs/GlWindow.xs line 364
 
 =back
 
@@ -364,7 +364,7 @@ L<OpenGL|OpenGL> implementation.
 This is called automatically after L<C<draw()>|FLTK::Widget/"draw"> unless the
 C<NO_AUTO_SWAP> flag is set in the L<C<mode()>|/"mode">.
 
-=for hackers xs/GlWindow.xs line 322
+=for hackers xs/GlWindow.xs line 323
 
 =back
 
@@ -393,13 +393,13 @@ the viewport, lights, or other pieces of the context.
     #... draw your geometry here ...
   }
 
-=for hackers xs/GlWindow.xs line 147
+=for hackers xs/GlWindow.xs line 148
 
 =item C<$glwindow-E<gt>valid( $is_it );>X<_glwindow_E_gt_valid_is_it_>
 
 
 
-=for hackers xs/GlWindow.xs line 167
+=for hackers xs/GlWindow.xs line 168
 
 =back
 
@@ -443,6 +443,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: GlWindow.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: GlWindow.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

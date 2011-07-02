@@ -81,7 +81,7 @@ have a different pixeltype, size, and linedelta than the
 L<C<Image>|FLTK::Image>. If you are able to figure out the type you can read
 and write the pixels directly.
 
-=for hackers xs/Image.xs line 305
+=for hackers xs/Image.xs line 302
 
 =back
 
@@ -97,7 +97,7 @@ systems the memory is not actually shared with the window system, and this
 will cause L<C<draw()>|/"draw"> to copy the buffer to the system's memory.
 L<C<setpixels()>|/"setpixels"> calls this for you.
 
-=for hackers xs/Image.xs line 388
+=for hackers xs/Image.xs line 385
 
 =back
 
@@ -111,7 +111,7 @@ X<buffer_depth>
 Returns the number of bytes per pixel stored in L<C<buffer()>|/"buffer">. This
 is the same as L<C<depth(buffer_pixeltype())>|FLTK/"depth">.
 
-=for hackers xs/Image.xs line 357
+=for hackers xs/Image.xs line 354
 
 =back
 
@@ -124,7 +124,7 @@ X<buffer_height>
 
 Return the height in pixels of L<C<buffer()>|/"buffer">;
 
-=for hackers xs/Image.xs line 366
+=for hackers xs/Image.xs line 363
 
 =back
 
@@ -137,7 +137,7 @@ X<buffer_linedelta>
 
 Return the distance between each row of pixels in L<C<buffer()>|/"buffer">.
 
-=for hackers xs/Image.xs line 370
+=for hackers xs/Image.xs line 367
 
 =back
 
@@ -152,7 +152,7 @@ Return the type of pixels stored in L<C<buffer()>|/"buffer">. Likely to be
 C<ARGB32>. On older (non-XRender) X system the types 1 and 2 indicate 1 and
 2-byte data, but there is no api to figure out anything more about this data.
 
-=for hackers xs/Image.xs line 346
+=for hackers xs/Image.xs line 343
 
 =back
 
@@ -165,7 +165,7 @@ X<buffer_width>
 
 Return the width in pixels of L<C<buffer()>|/"buffer">.
 
-=for hackers xs/Image.xs line 362
+=for hackers xs/Image.xs line 359
 
 =back
 
@@ -177,7 +177,7 @@ X<clear_forceARGB32>
 =item C<$image-E<gt>clear_forceARGB32( );>X<_image_E_gt_clear_forceARGB32_>
 
 
-=for hackers xs/Image.xs line 326
+=for hackers xs/Image.xs line 323
 
 =back
 
@@ -192,7 +192,7 @@ Same as L<C<FLTK::depth($img-E<gt>pixeltype())>|FLTK/"depth">, this returns
 how many bytes each pixel takes in the buffer sent to
 L<C<setpixels()>|/"setpixels">.
 
-=for hackers xs/Image.xs line 170
+=for hackers xs/Image.xs line 167
 
 =back
 
@@ -205,7 +205,7 @@ X<destroy>
 
 Destroys the L<C<buffer()>|/"buffer"> and any related system structures.
 
-=for hackers xs/Image.xs line 400
+=for hackers xs/Image.xs line 397
 
 =back
 
@@ -221,7 +221,7 @@ C<$image-E<gt>draw(FLTK::Rectangle-E<gt>new( 0, 0, $w, $h), FLTK::Rectangle-E<gt
 Thus the top-left corner is placed at C<$x, $y> and no scaling (other than due
 to the current transformation) is done.
 
-=for hackers xs/Image.xs line 412
+=for hackers xs/Image.xs line 409
 
 =item C<$image-E<gt>draw( $rect );>X<_image_E_gt_draw_rect_>
 
@@ -239,7 +239,7 @@ size, producing very interesting scaling.
 It is possible this will use L<C<drawflags(INACTIVE)>|/"drawflags"> to gray
 out the image in a system-specific way.
 
-=for hackers xs/Image.xs line 419
+=for hackers xs/Image.xs line 416
 
 =item C<$image-E<gt>draw( $from, $destination );>X<_image_E_gt_draw_from_destination_>
 
@@ -267,7 +267,7 @@ L<xbmImage|FLTK::xbmImage> does not do any transformations.
 
 =back 
 
-=for hackers xs/Image.xs line 435
+=for hackers xs/Image.xs line 432
 
 =back
 
@@ -281,7 +281,7 @@ X<fetch_if_needed>
 Call L<C<fetch()>|/"fetch"> if it has not been called or if
 L<C<refetch()>|/"refetch"> was called.
 
-=for hackers xs/Image.xs line 486
+=for hackers xs/Image.xs line 483
 
 =back
 
@@ -294,7 +294,7 @@ X<fills_rectangle>
 
 Returns true if hte pixeltype does not support alpha.
 
-=for hackers xs/Image.xs line 477
+=for hackers xs/Image.xs line 474
 
 =back
 
@@ -307,7 +307,7 @@ X<forceARGB32>
 
 
 
-=for hackers xs/Image.xs line 337
+=for hackers xs/Image.xs line 334
 
 =back
 
@@ -320,7 +320,7 @@ X<h>
 
 Same as L<C<height()>|/"height">.
 
-=for hackers xs/Image.xs line 190
+=for hackers xs/Image.xs line 187
 
 =back
 
@@ -334,7 +334,7 @@ X<height>
 Return the height of the image in pixels. You can change this with
 <C<setsize()>|/"setsize">.
 
-=for hackers xs/Image.xs line 185
+=for hackers xs/Image.xs line 182
 
 =back
 
@@ -352,7 +352,7 @@ copying of the data if the internal format and L<C<pixeltype()>|/"pixeltype">
 are compatable, because it will return a pointer directly into the buffer and
 setpixels will detect this and do nothing.
 
-=for hackers xs/Image.xs line 261
+=for hackers xs/Image.xs line 258
 
 =back
 
@@ -365,7 +365,7 @@ X<make_current>
 
 See L<GSave|FLTK::GSave>.
 
-=for hackers xs/Image.xs line 528
+=for hackers xs/Image.xs line 525
 
 =back
 
@@ -380,7 +380,7 @@ Returns how much memory the image is using for L<C<buffer()>|/"buffer"> and
 for any other structures it created. Returns zero if L<C<buffer()>|/"buffer">
 has not been called.
 
-=for hackers xs/Image.xs line 506
+=for hackers xs/Image.xs line 503
 
 =back
 
@@ -416,7 +416,7 @@ L<C<setpixeltype()>|/"setpixeltype">. It is possible the internal data is in a
 different type, use L<C<buffer_pixeltype()>|/"buffer_pixeltype"> to find out
 what that is.
 
-=for hackers xs/Image.xs line 157
+=for hackers xs/Image.xs line 154
 
 =back
 
@@ -430,7 +430,7 @@ X<refetch>
 Cause L<C<fetch()>|/"fetch"> to be called again. This is useful for a file
 image if the file name or contents have changed.
 
-=for hackers xs/Image.xs line 496
+=for hackers xs/Image.xs line 493
 
 =back
 
@@ -443,7 +443,7 @@ X<set_forceARGB32>
 
 It pretty much does this already except for mono.
 
-=for hackers xs/Image.xs line 322
+=for hackers xs/Image.xs line 319
 
 =back
 
@@ -465,13 +465,13 @@ This is equivalent to...
 C<linedelta> are of types that it can handle unchanged and if the image memory
 does not need to be allocated by the system.
 
-=for hackers xs/Image.xs line 279
+=for hackers xs/Image.xs line 276
 
 =item C<$image-E<gt>setimage( $source, $pixeltype, $w, $h );>X<_image_E_gt_setimage_source_pixeltype_w_h_>
 
 Figures out C<$linedelta> for you as C<$w * $image-E<gt>depth($p)>.
 
-=for hackers xs/Image.xs line 292
+=for hackers xs/Image.xs line 289
 
 =back
 
@@ -487,13 +487,13 @@ data, which must be in the L<C<pixeltype()>|/"pixeltype">. C<linedelta> is the
 distance between each row of pixels in C<data>. The rectangle is assummed to
 fit inside the L<C<width()>|/"width"> and L<C<height()>|/"height">.
 
-=for hackers xs/Image.xs line 230
+=for hackers xs/Image.xs line 227
 
 =item C<$image-E<gt>setpixels( $data, $rect );>X<_image_E_gt_setpixels_data_rect_>
 
 Figures out the linedelta for you as C<$image->depth() * $rect->w()>.
 
-=for hackers xs/Image.xs line 237
+=for hackers xs/Image.xs line 234
 
 =item C<$image-E<gt>setpixels( $data, $y );>X<_image_E_gt_setpixels_data_y_>
 
@@ -501,7 +501,7 @@ Same as
 L<C<$image-E<gt>setpixels($data, FLTK::Rectangle-E<gt>new(0, $y, $image-E<gt>width(), 1))>|/"setpixels">,
 sets one entire row of pixels.
 
-=for hackers xs/Image.xs line 241
+=for hackers xs/Image.xs line 238
 
 =back
 
@@ -515,7 +515,7 @@ X<setpixeltype>
 Change the stored pixeltype. If it is not compatable then the
 L<Image|FLTK::Image> is destroyed.
 
-=for hackers xs/Image.xs line 209
+=for hackers xs/Image.xs line 206
 
 =back
 
@@ -530,7 +530,7 @@ Change the size of the stored image. If it is not compatable with the current
 data size (generally if it is larger) then the L<Image|FLTK::Image> is
 destroyed.
 
-=for hackers xs/Image.xs line 219
+=for hackers xs/Image.xs line 216
 
 =back
 
@@ -545,7 +545,7 @@ Sum of all L<C<mem_used()>|/"mem_used"> calls to all L<C<Images>|FLTK::Image>.
 This is used by L<SharedImage|FLTK::SharedImage> to decide when to clear out
 cached images.
 
-=for hackers xs/Image.xs line 517
+=for hackers xs/Image.xs line 514
 
 =back
 
@@ -558,7 +558,7 @@ X<w>
 
 Same as L<C<width()>|/"width">.
 
-=for hackers xs/Image.xs line 181
+=for hackers xs/Image.xs line 178
 
 =back
 
@@ -572,7 +572,7 @@ X<width>
 Return the width of the image in pixels. You can change this with
 L<C<setsize()>|/"setsize">.
 
-=for hackers xs/Image.xs line 176
+=for hackers xs/Image.xs line 173
 
 =back
 
@@ -608,6 +608,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Image.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Image.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

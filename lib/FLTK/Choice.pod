@@ -47,13 +47,13 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/Choice.xs line 80
+=for hackers xs/Choice.xs line 76
 
 =item C<$choice-E<gt>default_style( $style );>X<_choice_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/Choice.xs line 84
+=for hackers xs/Choice.xs line 80
 
 =back
 
@@ -69,7 +69,7 @@ L<C<glyph()>|/"glyph"> to your own function that draws whatever you want.
 
 =pod 
 
-=for hackers xs/Choice.xs line 101
+=for hackers xs/Choice.xs line 97
 
 =back
 
@@ -110,6 +110,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Choice.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Choice.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -50,7 +50,7 @@ X<value>
 
 Correctly formats C<$val> and uses the result to set the string value.
 
-=for hackers xs/NumericInput.xs line 77
+=for hackers xs/NumericInput.xs line 73
 
 =item C<my $val = $numericinput-E<gt>value( );>X<my_val_numericinput_E_gt_value_>
 
@@ -58,7 +58,7 @@ Returns the value. Duh.
 
 =pod 
 
-=for hackers xs/NumericInput.xs line 81
+=for hackers xs/NumericInput.xs line 77
 
 =back
 
@@ -84,6 +84,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: NumericInput.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: NumericInput.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

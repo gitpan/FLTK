@@ -6,18 +6,14 @@ MODULE = FLTK::Scrollbar               PACKAGE = FLTK::Scrollbar
 
 #include <fltk/Scrollbar.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::Scrollbar *
 fltk::Scrollbar::new( int x, int y, int w, int h, const char * label = 0 )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::Scrollbar>(CLASS,x,y,w,h,label);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::Scrollbar>(CLASS,x,y,w,h,label);
+    OUTPUT:
+        RETVAL
 
 fltk::NamedStyle *
 fltk::Scrollbar::default_style( fltk::NamedStyle * new_style = NO_INIT )

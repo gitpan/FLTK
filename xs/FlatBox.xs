@@ -6,18 +6,14 @@ MODULE = FLTK::FlatBox               PACKAGE = FLTK::FlatBox
 
 #include <fltk/Box.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::FlatBox *
 fltk::FlatBox::new( char * name )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::FlatBox>(CLASS,name);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::FlatBox>(CLASS,name);
+    OUTPUT:
+        RETVAL
 
 void
 fltk::FlatBox::_draw( fltk::Rectangle * rect )

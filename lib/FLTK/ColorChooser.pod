@@ -21,13 +21,13 @@ X<a>
 
 
 
-=for hackers xs/ColorChooser.xs line 160
+=for hackers xs/ColorChooser.xs line 156
 
 =item C<my $set = $colorchooser-E<gt>a( $alpha );>X<my_set_colorchooser_E_gt_a_alpha_>
 
 
 
-=for hackers xs/ColorChooser.xs line 164
+=for hackers xs/ColorChooser.xs line 160
 
 =back
 
@@ -40,7 +40,7 @@ X<b>
 
 
 
-=for hackers xs/ColorChooser.xs line 72
+=for hackers xs/ColorChooser.xs line 68
 
 =back
 
@@ -68,14 +68,14 @@ This version takes and returns numbers in the 0-1 range.
 If you which to embed a color chooser into another control panel, use an
 L<FLTK::ColorChooser|FLTK::ColorChooser/"new"> object.
 
-=for hackers xs/ColorChooser.xs line 226
+=for hackers xs/ColorChooser.xs line 222
 
 =item C<my $okay = $colorchooser-E<gt>color_chooser( $name, $r, $g, $b, $a );>X<my_okay_colorchooser_E_gt_color_chooser_name_r_g_b_a_>
 
 Same but user can also select an alpha value. Currently the color chips do not
 remember or set the alpha!
 
-=for hackers xs/ColorChooser.xs line 245
+=for hackers xs/ColorChooser.xs line 241
 
 =item C<my $okay = $colorchooser-E<gt>color_chooser( $name, $color );>X<my_okay_colorchooser_E_gt_color_chooser_name_color_>
 
@@ -83,7 +83,7 @@ Same but it takes and returns an L<FLTK::Color|FLTK::Color> number. No alpha.
 
 =pod 
 
-=for hackers xs/ColorChooser.xs line 250
+=for hackers xs/ColorChooser.xs line 246
 
 =back
 
@@ -96,7 +96,7 @@ X<g>
 
 
 
-=for hackers xs/ColorChooser.xs line 68
+=for hackers xs/ColorChooser.xs line 64
 
 =back
 
@@ -109,7 +109,7 @@ X<h>
 
 
 
-=for hackers xs/ColorChooser.xs line 52
+=for hackers xs/ColorChooser.xs line 48
 
 =back
 
@@ -122,7 +122,7 @@ X<hide_a>
 
 
 
-=for hackers xs/ColorChooser.xs line 177
+=for hackers xs/ColorChooser.xs line 173
 
 =back
 
@@ -135,7 +135,7 @@ X<hide_no_value>
 
 
 
-=for hackers xs/ColorChooser.xs line 181
+=for hackers xs/ColorChooser.xs line 177
 
 =back
 
@@ -148,7 +148,7 @@ X<hsv>
 
 
 
-=for hackers xs/ColorChooser.xs line 142
+=for hackers xs/ColorChooser.xs line 138
 
 =back
 
@@ -161,7 +161,7 @@ X<hsv2rgb>
 
 
 
-=for hackers xs/ColorChooser.xs line 197
+=for hackers xs/ColorChooser.xs line 193
 
 =back
 
@@ -174,7 +174,7 @@ X<layout>
 
 
 
-=for hackers xs/ColorChooser.xs line 217
+=for hackers xs/ColorChooser.xs line 213
 
 =back
 
@@ -200,13 +200,13 @@ X<no_value>
 
 
 
-=for hackers xs/ColorChooser.xs line 98
+=for hackers xs/ColorChooser.xs line 94
 
 =item C<my $no_val = $colorchooser-E<gt>no_value( $value );>X<my_no_val_colorchooser_E_gt_no_value_value_>
 
 
 
-=for hackers xs/ColorChooser.xs line 102
+=for hackers xs/ColorChooser.xs line 98
 
 =back
 
@@ -219,7 +219,7 @@ X<r>
 
 
 
-=for hackers xs/ColorChooser.xs line 64
+=for hackers xs/ColorChooser.xs line 60
 
 =back
 
@@ -232,7 +232,7 @@ X<rgb>
 
 
 
-=for hackers xs/ColorChooser.xs line 151
+=for hackers xs/ColorChooser.xs line 147
 
 =back
 
@@ -245,7 +245,7 @@ X<rgb2hsv>
 
 
 
-=for hackers xs/ColorChooser.xs line 207
+=for hackers xs/ColorChooser.xs line 203
 
 =back
 
@@ -258,7 +258,7 @@ X<s>
 
 
 
-=for hackers xs/ColorChooser.xs line 56
+=for hackers xs/ColorChooser.xs line 52
 
 =back
 
@@ -271,7 +271,7 @@ X<v>
 
 
 
-=for hackers xs/ColorChooser.xs line 60
+=for hackers xs/ColorChooser.xs line 56
 
 =back
 
@@ -284,13 +284,13 @@ X<value>
 
 
 
-=for hackers xs/ColorChooser.xs line 118
+=for hackers xs/ColorChooser.xs line 114
 
 =item C<my $val = $colorchooser-E<gt>value( $color );>X<my_val_colorchooser_E_gt_value_color_>
 
 
 
-=for hackers xs/ColorChooser.xs line 122
+=for hackers xs/ColorChooser.xs line 118
 
 =back
 
@@ -316,6 +316,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: ColorChooser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: ColorChooser.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

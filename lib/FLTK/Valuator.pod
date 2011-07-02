@@ -49,7 +49,7 @@ restore the default behavior by setting this to zero. Values less than zero or
 between zero and the L<C<step()>|FLTK::Valuator/"step"> value produce
 undefined results.
 
-=for hackers xs/Valuator.xs line 186
+=for hackers xs/Valuator.xs line 182
 
 =item C<my $value = $valuator-E<gt>linesize( );>X<my_value_valuator_E_gt_linesize_>
 
@@ -61,7 +61,7 @@ the user clicking an up/down button, or a click of the mouse wheel. If this
 has not been set, this will return the maximum of
 L<C<step()>|FLTK::Valuator/"step"> and C<1/50> of the range.
 
-=for hackers xs/Valuator.xs line 193
+=for hackers xs/Valuator.xs line 189
 
 =back
 
@@ -86,7 +86,7 @@ direction. This also switches which end of the filled sliders is filled.
 You probably need to L<C<redraw()>|FLTK::Valuator/"redraw"> the widget after
 changing the range.
 
-=for hackers xs/Valuator.xs line 121
+=for hackers xs/Valuator.xs line 117
 
 =back
 
@@ -99,7 +99,7 @@ X<minimum>
 
 Sets the minimum value for the valuator.
 
-=for hackers xs/Valuator.xs line 137
+=for hackers xs/Valuator.xs line 133
 
 =back
 
@@ -138,7 +138,7 @@ X<previous_value>
 Value saved when L<C<handle_push( )>|FLTK::Valuator/"handle_push"> was last
 called.
 
-=for hackers xs/Valuator.xs line 216
+=for hackers xs/Valuator.xs line 212
 
 =back
 
@@ -152,7 +152,7 @@ X<range>
 Sets both the L<C<minimum()>|FLTK::Valuator/"minimum"> and
 L<C<maximum()>|FLTK::Valuator/"maximum">.
 
-=for hackers xs/Valuator.xs line 176
+=for hackers xs/Valuator.xs line 172
 
 =back
 
@@ -166,7 +166,7 @@ X<set_value>
 Sets the current value but does not call
 L<C<value_damage( )>|FLTK::Valuator/"value_damage">.
 
-=for hackers xs/Valuator.xs line 116
+=for hackers xs/Valuator.xs line 112
 
 =back
 
@@ -194,7 +194,7 @@ L<C<step()>|FLTK::Valuator/"step"> is zero then it acts like it is C<.01>.
 Negative values for L<C<step()>|FLTK::Valuator/"step"> produce undocumented
 results.
 
-=for hackers xs/Valuator.xs line 141
+=for hackers xs/Valuator.xs line 137
 
 =back
 
@@ -207,7 +207,7 @@ X<value>
 
 Returns the current value.
 
-=for hackers xs/Valuator.xs line 89
+=for hackers xs/Valuator.xs line 85
 
 =item C<my $okay = $valuator-E<gt>value( $v );>X<my_okay_valuator_E_gt_value_v_>
 
@@ -217,7 +217,7 @@ unchanged, even if it is outside the range or not a multiple of
 L<C<step()>|FLTK::Valuator/"step">>. Returns true if the new value is
 different.
 
-=for hackers xs/Valuator.xs line 93
+=for hackers xs/Valuator.xs line 89
 
 =back
 
@@ -327,6 +327,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Valuator.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Valuator.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

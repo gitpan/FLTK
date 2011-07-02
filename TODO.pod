@@ -4,7 +4,7 @@
 
 =for author Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
 
-=for git $Id: TODO.pod 06e8047 2011-01-04 03:30:53Z sanko@cpan.org $
+=for git $Id: TODO.pod 5f34885 2011-04-09 04:45:35Z sanko@cpan.org $
 
 =head1 NAME
 
@@ -65,8 +65,6 @@ FLTK::Todo - TODO list for Perl module FLTK
 =item FLTK::Style (partially complete)
 
 =item FLTK::StyleSet
-
-=item FLTK::TabGroup
 
 =item FLTK::TabGroupPager
 

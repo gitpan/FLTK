@@ -6,18 +6,14 @@ MODULE = FLTK::LightButton               PACKAGE = FLTK::LightButton
 
 #include <fltk/LightButton.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::LightButton *
 fltk::LightButton::new( int x, int y, int w, int h, const char * label = 0 )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::LightButton>(CLASS,x,y,w,h,label);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::LightButton>(CLASS,x,y,w,h,label);
+    OUTPUT:
+        RETVAL
 
 fltk::NamedStyle *
 fltk::LightButton::default_style( fltk::NamedStyle * new_style = NO_INIT )

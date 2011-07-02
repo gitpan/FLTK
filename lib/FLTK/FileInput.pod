@@ -19,7 +19,7 @@ X<draw_boxes>
 
 Draw directory buttons.
 
-=for hackers xs/FileInput.xs line 59
+=for hackers xs/FileInput.xs line 55
 
 =back
 
@@ -32,13 +32,13 @@ X<errorcolor>
 
 
 
-=for hackers xs/FileInput.xs line 69
+=for hackers xs/FileInput.xs line 65
 
 =item C<$fileinput-E<gt>errorcolor( $color );>X<_fileinput_E_gt_errorcolor_color_>
 
 
 
-=for hackers xs/FileInput.xs line 73
+=for hackers xs/FileInput.xs line 69
 
 =back
 
@@ -62,7 +62,7 @@ X<text>
 
 =item C<my $string = $fileinput-E<gt>text( );>X<my_string_fileinput_E_gt_text_>
 
-=for hackers xs/FileInput.xs line 90
+=for hackers xs/FileInput.xs line 86
 
 =item C<$fileinput-E<gt>text( $string, $length );>X<_fileinput_E_gt_text_string_length_>
 
@@ -70,7 +70,7 @@ Set the string stored in the widget.
 
 =pod 
 
-=for hackers xs/FileInput.xs line 92
+=for hackers xs/FileInput.xs line 88
 
 =back
 
@@ -96,6 +96,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: FileInput.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FileInput.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

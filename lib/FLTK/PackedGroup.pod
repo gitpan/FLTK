@@ -47,7 +47,7 @@ L<bottom|FLTK::PackedGroup/"margin_bottom"> margins to the same value.
 
 =pod 
 
-=for hackers xs/PackedGroup.xs line 222
+=for hackers xs/PackedGroup.xs line 218
 
 =back
 
@@ -60,13 +60,13 @@ X<margin_bottom>
 
 Get the bottom margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 201
+=for hackers xs/PackedGroup.xs line 197
 
 =item C<$packedgroup-E<gt>margin_bottom( $b );>X<_packedgroup_E_gt_margin_bottom_b_>
 
 Set the bottom margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 205
+=for hackers xs/PackedGroup.xs line 201
 
 =back
 
@@ -79,13 +79,13 @@ X<margin_left>
 
 Get the left margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 138
+=for hackers xs/PackedGroup.xs line 134
 
 =item C<$packedgroup-E<gt>margin_left( $l );>X<_packedgroup_E_gt_margin_left_l_>
 
 Set the left margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 142
+=for hackers xs/PackedGroup.xs line 138
 
 =back
 
@@ -98,13 +98,13 @@ X<margin_right>
 
 Get the right margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 159
+=for hackers xs/PackedGroup.xs line 155
 
 =item C<$packedgroup-E<gt>margin_right( $r );>X<_packedgroup_E_gt_margin_right_r_>
 
 Set the right margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 163
+=for hackers xs/PackedGroup.xs line 159
 
 =back
 
@@ -117,13 +117,13 @@ X<margin_top>
 
 Get the top margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 180
+=for hackers xs/PackedGroup.xs line 176
 
 =item C<$packedgroup-E<gt>margin_top( $t );>X<_packedgroup_E_gt_margin_top_t_>
 
 Set the top margin for child widgets.
 
-=for hackers xs/PackedGroup.xs line 184
+=for hackers xs/PackedGroup.xs line 180
 
 =back
 
@@ -151,13 +151,13 @@ Set a fixed-size gap between all the children. This defaults to zero. If you
 change this in an already-existing one, call
 L<relayout()|FLTK::Widget/"relayout">.
 
-=for hackers xs/PackedGroup.xs line 115
+=for hackers xs/PackedGroup.xs line 111
 
 =item C<my $s = $packedgroup-E<gt>spacing( );>X<my_s_packedgroup_E_gt_spacing_>
 
 Returns the fixed-size gap between all children.
 
-=for hackers xs/PackedGroup.xs line 121
+=for hackers xs/PackedGroup.xs line 117
 
 =back
 
@@ -200,6 +200,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: PackedGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: PackedGroup.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -19,7 +19,7 @@ X<append>
 
 Append text to the end of the buffer.
 
-=for hackers xs/TextDisplay.xs line 135
+=for hackers xs/TextDisplay.xs line 131
 
 =back
 
@@ -33,7 +33,7 @@ X<at>
 Same as L<C<text()[$index]>|/"text">, but may be faster in plausible
 implementations. No bounds checking is done.
 
-=for hackers xs/TextDisplay.xs line 103
+=for hackers xs/TextDisplay.xs line 99
 
 =back
 
@@ -47,13 +47,13 @@ X<buffer>
 Attach a L<text buffer|FLTK::TextBuffer> to display, replacing the current
 buffer (if any).
 
-=for hackers xs/TextDisplay.xs line 113
+=for hackers xs/TextDisplay.xs line 109
 
 =item C<my $buffer = $textdisplay-E<gt>buffer( );>X<my_buffer_textdisplay_E_gt_buffer_>
 
 Get the associated L<text buffer|FLTK::TextBuffer>.
 
-=for hackers xs/TextDisplay.xs line 118
+=for hackers xs/TextDisplay.xs line 114
 
 =back
 
@@ -66,13 +66,13 @@ X<cursor_color>
 
 Returns cursor color.
 
-=for hackers xs/TextDisplay.xs line 222
+=for hackers xs/TextDisplay.xs line 218
 
 =item C<$textdisplay-E<gt>cursor_color( $color );>X<_textdisplay_E_gt_cursor_color_color_>
 
 Set cursor color.
 
-=for hackers xs/TextDisplay.xs line 226
+=for hackers xs/TextDisplay.xs line 222
 
 =back
 
@@ -85,7 +85,7 @@ X<cursor_on>
 
 Returns cursor visibility state.
 
-=for hackers xs/TextDisplay.xs line 204
+=for hackers xs/TextDisplay.xs line 200
 
 =back
 
@@ -98,7 +98,7 @@ X<cursor_style>
 
 Set cursor style.
 
-=for hackers xs/TextDisplay.xs line 213
+=for hackers xs/TextDisplay.xs line 209
 
 =back
 
@@ -113,7 +113,7 @@ Finds the start of the next character, starting from C<$position>. If
 C<$position> points to the start of a character, it is returned. This is
 mainly used with UTF-8 strings.
 
-=for hackers xs/TextDisplay.xs line 430
+=for hackers xs/TextDisplay.xs line 421
 
 =back
 
@@ -128,7 +128,7 @@ Finds the start of the previous character, starting from C<$position>. If
 C<$position> points to the start of a character, it is returned. This is
 mainly used with UTF-8 strings.
 
-=for hackers xs/TextDisplay.xs line 441
+=for hackers xs/TextDisplay.xs line 432
 
 =back
 
@@ -141,7 +141,7 @@ X<hide_cursor>
 
 Hide cursor.
 
-=for hackers xs/TextDisplay.xs line 195
+=for hackers xs/TextDisplay.xs line 191
 
 =back
 
@@ -163,7 +163,7 @@ contains a primary TextSelection.
 
 Style buffers, tables and their associated memory are managed by the caller.
 
-=for hackers xs/TextDisplay.xs line 300
+=for hackers xs/TextDisplay.xs line 296
 
 =back
 
@@ -176,7 +176,7 @@ X<hor_offset>
 
 Returns the current horizontal offset
 
-=for hackers xs/TextDisplay.xs line 421
+=for hackers xs/TextDisplay.xs line 412
 
 =back
 
@@ -190,7 +190,7 @@ X<in_selection>
 Returns a true value if position C<($X, $Y)> is inside of the primary
 TextSelection.
 
-=for hackers xs/TextDisplay.xs line 377
+=for hackers xs/TextDisplay.xs line 368
 
 =back
 
@@ -203,7 +203,7 @@ X<insert>
 
 Insert text to the current cursor position.
 
-=for hackers xs/TextDisplay.xs line 139
+=for hackers xs/TextDisplay.xs line 135
 
 =back
 
@@ -216,13 +216,13 @@ X<insert_position>
 
 Set new cursor position.
 
-=for hackers xs/TextDisplay.xs line 158
+=for hackers xs/TextDisplay.xs line 154
 
 =item C<my $currentPos = $textdisplay-E<gt>insert_position( );>X<my_currentPos_textdisplay_E_gt_insert_position_>
 
 Get current cursor position.
 
-=for hackers xs/TextDisplay.xs line 162
+=for hackers xs/TextDisplay.xs line 158
 
 =back
 
@@ -235,7 +235,7 @@ X<line_end>
 
 Returns the end of the line where C<$position> is located.
 
-=for hackers xs/TextDisplay.xs line 391
+=for hackers xs/TextDisplay.xs line 382
 
 =back
 
@@ -248,7 +248,7 @@ X<line_start>
 
 Returns the beginning of the line where C<$position> is located.
 
-=for hackers xs/TextDisplay.xs line 387
+=for hackers xs/TextDisplay.xs line 378
 
 =back
 
@@ -261,13 +261,13 @@ X<linenumber_width>
 
 Set line number area width.
 
-=for hackers xs/TextDisplay.xs line 281
+=for hackers xs/TextDisplay.xs line 277
 
 =item C<my $width = $textdisplay-E<gt>linenumber_width( );>X<my_width_textdisplay_E_gt_linenumber_width_>
 
 Returns line number area width.
 
-=for hackers xs/TextDisplay.xs line 285
+=for hackers xs/TextDisplay.xs line 281
 
 =back
 
@@ -280,7 +280,7 @@ X<move_down>
 
 Move curosr down.
 
-=for hackers xs/TextDisplay.xs line 341
+=for hackers xs/TextDisplay.xs line 332
 
 =back
 
@@ -293,7 +293,7 @@ X<move_left>
 
 Move cursor to the left.
 
-=for hackers xs/TextDisplay.xs line 333
+=for hackers xs/TextDisplay.xs line 324
 
 =back
 
@@ -306,7 +306,7 @@ X<move_right>
 
 Move cursor to the right.
 
-=for hackers xs/TextDisplay.xs line 329
+=for hackers xs/TextDisplay.xs line 320
 
 =back
 
@@ -319,7 +319,7 @@ X<move_up>
 
 Move cursor up.
 
-=for hackers xs/TextDisplay.xs line 337
+=for hackers xs/TextDisplay.xs line 328
 
 =back
 
@@ -350,7 +350,7 @@ Go to the next word.
 
 Go to the previous word.
 
-=for hackers xs/TextDisplay.xs line 255
+=for hackers xs/TextDisplay.xs line 251
 
 =back
 
@@ -363,7 +363,7 @@ X<overstrike>
 
 Overstrike text from the current cursor position.
 
-=for hackers xs/TextDisplay.xs line 143
+=for hackers xs/TextDisplay.xs line 139
 
 =back
 
@@ -380,7 +380,7 @@ position is not displayed because it is B<vertically> outof view. If the
 position is horizontally out of view, returns the C<X> coordinate where the
 position would be if it were visible.
 
-=for hackers xs/TextDisplay.xs line 496
+=for hackers xs/TextDisplay.xs line 487
 
 =back
 
@@ -393,7 +393,7 @@ X<redisplay_range>
 
 Redisplay text in a defined range.
 
-=for hackers xs/TextDisplay.xs line 359
+=for hackers xs/TextDisplay.xs line 350
 
 =back
 
@@ -406,7 +406,7 @@ X<scroll>
 
 Scroll to a new position.
 
-=for hackers xs/TextDisplay.xs line 368
+=for hackers xs/TextDisplay.xs line 359
 
 =back
 
@@ -419,7 +419,7 @@ X<show_cursor>
 
 Show cursor.
 
-=for hackers xs/TextDisplay.xs line 186
+=for hackers xs/TextDisplay.xs line 182
 
 =back
 
@@ -432,7 +432,7 @@ X<show_insert_position>
 
 Make cursor position visible in screen.
 
-=for hackers xs/TextDisplay.xs line 177
+=for hackers xs/TextDisplay.xs line 173
 
 =back
 
@@ -446,7 +446,7 @@ X<size>
 Returns the number of characters in L<C<text()>|/"text">. This may be greater
 than C<length($input-E<gt>text())> if there are C<NULL> characters in it.
 
-=for hackers xs/TextDisplay.xs line 51
+=for hackers xs/TextDisplay.xs line 47
 
 =back
 
@@ -467,7 +467,7 @@ it is then copied to the internal buffer and the editing done there. This can
 save a lot of time and memory if your program is changing the string to
 various constants a lot but the user rarely edits it.
 
-=for hackers xs/TextDisplay.xs line 84
+=for hackers xs/TextDisplay.xs line 80
 
 =back
 
@@ -481,13 +481,13 @@ X<text>
 The current string, as edited by the user. L<C<size()>|/"size"> returns how
 many bytes are in the string.
 
-=for hackers xs/TextDisplay.xs line 61
+=for hackers xs/TextDisplay.xs line 57
 
 =item C<$textdisplay-E<gt>text( $string );>X<_textdisplay_E_gt_text_string_>
 
 Set the text.
 
-=for hackers xs/TextDisplay.xs line 66
+=for hackers xs/TextDisplay.xs line 62
 
 =back
 
@@ -500,7 +500,7 @@ X<top_line>
 
 Returns the current visible topline.
 
-=for hackers xs/TextDisplay.xs line 412
+=for hackers xs/TextDisplay.xs line 403
 
 =back
 
@@ -521,7 +521,7 @@ clicking selects by line.
 
 =pod 
 
-=for hackers xs/TextDisplay.xs line 509
+=for hackers xs/TextDisplay.xs line 500
 
 =back
 
@@ -534,7 +534,7 @@ X<visible_lines>
 
 Returns the number of visible lines.
 
-=for hackers xs/TextDisplay.xs line 403
+=for hackers xs/TextDisplay.xs line 394
 
 =back
 
@@ -545,7 +545,7 @@ X<word_end>
 
 =item C<my $end = $textdisplay-E<gt>word_end( $pos );>X<my_end_textdisplay_E_gt_word_end_pos_>
 
-=for hackers xs/TextDisplay.xs line 245
+=for hackers xs/TextDisplay.xs line 241
 
 =back
 
@@ -558,7 +558,7 @@ X<word_start>
 
 Returns begining of the word where C<$pos> is located.
 
-=for hackers xs/TextDisplay.xs line 241
+=for hackers xs/TextDisplay.xs line 237
 
 =back
 
@@ -572,7 +572,7 @@ X<wrap_mode>
 Set wrapping mode. C<$wrap_margin> is width to wrap at, zero means use
 L<C<w()>|FLTK::Rectangle/"w">.
 
-=for hackers xs/TextDisplay.xs line 271
+=for hackers xs/TextDisplay.xs line 267
 
 =back
 
@@ -597,7 +597,7 @@ character closest to C<($X, $Y)>
 
 =back 
 
-=for hackers xs/TextDisplay.xs line 452
+=for hackers xs/TextDisplay.xs line 443
 
 =back
 
@@ -624,7 +624,7 @@ nearest character cell.
 
 =back 
 
-=for hackers xs/TextDisplay.xs line 473
+=for hackers xs/TextDisplay.xs line 464
 
 =back
 
@@ -650,6 +650,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: TextDisplay.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: TextDisplay.xs 1501293 2011-07-02 05:25:43Z sanko@cpan.org $
 
 =cut

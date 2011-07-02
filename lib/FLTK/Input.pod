@@ -62,7 +62,7 @@ X<at>
 Same as L<C<text()[$index]>|/"text">, but may be faster in plausible
 implementations. No bounds checking is done.
 
-=for hackers xs/Input.xs line 261
+=for hackers xs/Input.xs line 257
 
 =back
 
@@ -87,7 +87,7 @@ paste and drag & drop.
 To paste the clipboard, call L<C<paste(1)>|FLTK/"paste"> and fltk will send
 the widget a C<PASTE> event with the text, which will cause it to be inserted.
 
-=for hackers xs/Input.xs line 422
+=for hackers xs/Input.xs line 418
 
 =back
 
@@ -101,7 +101,7 @@ X<cut>
 Wrapper around L<C<replace()>|/"replace">, this deletes the region between the
 point and the mark. It does nothing if they are equal.
 
-=for hackers xs/Input.xs line 374
+=for hackers xs/Input.xs line 370
 
 =item C<my $okay = $input-E<gt>cut( $length );>X<my_okay_input_E_gt_cut_length_>
 
@@ -109,7 +109,7 @@ Wrapper around L<C<replace()>|/"replace"> this deletes up to C<length>
 characters after the point, or before the point if C<length> is negative.
 C<length> is bounds checked.
 
-=for hackers xs/Input.xs line 379
+=for hackers xs/Input.xs line 375
 
 =item C<my $okay = $input-E<gt>cut( $begin, $end );>X<my_okay_input_E_gt_cut_begin_end_>
 
@@ -117,7 +117,7 @@ Wrapper around L<C<replace()>|/"replace"> this deletes the characters between
 C<begin> and C<end>. The values are clamped to the ends of the string, and
 C<end> can be less than C<begin>.
 
-=for hackers xs/Input.xs line 385
+=for hackers xs/Input.xs line 381
 
 =back
 
@@ -215,7 +215,7 @@ For L<Input|FLTK::Input> widgets in C<WORDWRAP> mode, you can also do these:
 
 This method may be overridden for subclassing.
 
-=for hackers xs/Input.xs line 105
+=for hackers xs/Input.xs line 101
 
 =back
 
@@ -229,7 +229,7 @@ X<insert>
 Wrapper around L<C<replace()>|/"replace">. This inserts the string at the
 point and leaves the point after it.
 
-=for hackers xs/Input.xs line 402
+=for hackers xs/Input.xs line 398
 
 =item C<my $okay = $input-E<gt>insert( $text, $length );>X<my_okay_input_E_gt_insert_text_length_>
 
@@ -237,7 +237,7 @@ Wrapper around L<C<replace()>|/"replace">. This inserts C<length> characters
 from the C<text> (including C<\0> characters!) at the point and leaves the
 point after it.
 
-=for hackers xs/Input.xs line 407
+=for hackers xs/Input.xs line 403
 
 =back
 
@@ -251,7 +251,7 @@ X<line_end>
 Returns the location of the next newline or wordwrap space at or after
 C<position>.
 
-=for hackers xs/Input.xs line 468
+=for hackers xs/Input.xs line 464
 
 =back
 
@@ -264,7 +264,7 @@ X<line_start>
 
 Returns the location of the start of the line containing the C<position>.
 
-=for hackers xs/Input.xs line 464
+=for hackers xs/Input.xs line 460
 
 =back
 
@@ -277,13 +277,13 @@ X<mark>
 
 
 
-=for hackers xs/Input.xs line 326
+=for hackers xs/Input.xs line 322
 
 =item C<$input-E<gt>mark( $new_mark );>X<_input_E_gt_mark_new_mark_>
 
 Same as L<C<$inputE<gt>position($input-E<gt>position(),$index)>|/"position">.
 
-=for hackers xs/Input.xs line 330
+=for hackers xs/Input.xs line 326
 
 =back
 
@@ -299,7 +299,7 @@ assumming you drew the text by calling L<C<draw()>|FLTK::draw/"draw"> with the
 same L<C<rectangle>|FLTK::Rectangle>. Returns C<0> if the mouse is before the
 first character, and L<C<size()>|/"size"> if it is after the last one.
 
-=for hackers xs/Input.xs line 487
+=for hackers xs/Input.xs line 483
 
 =back
 
@@ -325,14 +325,14 @@ X<position>
 
 Returns the current location of the cursor.
 
-=for hackers xs/Input.xs line 289
+=for hackers xs/Input.xs line 285
 
 =item C<$input-E<gt>position( $new_position );>X<_input_E_gt_position_new_position_>
 
 Same as
 L<C<position($new_position, $new_position)>|/"position_new_position_new_mark_">.
 
-=for hackers xs/Input.xs line 293
+=for hackers xs/Input.xs line 289
 
 =item C<$input-E<gt>position( $new_position, $new_mark );>X<_input_E_gt_position_new_position_new_mark_>
 
@@ -347,7 +347,7 @@ bounds checked and limited to the size of the string.
 It is up to the caller to make sure the position and mark are at the borders
 of UTF-8 characters!
 
-=for hackers xs/Input.xs line 298
+=for hackers xs/Input.xs line 294
 
 =back
 
@@ -368,7 +368,7 @@ L<C<when()>|FLTK::Widget/"when"> flags indicate it should be done.
 C<begin> and C<end> are bounds checked so don't worry about sending values
 outside the length of the string.
 
-=for hackers xs/Input.xs line 357
+=for hackers xs/Input.xs line 353
 
 =back
 
@@ -384,7 +384,7 @@ current L<C<text()>|/"text"> is not that long. Can be used to avoid
 unnecessary memory reallocations if you know you will be replacing the
 L<C<text()>|/"text"> with a longer one later.
 
-=for hackers xs/Input.xs line 271
+=for hackers xs/Input.xs line 267
 
 =back
 
@@ -398,7 +398,7 @@ X<size>
 Returns the number of characters in L<C<text()>|/"text">. This may be greater
 than C<length($input->text())> if there are C<NULL> characters in it.
 
-=for hackers xs/Input.xs line 266
+=for hackers xs/Input.xs line 262
 
 =back
 
@@ -421,14 +421,14 @@ the internal buffer and the editing done there. This can save a lot of time
 and memory if your program is changing the string to various constants a lot
 but the user rarely edits it.
 
-=for hackers xs/Input.xs line 233
+=for hackers xs/Input.xs line 229
 
 =item C<my $ret = $input-E<gt>static_text( $string );>X<my_ret_input_E_gt_static_text_string_>
 
 Same as
 L<C<$input-E<gt>static_text($string, $string ? length($string) : 0)>|/"static_text">.
 
-=for hackers xs/Input.xs line 247
+=for hackers xs/Input.xs line 243
 
 =back
 
@@ -446,21 +446,21 @@ L<C<position()>|/"position"> to C<length> and the L<C<mark()>|/"mark"> to zero
 
 Returns true if the bytes in the new string are different than the old string.
 
-=for hackers xs/Input.xs line 194
+=for hackers xs/Input.xs line 190
 
 =item C<my $different = $input-E<gt>text( $string );>X<my_different_input_E_gt_text_string_>
 
 Same as
 L<C<$input-E<gt>text($string, $string ? length($string) : 0)>|/"text">.
 
-=for hackers xs/Input.xs line 203
+=for hackers xs/Input.xs line 199
 
 =item C<my $string = $input-E<gt>text( );>X<my_string_input_E_gt_text_>
 
 The current string, as edited by the user. L<C<size()>|/"size"> returns how
 many bytes are in the string.
 
-=for hackers xs/Input.xs line 208
+=for hackers xs/Input.xs line 204
 
 =back
 
@@ -477,7 +477,7 @@ on, this will undo that L<C<replace()>|/"replace"> and probably several others
 that was probably many calls to L<C<replace()>|/"replace">). Returns true if
 any change was made.
 
-=for hackers xs/Input.xs line 443
+=for hackers xs/Input.xs line 439
 
 =back
 
@@ -493,7 +493,7 @@ start of a line. Sets the L<position|/"position"> (and L<mark|/"mark"> if
 C<keepmark> is false) to somewhere after C<position>, such that pressing the
 arrows repeatedly will cause the point to move up and down.
 
-=for hackers xs/Input.xs line 345
+=for hackers xs/Input.xs line 341
 
 =back
 
@@ -506,7 +506,7 @@ X<word_end>
 
 Returns the location of the next word boundary at or after C<position>.
 
-=for hackers xs/Input.xs line 460
+=for hackers xs/Input.xs line 456
 
 =back
 
@@ -519,7 +519,7 @@ X<word_start>
 
 Returns the location of the first word boundary at or before C<position>.
 
-=for hackers xs/Input.xs line 456
+=for hackers xs/Input.xs line 452
 
 =back
 
@@ -531,7 +531,7 @@ X<xscroll>
 =item C<my $x = $input-E<gt>xscroll( );>X<my_x_input_E_gt_xscroll_>
 
 
-=for hackers xs/Input.xs line 500
+=for hackers xs/Input.xs line 496
 
 =back
 
@@ -543,7 +543,7 @@ X<yscroll>
 =item C<my $y = $input-E<gt>yscroll( );>X<my_y_input_E_gt_yscroll_>
 
 
-=for hackers xs/Input.xs line 503
+=for hackers xs/Input.xs line 499
 
 =back
 
@@ -708,6 +708,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Input.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Input.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

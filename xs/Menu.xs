@@ -7,18 +7,14 @@ MODULE = FLTK::Menu               PACKAGE = FLTK::Menu
 #include <fltk/Menu.h>
 #include <fltk/Item.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::Menu *
 fltk::Menu::new( int x, int y, int w, int h, char * label = 0, bool begin = false )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::Menu>(CLASS,x,y,w,h,label,begin);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::Menu>(CLASS,x,y,w,h,label,begin);
+    OUTPUT:
+        RETVAL
 
 fltk::NamedStyle *
 fltk::Menu::default_style( fltk::NamedStyle * style = NO_INIT )
@@ -76,7 +72,7 @@ fltk::Menu::item( fltk::Widget * value = NO_INIT )
         const char * _class;
     PPCODE:
         if ( items == 1 ) {
-            _class = (( WidgetSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
+            _class = (( RectangleSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
             if (RETVAL != NULL) {
                 ST(0) = sv_newmortal( );
                 sv_setref_pv(ST(0), _class ? _class : "FLTK::Widget", RETVAL); /* -- hand rolled -- */
@@ -169,7 +165,7 @@ fltk::Menu::remove( widget )
         char * widget
         C_ARGS: ( const char * ) widget
 
-fltk::Widget *
+RectangleSubclass<fltk::Widget> *
 fltk::Menu::add( label, shortcut = 0, CV * callback = NO_INIT, SV * data = NO_INIT, int flags = 0 )
     CASE: items == 2 && sv_isobject(ST(1))
         fltk::Widget * label
@@ -178,7 +174,10 @@ fltk::Menu::add( label, shortcut = 0, CV * callback = NO_INIT, SV * data = NO_IN
     CASE: items == 3
         char * label
         SV * shortcut
-        C_ARGS: ( const char * ) label, ( void * ) shortcut
+        CODE:
+            RETVAL = (RectangleSubclass<fltk::Widget> *) (THIS->add( ( const char * ) label, ( void * ) shortcut ));
+        OUTPUT:
+            RETVAL
     CASE:
         char * label
         unsigned shortcut
@@ -188,12 +187,15 @@ fltk::Menu::add( label, shortcut = 0, CV * callback = NO_INIT, SV * data = NO_IN
             HV * cb = newHV( );
             if ( items > 3 )
                 hv_store( cb , "coderef",  7, newSVsv( ST(3) ),            0 );
-            _class = (( WidgetSubclass<fltk::Item> * ) RETVAL)->bless_class( );
+            _class = (( RectangleSubclass<fltk::Item> * ) RETVAL)->bless_class( );
             _class = _class ? _class : "FLTK::Item";
             hv_store( cb , "class",    5, newSVpv( _class, strlen(_class) ), 0 );
             if ( items > 4 )
                 hv_store( cb , "args", 4, newSVsv( data ),             0 );
-        C_ARGS: ( const char * ) label, shortcut, _cb_w, ( void * ) cb, flags
+        CODE:
+            RETVAL = (RectangleSubclass<fltk::Widget> *) (THIS->add( ( const char * ) label, shortcut, _cb_w, ( void * ) cb, flags ));
+        OUTPUT:
+            RETVAL
 
 fltk::Widget *
 fltk::Menu::replace( label, shortcut = 0, CV * callback, SV * data = NO_INIT, int flags = 0 )
@@ -219,7 +221,7 @@ fltk::Menu::replace( label, shortcut = 0, CV * callback, SV * data = NO_INIT, in
         INIT:
             HV * cb = newHV( );
             hv_store( cb , "coderef",  7, newSVsv( ST(3) ),            0 );
-            _class = (( WidgetSubclass<fltk::Item> * ) RETVAL)->bless_class( );
+            _class = (( RectangleSubclass<fltk::Item> * ) RETVAL)->bless_class( );
             _class = _class ? _class : "FLTK::Item";
             hv_store( cb , "class",    5, newSVpv( _class, strlen(_class) ), 0 );
             if ( items > 4 )
@@ -247,7 +249,7 @@ fltk::Menu::insert( index, label, shortcut = 0, CV * callback, SV * data = NO_IN
         INIT:
             HV * cb = newHV( );
             hv_store( cb , "coderef",  7, newSVsv( ST(4) ),            0 );
-            _class = (( WidgetSubclass<fltk::Item> * ) RETVAL)->bless_class( );
+            _class = (( RectangleSubclass<fltk::Item> * ) RETVAL)->bless_class( );
             _class = _class ? _class : "FLTK::Item";
             hv_store( cb , "class",    5, newSVpv( _class, strlen(_class) ), 0 );
             if ( items > 5 )

@@ -26,7 +26,7 @@ X<default_style>
 
 
 
-=for hackers xs/LightButton.xs line 57
+=for hackers xs/LightButton.xs line 53
 
 =item C<$lightbutton-E<gt>default_style( $new_style );>X<_lightbutton_E_gt_default_style_new_style_>
 
@@ -34,7 +34,7 @@ X<default_style>
 
 =pod 
 
-=for hackers xs/LightButton.xs line 61
+=for hackers xs/LightButton.xs line 57
 
 =back
 
@@ -73,6 +73,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: LightButton.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: LightButton.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

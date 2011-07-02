@@ -21,7 +21,7 @@ Position of end of selection or, if rectangular, selections from keyboard.
 
 =head2 C<< my $rectstart = $selection->rectstart( ) >>
 
-=for hackers xs/TextSelection.xs line 107
+=for hackers xs/TextSelection.xs line 103
 
 =back
 
@@ -34,7 +34,7 @@ X<includes>
 
 =head2 C<< my $pos = $selection->position( $start, $end ) >>
 
-=for hackers xs/TextSelection.xs line 188
+=for hackers xs/TextSelection.xs line 184
 
 =back
 
@@ -68,13 +68,13 @@ X<position>
 
 =head2 C<< my $pos = $selection->position( $start, $end, $isrect, $rectstart, $rectend ) >>
 
-=for hackers xs/TextSelection.xs line 197
+=for hackers xs/TextSelection.xs line 193
 
 =item C<my $pos = $textselection-E<gt>position( $start, $end, $isrect, $rectstart, $rectend );>X<my_pos_textselection_E_gt_position_start_end_isrect_rectstart_rectend_>
 
 =pod 
 
-=for hackers xs/TextSelection.xs line 201
+=for hackers xs/TextSelection.xs line 197
 
 =back
 
@@ -89,7 +89,7 @@ Returns a true value if the selection is rectangular.
 
 =head2 C<< my $start = $selection->start( ) >>
 
-=for hackers xs/TextSelection.xs line 90
+=for hackers xs/TextSelection.xs line 86
 
 =back
 
@@ -104,7 +104,7 @@ Ident of right edge of rectangular selection.
 
 =head2 C<< my $bool = $selection->selected( ) >>
 
-=for hackers xs/TextSelection.xs line 119
+=for hackers xs/TextSelection.xs line 115
 
 =back
 
@@ -119,7 +119,7 @@ Indent of left edge of rectangular selection.
 
 =head2 C<< my $rectend = $selection->rectend( ) >>
 
-=for hackers xs/TextSelection.xs line 113
+=for hackers xs/TextSelection.xs line 109
 
 =back
 
@@ -134,7 +134,7 @@ Returns a true value if the selection is active.
 
 =head2 C<< $selection->selected( $bool ) >>
 
-=for hackers xs/TextSelection.xs line 139
+=for hackers xs/TextSelection.xs line 135
 
 =item C<$textselection-E<gt>selected( $bool );>X<_textselection_E_gt_selected_bool_>
 
@@ -142,7 +142,7 @@ Sets the selection as active or inactive.
 
 =head2 C<< my $bool = $selection->zerowidth( ) >>
 
-=for hackers xs/TextSelection.xs line 145
+=for hackers xs/TextSelection.xs line 141
 
 =back
 
@@ -156,7 +156,7 @@ X<set>
 
 =head2 C<< $selection->set_rectangular( $start, $end, $rectstart, $rectend ) >>
 
-=for hackers xs/TextSelection.xs line 62
+=for hackers xs/TextSelection.xs line 58
 
 =back
 
@@ -170,7 +170,7 @@ X<set_rectangular>
 
 =head2 C<< $selection->update( position, ndeleted, ninserted ) >>
 
-=for hackers xs/TextSelection.xs line 67
+=for hackers xs/TextSelection.xs line 63
 
 =back
 
@@ -185,7 +185,7 @@ Position of start selection or, if rectangular, selections from keyboard.
 
 =head2 C<< my $end = $selection->end( ) >>
 
-=for hackers xs/TextSelection.xs line 101
+=for hackers xs/TextSelection.xs line 97
 
 =back
 
@@ -199,7 +199,7 @@ X<update>
 
 =head2 C<< my $is_rect = $selection->rectangular( ) >>
 
-=for hackers xs/TextSelection.xs line 80
+=for hackers xs/TextSelection.xs line 76
 
 =back
 
@@ -215,13 +215,13 @@ creating rectangular selections from the keyboard.
 
 =head2 C<< $selection->zerowidth( $bool ) >>
 
-=for hackers xs/TextSelection.xs line 164
+=for hackers xs/TextSelection.xs line 160
 
 =item C<$textselection-E<gt>zerowidth( $bool );>X<_textselection_E_gt_zerowidth_bool_>
 
 =head2 C<< my $bool = $selection->includes( $pos, $lineStartPos, $dispIndex ) >>
 
-=for hackers xs/TextSelection.xs line 171
+=for hackers xs/TextSelection.xs line 167
 
 =back
 
@@ -253,6 +253,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: TextSelection.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: TextSelection.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -19,7 +19,7 @@ X<add>
 
 
 
-=for hackers xs/FileBrowser.xs line 160
+=for hackers xs/FileBrowser.xs line 156
 
 =back
 
@@ -31,7 +31,7 @@ X<directory>
 =item C<my $dir = $filebrowser-E<gt>directory( );>X<my_dir_filebrowser_E_gt_directory_>
 
 
-=for hackers xs/FileBrowser.xs line 135
+=for hackers xs/FileBrowser.xs line 131
 
 =back
 
@@ -44,13 +44,13 @@ X<filetype>
 
 
 
-=for hackers xs/FileBrowser.xs line 117
+=for hackers xs/FileBrowser.xs line 113
 
 =item C<$filebrowser-E<gt>filetype( $type );>X<_filebrowser_E_gt_filetype_type_>
 
 
 
-=for hackers xs/FileBrowser.xs line 121
+=for hackers xs/FileBrowser.xs line 117
 
 =back
 
@@ -63,13 +63,13 @@ X<filter>
 
 
 
-=for hackers xs/FileBrowser.xs line 81
+=for hackers xs/FileBrowser.xs line 77
 
 =item C<$filebrowser-E<gt>filter( $pattern );>X<_filebrowser_E_gt_filter_pattern_>
 
 
 
-=for hackers xs/FileBrowser.xs line 85
+=for hackers xs/FileBrowser.xs line 81
 
 =back
 
@@ -82,13 +82,13 @@ X<icon_size>
 
 
 
-=for hackers xs/FileBrowser.xs line 63
+=for hackers xs/FileBrowser.xs line 59
 
 =item C<$filebrowser-E<gt>icon_size( $size );>X<_filebrowser_E_gt_icon_size_size_>
 
 
 
-=for hackers xs/FileBrowser.xs line 67
+=for hackers xs/FileBrowser.xs line 63
 
 =back
 
@@ -101,13 +101,13 @@ X<insert>
 
 
 
-=for hackers xs/FileBrowser.xs line 143
+=for hackers xs/FileBrowser.xs line 139
 
 =item C<$filebrowser-E<gt>insert( $n, $label, $data );>X<_filebrowser_E_gt_insert_n_label_data_>
 
 
 
-=for hackers xs/FileBrowser.xs line 147
+=for hackers xs/FileBrowser.xs line 143
 
 =back
 
@@ -133,7 +133,7 @@ X<show_hidden>
 
 Set this flag if you want to see the hidden files in the browser.
 
-=for hackers xs/FileBrowser.xs line 169
+=for hackers xs/FileBrowser.xs line 165
 
 =item C<my $show = $filebrowser-E<gt>show_hidden( );>X<my_show_filebrowser_E_gt_show_hidden_>
 
@@ -141,7 +141,7 @@ Set this flag if you want to see the hidden files in the browser.
 
 =pod 
 
-=for hackers xs/FileBrowser.xs line 173
+=for hackers xs/FileBrowser.xs line 169
 
 =back
 
@@ -154,13 +154,13 @@ X<textsize>
 
 
 
-=for hackers xs/FileBrowser.xs line 99
+=for hackers xs/FileBrowser.xs line 95
 
 =item C<$filebrowser-E<gt>textsize( $size );>X<_filebrowser_E_gt_textsize_size_>
 
 
 
-=for hackers xs/FileBrowser.xs line 103
+=for hackers xs/FileBrowser.xs line 99
 
 =back
 
@@ -186,6 +186,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: FileBrowser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FileBrowser.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

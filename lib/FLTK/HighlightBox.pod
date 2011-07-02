@@ -22,7 +22,7 @@ X<_draw>
 
 
 
-=for hackers xs/HighlightBox.xs line 51
+=for hackers xs/HighlightBox.xs line 47
 
 =back
 
@@ -35,7 +35,7 @@ X<fills_rectangle>
 
 
 
-=for hackers xs/HighlightBox.xs line 61
+=for hackers xs/HighlightBox.xs line 57
 
 =back
 
@@ -49,7 +49,7 @@ X<is_frame>
 
 =pod 
 
-=for hackers xs/HighlightBox.xs line 65
+=for hackers xs/HighlightBox.xs line 61
 
 =back
 
@@ -88,6 +88,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: HighlightBox.xs dac33df 2011-01-28 16:54:36Z sanko@cpan.org $
+=for git $Id: HighlightBox.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

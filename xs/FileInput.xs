@@ -15,18 +15,14 @@ MODULE = FLTK::FileInput               PACKAGE = FLTK::FileInput
 #define NORMAL PERL_NORMAL
 #endif // ifdef PERL_NORMAL
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::FileInput *
 fltk::FileInput::new( int x, int y, int w, int h, const char * label = 0 )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::FileInput>(CLASS,x,y,w,h,label);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::FileInput>(CLASS,x,y,w,h,label);
+    OUTPUT:
+        RETVAL
 
 void
 fltk::FileInput::draw_boxes( bool pressed, fltk::Rectangle * rect )

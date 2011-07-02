@@ -7,7 +7,7 @@
 
 =for abstract Module::Build based install
 
-=for git $Id: Build.PL 3d6d95a 2011-02-02 21:48:26Z sanko@cpan.org $
+=for git $Id: Build.PL 4181fd6 2011-04-15 17:55:26Z sanko@cpan.org $
 
 =cut
 
@@ -20,7 +20,8 @@ my $automated_testing = $ENV{AUTOMATED_TESTING} || $ENV{PERL_MM_USE_DEFAULT};
 my $is_developer = ($ENV{RELEASE_TESTING} || -d '.git');
 my @tests;
 find \&find_cb, qw[t/10000_basic t/20000_functions t/40000_widgets
-    t/50000_objects t/60000_types], ($is_developer ? 't/90000_author' : ());
+    t/50000_objects t/60000_types t/70000_bugfixes],
+    ($is_developer ? qw[t/80000_experimental t/90000_author] : ());
 @tests = sort @tests;
 my $class = 'inc::MBX::FLTK' . ($is_developer ? '::Developer' : '');
 
@@ -37,7 +38,7 @@ my $mb = $class->new(
     requires => {DynaLoader => 0, Exporter => 0, XSLoader => 0},
     configure_requires => {'Module::Build' => 0.36},
     build_requires     => {
-                       'Alien::FLTK2' => 0.08323,
+                       'Alien::FLTK2' => 0.08550,
                        base           => 0,
                        Config         => 0,
                        Cwd            => 0,
@@ -77,16 +78,21 @@ my $mb = $class->new(
             qw[FLTK Fast Light Toolkit widget FL GUI UI window 2.0.x experimental]
         ],
         resources => {
-             bugtracker => {web => 'http://github.com/sanko/perl-fltk/issues',
-                            mailto => 'sanko@cpan.org'
-             },
-             repository => {url  => 'git://github.com/sanko/perl-fltk.git',
-                            web  => 'http://github.com/sanko/perl-fltk',
-                            type => 'git'
-             },
-             ChangeLog => 'http://github.com/sanko/perl-fltk/commits/master/',
-             homepage  => 'http://sanko.github.com/perl-fltk/',
-             license => ['http://www.perlfoundation.org/artistic_license_2_0']
+            bugtracker => 'http://github.com/sanko/perl-fltk/issues',
+
+            #{            web => 'http://github.com/sanko/perl-fltk/issues',
+            #             mailto => 'sanko@cpan.org'
+            #}
+            ,
+            repository => 'git://github.com/sanko/perl-fltk.git'
+
+                #{url  => 'git://github.com/sanko/perl-fltk.git',
+                #               web  => 'http://github.com/sanko/perl-fltk',
+                #               type => 'git'
+                #}
+            ,
+            ChangeLog => 'http://github.com/sanko/perl-fltk/commits/master/',
+            homepage  => 'http://sanko.github.com/perl-fltk/'
         }
     },
     needs_compiler => 1,    # adds ExtUtils::CBuilder to build_requires

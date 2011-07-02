@@ -88,7 +88,7 @@ Draw tick marks. These lines cross the passed rectangle perpendicular to the
 slider direction. In the direction parallel to the slider direction the box
 should have the same size as the area the slider moves in.
 
-=for hackers xs/Slider.xs line 238
+=for hackers xs/Slider.xs line 234
 
 =back
 
@@ -123,7 +123,7 @@ L<C<step( )>|FLTK::Slider/"step">, using powers of 10 larger and multiples of
 2 or 5 to get the steps close to 1 pixel so the user is presented with nice
 numerical values.
 
-=for hackers xs/Slider.xs line 220
+=for hackers xs/Slider.xs line 216
 
 =back
 
@@ -141,7 +141,7 @@ to C<$value> and can move in an area of C<$w> pixels. The
 L<C<range( )>|FLTK::Slider/"range"> and L<C<log( )>|FLTK::Slider/"log">
 settings are taken into account.
 
-=for hackers xs/Slider.xs line 206
+=for hackers xs/Slider.xs line 202
 
 =back
 
@@ -160,7 +160,7 @@ slider into a "fill" slider that draws a solid bar from the left/bottom to the
 current value. This is useful for indicating progress or as a output
 indicator.
 
-=for hackers xs/Slider.xs line 179
+=for hackers xs/Slider.xs line 175
 
 =back
 
@@ -174,7 +174,7 @@ X<tick_size>
 The slider is shrunk this many pixels from the widget's width so that the tick
 marks are visible next to it. The default value is 4.
 
-=for hackers xs/Slider.xs line 189
+=for hackers xs/Slider.xs line 185
 
 =back
 
@@ -256,6 +256,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Slider.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Slider.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -50,13 +50,13 @@ X<child_box>
 
 Set a default box to all texts inside the status bar.
 
-=for hackers xs/StatusBarGroup.xs line 90
+=for hackers xs/StatusBarGroup.xs line 91
 
 =item C<$statusbargroup-E<gt>child_box( $b, $pos );>X<_statusbargroup_E_gt_child_box_b_pos_>
 
 Set a default box to text a particular posiiton inside the statusbar.
 
-=for hackers xs/StatusBarGroup.xs line 94
+=for hackers xs/StatusBarGroup.xs line 95
 
 =back
 
@@ -69,13 +69,13 @@ X<new>
 
 Constructor. C<x>, C<y>, and C<w> are ignored.
 
-=for hackers xs/StatusBarGroup.xs line 62
+=for hackers xs/StatusBarGroup.xs line 66
 
 =item C<my $group = $statusbargroup-E<gt>new( $height );>X<my_group_statusbargroup_E_gt_new_height_>
 
 Constructor.
 
-=for hackers xs/StatusBarGroup.xs line 66
+=for hackers xs/StatusBarGroup.xs line 70
 
 =back
 
@@ -90,7 +90,7 @@ Set a simple string in the statusbar at a given position alignment spec.
 
 =pod 
 
-=for hackers xs/StatusBarGroup.xs line 107
+=for hackers xs/StatusBarGroup.xs line 108
 
 =back
 
@@ -116,6 +116,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: StatusBarGroup.xs 8f42329 2011-01-04 03:31:25Z sanko@cpan.org $
+=for git $Id: StatusBarGroup.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

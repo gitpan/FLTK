@@ -22,7 +22,7 @@ X<align>
 
 
 
-=for hackers xs/AlignGroup.xs line 182
+=for hackers xs/AlignGroup.xs line 178
 
 =item C<$aligngroup-E<gt>align( $flags );>X<_aligngroup_E_gt_align_flags_>
 
@@ -30,7 +30,7 @@ X<align>
 
 =pod 
 
-=for hackers xs/AlignGroup.xs line 186
+=for hackers xs/AlignGroup.xs line 182
 
 =back
 
@@ -43,7 +43,7 @@ X<dh>
 
 
 
-=for hackers xs/AlignGroup.xs line 146
+=for hackers xs/AlignGroup.xs line 142
 
 =item C<$aligngroup-E<gt>dh( $value );>X<_aligngroup_E_gt_dh_value_>
 
@@ -53,7 +53,7 @@ X<dh>
 
 X<align>
 
-=for hackers xs/AlignGroup.xs line 150
+=for hackers xs/AlignGroup.xs line 146
 
 =back
 
@@ -66,7 +66,7 @@ X<dw>
 
 
 
-=for hackers xs/AlignGroup.xs line 136
+=for hackers xs/AlignGroup.xs line 132
 
 =item C<$aligngroup-E<gt>dw( $value );>X<_aligngroup_E_gt_dw_value_>
 
@@ -74,7 +74,7 @@ X<dw>
 
 =pod X<dh>
 
-=for hackers xs/AlignGroup.xs line 140
+=for hackers xs/AlignGroup.xs line 136
 
 =back
 
@@ -89,7 +89,7 @@ X<layout>
 
 =head2 C<$v = $group_1-E<gt>vertical( )>
 
-=for hackers xs/AlignGroup.xs line 91
+=for hackers xs/AlignGroup.xs line 87
 
 =back
 
@@ -104,14 +104,14 @@ X<n_to_break>
 
 =head2 C<$group_1-E<gt>n_to_break( $value )>
 
-=for hackers xs/AlignGroup.xs line 125
+=for hackers xs/AlignGroup.xs line 121
 
 =item C<$aligngroup-E<gt>n_to_break( $value );>X<_aligngroup_E_gt_n_to_break_value_>
 
 
 =pod X<dw>
 
-=for hackers xs/AlignGroup.xs line 131
+=for hackers xs/AlignGroup.xs line 127
 
 =back
 
@@ -169,7 +169,7 @@ X<vertical>
 
 =head2 C<$group_1-E<gt>vertical( $value )>
 
-=for hackers xs/AlignGroup.xs line 102
+=for hackers xs/AlignGroup.xs line 98
 
 =item C<$aligngroup-E<gt>vertical( $vert );>X<_aligngroup_E_gt_vertical_vert_>
 
@@ -177,7 +177,7 @@ X<vertical>
 
 =head2 C<my $n = $group_1-E<gt>n_to_break( )>
 
-=for hackers xs/AlignGroup.xs line 106
+=for hackers xs/AlignGroup.xs line 102
 
 =back
 
@@ -210,6 +210,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: AlignGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: AlignGroup.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

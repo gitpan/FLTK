@@ -20,7 +20,7 @@ X<_draw>
 
 
 
-=for hackers xs/FlatBox.xs line 52
+=for hackers xs/FlatBox.xs line 48
 
 =back
 
@@ -33,7 +33,7 @@ X<fills_rectangle>
 
 
 
-=for hackers xs/FlatBox.xs line 62
+=for hackers xs/FlatBox.xs line 58
 
 =back
 
@@ -48,7 +48,7 @@ X<is_frame>
 
 =pod 
 
-=for hackers xs/FlatBox.xs line 66
+=for hackers xs/FlatBox.xs line 62
 
 =back
 
@@ -88,6 +88,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: FlatBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FlatBox.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

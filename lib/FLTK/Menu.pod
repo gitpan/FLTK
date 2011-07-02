@@ -88,7 +88,7 @@ Import these with the L<C<:flags>|FLTK::Flags> label.
 Returns a pointer to the new L<Item|FLTK::Item>. You can further modify it to
 get results that can't be gotten from these function arguments.
 
-=for hackers xs/Menu.xs line 518
+=for hackers xs/Menu.xs line 514
 
 =item C<my $item = $menu-E<gt>add( $label, $data );>X<my_item_menu_E_gt_add_label_data_>
 
@@ -97,13 +97,13 @@ Create a new L<Item|FLTK::Item> and add it to the top-level of the hierarchy.
 Unlike the L<C<add()>|FLTK::Menu/"add"> with more arguments, this one does
 *not* split the label at C</> characters. The label is used unchanged.
 
-=for hackers xs/Menu.xs line 576
+=for hackers xs/Menu.xs line 572
 
 =item C<$menu-E<gt>add( $widget );>X<_menu_E_gt_add_widget_>
 
 Add a widget to the menu.
 
-=for hackers xs/Menu.xs line 583
+=for hackers xs/Menu.xs line 579
 
 =back
 
@@ -117,7 +117,7 @@ X<add_group>
 Add a parent widget to a (possibly) lower level of the hierarchy, such as
 returned by L<C<add_group()>|FLTK::Menu/"add_group">.
 
-=for hackers xs/Menu.xs line 727
+=for hackers xs/Menu.xs line 729
 
 =back
 
@@ -132,7 +132,7 @@ Add a non-parent widget to a (possibly) lower level of the
 hierarchy, such as returned by add_group(). If parent is null
 or this then this is the same as add(label,data).
 
-=for hackers xs/Menu.xs line 738
+=for hackers xs/Menu.xs line 740
 
 =back
 
@@ -149,7 +149,7 @@ item names from an optional shortcut string.
 
 =pod 
 
-=for hackers xs/Menu.xs line 750
+=for hackers xs/Menu.xs line 752
 
 =back
 
@@ -169,7 +169,7 @@ the long and short forms of L<C<add()>|FLTK::Menu/"add">.
 If the item is found, a pointer to it is returned, otherwise undef is
 returned.
 
-=for hackers xs/Menu.xs line 476
+=for hackers xs/Menu.xs line 472
 
 =back
 
@@ -185,7 +185,7 @@ If an fltk::List is used, the returned widget may be a temporary data
 structure and may be overwritten by another call to child() in this
 <i>or any other Menu</i>!
 
-=for hackers xs/Menu.xs line 149
+=for hackers xs/Menu.xs line 145
 
 =item C<my $kid = $menu-E<gt>child( $index );>X<my_kid_menu_E_gt_child_index_>
 
@@ -197,7 +197,7 @@ This is so that an L<FLTK::List|FLTK::List> can be used. However if no
 L<FLTK::List|FLTK::List> is specified the action is identical to
 L<C<FLTK::Group::child( $index )>|FLTK::Group/"child_index_">.
 
-=for hackers xs/Menu.xs line 156
+=for hackers xs/Menu.xs line 152
 
 =back
 
@@ -214,14 +214,14 @@ If an L<FLTK::List|FLTK::List> is used, the returned widget may be a temporary
 data structure and may be overwritten by another call to
 L<C<child( )>|FLTK::List/"child"> in this I<or any other L<Menu|FLTK::Menu>!>
 
-=for hackers xs/Menu.xs line 110
+=for hackers xs/Menu.xs line 106
 
 =item C<my $total = $menu-E<gt>children( $index );>X<my_total_menu_E_gt_children_index_>
 
 Returns the number of children of some child. Same as
 L<C<children([$i], 1)>|FLTK::Menu/"children_indexes_level_">.
 
-=for hackers xs/Menu.xs line 118
+=for hackers xs/Menu.xs line 114
 
 =item C<my $total = $menu-E<gt>children( );>X<my_total_menu_E_gt_children_>
 
@@ -232,7 +232,7 @@ This is so that an L<FLTK::List|FLTK::List> can be used. However if no
 L<FLTK::List|FLTK::List> is specified the action is identical to
 L<C<FLTK::Group::children( )>|FLTK::Group/"children">.
 
-=for hackers xs/Menu.xs line 123
+=for hackers xs/Menu.xs line 119
 
 =back
 
@@ -248,7 +248,7 @@ L<C<item()->do_callback()>|FLTK::Widget/"do_callback"> but if
 L<C<user_data()>|FLTK::Widget/"user_data"> is not null it is used instead of
 the item's L<C<user_data()>|FLTK::Widget/"user_data">.
 
-=for hackers xs/Menu.xs line 421
+=for hackers xs/Menu.xs line 417
 
 =back
 
@@ -261,13 +261,13 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/Menu.xs line 66
+=for hackers xs/Menu.xs line 62
 
 =item C<$menu-E<gt>default_style( $style );>X<_menu_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/Menu.xs line 70
+=for hackers xs/Menu.xs line 66
 
 =back
 
@@ -290,7 +290,7 @@ If C<$widget->damage()==DAMAGE_CHILD> then it is assummed that only the items
 indicated by C<$selected> and C<$drawn_selected> need to be redrawn. This is
 used for minimal update to move the selection from one item to the next.
 
-=for hackers xs/Menu.xs line 307
+=for hackers xs/Menu.xs line 303
 
 =back
 
@@ -316,7 +316,7 @@ item, but calling L<C<when(WHEN_NEVER)>|FLTK::Widget/"when"> with menu
 instance will disable callbacks for all menu items (but not for the menu
 itself).
 
-=for hackers xs/Menu.xs line 434
+=for hackers xs/Menu.xs line 430
 
 =back
 
@@ -331,7 +331,7 @@ Return the index of the item that is under the location C<$mx, $my> in the
 given widget, if the L<C<draw()>|FLTK::Widget/"draw"> method had been used to
 draw the items into the widget.
 
-=for hackers xs/Menu.xs line 331
+=for hackers xs/Menu.xs line 327
 
 =back
 
@@ -353,7 +353,7 @@ L<C<focus_index()>|FLTK::Group/"focus_index"> is illegal.
 If an L<FLTK::List|FLTK::List> is used this will probably only go to the first
 child and not descend any further.
 
-=for hackers xs/Menu.xs line 238
+=for hackers xs/Menu.xs line 234
 
 =back
 
@@ -368,7 +368,7 @@ Return the bounding box of the given item inside the widget, if the
 L<C<draw()>|FLTK::Widget/"draw"> method had been used to draw the items into
 the widget.
 
-=for hackers xs/Menu.xs line 347
+=for hackers xs/Menu.xs line 343
 
 =back
 
@@ -392,7 +392,7 @@ L<Menu|FLTK::Menu>!
 
 This should probably also put the items on the the Mac menubar.
 
-=for hackers xs/Menu.xs line 456
+=for hackers xs/Menu.xs line 452
 
 =back
 
@@ -422,7 +422,7 @@ select these items with the gui. This is done so that more than one shortcut
 for an action may be given by putting multiple copies of the item in, where
 only the first is visible.
 
-=for hackers xs/Menu.xs line 395
+=for hackers xs/Menu.xs line 391
 
 =back
 
@@ -439,7 +439,7 @@ Same rules as L<C<add()>|FLTK::Menu/"add"> except the item is inserted at
 C<$index> of the final menu. Use 0 to put it at the start. Any number larger
 or equal to the current item count adds the new item to the end.
 
-=for hackers xs/Menu.xs line 678
+=for hackers xs/Menu.xs line 680
 
 =item C<my $item = $menu-E<gt>insert( $index, $label, $data );>X<my_item_menu_E_gt_insert_index_label_data_>
 
@@ -448,13 +448,13 @@ Create a new L<Item|FLTK::Item> and add it to the top-level of the hierarchy.
 Unlike the L<C<insert()>|FLTK::Menu/"insert"> with more arguments, this one
 does B<not> split the label at C</> characters. The label is used unchanged.
 
-=for hackers xs/Menu.xs line 686
+=for hackers xs/Menu.xs line 688
 
 =item C<$menu-E<gt>insert( $widget, $index );>X<_menu_E_gt_insert_widget_index_>
 
 Insert a widget into the menu.
 
-=for hackers xs/Menu.xs line 693
+=for hackers xs/Menu.xs line 695
 
 =back
 
@@ -475,7 +475,7 @@ Since this may be the result of calling L<C<child()>|FLTK::Menu/"child"> the
 returned structure may be short-lived if an L<FLTK::List|FLTK::List> is used.
 
 
-=for hackers xs/Menu.xs line 181
+=for hackers xs/Menu.xs line 177
 
 =item C<my $item = $menu-E<gt>item( $value );>X<my_item_menu_E_gt_item_value_>
 
@@ -483,7 +483,7 @@ You can set L<C<item()>|FLTK::Menu/"item_"> with the second call, useful for
 outwitting the callback. This does not produce any visible change for the
 user.
 
-=for hackers xs/Menu.xs line 193
+=for hackers xs/Menu.xs line 189
 
 =back
 
@@ -514,7 +514,7 @@ L<C<textsize()>|FLTK::Menu/"textsize">, and perhaps other style attributes of
 the widget are used when figuring out the total size and the size of each
 item.
 
-=for hackers xs/Menu.xs line 275
+=for hackers xs/Menu.xs line 271
 
 =back
 
@@ -527,7 +527,7 @@ X<list>
 
 Returns the L<List|FLTK::List> that generates widgets for the menu.
 
-=for hackers xs/Menu.xs line 87
+=for hackers xs/Menu.xs line 83
 
 =item C<$menu-E<gt>list( $list );>X<_menu_E_gt_list_list_>
 
@@ -535,7 +535,7 @@ Set the L<List|FLTK::List> that generates widgets for the menu. By default
 this is a dummy L<List|FLTK::List> that returns the child widgets of the
 L<Menu|FLTK::Menu>.
 
-=for hackers xs/Menu.xs line 91
+=for hackers xs/Menu.xs line 87
 
 =back
 
@@ -583,7 +583,7 @@ to other children, overwriting the original widget.
 
 C<$menubar> is for internal use by menubars and should be left false.
 
-=for hackers xs/Menu.xs line 363
+=for hackers xs/Menu.xs line 359
 
 =back
 
@@ -597,19 +597,19 @@ X<remove>
 Does L<C<$menu->find( $label )>|FLTK::Menu/"find"> and then deletes that
 widget.
 
-=for hackers xs/Menu.xs line 493
+=for hackers xs/Menu.xs line 489
 
 =item C<$menu-E<gt>remove( $index );>X<_menu_E_gt_remove_index_>
 
 Deletes the C<$index>th widget.
 
-=for hackers xs/Menu.xs line 498
+=for hackers xs/Menu.xs line 494
 
 =item C<$menu-E<gt>remove( $widget );>X<_menu_E_gt_remove_widget_>
 
 Deletes C<$widget>.
 
-=for hackers xs/Menu.xs line 502
+=for hackers xs/Menu.xs line 498
 
 =back
 
@@ -632,7 +632,7 @@ relabelled, thus you can use this to change the appearance of existing menu
 items. However if the new label does not have any such commands, the label
 remains as before, with any older C<@>-commands.
 
-=for hackers xs/Menu.xs line 615
+=for hackers xs/Menu.xs line 617
 
 =item C<my $widget = $menu-E<gt>replace( $label, $shortcut );>X<my_widget_menu_E_gt_replace_label_shortcut_>
 
@@ -642,19 +642,19 @@ The top level is searched for an item that matches the given label. If found
 it's data is changed to the passed data, if not found a new Item is created
 and added at the end.
 
-=for hackers xs/Menu.xs line 629
+=for hackers xs/Menu.xs line 631
 
 =item C<$menu-E<gt>replace( $index, $widget );>X<_menu_E_gt_replace_index_widget_>
 
 Replace the C<$index>th item with C<$widget>.
 
-=for hackers xs/Menu.xs line 637
+=for hackers xs/Menu.xs line 639
 
 =item C<$menu-E<gt>replace( $old, $new );>X<_menu_E_gt_replace_old_new_>
 
 Replace the C<$old> widget with the C<$new> widget.
 
-=for hackers xs/Menu.xs line 641
+=for hackers xs/Menu.xs line 643
 
 =back
 
@@ -672,7 +672,7 @@ L<C<get_item()>|FLTK::Menu/"get_item">. A
 L<C<redraw(DAMAGE_VALUE)>|FLTK::Widget/"redraw"> is done so pulldown menus
 redraw their display.
 
-=for hackers xs/Menu.xs line 217
+=for hackers xs/Menu.xs line 213
 
 =back
 
@@ -685,7 +685,7 @@ X<value>
 
 Same as L<C<FLTK::Group::focus_index>|FLTK::Group/"focus_index">.
 
-=for hackers xs/Menu.xs line 256
+=for hackers xs/Menu.xs line 252
 
 =item C<my $changed = $menu-E<gt>value( $index );>X<my_changed_menu_E_gt_value_index_>
 
@@ -693,7 +693,7 @@ Convienence function to do L<C<set_item()>|FLTK::Menu/"set_item"> when there
 is only one level of hierarchy. In this case you can consider the menu items
 to be indexes starting at zero.
 
-=for hackers xs/Menu.xs line 260
+=for hackers xs/Menu.xs line 256
 
 =back
 
@@ -719,6 +719,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Menu.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Menu.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

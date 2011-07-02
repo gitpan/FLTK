@@ -31,7 +31,7 @@ Returns the L<ItemGroup>|FLTK::ItemGroup> created by this.
 
 =pod 
 
-=for hackers xs/MenuSection.xs line 78
+=for hackers xs/MenuSection.xs line 79
 
 =back
 
@@ -45,13 +45,13 @@ X<new>
 Builds a typical submenu group section, then calls
 L<C<begin()>|FLTK::Group/"begin">.
 
-=for hackers xs/MenuSection.xs line 41
+=for hackers xs/MenuSection.xs line 43
 
 =item C<my $group = $menusection-E<gt>new( $label, $symbol );>X<my_group_menusection_E_gt_new_label_symbol_>
 
 This constructor also sets L<C<image()>|FLTK::Widget/"image">.
 
-=for hackers xs/MenuSection.xs line 46
+=for hackers xs/MenuSection.xs line 48
 
 =back
 
@@ -77,6 +77,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: MenuSection.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+=for git $Id: MenuSection.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

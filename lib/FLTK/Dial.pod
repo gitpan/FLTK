@@ -41,13 +41,13 @@ X<angle1>
 
 See L<C<angles()>|/"angles">.
 
-=for hackers xs/Dial.xs line 77
+=for hackers xs/Dial.xs line 73
 
 =item C<my $a1 = $dial-E<gt>angle1( $a );>X<my_a1_dial_E_gt_angle1_a_>
 
 See L<C<angles()>|/"angles">.
 
-=for hackers xs/Dial.xs line 81
+=for hackers xs/Dial.xs line 77
 
 =back
 
@@ -60,13 +60,13 @@ X<angle2>
 
 See L<C<angles()>|/"angles">.
 
-=for hackers xs/Dial.xs line 95
+=for hackers xs/Dial.xs line 91
 
 =item C<my $a2 = $dial-E<gt>angle2( $b );>X<my_a2_dial_E_gt_angle2_b_>
 
 See L<C<angles()>|/"angles">.
 
-=for hackers xs/Dial.xs line 99
+=for hackers xs/Dial.xs line 95
 
 =back
 
@@ -84,7 +84,7 @@ the dial moves counter-clockwise.
 
 =pod 
 
-=for hackers xs/Dial.xs line 113
+=for hackers xs/Dial.xs line 109
 
 =back
 
@@ -123,6 +123,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Dial.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Dial.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -6,36 +6,31 @@ MODULE = FLTK::Group               PACKAGE = FLTK::Group
 
 #include <fltk/Group.h>
 
-#include "include/WidgetSubclass.h"
+#include <fltk/Widget.h>
 
-void *
+#include "include/RectangleSubclass.h"
+
+fltk::Group *
 fltk::Group::new( int x, int y, int w, int h, char * label = 0, bool begin = false )
-    PPCODE:
-        RETVAL = (void *) new WidgetSubclass<fltk::Group>(CLASS,x,y,w,h,label,begin);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::Group>(CLASS,x,y,w,h,label,begin);
+    OUTPUT:
+        RETVAL
 
 int
 fltk::Group::children( )
 
-void *
+fltk::Widget *
 fltk::Group::child( int index )
     PREINIT:
-        const char * _class;
-    PPCODE:
+        const char * CLASS;
+    CODE:
         if ( index < THIS->children( ) ) {
-            RETVAL = (void *) THIS->child( index );
-            _class = (( WidgetSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
-            if (RETVAL != NULL) {
-                ST(0) = sv_newmortal();
-                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), RETVAL); /* -- hand rolled -- */
-                XSRETURN(1);
-            }
+            RETVAL = THIS->child( index );
+            CLASS = (( RectangleSubclass<fltk::Widget> * ) RETVAL)->bless_class( );
         }
-
+    OUTPUT:
+        RETVAL
 
 void
 fltk::Group::begin( )
@@ -54,18 +49,11 @@ fltk::Group::current( fltk::Group * group = NO_INIT )
 int
 fltk::Group::find ( fltk::Widget * widget )
 
-void *
-fltk::Group::add( fltk::Widget * widget )
-    PREINIT:
-        const char * _class;
+void
+fltk::Group::add ( RectangleSubclass<fltk::Widget> * widget )
     PPCODE:
         THIS->add( widget );
-        _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
-        if (widget != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+        EXTEND(SP, 1); PUSHs(ST(1)); // Do this so we don't have to rebless
 
 void
 fltk::Group::insert( fltk::Widget * widget, before )
@@ -73,21 +61,15 @@ fltk::Group::insert( fltk::Widget * widget, before )
         int before
         C_ARGS: * widget, before
     POSTCALL:
-        const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
         if (widget != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
-            XSRETURN(1);
+            EXTEND(SP, 1); PUSHs(ST(1)); // Do this so we don't have to rebless
         }
     CASE:
         fltk::Widget * before
         C_ARGS: * widget, before
     POSTCALL:
-        const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget)->bless_class( );
         if (widget != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget); /* -- hand rolled -- */
-            XSRETURN(1);
+            EXTEND(SP, 1); PUSHs(ST(1)); // Do this so we don't have to rebless
         }
 
 void
@@ -106,21 +88,15 @@ fltk::Group::replace( widget, fltk::Widget * widget_b )
         int widget
         C_ARGS:   widget, * widget_b
         POSTCALL:
-            const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget_b)->bless_class( );
             if (widget_b != NULL) {
-                ST(0) = sv_newmortal();
-                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget_b); /* -- hand rolled -- */
-                XSRETURN(1);
+                EXTEND(SP, 1); PUSHs(ST(2)); // Do this so we don't have to rebless
             }
     CASE:
         fltk::Widget * widget
         C_ARGS: * widget, * widget_b
         POSTCALL:
-            const char * _class = (( WidgetSubclass<fltk::Widget> * ) widget_b)->bless_class( );
             if (widget_b != NULL) {
-                ST(0) = sv_newmortal();
-                sv_setref_pv(ST(0), (_class?_class:"FLTK::Widget"), widget_b); /* -- hand rolled -- */
-                XSRETURN(1);
+                EXTEND(SP, 1); PUSHs(ST(2)); // Do this so we don't have to rebless
             }
 
 void

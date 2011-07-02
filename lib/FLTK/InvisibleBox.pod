@@ -21,7 +21,7 @@ X<new>
 
 Creates a new C<FLTK::InvisibleBox> object. Obviously.
 
-=for hackers xs/InvisibleBox.xs line 33
+=for hackers xs/InvisibleBox.xs line 35
 
 =item C<my $box = $invisiblebox-E<gt>new( $x, $y, $w, $h, $label, $box );>X<my_box_invisiblebox_E_gt_new_x_y_w_h_label_box_>
 
@@ -33,7 +33,7 @@ FLTK's C++ API.
 
 =pod 
 
-=for hackers xs/InvisibleBox.xs line 37
+=for hackers xs/InvisibleBox.xs line 39
 
 =back
 
@@ -59,6 +59,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: InvisibleBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: InvisibleBox.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -29,7 +29,7 @@ images in the popup.
 
 =pod 
 
-=for hackers xs/MenuWindow.xs line 108
+=for hackers xs/MenuWindow.xs line 105
 
 =back
 
@@ -43,13 +43,13 @@ X<default_style>
 The default style sets L<C<box()>|FLTK::Widget/"box"> to C<UP_BOX>. This box
 is used around all popup menus.
 
-=for hackers xs/MenuWindow.xs line 68
+=for hackers xs/MenuWindow.xs line 65
 
 =item C<$menuwindow-E<gt>default_style( $style );>X<_menuwindow_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/MenuWindow.xs line 73
+=for hackers xs/MenuWindow.xs line 70
 
 =back
 
@@ -81,7 +81,7 @@ X<overlay>
 
 
 
-=for hackers xs/MenuWindow.xs line 90
+=for hackers xs/MenuWindow.xs line 87
 
 =back
 
@@ -94,7 +94,7 @@ X<set_overlay>
 
 Undoes L<C<clear_overlay()>|FLTK::MenuWindow/"clear_overlay">.
 
-=for hackers xs/MenuWindow.xs line 99
+=for hackers xs/MenuWindow.xs line 96
 
 =back
 
@@ -120,6 +120,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: MenuWindow.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: MenuWindow.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

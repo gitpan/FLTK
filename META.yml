@@ -1,0 +1,396 @@
+---
+abstract: Perl bindings to the 2.0.x branch of the Fast Light Toolkit
+author:
+  - 'Sanko Robinson <sanko@cpan.org>'
+build_requires:
+  Alien::FLTK2: 0.0855
+  Config: 0
+  Cwd: 0
+  Devel::PPPort: 0
+  DynaLoader: 0
+  Exporter: 0
+  ExtUtils::CBuilder: 0.27
+  ExtUtils::ParseXS: 0
+  File::Find: 0
+  File::Path: 2.07
+  File::Spec: 0
+  Module::Build: 0.36
+  Pod::Parser: 0
+  TAP::Harness: 3.18
+  Test::More: 0.88
+  Test::NeedsDisplay: 1.07
+  XSLoader: 0
+  base: 0
+  perl: 5.01
+configure_requires:
+  Module::Build: 0.36
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110930'
+keywords:
+  - FLTK
+  - Fast
+  - Light
+  - Toolkit
+  - widget
+  - FL
+  - GUI
+  - UI
+  - window
+  - 2.0.x
+  - experimental
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: FLTK
+no_index:
+  directory:
+    - examples
+    - inc
+    - t
+  x_files:
+    - xs/include/ppport.h
+provides:
+  FLTK:
+    file: lib/FLTK.pm
+    version: 0.532008
+  FLTK::Adjuster:
+    file: xs/Adjuster.xs
+    version: 0.532006
+  FLTK::AlignGroup:
+    file: xs/AlignGroup.xs
+    version: 0.532006
+  FLTK::AnsiWidget:
+    file: xs/AnsiWidget.xs
+    version: 0.532006
+  FLTK::AssociationFunctor:
+    file: xs/AssociationFunctor.xs
+    version: 0.532006
+  FLTK::AssociationType:
+    file: xs/AssociationType.xs
+    version: 0.532006
+  FLTK::BarGroup:
+    file: xs/BarGroup.xs
+    version: 0.532006
+  FLTK::Box:
+    file: xs/Box.xs
+    version: 0.532006
+  FLTK::Browser:
+    file: xs/Browser.xs
+    version: 0.532006
+  FLTK::Browser::Mark:
+    file: xs/Browser/Mark.xs
+    version: 0.532006
+  FLTK::Button:
+    file: xs/Button.xs
+    version: 0.532006
+  FLTK::CheckButton:
+    file: xs/CheckButton.xs
+    version: 0.532006
+  FLTK::Choice:
+    file: xs/Choice.xs
+    version: 0.532006
+  FLTK::Clock:
+    file: xs/Clock.xs
+    version: 0.532006
+  FLTK::ClockOutput:
+    file: xs/ClockOutput.xs
+    version: 0.532006
+  FLTK::Color:
+    file: xs/Color.xs
+    version: 0.532006
+  FLTK::ColorChooser:
+    file: xs/ColorChooser.xs
+    version: 0.532006
+  FLTK::ComboBox:
+    file: xs/ComboBox.xs
+    version: 0.532006
+  FLTK::Cursor:
+    file: xs/Cursor.xs
+    version: 0.532006
+  FLTK::CycleButton:
+    file: xs/CycleButton.xs
+    version: 0.532006
+  FLTK::Dial:
+    file: xs/Dial.xs
+    version: 0.532006
+  FLTK::Divider:
+    file: xs/Divider.xs
+    version: 0.532006
+  FLTK::EngravedLabel:
+    file: xs/EngravedLabel.xs
+    version: 0.532006
+  FLTK::FileBrowser:
+    file: xs/FileBrowser.xs
+    version: 0.532006
+  FLTK::FileIcon:
+    file: xs/FileIcon.xs
+    version: 0.532006
+  FLTK::FileInput:
+    file: xs/FileInput.xs
+    version: 0.532006
+  FLTK::FillDial:
+    file: xs/FillDial.xs
+    version: 0.532006
+  FLTK::FillSlider:
+    file: xs/FillSlider.xs
+    version: 0.532006
+  FLTK::Flags:
+    file: xs/Flags.xs
+    version: 0.532006
+  FLTK::FlatBox:
+    file: xs/FlatBox.xs
+    version: 0.532006
+  FLTK::FloatInput:
+    file: xs/FloatInput.xs
+    version: 0.532006
+  FLTK::Font:
+    file: xs/Font.xs
+    version: 0.532006
+  FLTK::FrameBox:
+    file: xs/FrameBox.xs
+    version: 0.532006
+  FLTK::GL:
+    file: xs/GL.xs
+    version: 0.532006
+  FLTK::GlWindow:
+    file: xs/GlWindow.xs
+    version: 0.532006
+  FLTK::Group:
+    file: xs/Group.xs
+    version: 0.532007
+  FLTK::HelpDialog:
+    file: xs/HelpDialog.xs
+    version: 0.532006
+  FLTK::HelpView:
+    file: xs/HelpView.xs
+    version: 0.532006
+  FLTK::HighlightBox:
+    file: xs/HighlightBox.xs
+    version: 0.532006
+  FLTK::HighlightButton:
+    file: xs/HighlightButton.xs
+    version: 0.532006
+  FLTK::Image:
+    file: xs/Image.xs
+    version: 0.532006
+  FLTK::Input:
+    file: xs/Input.xs
+    version: 0.532006
+  FLTK::InputBrowser:
+    file: xs/InputBrowser.xs
+    version: 0.532006
+  FLTK::IntInput:
+    file: xs/IntInput.xs
+    version: 0.532006
+  FLTK::InvisibleBox:
+    file: xs/InvisibleBox.xs
+    version: 0.532006
+  FLTK::Item:
+    file: xs/Item.xs
+    version: 0.532006
+  FLTK::ItemGroup:
+    file: xs/ItemGroup.xs
+    version: 0.532006
+  FLTK::LabelType:
+    file: xs/LabelType.xs
+    version: 0.532006
+  FLTK::Layout:
+    file: xs/layout.xs
+    version: 0.532006
+  FLTK::LightButton:
+    file: xs/LightButton.xs
+    version: 0.532006
+  FLTK::LineDial:
+    file: xs/LineDial.xs
+    version: 0.532006
+  FLTK::Menu:
+    file: xs/Menu.xs
+    version: 0.532006
+  FLTK::MenuBar:
+    file: xs/MenuBar.xs
+    version: 0.532006
+  FLTK::MenuSection:
+    file: xs/MenuSection.xs
+    version: 0.532006
+  FLTK::MenuWindow:
+    file: xs/MenuWindow.xs
+    version: 0.532006
+  FLTK::Monitor:
+    file: xs/Monitor.xs
+    version: 0.532006
+  FLTK::MultiBrowser:
+    file: xs/MultiBrowser.xs
+    version: 0.532006
+  FLTK::MultiImage:
+    file: xs/MultiImage.xs
+    version: 0.532006
+  FLTK::MultiLineInput:
+    file: xs/MultiLineInput.xs
+    version: 0.532006
+  FLTK::MultiLineOutput:
+    file: xs/MultiLineOutput.xs
+    version: 0.532006
+  FLTK::NamedStyle:
+    file: xs/NamedStyle.xs
+    version: 0.532006
+  FLTK::NumericInput:
+    file: xs/NumericInput.xs
+    version: 0.532006
+  FLTK::Output:
+    file: xs/Output.xs
+    version: 0.532006
+  FLTK::PackedGroup:
+    file: xs/PackedGroup.xs
+    version: 0.532006
+  FLTK::PixelType:
+    file: xs/PixelType.xs
+    version: 0.532006
+  FLTK::Plugin:
+    file: xs/Plugin.xs
+    version: 0.532006
+  FLTK::PopupMenu:
+    file: xs/PopupMenu.xs
+    version: 0.532006
+  FLTK::Preferences:
+    file: xs/Preferences.xs
+    version: 0.532006
+  FLTK::ProgressBar:
+    file: xs/ProgressBar.xs
+    version: 0.532006
+  FLTK::RadioButton:
+    file: xs/RadioButton.xs
+    version: 0.532006
+  FLTK::RadioItem:
+    file: xs/RadioItem.xs
+    version: 0.532006
+  FLTK::RadioLightButton:
+    file: xs/RadioLightButton.xs
+    version: 0.532006
+  FLTK::Rectangle:
+    file: xs/Rectangle.xs
+    version: 0.532006
+  FLTK::RepeatButton:
+    file: xs/RepeatButton.xs
+    version: 0.532006
+  FLTK::ReturnButton:
+    file: xs/ReturnButton.xs
+    version: 0.532006
+  FLTK::ScrollGroup:
+    file: xs/ScrollGroup.xs
+    version: 0.532006
+  FLTK::Scrollbar:
+    file: xs/Scrollbar.xs
+    version: 0.532006
+  FLTK::SecretInput:
+    file: xs/SecretInput.xs
+    version: 0.532006
+  FLTK::ShapedWindow:
+    file: xs/ShapedWindow.xs
+    version: 0.532006
+  FLTK::Slider:
+    file: xs/Slider.xs
+    version: 0.532006
+  FLTK::StatusBarGroup:
+    file: xs/StatusBarGroup.xs
+    version: 0.532006
+  FLTK::Style:
+    file: xs/Style.xs
+    version: 0.532006
+  FLTK::Symbol:
+    file: xs/Symbol.xs
+    version: 0.532006
+  FLTK::TabGroup:
+    file: xs/TabGroup.xs
+    version: 0.532006
+  FLTK::TabGroupPager:
+    file: xs/TabGroupPager.xs
+    version: 0.532006
+  FLTK::TextBuffer:
+    file: xs/TextBuffer.xs
+    version: 0.532006
+  FLTK::TextDisplay:
+    file: xs/TextDisplay.xs
+    version: 0.532007
+  FLTK::TextDisplay::StyleTableEntry:
+    file: xs/TextDisplay/StyleTableEntry.xs
+    version: 0.532006
+  FLTK::TextSelection:
+    file: xs/TextSelection.xs
+    version: 0.532006
+  FLTK::Theme:
+    file: xs/Theme.xs
+    version: 0.532006
+  FLTK::ToggleButton:
+    file: xs/ToggleButton.xs
+    version: 0.532007
+  FLTK::ToggleItem:
+    file: xs/ToggleItem.xs
+    version: 0.532007
+  FLTK::Valuator:
+    file: xs/Valuator.xs
+    version: 0.532006
+  FLTK::ValueInput:
+    file: xs/ValueInput.xs
+    version: 0.532006
+  FLTK::ValueOutput:
+    file: xs/ValueOutput.xs
+    version: 0.532006
+  FLTK::ValueSlider:
+    file: xs/ValueSlider.xs
+    version: 0.532007
+  FLTK::Version:
+    file: xs/Version.xs
+    version: 0.532006
+  FLTK::Widget:
+    file: xs/Widget.xs
+    version: 0.532006
+  FLTK::Window:
+    file: xs/Window.xs
+    version: 0.532006
+  FLTK::ask:
+    file: xs/ask.xs
+    version: 0.532006
+  FLTK::ccCellBox:
+    file: xs/ccCellBox.xs
+    version: 0.532006
+  FLTK::ccHueBox:
+    file: xs/ccHueBox.xs
+    version: 0.532006
+  FLTK::ccValueBox:
+    file: xs/ccValueBox.xs
+    version: 0.532006
+  FLTK::damage:
+    file: xs/damage.xs
+    version: 0.532006
+  FLTK::draw:
+    file: xs/draw.xs
+    version: 0.532006
+  FLTK::events:
+    file: xs/events.xs
+    version: 0.532006
+  FLTK::file_chooser:
+    file: xs/file_chooser.xs
+    version: 0.532006
+  FLTK::pnmImage:
+    file: xs/pnmImage.xs
+    version: 0.532006
+  FLTK::run:
+    file: xs/run.xs
+    version: 0.532007
+  FLTK::xpmImage:
+    file: xs/xpmImage.xs
+    version: 0.532006
+recommends:
+  OpenGL: 0.58
+requires:
+  DynaLoader: 0
+  Exporter: 0
+  XSLoader: 0
+resources:
+  bugtracker: http://github.com/sanko/perl-fltk/issues
+  homepage: http://sanko.github.com/perl-fltk/
+  license: http://opensource.org/licenses/artistic-license-2.0.php
+  repository: git://github.com/sanko/perl-fltk.git
+  x_ChangeLog: http://github.com/sanko/perl-fltk/commits/master/
+version: 0.532008

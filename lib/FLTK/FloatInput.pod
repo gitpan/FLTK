@@ -38,7 +38,7 @@ Convert the string to a double using C<strtod()>.
 
 =pod 
 
-=for hackers xs/FloatInput.xs line 84
+=for hackers xs/FloatInput.xs line 80
 
 =back
 
@@ -51,7 +51,7 @@ X<ivalue>
 
 Convert the string to an integer, using C<int(strtol())>.
 
-=for hackers xs/FloatInput.xs line 76
+=for hackers xs/FloatInput.xs line 72
 
 =back
 
@@ -64,7 +64,7 @@ X<lvalue()>
 
 Convert the string to a long using C<strtol()>.
 
-=for hackers xs/FloatInput.xs line 80
+=for hackers xs/FloatInput.xs line 76
 
 =back
 
@@ -103,8 +103,8 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: FLTK.xs f1d05fa 2011-01-14 18:59:33Z sanko@cpan.org $
+=for git $Id: FLTK.xs 0f9e351 2011-07-02 22:44:19Z sanko@cpan.org $
 
-=for git $Id: FloatInput.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FloatInput.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

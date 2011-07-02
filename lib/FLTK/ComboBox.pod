@@ -19,7 +19,7 @@ X<at>
 
 
 
-=for hackers xs/ComboBox.xs line 150
+=for hackers xs/ComboBox.xs line 146
 
 =back
 
@@ -32,13 +32,13 @@ X<choice>
 
 
 
-=for hackers xs/ComboBox.xs line 74
+=for hackers xs/ComboBox.xs line 70
 
 =item C<my $picked = $combobox-E<gt>choice( );>X<my_picked_combobox_E_gt_choice_>
 
 
 
-=for hackers xs/ComboBox.xs line 78
+=for hackers xs/ComboBox.xs line 74
 
 =back
 
@@ -51,7 +51,7 @@ X<copy>
 
 
 
-=for hackers xs/ComboBox.xs line 275
+=for hackers xs/ComboBox.xs line 271
 
 =back
 
@@ -64,19 +64,19 @@ X<cut>
 
 
 
-=for hackers xs/ComboBox.xs line 243
+=for hackers xs/ComboBox.xs line 239
 
 =item C<my $okay = $combobox-E<gt>cut( $n );>X<my_okay_combobox_E_gt_cut_n_>
 
 
 
-=for hackers xs/ComboBox.xs line 247
+=for hackers xs/ComboBox.xs line 243
 
 =item C<my $okay = $combobox-E<gt>cut( $n, $b );>X<my_okay_combobox_E_gt_cut_n_b_>
 
 
 
-=for hackers xs/ComboBox.xs line 251
+=for hackers xs/ComboBox.xs line 247
 
 =back
 
@@ -89,7 +89,7 @@ X<find_choice>
 
 
 
-=for hackers xs/ComboBox.xs line 91
+=for hackers xs/ComboBox.xs line 87
 
 =back
 
@@ -104,7 +104,7 @@ X<input_callback_>
 
 =pod 
 
-=for hackers xs/ComboBox.xs line 355
+=for hackers xs/ComboBox.xs line 351
 
 =back
 
@@ -117,7 +117,7 @@ X<insert>
 
 
 
-=for hackers xs/ComboBox.xs line 266
+=for hackers xs/ComboBox.xs line 262
 
 =back
 
@@ -130,7 +130,7 @@ X<layout>
 
 
 
-=for hackers xs/ComboBox.xs line 55
+=for hackers xs/ComboBox.xs line 51
 
 =back
 
@@ -143,7 +143,7 @@ X<line_end>
 
 
 
-=for hackers xs/ComboBox.xs line 305
+=for hackers xs/ComboBox.xs line 301
 
 =back
 
@@ -156,7 +156,7 @@ X<line_start>
 
 
 
-=for hackers xs/ComboBox.xs line 301
+=for hackers xs/ComboBox.xs line 297
 
 =back
 
@@ -169,13 +169,13 @@ X<mark>
 
 
 
-=for hackers xs/ComboBox.xs line 193
+=for hackers xs/ComboBox.xs line 189
 
 =item C<$combobox-E<gt>mark( $m );>X<_combobox_E_gt_mark_m_>
 
 
 
-=for hackers xs/ComboBox.xs line 197
+=for hackers xs/ComboBox.xs line 193
 
 =back
 
@@ -188,7 +188,7 @@ X<mouse_position>
 
 
 
-=for hackers xs/ComboBox.xs line 327
+=for hackers xs/ComboBox.xs line 323
 
 =back
 
@@ -214,7 +214,7 @@ X<popup>
 
 
 
-=for hackers xs/ComboBox.xs line 64
+=for hackers xs/ComboBox.xs line 60
 
 =back
 
@@ -227,19 +227,19 @@ X<position>
 
 
 
-=for hackers xs/ComboBox.xs line 168
+=for hackers xs/ComboBox.xs line 164
 
 =item C<$combobox-E<gt>position( $p );>X<_combobox_E_gt_position_p_>
 
 
 
-=for hackers xs/ComboBox.xs line 172
+=for hackers xs/ComboBox.xs line 168
 
 =item C<$combobox-E<gt>position( $p, $m );>X<_combobox_E_gt_position_p_m_>
 
 
 
-=for hackers xs/ComboBox.xs line 176
+=for hackers xs/ComboBox.xs line 172
 
 =back
 
@@ -252,13 +252,13 @@ X<replace>
 
 
 
-=for hackers xs/ComboBox.xs line 220
+=for hackers xs/ComboBox.xs line 216
 
 =item C<my $okay = $combobox-E<gt>replace( $a, $b, $c );>X<my_okay_combobox_E_gt_replace_a_b_c_>
 
 
 
-=for hackers xs/ComboBox.xs line 224
+=for hackers xs/ComboBox.xs line 220
 
 =back
 
@@ -271,7 +271,7 @@ X<size>
 
 
 
-=for hackers xs/ComboBox.xs line 159
+=for hackers xs/ComboBox.xs line 155
 
 =back
 
@@ -284,13 +284,13 @@ X<static_text>
 
 
 
-=for hackers xs/ComboBox.xs line 133
+=for hackers xs/ComboBox.xs line 129
 
 =item C<my $okay = $combobox-E<gt>static_text( $string, $n );>X<my_okay_combobox_E_gt_static_text_string_n_>
 
 
 
-=for hackers xs/ComboBox.xs line 137
+=for hackers xs/ComboBox.xs line 133
 
 =back
 
@@ -303,19 +303,19 @@ X<text>
 
 
 
-=for hackers xs/ComboBox.xs line 100
+=for hackers xs/ComboBox.xs line 96
 
 =item C<my $okay = $combobox-E<gt>text( $string, $n );>X<my_okay_combobox_E_gt_text_string_n_>
 
 
 
-=for hackers xs/ComboBox.xs line 104
+=for hackers xs/ComboBox.xs line 100
 
 =item C<my $string = $combobox-E<gt>text( );>X<my_string_combobox_E_gt_text_>
 
 
 
-=for hackers xs/ComboBox.xs line 108
+=for hackers xs/ComboBox.xs line 104
 
 =back
 
@@ -328,7 +328,7 @@ X<undo>
 
 
 
-=for hackers xs/ComboBox.xs line 284
+=for hackers xs/ComboBox.xs line 280
 
 =back
 
@@ -341,7 +341,7 @@ X<up_down_position>
 
 
 
-=for hackers xs/ComboBox.xs line 211
+=for hackers xs/ComboBox.xs line 207
 
 =back
 
@@ -354,7 +354,7 @@ X<word_end>
 
 
 
-=for hackers xs/ComboBox.xs line 297
+=for hackers xs/ComboBox.xs line 293
 
 =back
 
@@ -367,7 +367,7 @@ X<word_start>
 
 
 
-=for hackers xs/ComboBox.xs line 293
+=for hackers xs/ComboBox.xs line 289
 
 =back
 
@@ -380,7 +380,7 @@ X<xscroll>
 
 
 
-=for hackers xs/ComboBox.xs line 337
+=for hackers xs/ComboBox.xs line 333
 
 =back
 
@@ -393,7 +393,7 @@ X<yscroll>
 
 
 
-=for hackers xs/ComboBox.xs line 341
+=for hackers xs/ComboBox.xs line 337
 
 =back
 
@@ -419,6 +419,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: ComboBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: ComboBox.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

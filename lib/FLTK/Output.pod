@@ -29,7 +29,7 @@ X<default_style>
 L<Output|FLTK::Output> has it's own style so the color can be set to gray like
 Motif-style programs want.
 
-=for hackers xs/Output.xs line 68
+=for hackers xs/Output.xs line 64
 
 =item C<$output-E<gt>default_style( $style );>X<_output_E_gt_default_style_style_>
 
@@ -37,7 +37,7 @@ Set the style.
 
 =pod 
 
-=for hackers xs/Output.xs line 73
+=for hackers xs/Output.xs line 69
 
 =back
 
@@ -76,6 +76,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Output.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Output.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

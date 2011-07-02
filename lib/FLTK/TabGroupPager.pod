@@ -1,0 +1,82 @@
+=pod
+
+=head1 NAME
+
+FLTK::TabGroupPager - Class based FLTK::TabGroup behavior definition
+
+=head1 Description
+
+This helper class generically defines the L<TabGroup|FLTK::TabGroup> behavior
+when there are more tabs than available horizontal width, i.e it can generates
+a popup menu or shrink It opens the door to new Pagers creation as left-
+rights arrows scrolling pagers and others
+
+To create a new pager, inherits from L<TabGroupPager|FLTK::TabGroupPager> and
+redefine the following methods:
+
+=over 
+
+=item C<which( $tabgroup, $x, $y )>
+
+Determines and returns the index of the child group at the corresponding
+position.
+
+=item C<>
+
+
+=back 
+
+=head1 Functions
+
+=head2 C<new>
+X<new>
+
+=over
+
+=item C<my $group = $tabgrouppager-E<gt>new( );>X<my_group_tabgrouppager_E_gt_new_>
+
+Creates a new L<TabGroupPager|FLTK::TabGroupPager> object.
+
+=pod 
+
+=for hackers xs/TabGroupPager.xs line 50
+
+=back
+
+=head1 Subclassing
+
+To create a new L<TabGroupPager|FLTK::TabGroupPager> object, you must create a
+subclass
+
+
+    /*! this method must update the tab positions and width array, returns the s
+elected tab    */
+
+
+=pod 
+
+=head1 Author
+
+Sanko Robinson <sanko@cpan.org> - http://sankorobinson.com/
+
+=head1 License and Legal
+
+Copyright (C) 2008-2010 by Sanko Robinson <sanko@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of
+L<The Artistic License 2.0|http://www.perlfoundation.org/artistic_license_2_0>.
+See the F<LICENSE> file included with this distribution or
+L<notes on the Artistic License 2.0|http://www.perlfoundation.org/artistic_2_0_notes>
+for clarification.
+
+When separated from the distribution, all original POD documentation is
+covered by the
+L<Creative Commons Attribution-Share Alike 3.0 License|http://creativecommons.org/licenses/by-sa/3.0/us/legalcode>.
+See the
+L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
+
+
+=for git $Id: TabGroupPager.xs 88858e0 2011-04-19 00:47:41Z sanko@cpan.org $
+
+=cut

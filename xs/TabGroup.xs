@@ -6,18 +6,14 @@ MODULE = FLTK::TabGroup               PACKAGE = FLTK::TabGroup
 
 #include <fltk/TabGroup.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::TabGroup *
 fltk::TabGroup::new( int x, int y, int w, int h, const char * label = 0, bool begin = false )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::TabGroup>(CLASS,x,y,w,h,label,begin);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::TabGroup>(CLASS,x,y,w,h,label,begin);
+    OUTPUT:
+        RETVAL
 
 fltk::NamedStyle *
 fltk::TabGroup::default_style( fltk::NamedStyle * style = NO_INIT )
@@ -77,7 +73,13 @@ fltk::TabGroup::pager( fltk::TabGroupPager * value = NO_INIT )
             THIS->pager( value );
 
 void
-fltk::TabGroup::default_pager( fltk::TabGroupPager * value )
+fltk::TabGroup::default_pager( value )
+    CASE: SvIOK(ST(1))
+        int value
+        C_ARGS: value
+    CASE:
+        fltk::TabGroupPager * value
+        C_ARGS: value
 
 int
 fltk::TabGroup::tab_height( )

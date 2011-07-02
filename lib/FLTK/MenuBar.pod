@@ -25,7 +25,7 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/MenuBar.xs line 56
+=for hackers xs/MenuBar.xs line 52
 
 =item C<$menubar-E<gt>default_style( $style );>X<_menubar_E_gt_default_style_style_>
 
@@ -33,7 +33,7 @@ Set the style.
 
 =pod 
 
-=for hackers xs/MenuBar.xs line 60
+=for hackers xs/MenuBar.xs line 56
 
 =back
 
@@ -72,6 +72,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: MenuBar.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: MenuBar.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

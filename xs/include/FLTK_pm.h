@@ -11,7 +11,7 @@
 
 =for abstract Global include
 
-=for git $Id: FLTK_pm.h 2ca6d2b 2011-01-15 05:54:32Z sanko@cpan.org $
+=for git $Id: FLTK_pm.h 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut
 
@@ -31,7 +31,7 @@
 
 #include <fltk/../config.h>         // created and installed by Alien::FLTK2
 
-#include "WidgetSubclass.h"
+#include "RectangleSubclass.h"
 #include <fltk/Widget.h>
 
 #define DISABLE_DEPRECATED          // Depreciated widgets, and other junk

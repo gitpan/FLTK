@@ -46,7 +46,7 @@ X<add>
 The widget is removed from its current group (if any) and then added to the
 end of this group.
 
-=for hackers xs/Group.xs line 156
+=for hackers xs/Group.xs line 151
 
 =back
 
@@ -60,7 +60,7 @@ X<add_resizable>
 L<Adds|/"add"> a C<widget> and sets it as the L<resizer|/"resizable"> in one
 fell swoop.
 
-=for hackers xs/Group.xs line 326
+=for hackers xs/Group.xs line 302
 
 =back
 
@@ -77,7 +77,7 @@ L<C<$W-E<gt>current($W)>|/"current">.
 
 B<Don't forget to L<C<end()>|/"end"> the group or window!>
 
-=for hackers xs/Group.xs line 108
+=for hackers xs/Group.xs line 103
 
 =back
 
@@ -88,10 +88,10 @@ X<child>
 
 =item C<my $kid = $group-E<gt>child( $index );>X<my_kid_group_E_gt_child_index_>
 
-Returns a child, C<index E<gt>= 0 && index E<lt> children()>. B<No range
-checking is done!>
+Returns a child, C<index E<gt>= 0 && index E<lt> children()>. B<Range
+checking is done internally!>
 
-=for hackers xs/Group.xs line 85
+=for hackers xs/Group.xs line 84
 
 =back
 
@@ -104,7 +104,7 @@ X<children>
 
 Returns how many child widgets the group has.
 
-=for hackers xs/Group.xs line 76
+=for hackers xs/Group.xs line 75
 
 =back
 
@@ -120,7 +120,7 @@ destructor on all the children.>
 
 See L<C<remove_all()>|/"remove_all">
 
-=for hackers xs/Group.xs line 285
+=for hackers xs/Group.xs line 261
 
 =back
 
@@ -136,13 +136,13 @@ constructor automatically does C<current()-E<gt>add($widget)> if this is not
 undef. To prevent new widgets from being added to a group, call
 L<C<FLTK::Group::current(0)>|FLTK::Group/"current">.
 
-=for hackers xs/Group.xs line 129
+=for hackers xs/Group.xs line 124
 
 =item C<$group-E<gt>current( $group );>X<_group_E_gt_current_group_>
 
 Sets the group being currently built.
 
-=for hackers xs/Group.xs line 136
+=for hackers xs/Group.xs line 131
 
 =back
 
@@ -156,7 +156,7 @@ X<end>
 Exactly the same as L<C<$W-E<gt>current($W-E<gt>parent())>|/"current">. Any
 new widgets added to the widget tree will be added to the parent of the group.
 
-=for hackers xs/Group.xs line 116
+=for hackers xs/Group.xs line 111
 
 =back
 
@@ -171,7 +171,7 @@ Searches the children for C<widget>, returns the index of C<widget> or of a
 parent of C<widget> that is a L<C<child()>|/"child"> of this. Returns
 L<C<children()>|/"children"> if the widget is undef or not found.
 
-=for hackers xs/Group.xs line 150
+=for hackers xs/Group.xs line 145
 
 =back
 
@@ -187,7 +187,7 @@ L<C<x()>|FLTK::Widget/"x"> and L<C<y()>|FLTK::Widget/"y"> from the position of
 all children. This will fix the positions of widgets created for fltk1.1 that
 are inside a group.
 
-=for hackers xs/Group.xs line 402
+=for hackers xs/Group.xs line 378
 
 =back
 
@@ -209,13 +209,13 @@ means it will search for any widget that accepts focus.
 This is also used by L<Menu|FLTK::Menu> to locate the item selected by the
 user. See L<C<Menu::get_item()>|FLTK::Menu/"get_item">.
 
-=for hackers xs/Group.xs line 357
+=for hackers xs/Group.xs line 333
 
 =item C<my $index = $group-E<gt>focus_index( );>X<my_index_group_E_gt_focus_index_>
 
 Returns the index of the widget currently having focus.
 
-=for hackers xs/Group.xs line 370
+=for hackers xs/Group.xs line 346
 
 =back
 
@@ -239,7 +239,7 @@ them during the next L<C<layout()>|/"layout">.
 
 This is automatically done when any child is added or removed.
 
-=for hackers xs/Group.xs line 337
+=for hackers xs/Group.xs line 313
 
 =back
 
@@ -252,14 +252,14 @@ X<insert>
 
 Inserts C<widget> in the <index>th position of this group's stack.
 
-=for hackers xs/Group.xs line 179
+=for hackers xs/Group.xs line 167
 
 =item C<my $widget = $group-E<gt>insert( $widget, $before );>X<my_widget_group_E_gt_insert_widget_before_>
 
 This does L<C<$G-E<gt>insert($widget, $G-E<gt>find($beforethis))>|/"insert">.
 This will append the widget if C<$beforethis> is not in the group.
 
-=for hackers xs/Group.xs line 183
+=for hackers xs/Group.xs line 171
 
 =back
 
@@ -272,7 +272,7 @@ X<navigation_key>
 
 Turn Tab into Right or Left for keyboard navigation.
 
-=for hackers xs/Group.xs line 393
+=for hackers xs/Group.xs line 369
 
 =back
 
@@ -286,7 +286,7 @@ X<new>
 Creates a new C<FLTK::Group> widget using the given position, size, and label
 string. The default boxtype is C<NO_BOX>.
 
-=for hackers xs/Group.xs line 57
+=for hackers xs/Group.xs line 59
 
 =back
 
@@ -299,14 +299,14 @@ X<remove>
 
 Remove the C<index>th widget from the group.
 
-=for hackers xs/Group.xs line 213
+=for hackers xs/Group.xs line 195
 
 =item C<$group-E<gt>remove( $widget );>X<_group_E_gt_remove_widget_>
 
 Removes a C<widget> from the group. This does nothing if the widget is not
 currently a child of this group.
 
-=for hackers xs/Group.xs line 217
+=for hackers xs/Group.xs line 199
 
 =back
 
@@ -322,7 +322,7 @@ child widget.>
 
 See L<C<clear())>|/"clear">
 
-=for hackers xs/Group.xs line 231
+=for hackers xs/Group.xs line 213
 
 =back
 
@@ -335,13 +335,13 @@ X<replace>
 
 Remove the C<index>th widget and inserts C<widget_b> in its place.
 
-=for hackers xs/Group.xs line 243
+=for hackers xs/Group.xs line 225
 
 =item C<my $widget_b = $group-E<gt>replace( $widget, $widget_b );>X<my_widget_b_group_E_gt_replace_widget_widget_b_>
 
 Remove the C<widget> and inserts C<widget_b> in its place.
 
-=for hackers xs/Group.xs line 247
+=for hackers xs/Group.xs line 229
 
 =back
 
@@ -354,7 +354,7 @@ X<resizable>
 
 Sets the resizing widget.
 
-=for hackers xs/Group.xs line 297
+=for hackers xs/Group.xs line 273
 
 =item C<my $elastic = $group-E<gt>resizable( );>X<my_elastic_group_E_gt_resizable_>
 
@@ -371,7 +371,7 @@ It is possible to achieve any type of resize behavior by using an
 L<InvisibleBox|FLTK::InvisibleBox> as the resizable and/or by using a
 hierarchy of child L<Group|FLTK::Group>'s.
 
-=for hackers xs/Group.xs line 301
+=for hackers xs/Group.xs line 277
 
 =back
 
@@ -384,7 +384,7 @@ X<resize_align>
 
 
 
-=for hackers xs/Group.xs line 414
+=for hackers xs/Group.xs line 390
 
 =item C<$group-E<gt>resize_align( $flags );>X<_group_E_gt_resize_align_flags_>
 
@@ -392,7 +392,7 @@ X<resize_align>
 
 =pod 
 
-=for hackers xs/Group.xs line 418
+=for hackers xs/Group.xs line 394
 
 =back
 
@@ -405,7 +405,7 @@ X<set_focus>
 
 Same as L<C<focus_index( $index )>|/"focus_index_index">.
 
-=for hackers xs/Group.xs line 384
+=for hackers xs/Group.xs line 360
 
 =back
 
@@ -418,7 +418,7 @@ X<swap>
 
 Swaps the C<indexA>th widget with the C<indexB>th widget.
 
-=for hackers xs/Group.xs line 276
+=for hackers xs/Group.xs line 252
 
 =back
 
@@ -444,6 +444,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Group.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+=for git $Id: Group.xs 82f11cc 2011-04-15 17:17:22Z sanko@cpan.org $
 
 =cut

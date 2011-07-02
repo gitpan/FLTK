@@ -58,7 +58,7 @@ For C<NORMAL>, L<PopupMenus|FLTK::PopupMenu> this places the menu over the
 widget. For C<POPUP> ones it uses the mouse position and sets the "title" to
 the L<C<label( )>|FLTK::Widget/"label"> if it is defined.
 
-=for hackers xs/PopupMenu.xs line 104
+=for hackers xs/PopupMenu.xs line 100
 
 =back
 
@@ -93,6 +93,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: PopupMenu.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: PopupMenu.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

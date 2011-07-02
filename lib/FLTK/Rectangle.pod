@@ -20,7 +20,7 @@ X<b>
 Returns C<L<y( )|FLTK::Rectangle/"y"> + L<h( )|FLTK::Rectangle/"h">>, the
 bottom edge of the rectangle.
 
-=for hackers xs/Rectangle.xs line 167
+=for hackers xs/Rectangle.xs line 162
 
 =back
 
@@ -33,7 +33,7 @@ X<baseline_y>
 
 Where to put baseline to center current font nicely.
 
-=for hackers xs/Rectangle.xs line 327
+=for hackers xs/Rectangle.xs line 322
 
 =back
 
@@ -47,7 +47,7 @@ X<center_x>
 Integer center position. Rounded to the left if L<C<w( )>|FLTK::Rectangle/"w">
 is odd.
 
-=for hackers xs/Rectangle.xs line 309
+=for hackers xs/Rectangle.xs line 304
 
 =back
 
@@ -61,7 +61,7 @@ X<center_y>
 Integer center position. Rounded to lower y if L<C<h( )>|FLTK::Rectangle/"h">
 is odd.
 
-=for hackers xs/Rectangle.xs line 314
+=for hackers xs/Rectangle.xs line 309
 
 =back
 
@@ -74,7 +74,7 @@ X<contains>
 
 True if rectangle contains the pixel who's upper-left corner is at C<$x, $y>.
 
-=for hackers xs/Rectangle.xs line 102
+=for hackers xs/Rectangle.xs line 97
 
 =back
 
@@ -88,7 +88,7 @@ X<empty>
 True if L<C<w( )>|FLTK::Rectangle/"w"> or L<C<h( )>|FLTK::Rectangle/"h"> are
 less or equal to zero.
 
-=for hackers xs/Rectangle.xs line 290
+=for hackers xs/Rectangle.xs line 285
 
 =back
 
@@ -101,14 +101,14 @@ X<h>
 
 Distance between top and bottom edges.
 
-=for hackers xs/Rectangle.xs line 136
+=for hackers xs/Rectangle.xs line 131
 
 =item C<$rectangle-E<gt>h( $value );>X<_rectangle_E_gt_h_value_>
 
 Change L<C<h( )>|FLTK::Rectangle/"h"> by moving the bottom edge.
 L<C<y( )>|FLTK::Rectangle/"y"> does not change.
 
-=for hackers xs/Rectangle.xs line 140
+=for hackers xs/Rectangle.xs line 135
 
 =back
 
@@ -121,7 +121,7 @@ X<inset>
 
 Move all edges in by C<$d>. See also L<Symbol::inset( )|FLTK::Symbol/"inset">.
 
-=for hackers xs/Rectangle.xs line 272
+=for hackers xs/Rectangle.xs line 267
 
 =back
 
@@ -136,7 +136,7 @@ X<intersect>
 
 =pod 
 
-=for hackers xs/Rectangle.xs line 340
+=for hackers xs/Rectangle.xs line 335
 
 =back
 
@@ -149,7 +149,7 @@ X<merge>
 
 
 
-=for hackers xs/Rectangle.xs line 336
+=for hackers xs/Rectangle.xs line 331
 
 =back
 
@@ -162,7 +162,7 @@ X<move>
 
 Move entire rectangle by given distance in C<$x> and C<$y>.
 
-=for hackers xs/Rectangle.xs line 281
+=for hackers xs/Rectangle.xs line 276
 
 =back
 
@@ -176,7 +176,7 @@ X<move_b>
 Add C<$d> to L<C<b( )>|FLTK::Rectangle/"b"> and
 L<C<h( )>|FLTK::Rectangle/"h">.
 
-=for hackers xs/Rectangle.xs line 253
+=for hackers xs/Rectangle.xs line 248
 
 =back
 
@@ -190,7 +190,7 @@ X<move_r>
 Add C<$d> to L<C<r( )>|FLTK::Rectangle/"r"> and
 L<C<w( )>|FLTK::Rectangle/"w">.
 
-=for hackers xs/Rectangle.xs line 248
+=for hackers xs/Rectangle.xs line 243
 
 =back
 
@@ -205,7 +205,7 @@ Add C<$d> to L<C<x( )>|FLTK::Rectangle/"x"> without changing
 L<C<r( )>|FLTK::Rectangle/"r"> (it reduces
 L<C<w( )>|FLTK::Rectangle/"w"> by C<$d>).
 
-=for hackers xs/Rectangle.xs line 236
+=for hackers xs/Rectangle.xs line 231
 
 =back
 
@@ -220,7 +220,7 @@ Add C<$d> to L<C<y( )>|FLTK::Rectangle/"y"> without changing
 L<C<b( )>|FLTK::Rectangle/"b"> (it reduces
 L<C<h( )>|FLTK::Rectangle/"h"> by C<$d>).
 
-=for hackers xs/Rectangle.xs line 242
+=for hackers xs/Rectangle.xs line 237
 
 =back
 
@@ -279,7 +279,7 @@ Not exactly the same as L<C<!empty()>|FLTK::Rectangle/"empty">. Returns true
 if L<C<w( )>|FLTK::Rectangle/"w"> and L<C<h( )>|FLTK::Rectangle/"h"> are
 B<both> greater than zero.
 
-=for hackers xs/Rectangle.xs line 295
+=for hackers xs/Rectangle.xs line 290
 
 =back
 
@@ -293,7 +293,7 @@ X<r>
 Returns C<L<x( )|FLTK::Rectangle/"x"> + L<w( )|FLTK::Rectangle/"w">>, the
 right edge of the rectangle.
 
-=for hackers xs/Rectangle.xs line 162
+=for hackers xs/Rectangle.xs line 157
 
 =back
 
@@ -307,7 +307,7 @@ X<set>
 Set L<C<x( )>|FLTK::Rectangle/"x">, L<C<y( )>|FLTK::Rectangle/"y">,
 L<C<w( )>|FLTK::Rectangle/"w">, L<C<h( )>|FLTK::Rectangle/"h"> all at once.
 
-=for hackers xs/Rectangle.xs line 214
+=for hackers xs/Rectangle.xs line 209
 
 =item C<$rectangle-E<gt>set( $rect, $w, $h, $flags );>X<_rectangle_E_gt_set_rect_w_h_flags_>
 
@@ -315,7 +315,7 @@ Sets L<x|FLTK::Rectangle/"x">, L<y|FLTK::Rectangle/"y">,
 L<w|FLTK::Rectangle/"w">, L<h|FLTK::Rectangle/"h"> so that's it's centered or
 aligned (if C<$flags != 0>) inside the source C<$rect>.
 
-=for hackers xs/Rectangle.xs line 219
+=for hackers xs/Rectangle.xs line 214
 
 =back
 
@@ -329,7 +329,7 @@ X<set_b>
 Change L<C<b( )>|FLTK::Rectangle/"b"> without changing
 L<C<y( )>|FLTK::Rectangle/"y">, by changing the height.
 
-=for hackers xs/Rectangle.xs line 195
+=for hackers xs/Rectangle.xs line 190
 
 =back
 
@@ -343,7 +343,7 @@ X<set_r>
 Change L<C<r( )>|FLTK::Rectangle/"r"> without changing
 L<C<x( )>|FLTK::Rectangle/"x">, by changing the width.
 
-=for hackers xs/Rectangle.xs line 190
+=for hackers xs/Rectangle.xs line 185
 
 =back
 
@@ -357,7 +357,7 @@ X<set_x>
 Change L<C<x( )>|FLTK::Rectangle/"x"> without changing
 L<C<r( )>|FLTK::Rectangle/"r">, by changing the width.
 
-=for hackers xs/Rectangle.xs line 180
+=for hackers xs/Rectangle.xs line 175
 
 =back
 
@@ -371,7 +371,7 @@ X<set_y>
 Change L<C<y( )>|FLTK::Rectangle/"y"> without changing
 L<C<b( )>|FLTK::Rectangle/"b">, by changing the height.
 
-=for hackers xs/Rectangle.xs line 185
+=for hackers xs/Rectangle.xs line 180
 
 =back
 
@@ -384,14 +384,14 @@ X<w>
 
 Distance between left and right edges.
 
-=for hackers xs/Rectangle.xs line 127
+=for hackers xs/Rectangle.xs line 122
 
 =item C<$rectangle-E<gt>w( $value );>X<_rectangle_E_gt_w_value_>
 
 Change L<C<w( )>|FLTK::Rectangle/"w"> by moving the right edge.
 L<C<x( )>|FLTK::Rectangle/"x"> does not change.
 
-=for hackers xs/Rectangle.xs line 131
+=for hackers xs/Rectangle.xs line 126
 
 =back
 
@@ -404,13 +404,13 @@ X<x>
 
 Left edge.
 
-=for hackers xs/Rectangle.xs line 111
+=for hackers xs/Rectangle.xs line 106
 
 =item C<$rectangle-E<gt>x( $value );>X<_rectangle_E_gt_x_value_>
 
 Move the rectangle so that the left edge is at C<$value>.
 
-=for hackers xs/Rectangle.xs line 115
+=for hackers xs/Rectangle.xs line 110
 
 =back
 
@@ -423,13 +423,13 @@ X<y>
 
 Top edge.
 
-=for hackers xs/Rectangle.xs line 119
+=for hackers xs/Rectangle.xs line 114
 
 =item C<$rectangle-E<gt>y( $value );>X<_rectangle_E_gt_y_value_>
 
 Move the rectangle so that the top edge is at C<$value>.
 
-=for hackers xs/Rectangle.xs line 123
+=for hackers xs/Rectangle.xs line 118
 
 =back
 
@@ -455,6 +455,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Rectangle.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Rectangle.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

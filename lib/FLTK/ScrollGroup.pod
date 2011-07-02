@@ -81,7 +81,7 @@ L<ScrollGroup|FLTK::ScrollGroup>'s coordinate system). This removes the border
 of the L<C<box( )>|FLTK::Widget/"box"> and the space needed for any visible
 scrollbars.
 
-=for hackers xs/ScrollGroup.xs line 131
+=for hackers xs/ScrollGroup.xs line 127
 
 =back
 
@@ -94,7 +94,7 @@ X<enable_drag_scroll>
 
 
 
-=for hackers xs/ScrollGroup.xs line 144
+=for hackers xs/ScrollGroup.xs line 140
 
 =back
 
@@ -122,7 +122,7 @@ X<scrollTo>
 
 =pod 
 
-=for hackers xs/ScrollGroup.xs line 169
+=for hackers xs/ScrollGroup.xs line 165
 
 =back
 
@@ -135,7 +135,7 @@ X<xposition>
 
 
 
-=for hackers xs/ScrollGroup.xs line 153
+=for hackers xs/ScrollGroup.xs line 149
 
 =back
 
@@ -148,7 +148,7 @@ X<yposition>
 
 
 
-=for hackers xs/ScrollGroup.xs line 157
+=for hackers xs/ScrollGroup.xs line 153
 
 =back
 
@@ -174,6 +174,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: ScrollGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: ScrollGroup.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -19,7 +19,7 @@ X<deleteEntry>
 
 Delete a group.
 
-=for hackers xs/Preferences.xs line 202
+=for hackers xs/Preferences.xs line 203
 
 =back
 
@@ -32,7 +32,7 @@ X<deleteGroup>
 
 Delete a group.
 
-=for hackers xs/Preferences.xs line 166
+=for hackers xs/Preferences.xs line 167
 
 =back
 
@@ -49,7 +49,7 @@ Destroying the base L<preferences|FLTK::Preferences> will flush changes to the
 prefs file. After destroying the base, none of the depending
 L<preferences|FLTK::Preferences> must be read or written.
 
-=for hackers xs/Preferences.xs line 123
+=for hackers xs/Preferences.xs line 124
 
 =back
 
@@ -62,7 +62,7 @@ X<entries>
 
 Returns the number of entries (key/value) pairs for a group.
 
-=for hackers xs/Preferences.xs line 178
+=for hackers xs/Preferences.xs line 179
 
 =back
 
@@ -77,7 +77,7 @@ Returns the name of an entry. There is no guaranteed order of entry names and
 C<$index> must be within the range given by
 L<C<entries()>|FLTK::Preferences/"entries">.
 
-=for hackers xs/Preferences.xs line 187
+=for hackers xs/Preferences.xs line 188
 
 =back
 
@@ -90,7 +90,7 @@ X<entryExists>
 
 Returns C<1>, if a group with this name exists.
 
-=for hackers xs/Preferences.xs line 198
+=for hackers xs/Preferences.xs line 199
 
 =back
 
@@ -110,7 +110,7 @@ when the base L<preferences|FLTK::Preferences> go out of scope.
 
 =pod 
 
-=for hackers xs/Preferences.xs line 261
+=for hackers xs/Preferences.xs line 262
 
 =back
 
@@ -123,7 +123,7 @@ X<get>
 
 Get an entry (key/value) pair.
 
-=for hackers xs/Preferences.xs line 223
+=for hackers xs/Preferences.xs line 224
 
 =back
 
@@ -137,7 +137,7 @@ X<getUserdataPath>
 Creates a path that is related to the preferences file and that is usable for
 application data beyond what is covered by L<Preferences|FLTK::Preferences>.
 
-=for hackers xs/Preferences.xs line 242
+=for hackers xs/Preferences.xs line 243
 
 =back
 
@@ -152,7 +152,7 @@ Returns the group name of the C<$index>th group. There is no guaranteed order
 of group names and C<$index> must be within the range given by
 L<C<groups( )>|FLTK::Preferences/"groups">.
 
-=for hackers xs/Preferences.xs line 151
+=for hackers xs/Preferences.xs line 152
 
 =back
 
@@ -165,7 +165,7 @@ X<groupExists>
 
 Returns C<1>, if a group with this name exists.
 
-=for hackers xs/Preferences.xs line 162
+=for hackers xs/Preferences.xs line 163
 
 =back
 
@@ -178,7 +178,7 @@ X<groups>
 
 Returns the number of groups that are contained within a group.
 
-=for hackers xs/Preferences.xs line 142
+=for hackers xs/Preferences.xs line 143
 
 =back
 
@@ -254,7 +254,7 @@ X<set>
 
 Set an entry (key/value) pair.
 
-=for hackers xs/Preferences.xs line 214
+=for hackers xs/Preferences.xs line 215
 
 =back
 
@@ -267,7 +267,7 @@ X<size>
 
 Returns the size of the value part of an entry.
 
-=for hackers xs/Preferences.xs line 233
+=for hackers xs/Preferences.xs line 234
 
 =back
 
@@ -293,6 +293,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Preferences.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+=for git $Id: Preferences.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

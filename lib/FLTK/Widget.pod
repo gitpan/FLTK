@@ -24,7 +24,7 @@ This bit is set by L<C<redraw()>|/"redraw"> and indicates that all of the
 widget (but not "holes" where the background shows through) needs to be
 redraw.
 
-=for hackers xs/Widget.xs line 2106
+=for hackers xs/Widget.xs line 2104
 
 =back
 
@@ -38,7 +38,7 @@ X<DAMAGE_CHILD>
 A child of this group widget needs to be redrawn (non-group widgets can use
 this bit for their own purposes).
 
-=for hackers xs/Widget.xs line 2086
+=for hackers xs/Widget.xs line 2084
 
 =back
 
@@ -56,7 +56,7 @@ Because anti-aliasing cannot be redrawn atop itself, this is not
 used anymore. Instead if an outside label needs to change the entire
 parent widget is redrawn.
 
-=for hackers xs/Widget.xs line 2091
+=for hackers xs/Widget.xs line 2089
 
 =back
 
@@ -71,7 +71,7 @@ Same as L<C<FLTK::DAMAGE_EXPOSE>|/"DAMAGE_EXPOSE"> but if
 L<C<FLTK::DAMAGE_ALL>|/"FLTK::DAMAGE_ALL"> is off a widget can use this for
 it's own purposes.
 
-=for hackers xs/Widget.xs line 2135
+=for hackers xs/Widget.xs line 2133
 
 =back
 
@@ -86,7 +86,7 @@ Damage caused by L<C<damage()>|/"damage"> or by expose events from the
 operating system. If this and L<C<FLTK::DAMAGE_ALL>|/"DAMAGE_ALL"> is on the
 widget should draw every pixel inside it's region.
 
-=for hackers xs/Widget.xs line 2100
+=for hackers xs/Widget.xs line 2098
 
 =back
 
@@ -100,7 +100,7 @@ X<DAMAGE_HIGHLIGHT>
 A widget may use this to indicate that the mouse has entered/exited part of
 the widget.
 
-=for hackers xs/Widget.xs line 2130
+=for hackers xs/Widget.xs line 2128
 
 =back
 
@@ -113,7 +113,7 @@ X<DAMAGE_OVERLAY>
 
 Same value as L<C<FLTK::DAMAGE_SCROLL>|/"FLTK::DAMAGE_SCROLL">.
 
-=for hackers xs/Widget.xs line 2126
+=for hackers xs/Widget.xs line 2124
 
 =back
 
@@ -127,7 +127,7 @@ X<DAMAGE_PUSHED>
 A widget may use this to indicate that the user has pushed or released a
 button.
 
-=for hackers xs/Widget.xs line 2116
+=for hackers xs/Widget.xs line 2114
 
 =back
 
@@ -141,7 +141,7 @@ X<DAMAGE_SCROLL>
 A widget may use this to indicate that the displayed data has scrolled moved
 horizontally and/or vertically.
 
-=for hackers xs/Widget.xs line 2121
+=for hackers xs/Widget.xs line 2119
 
 =back
 
@@ -154,7 +154,7 @@ X<DAMAGE_VALUE>
 
 A widget may use this to indicate that the displayed value has changed.
 
-=for hackers xs/Widget.xs line 2112
+=for hackers xs/Widget.xs line 2110
 
 =back
 
@@ -167,7 +167,7 @@ X<GROUP_TYPE>
 
 
 
-=for hackers xs/Widget.xs line 148
+=for hackers xs/Widget.xs line 146
 
 =back
 
@@ -180,7 +180,7 @@ X<RADIO>
 
 
 
-=for hackers xs/Widget.xs line 144
+=for hackers xs/Widget.xs line 142
 
 =back
 
@@ -193,7 +193,7 @@ X<RESREVED_TYPE>
 
 
 
-=for hackers xs/Widget.xs line 136
+=for hackers xs/Widget.xs line 134
 
 =back
 
@@ -206,7 +206,7 @@ X<TOGGLE>
 
 
 
-=for hackers xs/Widget.xs line 140
+=for hackers xs/Widget.xs line 138
 
 =back
 
@@ -219,7 +219,7 @@ X<WHEN_CHANGED>
 
 
 
-=for hackers xs/Widget.xs line 1936
+=for hackers xs/Widget.xs line 1934
 
 =back
 
@@ -232,7 +232,7 @@ X<WHEN_ENTER_KEY>
 
 
 
-=for hackers xs/Widget.xs line 1948
+=for hackers xs/Widget.xs line 1946
 
 =back
 
@@ -245,7 +245,7 @@ X<WHEN_ENTER_KEY_ALWAYS>
 
 
 
-=for hackers xs/Widget.xs line 1952
+=for hackers xs/Widget.xs line 1950
 
 =back
 
@@ -258,7 +258,7 @@ X<WHEN_ENTER_KEY_CHANGED>
 
 
 
-=for hackers xs/Widget.xs line 1956
+=for hackers xs/Widget.xs line 1954
 
 =back
 
@@ -271,7 +271,7 @@ X<WHEN_NEVER>
 
 
 
-=for hackers xs/Widget.xs line 1932
+=for hackers xs/Widget.xs line 1930
 
 =back
 
@@ -284,7 +284,7 @@ X<WHEN_NOT_CHANGED>
 
 
 
-=for hackers xs/Widget.xs line 1960
+=for hackers xs/Widget.xs line 1958
 
 =back
 
@@ -297,7 +297,7 @@ X<WHEN_RELEASE>
 
 
 
-=for hackers xs/Widget.xs line 1940
+=for hackers xs/Widget.xs line 1938
 
 =back
 
@@ -310,7 +310,7 @@ X<WHEN_RELEASE_ALWAYS>
 
 
 
-=for hackers xs/Widget.xs line 1944
+=for hackers xs/Widget.xs line 1942
 
 =back
 
@@ -323,7 +323,7 @@ X<WINDOW_TYPE>
 
 
 
-=for hackers xs/Widget.xs line 152
+=for hackers xs/Widget.xs line 150
 
 =back
 
@@ -338,13 +338,13 @@ If L<C<active()>|/"active"> is false, this turns it on. If
 L<C<active_r()>|/"active_r"> is now true L<C<send()>|/"send"> an
 C<FLTK::ACTIVATE> event.
 
-=for hackers xs/Widget.xs line 1109
+=for hackers xs/Widget.xs line 1107
 
 =item C<$widget-E<gt>activate( $b );>X<_widget_E_gt_activate_b_>
 
 Toggle between L<C<activate()>|/"activate"> and L<C<deactivate()>|/"deactivate">.
 
-=for hackers xs/Widget.xs line 1115
+=for hackers xs/Widget.xs line 1113
 
 =back
 
@@ -362,7 +362,7 @@ Parents may also be deactivated, in which case this widget will not get events
 even if this is true. You can test for this with
 C<!>L<C<active_r()>|/"active_r">.
 
-=for hackers xs/Widget.xs line 799
+=for hackers xs/Widget.xs line 797
 
 =back
 
@@ -378,7 +378,7 @@ widgets. This is actually the C<INACTIVE_R> bit in L<C<flags()>|/"flags">,
 fltk keeps this up to date as widgets are deactivated and/or added to inactive
 parents.
 
-=for hackers xs/Widget.xs line 808
+=for hackers xs/Widget.xs line 806
 
 =back
 
@@ -434,7 +434,7 @@ will call L<C<Widget::test_shortcut()>|FLTK::Widget/"test_shortcut"> to see if
 the keystroke is registered here (many widgets will also directly test the key
 to see if it is something they are interested in).
 
-=for hackers xs/Widget.xs line 404
+=for hackers xs/Widget.xs line 402
 
 =back
 
@@ -450,7 +450,7 @@ will happen exactly once. To make it happen repeatedly, call
 L<C<repeat_timeout()>|/"repeat_timeout"> from inside
 L<C<handle(TIMEOUT)>|/"handle">.
 
-=for hackers xs/Widget.xs line 2222
+=for hackers xs/Widget.xs line 2220
 
 =back
 
@@ -466,11 +466,11 @@ determines how the label is printed next to or inside the widget. The default
 value is C<FLTK::ALIGN_CENTER>, which centers the label. The value can be any
 of the C<ALIGN> flags or'd together.
 
-=for hackers xs/Widget.xs line 1087
+=for hackers xs/Widget.xs line 1085
 
 =item C<my $flags = $widget-E<gt>align( );>X<my_flags_widget_E_gt_align_>
 
-=for hackers xs/Widget.xs line 1094
+=for hackers xs/Widget.xs line 1092
 
 =back
 
@@ -484,7 +484,7 @@ X<all_of>
 Returns true if I<all> of the bits in C<f> are on. C<f> should be several bits
 or'd together, otherwise this is the same as L<C<flag(f)>|/"flag">.
 
-=for hackers xs/Widget.xs line 1040
+=for hackers xs/Widget.xs line 1038
 
 =back
 
@@ -499,7 +499,7 @@ Returns true if I<any> of the bits in C<f> are on. Actually, this is the same
 function as L<C<flag(f)>|/"flag"> but using this may make the code more
 readable.
 
-=for hackers xs/Widget.xs line 1034
+=for hackers xs/Widget.xs line 1032
 
 =back
 
@@ -514,13 +514,13 @@ Set the second argument to the callback to a number.
 
 See Also: L<C<callback>|/"callback">, L<C<user_data>|/"user_data">.
 
-=for hackers xs/Widget.xs line 602
+=for hackers xs/Widget.xs line 600
 
 =item C<my $data = $widget-E<gt>argument( );>X<my_data_widget_E_gt_argument_>
 
 Returns the second argument to the callback.
 
-=for hackers xs/Widget.xs line 608
+=for hackers xs/Widget.xs line 606
 
 =back
 
@@ -535,7 +535,7 @@ Returns true if this is equal to L<C<FLTK::belowmouse()>|FLTK/"belowmouse">,
 meaning it has the keyboard focus and C<FLTK::MOVE> or C<FLTK::PUSH> events
 will be sent to this widget.
 
-=for hackers xs/Widget.xs line 901
+=for hackers xs/Widget.xs line 899
 
 =back
 
@@ -552,7 +552,7 @@ the widget). The default is C<FLTK::DOWN_BOX>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1439
+=for hackers xs/Widget.xs line 1437
 
 =item C<$widget-E<gt>box( $b );>X<_widget_E_gt_box_b_>
 
@@ -560,7 +560,7 @@ Sets the type of box to draw around the outer edge of widget.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1447
+=for hackers xs/Widget.xs line 1445
 
 =back
 
@@ -577,7 +577,7 @@ C<FLTK::UP_BOX>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1453
+=for hackers xs/Widget.xs line 1451
 
 =item C<$widget-E<gt>buttonbox( $bb );>X<_widget_E_gt_buttonbox_bb_>
 
@@ -585,7 +585,7 @@ Returns the type of box to draw buttions internal the widget.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1461
+=for hackers xs/Widget.xs line 1459
 
 =back
 
@@ -600,13 +600,13 @@ Color used when drawing buttons. Default is C<FLTK::GRAY75>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1638
+=for hackers xs/Widget.xs line 1636
 
 =item C<$widget-E<gt>buttoncolor( $color );>X<_widget_E_gt_buttoncolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1644
+=for hackers xs/Widget.xs line 1642
 
 =back
 
@@ -626,7 +626,7 @@ when the button is released.
 B<NOTE>: To make use of callbacks, your perl must be recent enough to support
 weak references.
 
-=for hackers xs/Widget.xs line 541
+=for hackers xs/Widget.xs line 539
 
 =item C<$widget-E<gt>callback( \&coderef );>X<_widget_E_gt_callback_coderef_>
 
@@ -635,7 +635,7 @@ an argument.
 
 B<NOTE>: This may not be portable to some machines.
 
-=for hackers xs/Widget.xs line 552
+=for hackers xs/Widget.xs line 550
 
 =back
 
@@ -653,7 +653,7 @@ response to an "OK" button.
 Most widgets turn this flag off when they do the callback, and when the
 program sets the stored value.
 
-=for hackers xs/Widget.xs line 866
+=for hackers xs/Widget.xs line 864
 
 =back
 
@@ -668,7 +668,7 @@ Same as L<C<state(false)>|/"state">. If you know the widget will already be
 redrawn, or it is not displayed, it is faster to call the inline
 L<C<clear_flag(STATE)>|/"clear_flag"> function.
 
-=for hackers xs/Widget.xs line 907
+=for hackers xs/Widget.xs line 905
 
 =back
 
@@ -681,7 +681,7 @@ X<clear_changed>
 
 
 
-=for hackers xs/Widget.xs line 1142
+=for hackers xs/Widget.xs line 1140
 
 =back
 
@@ -694,7 +694,7 @@ X<clear_click_to_focus>
 
 
 
-=for hackers xs/Widget.xs line 1154
+=for hackers xs/Widget.xs line 1152
 
 =back
 
@@ -708,7 +708,7 @@ X<clear_flag>
 Make L<C<flag(f)>|/"flag"> return false by turning off that bit. You can turn
 off multiple bits by or'ing them toegher.
 
-=for hackers xs/Widget.xs line 998
+=for hackers xs/Widget.xs line 996
 
 =back
 
@@ -721,7 +721,7 @@ X<clear_output>
 
 
 
-=for hackers xs/Widget.xs line 1134
+=for hackers xs/Widget.xs line 1132
 
 =back
 
@@ -734,7 +734,7 @@ X<clear_selected>
 
 
 
-=for hackers xs/Widget.xs line 1146
+=for hackers xs/Widget.xs line 1144
 
 =back
 
@@ -747,7 +747,7 @@ X<clear_tab_to_focus>
 
 
 
-=for hackers xs/Widget.xs line 1162
+=for hackers xs/Widget.xs line 1160
 
 =back
 
@@ -758,7 +758,7 @@ X<clear_visible>
 
 =item C<$widget-E<gt>clear_visible( );>X<_widget_E_gt_clear_visible_>
 
-=for hackers xs/Widget.xs line 2277
+=for hackers xs/Widget.xs line 2275
 
 =back
 
@@ -777,7 +777,7 @@ By default fltk only turns this on on certain widgets such as
 L<FLTK::Input|FLTK::Input>. Turning this on on all widgets will make the user
 interface match Windows more closely.
 
-=for hackers xs/Widget.xs line 841
+=for hackers xs/Widget.xs line 839
 
 =back
 
@@ -801,7 +801,7 @@ ramp" so that the edges of buttons are the same color.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1582
+=for hackers xs/Widget.xs line 1580
 
 =item C<$widget-E<gt>color( $color );>X<_widget_E_gt_color_color_>
 
@@ -809,7 +809,7 @@ ramp" so that the edges of buttons are the same color.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1597
+=for hackers xs/Widget.xs line 1595
 
 =back
 
@@ -824,7 +824,7 @@ Returns a true value if L<widget|FLTK::Widget> C<child> is a child of this
 widget, or is equal to this widget. Returns a false value if C<child> is
 undefined.
 
-=for hackers xs/Widget.xs line 774
+=for hackers xs/Widget.xs line 772
 
 =back
 
@@ -842,7 +842,7 @@ called again, or L<C<label(const char*)>|/"label"> is called.
 
 Passing C<undef> will set L<C<label()>|/"label"> to C<undef>.
 
-=for hackers xs/Widget.xs line 339
+=for hackers xs/Widget.xs line 337
 
 =back
 
@@ -858,7 +858,7 @@ from another widget is not safe if that style is C<dynamic()> because it may
 change or be deleted. This makes another C<dynamic()> copy if necessary. For
 non-dynamic styles the pointer is copied.
 
-=for hackers xs/Widget.xs line 2301
+=for hackers xs/Widget.xs line 2299
 
 =back
 
@@ -894,7 +894,7 @@ X<damage>
 The 'or' of all the calls to L<C<redraw()>|/"redraw"> done since the last
 L<C<draw()>|/"draw">. Cleared to zero after L<C<draw()>|/"draw"> is called.
 
-=for hackers xs/Widget.xs line 2167
+=for hackers xs/Widget.xs line 2165
 
 =back
 
@@ -909,7 +909,7 @@ If L<C<active()>|/"active"> is true, this turns it off. If
 L<C<active_r()>|/"active_r"> was true L<C<send()>|/"send"> an
 C<FLTK::DEACTIVATE> event.
 
-=for hackers xs/Widget.xs line 2251
+=for hackers xs/Widget.xs line 2249
 
 =back
 
@@ -922,7 +922,7 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/Widget.xs line 2313
+=for hackers xs/Widget.xs line 2311
 
 =item C<$widget-E<gt>default_style( $style );>X<_widget_E_gt_default_style_style_>
 
@@ -930,7 +930,7 @@ Set the style.
 
 =pod 
 
-=for hackers xs/Widget.xs line 2317
+=for hackers xs/Widget.xs line 2315
 
 =back
 
@@ -943,7 +943,7 @@ X<destroy>
 
 Destroy the widget.
 
-=for hackers xs/Widget.xs line 89
+=for hackers xs/Widget.xs line 87
 
 =back
 
@@ -956,13 +956,13 @@ X<do_callback>
 
 You can cause a widget to do its callback at any time.
 
-=for hackers xs/Widget.xs line 739
+=for hackers xs/Widget.xs line 737
 
 =item C<$widget-E<gt>do_callback( $widget, $args );>X<_widget_E_gt_do_callback_widget_args_>
 
 You can also call the callback function with arbitrary arguments.
 
-=for hackers xs/Widget.xs line 743
+=for hackers xs/Widget.xs line 741
 
 =back
 
@@ -986,7 +986,7 @@ C<USE_CLIPOUT> (an option to reduce blinking in single-buffered windows) and
 in that case the widget must draw any visible background. In this case this
 function always draws the background.
 
-=for hackers xs/Widget.xs line 1215
+=for hackers xs/Widget.xs line 1213
 
 =back
 
@@ -1004,14 +1004,14 @@ widget that is exposed.
 This also does C<drawstyle(style(),flags()&~OUTPUT)> and thus the colors and
 font are set up for drawing text in the widget.
 
-=for hackers xs/Widget.xs line 1341
+=for hackers xs/Widget.xs line 1339
 
 =item C<$widget-E<gt>draw_box( $rect );>X<_widget_E_gt_draw_box_rect_>
 
 Draw the widget's L<C<box()>|/"box"> such that it fills the entire area of
 L<C<rect>|FLTK::Rectangle>.
 
-=for hackers xs/Widget.xs line 1350
+=for hackers xs/Widget.xs line 1348
 
 =back
 
@@ -1028,7 +1028,7 @@ set. This only works for rectangular boxes. This is useful for avoiding
 blinking during update for widgets that erase their contents as part of
 redrawnig them anyway (ie anything displaying text).
 
-=for hackers xs/Widget.xs line 1230
+=for hackers xs/Widget.xs line 1228
 
 =back
 
@@ -1050,7 +1050,7 @@ being an L<FLTK::MultiImage>|FLTK::MultiImage>.
 
 =for hackers Found in F<src/default_glyph.cxx>
 
-=for hackers xs/Widget.xs line 1401
+=for hackers xs/Widget.xs line 1399
 
 =back
 
@@ -1067,7 +1067,7 @@ The L<C<labelfont()>|/"labelfont"> and L<C<labelcolor()>|/"labelcolor"> are
 used. For historic reasons if the C<OUTPUT> flag is on then the
 L<C<textfont()>|/"textfont"> and L<C<textcolor()>|/"textcolor"> are used.
 
-=for hackers xs/Widget.xs line 1366
+=for hackers xs/Widget.xs line 1364
 
 =item C<$widget-E<gt>draw_label( $ir, $flags );>X<_widget_E_gt_draw_label_ir_flags_>
 
@@ -1085,7 +1085,7 @@ L<C<image()>|/"image"> into the box in a nice way. The L<C<image()>|/"image">
 is put against the side that any ALIGN flags say, and then the
 L<C<label()>|/"label"> is put next to that.
 
-=for hackers xs/Widget.xs line 1374
+=for hackers xs/Widget.xs line 1372
 
 =back
 
@@ -1098,7 +1098,7 @@ X<flag>
 
 Returns true if the bit for C<f> is on.
 
-=for hackers xs/Widget.xs line 1030
+=for hackers xs/Widget.xs line 1028
 
 =back
 
@@ -1115,14 +1115,14 @@ values.
 
 This is for copying the flag values, use L<C<flag(c)>|/"flag"> to test them.
 
-=for hackers xs/Widget.xs line 967
+=for hackers xs/Widget.xs line 965
 
 =item C<$widget-E<gt>flags( $f );>X<_widget_E_gt_flags_f_>
 
 Replace L<C<flags()>|/"flags">. This is for constructors, don't use it
 elsewhere.
 
-=for hackers xs/Widget.xs line 975
+=for hackers xs/Widget.xs line 973
 
 =back
 
@@ -1136,7 +1136,7 @@ X<focused>
 Returns true if this is equal to L<C<FLTK::focus()>|FLTK/"focus">, meaning it
 has the keyboard focus and C<FLTK::KEY> events will be sent to this widget.
 
-=for hackers xs/Widget.xs line 896
+=for hackers xs/Widget.xs line 894
 
 =back
 
@@ -1150,7 +1150,7 @@ X<get_absolute_rect>
 Fills the L<FLTK::Rectangle|FLTK::Rectangle> pointed to by C<rect> with the
 widget's rectangle expressed in absolute (i.e. screen) coordinates.
 
-=for hackers xs/Widget.xs line 290
+=for hackers xs/Widget.xs line 288
 
 =back
 
@@ -1172,7 +1172,7 @@ L<Widget::default_glpyh|FLTK::Widget/"default_glyph">.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1488
+=for hackers xs/Widget.xs line 1486
 
 =item C<$widget-E<gt>glyph( $image );>X<_widget_E_gt_glyph_image_>
 
@@ -1180,7 +1180,7 @@ Sets a small image that some Widgets use to draw part of themselves.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1501
+=for hackers xs/Widget.xs line 1499
 
 =back
 
@@ -1195,7 +1195,7 @@ If L<C<visible()>|/"visible"> is true, turn it off. If
 L<C<visible_r()>|/"visible_r"> was true then L<C<send()>|/"send"> a
 C<FLTK::HIDE> event, and L<C<redraw()>|/"redraw"> the parent if necessary.
 
-=for hackers xs/Widget.xs line 2263
+=for hackers xs/Widget.xs line 2261
 
 =back
 
@@ -1216,13 +1216,13 @@ The default value is zero, which indicates that highlighting is disabled.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1656
+=for hackers xs/Widget.xs line 1654
 
 =item C<$widget-E<gt>highlight_color( $color );>X<_widget_E_gt_highlight_color_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1668
+=for hackers xs/Widget.xs line 1666
 
 =back
 
@@ -1240,11 +1240,11 @@ white or black). I recommend you use the default if possible.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1672
+=for hackers xs/Widget.xs line 1670
 
 =item C<$widget-E<gt>highlight_textcolor( $color );>X<_widget_E_gt_highlight_textcolor_color_>
 
-=for hackers xs/Widget.xs line 1681
+=for hackers xs/Widget.xs line 1679
 
 =back
 
@@ -1261,7 +1261,7 @@ is the default.
 
 See also: L<C<vertical()>|/"vertical">
 
-=for hackers xs/Widget.xs line 227
+=for hackers xs/Widget.xs line 225
 
 =back
 
@@ -1278,11 +1278,11 @@ replace the entire background of the widget with a picture you should set
 L<C<box()>|/"box"> instead. Notice that you can also get images into labels by
 putting C<@> commands into the L<C<label()>|/"label">.
 
-=for hackers xs/Widget.xs line 353
+=for hackers xs/Widget.xs line 351
 
 =item C<my $img = $widget-E<gt>image( );>X<my_img_widget_E_gt_image_>
 
-=for hackers xs/Widget.xs line 361
+=for hackers xs/Widget.xs line 359
 
 =back
 
@@ -1296,7 +1296,7 @@ X<inside>
 Returns true if this is a child of C<parent>, or is equal to C<parent>.
 Returns false if C<parent> is undef.
 
-=for hackers xs/Widget.xs line 780
+=for hackers xs/Widget.xs line 778
 
 =back
 
@@ -1310,7 +1310,7 @@ X<invert_flag>
 Flip the result of L<C<flag(f)>|/"flag"> if C<f> is a single bit. If you or
 together bits it will flip them all.
 
-=for hackers xs/Widget.xs line 1008
+=for hackers xs/Widget.xs line 1006
 
 =back
 
@@ -1323,7 +1323,7 @@ X<is_group>
 
 Returns a true value for subclasses of L<FLTK::Group|FLTK::Group>.
 
-=for hackers xs/Widget.xs line 218
+=for hackers xs/Widget.xs line 216
 
 =back
 
@@ -1337,7 +1337,7 @@ X<is_window>
 Returns a true value for subclasses of L<FLTK::Window|FLTK::Window>. If this
 is true, L<C<is_group()>|/"is_group"> is also true.
 
-=for hackers xs/Widget.xs line 222
+=for hackers xs/Widget.xs line 220
 
 =back
 
@@ -1353,7 +1353,7 @@ widget or next to it. The string passed to label() is I<not> copied, instead
 the pointer to the string is stored. If L<C<copy_label()>|/"copy_label"> was
 called earlier the old string's memory is freed.
 
-=for hackers xs/Widget.xs line 300
+=for hackers xs/Widget.xs line 298
 
 =back
 
@@ -1370,7 +1370,7 @@ L<C<label()>|/"label">. The returned value is C<ALT|c> where C<c> is the
 character after the first '&' in the label, or zero if there isn't any '&'
 sign or if L<C<flag(RAW_LABEL)>|/"flag"> is on.
 
-=for hackers xs/Widget.xs line 469
+=for hackers xs/Widget.xs line 467
 
 =back
 
@@ -1385,11 +1385,11 @@ Color used to draw labels. Default is C<FLTK::BLACK>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1648
+=for hackers xs/Widget.xs line 1646
 
 =item C<$widget-E<gt>labelcolor( $color );>X<_widget_E_gt_labelcolor_color_>
 
-=for hackers xs/Widget.xs line 1654
+=for hackers xs/Widget.xs line 1652
 
 =back
 
@@ -1404,13 +1404,13 @@ The font used to draw the label. Default is C<FLTK::HELVETICA>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1520
+=for hackers xs/Widget.xs line 1518
 
 =item C<$widget-E<gt>labelfont( $Font );>X<_widget_E_gt_labelfont_Font_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1526
+=for hackers xs/Widget.xs line 1524
 
 =back
 
@@ -1425,13 +1425,13 @@ Size of L<C<labelfont()>|/"labelfont">. Default is 12.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1722
+=for hackers xs/Widget.xs line 1720
 
 =item C<$widget-E<gt>labelsize( $size );>X<_widget_E_gt_labelsize_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1745
+=for hackers xs/Widget.xs line 1743
 
 =back
 
@@ -1445,11 +1445,11 @@ X<labeltype>
 How to draw the label. This provides things like inset, shadow, and the
 symbols. C<FLTK::NORMAL_LABEL>.
 
-=for hackers xs/Widget.xs line 1562
+=for hackers xs/Widget.xs line 1560
 
 =item C<$widget-E<gt>labeltype( $type );>X<_widget_E_gt_labeltype_type_>
 
-=for hackers xs/Widget.xs line 1567
+=for hackers xs/Widget.xs line 1565
 
 =back
 
@@ -1477,13 +1477,13 @@ to skip it is as follows:
         }
     }
 
-=for hackers xs/Widget.xs line 2050
+=for hackers xs/Widget.xs line 2048
 
 =item C<$widget-E<gt>layout_damage( $flag );>X<_widget_E_gt_layout_damage_flag_>
 
 Directly change the value returned by L<C<layout_damage()>|/"layout_damage">.
 
-=for hackers xs/Widget.xs line 2069
+=for hackers xs/Widget.xs line 2067
 
 =back
 
@@ -1502,13 +1502,13 @@ browsers and menus and similar widgets will use the local value.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1735
+=for hackers xs/Widget.xs line 1733
 
 =item C<$widget-E<gt>leading( $size );>X<_widget_E_gt_leading_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1753
+=for hackers xs/Widget.xs line 1751
 
 =back
 
@@ -1531,7 +1531,7 @@ L<C<redraw()>|/"redraw">. This will crash if the widget is not in a currently
 L<C<shown()>|/"shown"> window. Also this may not work correctly for
 double-buffered windows.
 
-=for hackers xs/Widget.xs line 1201
+=for hackers xs/Widget.xs line 1199
 
 =back
 
@@ -1553,7 +1553,7 @@ not for back-compatability reasons.
 
 =for hackers Found in F<fltk/widget_draw.cxx>.
 
-=for hackers xs/Widget.xs line 1420
+=for hackers xs/Widget.xs line 1418
 
 =back
 
@@ -1577,7 +1577,7 @@ or L<C<FLTK::Group->current(0)>|FLTK::Group/"current">, then the
 L<C<parent()>|/"parent"> is undef. In this case you must add the widget
 yourself in order to see it.
 
-=for hackers xs/Widget.xs line 59
+=for hackers xs/Widget.xs line 61
 
 =back
 
@@ -1596,7 +1596,7 @@ input devices.
 Set or clear this flag with L<C<set_output()>|/"set_output"> and
 L<C<clear_output()>|/"clear_output">.
 
-=for hackers xs/Widget.xs line 815
+=for hackers xs/Widget.xs line 813
 
 =back
 
@@ -1610,13 +1610,13 @@ X<parent>
 Returns the parent widget. Usually this is a L<FLTK::Group|FLTK::Group> or
 L<FLTK::Window|FLTK::Window>. Returns C<undef> if this is an orphan widget.
 
-=for hackers xs/Widget.xs line 101
+=for hackers xs/Widget.xs line 99
 
 =item C<$widget-E<gt>parent( $group );>X<_widget_E_gt_parent_group_>
 
 Sets the parent.
 
-=for hackers xs/Widget.xs line 106
+=for hackers xs/Widget.xs line 104
 
 =back
 
@@ -1629,7 +1629,7 @@ X<positon>
 
 Same as L<C<resize( X, Y, w(), h() )>|/"resize">
 
-=for hackers xs/Widget.xs line 281
+=for hackers xs/Widget.xs line 279
 
 =back
 
@@ -1643,7 +1643,7 @@ X<pushed>
 Returns true if this is equal to L<C<FLTK::pushed()>|FLTK/"pushed">, meaning
 it has responded to an C<FLTK::PUSH> event and the mouse is still held down.
 
-=for hackers xs/Widget.xs line 891
+=for hackers xs/Widget.xs line 889
 
 =back
 
@@ -1658,7 +1658,7 @@ Same as C<redraw(DAMAGE_ALL)>. This bit is used by most widgets to indicate
 that they should not attempt any incremental update, and should instead
 completely draw themselves.
 
-=for hackers xs/Widget.xs line 1280
+=for hackers xs/Widget.xs line 1278
 
 =item C<$widget-E<gt>redraw( $flags );>X<_widget_E_gt_redraw_flags_>
 
@@ -1666,13 +1666,13 @@ Indicates that L<C<draw()>|/"draw"> should be called, and turns on the given
 bits in L<C<damage()>|/"damage">. At least these bits, and possibly others,
 will still be on when L<C<draw()>|/"draw"> is called.
 
-=for hackers xs/Widget.xs line 1286
+=for hackers xs/Widget.xs line 1284
 
 =item C<$widget-E<gt>redraw( $rect );>X<_widget_E_gt_redraw_rect_>
 
 
 
-=for hackers xs/Widget.xs line 1292
+=for hackers xs/Widget.xs line 1290
 
 =back
 
@@ -1690,7 +1690,7 @@ L<C<highlight_color()>|/"hightlight_color">. This is designed to be called in
 response to C<ENTER >and C<EXIT> events and not redraw the widget if the no
 highlight color is being used.
 
-=for hackers xs/Widget.xs line 1319
+=for hackers xs/Widget.xs line 1317
 
 =back
 
@@ -1706,7 +1706,7 @@ if there is no label. If it is an outside label (see L<C<align()>|/"align">)
 then the L<C<parent()>|/"parent"> is told to redraw it. Otherwise
 L<C<redraw()>|/"redraw"> is called.
 
-=for hackers xs/Widget.xs line 1312
+=for hackers xs/Widget.xs line 1310
 
 =back
 
@@ -1721,7 +1721,7 @@ Same as L<C<relayout(LAYOUT_DAMAGE)>|/"relayout">, indicates that data inside
 the widget may have changed, but the size did not change. This flag is also on
 when the widget is initially created.
 
-=for hackers xs/Widget.xs line 2027
+=for hackers xs/Widget.xs line 2025
 
 =item C<$widget-E<gt>relayout( $flags );>X<_widget_E_gt_relayout_flags_>
 
@@ -1730,7 +1730,7 @@ flags in L<C<layout_damage()>|/"layout_damage">, and turns on C<LAYOUT_CHILD>
 in all parents of this widget. C<flags> cannot be zero, the maaning of the
 flags is listed under F<fltk/layout.h>.
 
-=for hackers xs/Widget.xs line 2033
+=for hackers xs/Widget.xs line 2031
 
 =back
 
@@ -1743,7 +1743,7 @@ X<remove_shortcut>
 
 Delete a shortcut assignment. Returns true if it actually existed.
 
-=for hackers xs/Widget.xs line 451
+=for hackers xs/Widget.xs line 449
 
 =back
 
@@ -1757,7 +1757,7 @@ X<remove_shortcuts>
 Remove all shortcuts for the widget. This is automatically done by the
 L<C<Widget>|FLTK::Widget> destructor.
 
-=for hackers xs/Widget.xs line 1196
+=for hackers xs/Widget.xs line 1194
 
 =back
 
@@ -1770,7 +1770,7 @@ X<remove_timeout>
 
 Cancel any and all pending L<C<handle(TIMEOUT)>|/"handle"> callbacks.
 
-=for hackers xs/Widget.xs line 2247
+=for hackers xs/Widget.xs line 2245
 
 =back
 
@@ -1785,7 +1785,7 @@ Call L<C<handle(TIMEOUT)>|/"handle"> at the given time interval since the last
 timeout. This will produce much more accurate time intervals than
 L<C<add_timeout>|/"add_timeout">.
 
-=for hackers xs/Widget.xs line 2229
+=for hackers xs/Widget.xs line 2227
 
 =back
 
@@ -1801,13 +1801,13 @@ and position are the same as before. If there is a change then
 L<C<relayout()>|/"relayout"> is called so that the virtual function
 L<C<layout()>|/"layout"> is called before the next L<C<draw()>|/"draw">.
 
-=for hackers xs/Widget.xs line 257
+=for hackers xs/Widget.xs line 255
 
 =item C<my $ret = $widget-E<gt>resize( $w, $h );>X<my_ret_widget_E_gt_resize_w_h_>
 
 Same as L<C<resize( x(), y(), $W, $H)>|/"resize">.
 
-=for hackers xs/Widget.xs line 264
+=for hackers xs/Widget.xs line 262
 
 =back
 
@@ -1821,11 +1821,11 @@ X<scrollbar_align>
 Where to place scrollbars around a L<Browser|FLTK::Browser> or other scrolling
 widget. The default is C<FLTK::ALIGN_RIGHT|FLTK::ALIGN_BOTTOM>.
 
-=for hackers xs/Widget.xs line 1781
+=for hackers xs/Widget.xs line 1779
 
 =item C<$widget-E<gt>scrollbar_align( $align );>X<_widget_E_gt_scrollbar_align_align_>
 
-=for hackers xs/Widget.xs line 1791
+=for hackers xs/Widget.xs line 1789
 
 =back
 
@@ -1839,11 +1839,11 @@ X<scrollbar_width>
 How wide the scrollbars are around a Browser or other scrolling widget. The
 default is 15.
 
-=for hackers xs/Widget.xs line 1786
+=for hackers xs/Widget.xs line 1784
 
 =item C<$widget-E<gt>scrollbar_width( $width );>X<_widget_E_gt_scrollbar_width_width_>
 
-=for hackers xs/Widget.xs line 1793
+=for hackers xs/Widget.xs line 1791
 
 =back
 
@@ -1858,7 +1858,7 @@ A true/false flag used to mark widgets currently selected in
 L<FLTK::Menu|FLTK::Menu> and L<FLTK::Browser|FLTK::Browser> widgets. Some
 widgets will draw with much different colors if this is on.
 
-=for hackers xs/Widget.xs line 885
+=for hackers xs/Widget.xs line 883
 
 =back
 
@@ -1874,11 +1874,11 @@ or lit light buttons. The default is C<FLTK::WINDOWS_BLUE>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1616
+=for hackers xs/Widget.xs line 1614
 
 =item C<$widget-E<gt>selection_color( $color );>X<_widget_E_gt_selection_color_color_>
 
-=for hackers xs/Widget.xs line 1623
+=for hackers xs/Widget.xs line 1621
 
 =back
 
@@ -1896,13 +1896,13 @@ default if possible.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1625
+=for hackers xs/Widget.xs line 1623
 
 =item C<$widget-E<gt>selection_textcolor( $color );>X<_widget_E_gt_selection_textcolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1634
+=for hackers xs/Widget.xs line 1632
 
 =back
 
@@ -1938,7 +1938,7 @@ or L<C<FLTK::pushed()>|FLTK/"pushed"> widget to reflect this.
 
 =back 
 
-=for hackers xs/Widget.xs line 2190
+=for hackers xs/Widget.xs line 2188
 
 =back
 
@@ -1953,7 +1953,7 @@ Same as L<C<state(true)>|/"state">. If you know the widget will already be
 redrawn, or it is not displayed, it is faster to call the inline
 L<C<set_flag(STATE)>|/"set_flag"> function.
 
-=for hackers xs/Widget.xs line 1835
+=for hackers xs/Widget.xs line 1833
 
 =back
 
@@ -1966,7 +1966,7 @@ X<set_changed>
 
 
 
-=for hackers xs/Widget.xs line 1138
+=for hackers xs/Widget.xs line 1136
 
 =back
 
@@ -1979,7 +1979,7 @@ X<set_click_to_focus>
 
 
 
-=for hackers xs/Widget.xs line 1150
+=for hackers xs/Widget.xs line 1148
 
 =back
 
@@ -1994,7 +1994,7 @@ Directly change the value returned by L<C<damage()>|/"damage">. Note that this
 I<replaces> the value, it does not turn bits on. Use L<C<redraw()>|/"redraw">
 to turn bits on.
 
-=for hackers xs/Widget.xs line 2179
+=for hackers xs/Widget.xs line 2177
 
 =back
 
@@ -2008,14 +2008,14 @@ X<set_flag>
 Make L<C<flag(f)>|/"flag"> return true by turning on that bit. You can set
 more than one by or'ing them together.
 
-=for hackers xs/Widget.xs line 993
+=for hackers xs/Widget.xs line 991
 
 =item C<$widget-E<gt>set_flag( $f, $b );>X<_widget_E_gt_set_flag_f_b_>
 
 Make L<C<flag(f)>|/"flag"> return C<b>. Same as
 C<b ? set_flag(f) : clear_flag(f)>.
 
-=for hackers xs/Widget.xs line 1003
+=for hackers xs/Widget.xs line 1001
 
 =back
 
@@ -2032,7 +2032,7 @@ surrounding L<FLTK::Pack> (or similar group) will place the widget, but you
 must call L<C<relayout()>|/"relayout"> to indicate that this must be
 recalculated.
 
-=for hackers xs/Widget.xs line 1177
+=for hackers xs/Widget.xs line 1175
 
 =back
 
@@ -2045,7 +2045,7 @@ X<set_output>
 
 
 
-=for hackers xs/Widget.xs line 1130
+=for hackers xs/Widget.xs line 1128
 
 =back
 
@@ -2058,7 +2058,7 @@ X<set_tab_to_focus>
 
 
 
-=for hackers xs/Widget.xs line 1158
+=for hackers xs/Widget.xs line 1156
 
 =back
 
@@ -2078,7 +2078,7 @@ Some widgets classes such as L<FLTK::MenuBar|FLTK::MenuBar> or
 L<FLTK::Slider|FLTK::Slider> will draw differently if this is turned on, in a
 vertical arrangement.
 
-=for hackers xs/Widget.xs line 1166
+=for hackers xs/Widget.xs line 1164
 
 =back
 
@@ -2089,7 +2089,7 @@ X<set_visible>
 
 =item C<$widget-E<gt>set_visible( );>X<_widget_E_gt_set_visible_>
 
-=for hackers xs/Widget.xs line 2275
+=for hackers xs/Widget.xs line 2273
 
 =back
 
@@ -2104,7 +2104,7 @@ Calls L<C<set()>|/"set"> on this widget and calls L<C<clear()>|/"clear"> on
 all adjacent widgets in the same parent L<Group|FLTK::Group> that have the
 L<C<type()>|/"type"> set to C<RADIO>.
 
-=for hackers xs/Widget.xs line 2269
+=for hackers xs/Widget.xs line 2267
 
 =back
 
@@ -2119,7 +2119,7 @@ Returns one of the L<C<add_shortcut()>|/"add_shortcut"> assignments for this
 widget, or returns zero if there are none. If you want to look at more than
 onle you must use L<C<FLTK::list_shortcuts(this)>|FLTK/"list_shortcuts">.
 
-=for hackers xs/Widget.xs line 378
+=for hackers xs/Widget.xs line 376
 
 =item C<$widget-E<gt>shortcut( $key );>X<_widget_E_gt_shortcut_key_>
 
@@ -2128,7 +2128,7 @@ L<C<add_shortcut(key)>|/"add_shortcut"> except it may be implemented in a more
 efficient way. The result is exactly one shortcut (or none if C<key> is zero).
 Return value is intended to indicate if the shortcut changed, but that is nyi.
 
-=for hackers xs/Widget.xs line 384
+=for hackers xs/Widget.xs line 382
 
 =back
 
@@ -2143,7 +2143,7 @@ If L<C<visible()>|/"visible"> is false, turn it on. If
 L<C<visible_r()>|/"visible_r"> is then true, L<C<send()>|/"send"> a
 C<FLTK::SHOW> event.
 
-=for hackers xs/Widget.xs line 2257
+=for hackers xs/Widget.xs line 2255
 
 =back
 
@@ -2158,7 +2158,7 @@ Widgets have space in them to store a single true/false value (put into the
 C<STATE> bit of L<C<flags()>|/"flags">). This is used by buttons and
 checkmarks and radio menu items.
 
-=for hackers xs/Widget.xs line 1061
+=for hackers xs/Widget.xs line 1059
 
 =item C<$widget-E<gt>state( $value );>X<_widget_E_gt_state_value_>
 
@@ -2167,7 +2167,7 @@ L<C<clear_changed()>|/"clear_changed">. If the state is different,
 L<C<redraw(DAMAGE_VALUE)>|/"redraw"> is called and true is returned. If the
 state is the same then false is returned and the widget is not redrawn.
 
-=for hackers xs/Widget.xs line 1067
+=for hackers xs/Widget.xs line 1065
 
 =back
 
@@ -2191,7 +2191,7 @@ For historical reasons this flag is true on many more widgets than it should
 be, and FLTK relies on L<C<handle()>|/"handle"> returing C<0> for C<FOCUS>.
 This may change in the future so that more widgets have this flag off.
 
-=for hackers xs/Widget.xs line 851
+=for hackers xs/Widget.xs line 849
 
 =back
 
@@ -2211,7 +2211,7 @@ On current systems, fltk does not force the window system to set the focus. If
 the window does not have focus it will usually switch back to the previous
 window when the user types a key.
 
-=for hackers xs/Widget.xs line 913
+=for hackers xs/Widget.xs line 911
 
 =back
 
@@ -2226,7 +2226,7 @@ This is the same as C<(active() && visible() && output())> but faster.
 L<C<send()>|/"send"> uses this to decide whether or not to call
 L<C<handle()>|/"handle"> for most events.
 
-=for hackers xs/Widget.xs line 835
+=for hackers xs/Widget.xs line 833
 
 =back
 
@@ -2250,7 +2250,7 @@ This is ignored if L<C<flag(RAW_LABEL)>|/"flag"> is on (which stops the C<&x>
 from printing as an underscore. The sequence "&&" is ignored as well because
 that is used to print a plain '&' in the label.
 
-=for hackers xs/Widget.xs line 482
+=for hackers xs/Widget.xs line 480
 
 =back
 
@@ -2263,7 +2263,7 @@ X<test_shortcut>
 
 Same as L<C<test_shortcut(true)>|/"test_shortcut">.
 
-=for hackers xs/Widget.xs line 502
+=for hackers xs/Widget.xs line 500
 
 =item C<my $ret = $widget-E<gt>test_shortcut( $test_label );>X<my_ret_widget_E_gt_test_shortcut_test_label_>
 
@@ -2285,7 +2285,7 @@ this will return false. See
 L<C<FLTK::list_matching_shortcuts()>|FLTK/"list_matching_shortcuts"> for the
 rules about what ones are "better".
 
-=for hackers xs/Widget.xs line 506
+=for hackers xs/Widget.xs line 504
 
 =back
 
@@ -2303,13 +2303,13 @@ L<FLTK::CheckButton|FLTK::CheckButton>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1603
+=for hackers xs/Widget.xs line 1601
 
 =item C<$widget-E<gt>textcolor( $color );>X<_widget_E_gt_textcolor_color_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1612
+=for hackers xs/Widget.xs line 1610
 
 =back
 
@@ -2325,13 +2325,13 @@ editor or menu or browser. Default is C<FLTK::HELVETICA>.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1530
+=for hackers xs/Widget.xs line 1528
 
 =item C<$widget-E<gt>textfont( $font );>X<_widget_E_gt_textfont_font_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1537
+=for hackers xs/Widget.xs line 1535
 
 =back
 
@@ -2347,13 +2347,13 @@ control the size they draw the L<C<glyph()>|/"glyph">. Default is 12.
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1728
+=for hackers xs/Widget.xs line 1726
 
 =item C<$widget-E<gt>textsize( $size );>X<_widget_E_gt_textsize_size_>
 
 =for hackers Found in F<src/Style.cxx>
 
-=for hackers xs/Widget.xs line 1749
+=for hackers xs/Widget.xs line 1747
 
 =back
 
@@ -2373,7 +2373,7 @@ L<C<FLTK::belowmouse()>|FLTK/"belowmouse">, L<C<FLTK::modal()>|FLTK/"modal">,
 and some internal pointers). Unlike older versions of fltk, no events (i.e.
 C<FLTK::LEAVE> or C<FLTK::UNFOCUS>) are sent to the widget.
 
-=for hackers xs/Widget.xs line 1185
+=for hackers xs/Widget.xs line 1183
 
 =back
 
@@ -2393,7 +2393,7 @@ tooltip to C<"">.
 Putting C<@> commands in to bring up L<Symbol|FLTK::Symbol> objects will allow
 a lot of interesting things to be put into the tooltip.
 
-=for hackers xs/Widget.xs line 307
+=for hackers xs/Widget.xs line 305
 
 =back
 
@@ -2427,13 +2427,13 @@ L<FLTK::Group|FLTK::Group>, you must use C<FLTK::Widget::GROUP_TYPE + N> (C<N>
 must be in the range C<1> to C<7>) so that L<C<is_group()>|/"is_group"> will
 work.
 
-=for hackers xs/Widget.xs line 176
+=for hackers xs/Widget.xs line 174
 
 =item C<$widget-E<gt>type( $value );>X<_widget_E_gt_type_value_>
 
 
 
-=for hackers xs/Widget.xs line 201
+=for hackers xs/Widget.xs line 199
 
 =back
 
@@ -2448,13 +2448,13 @@ Set the second argument to the callback.
 
 See Also: L<C<callback>|/"callback">, L<C<argument>|/"argument">.
 
-=for hackers xs/Widget.xs line 592
+=for hackers xs/Widget.xs line 590
 
 =item C<my $data = $widget-E<gt>user_data( );>X<my_data_widget_E_gt_user_data_>
 
 Returns the second argument to the callback.
 
-=for hackers xs/Widget.xs line 598
+=for hackers xs/Widget.xs line 596
 
 =back
 
@@ -2467,7 +2467,7 @@ X<vertical>
 
 Same as L<C<!horizontal()>|/"horizontal">
 
-=for hackers xs/Widget.xs line 235
+=for hackers xs/Widget.xs line 233
 
 =back
 
@@ -2481,7 +2481,7 @@ X<visible>
 Returns true if the widget is visible (L<C<flag(INVISIBLE)>|/"flag"> is
 false).
 
-=for hackers xs/Widget.xs line 825
+=for hackers xs/Widget.xs line 823
 
 =back
 
@@ -2495,7 +2495,7 @@ X<visible_r>
 Returns true if the widget and all of its parents are visible. Only if this is
 true can the user see the widget.
 
-=for hackers xs/Widget.xs line 830
+=for hackers xs/Widget.xs line 828
 
 =back
 
@@ -2555,7 +2555,7 @@ changes.
 
 =back 
 
-=for hackers xs/Widget.xs line 642
+=for hackers xs/Widget.xs line 640
 
 =back
 
@@ -2571,7 +2571,7 @@ will skip any and all parent widgets between this and the window). Returns
 C<undef> if none. Note: for an L<FLTK::Window>, this returns the I<parent>
 window (if any), not I<this> window.
 
-=for hackers xs/Widget.xs line 123
+=for hackers xs/Widget.xs line 121
 
 =back
 
@@ -2622,6 +2622,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Widget.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+=for git $Id: Widget.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

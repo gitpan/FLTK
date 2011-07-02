@@ -25,13 +25,13 @@ X<maximum>
 Set maximum value for the progess widget. It should represent operation
 length.
 
-=for hackers xs/ProgressBar.xs line 108
+=for hackers xs/ProgressBar.xs line 104
 
 =item C<my $min = $progressbar-E<gt>maximum( );>X<my_min_progressbar_E_gt_maximum_>
 
 Returns maximum value for the progress widget.
 
-=for hackers xs/ProgressBar.xs line 113
+=for hackers xs/ProgressBar.xs line 109
 
 =back
 
@@ -44,13 +44,13 @@ X<minimum>
 
 Set minimal value for the progess widget.
 
-=for hackers xs/ProgressBar.xs line 88
+=for hackers xs/ProgressBar.xs line 84
 
 =item C<my $min = $progressbar-E<gt>minimum( );>X<my_min_progressbar_E_gt_minimum_>
 
 Returns theminimal value for the progress widget.
 
-=for hackers xs/ProgressBar.xs line 92
+=for hackers xs/ProgressBar.xs line 88
 
 =back
 
@@ -78,13 +78,13 @@ Set position of bar in progress widget and redraw it. If C<$value> goes out of
 L<C<minimum( )>|FLTK::ProgressBar/"minimum"> and
 L<C<maximum( )>|FLTK::ProgressBar/"maximum"> bounds, it will be ignored.
 
-=for hackers xs/ProgressBar.xs line 129
+=for hackers xs/ProgressBar.xs line 125
 
 =item C<my $min = $progressbar-E<gt>position( );>X<my_min_progressbar_E_gt_position_>
 
 Returns position value for the progress widget.
 
-=for hackers xs/ProgressBar.xs line 135
+=for hackers xs/ProgressBar.xs line 131
 
 =back
 
@@ -99,7 +99,7 @@ A shorthand for L<C<minimum( )>|FLTK::ProgressBar/"minimum">,
 L<C<maximum( )>|FLTK::ProgressBar/"maximum">, and
 L<C<step( )>|FLTK::ProgressBar/"step">.
 
-=for hackers xs/ProgressBar.xs line 55
+=for hackers xs/ProgressBar.xs line 51
 
 =back
 
@@ -112,14 +112,14 @@ X<showtext>
 
 Shows completition percentage inside progress widget.
 
-=for hackers xs/ProgressBar.xs line 151
+=for hackers xs/ProgressBar.xs line 147
 
 =item C<my $shown = $progressbar-E<gt>showtext( );>X<my_shown_progressbar_E_gt_showtext_>
 
 Returns wheather or not completion percentage is displayed inside progress
 widget.
 
-=for hackers xs/ProgressBar.xs line 155
+=for hackers xs/ProgressBar.xs line 151
 
 =back
 
@@ -134,13 +134,13 @@ Increase bar length with given step and redraw widget. If value goes out of
 L<C<minimum( )>|FLTK::ProgressBar/"minimum"> and
 L<C<maximum( )>|FLTK::ProgressBar/"maximum"> bounds, it will be ignored.
 
-=for hackers xs/ProgressBar.xs line 66
+=for hackers xs/ProgressBar.xs line 62
 
 =item C<my $step = $progressbar-E<gt>step( );>X<my_step_progressbar_E_gt_step_>
 
 Returns the bar length.
 
-=for hackers xs/ProgressBar.xs line 72
+=for hackers xs/ProgressBar.xs line 68
 
 =back
 
@@ -154,7 +154,7 @@ X<text_color>
 Changes the color of text hiddien/displayed by
 L<C<showtext( )>|FLTK::ProgressBar/"showtext">.
 
-=for hackers xs/ProgressBar.xs line 172
+=for hackers xs/ProgressBar.xs line 168
 
 =item C<my $color = $progressbar-E<gt>text_color( );>X<my_color_progressbar_E_gt_text_color_>
 
@@ -163,7 +163,7 @@ L<C<showtext( )>|FLTK::ProgressBar/"showtext">.
 
 =pod 
 
-=for hackers xs/ProgressBar.xs line 177
+=for hackers xs/ProgressBar.xs line 173
 
 =back
 
@@ -189,6 +189,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: ProgressBar.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: ProgressBar.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

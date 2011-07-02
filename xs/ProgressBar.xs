@@ -6,18 +6,14 @@ MODULE = FLTK::ProgressBar               PACKAGE = FLTK::ProgressBar
 
 #include <fltk/ProgressBar.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::ProgressBar *
 fltk::ProgressBar::new( int x, int y, int w, int h, char * label = 0 )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::ProgressBar>(CLASS,x,y,w,h,label);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::ProgressBar>(CLASS,x,y,w,h,label);
+    OUTPUT:
+        RETVAL
 
 void
 fltk::ProgressBar::range( double min, double max, double step = 1 )

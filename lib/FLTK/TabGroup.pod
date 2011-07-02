@@ -44,7 +44,31 @@ X<default_pager>
 Sets the default pager for future L<TabGroup|FLTK::TabGroup>s. By design, the
 defualt pager is never undefined.
 
-=for hackers xs/TabGroup.xs line 214
+=for hackers xs/TabGroup.xs line 210
+
+=item C<$tabgroup-E<gt>default_pager( $value );>X<_tabgroup_E_gt_default_pager_value_>
+
+Sets the default pager from the built-in ones.
+
+The current built-in pagers are...
+
+=over 
+
+=item Menu
+Displays two left and right buttons and provides 'prev page' and 'next page'
+functionality. This is the new default.
+
+Pass C<0> for this type.
+
+=item Shrink
+Tabs outside the rectangle are shrunken to very small slice to fit. This is
+the original default.
+
+Pass C<1> for this type.
+
+=back 
+
+=for hackers xs/TabGroup.xs line 215
 
 =back
 
@@ -62,13 +86,13 @@ including the top edge, but the tab itself is designed only to match
 C<THIN_UP_BOX>. You can also use C<FLAT_BOX> and it will look correct if the
 tabs fill the entire width of a window or parent box.
 
-=for hackers xs/TabGroup.xs line 79
+=for hackers xs/TabGroup.xs line 75
 
 =item C<$tabgroup-E<gt>default_style( $style );>X<_tabgroup_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/TabGroup.xs line 88
+=for hackers xs/TabGroup.xs line 84
 
 =back
 
@@ -80,7 +104,7 @@ X<draw_tab>
 =item C<$tabgroup-E<gt>draw_tab( $x1, $x2, $W, $H, $o, $sel );>X<_tabgroup_E_gt_draw_tab_x1_x2_W_H_o_sel_>
 
 
-=for hackers xs/TabGroup.xs line 264
+=for hackers xs/TabGroup.xs line 288
 
 =back
 
@@ -94,7 +118,7 @@ X<draw_tab_background>
 
 =pod 
 
-=for hackers xs/TabGroup.xs line 272
+=for hackers xs/TabGroup.xs line 296
 
 =back
 
@@ -126,12 +150,12 @@ X<pager>
 Sets the pager to a L<TabGroup|FLTK::TabGroup>. By design, pager is B<never>
 undefined.
 
-=for hackers xs/TabGroup.xs line 193
+=for hackers xs/TabGroup.xs line 189
 
 =item C<my $pager = $tabgroup-E<gt>pager( );>X<my_pager_tabgroup_E_gt_pager_>
 
 
-=for hackers xs/TabGroup.xs line 198
+=for hackers xs/TabGroup.xs line 194
 
 =back
 
@@ -145,7 +169,7 @@ X<selected_child>
 Returns C<$tabgroup->child($tabgroup->value())> or an undefined value if no
 children exist.
 
-=for hackers xs/TabGroup.xs line 151
+=for hackers xs/TabGroup.xs line 147
 
 =item C<my $new = $tabgroup-E<gt>selected_child( $newval );>X<my_new_tabgroup_E_gt_selected_child_newval_>
 
@@ -155,7 +179,7 @@ a different selection than before. Does not do the
 L<C<callback( )>|FLTK::Widget/"callback">. If the widget is null or not a
 descendent of this, the last child is selected.
 
-=for hackers xs/TabGroup.xs line 156
+=for hackers xs/TabGroup.xs line 152
 
 =back
 
@@ -168,7 +192,7 @@ X<set_draw_outline>
 
 
 
-=for hackers xs/TabGroup.xs line 184
+=for hackers xs/TabGroup.xs line 180
 
 =back
 
@@ -182,7 +206,7 @@ X<tab_height>
 Returns the space needed for tabs. Negative values will place tabs on the
 bottom.
 
-=for hackers xs/TabGroup.xs line 224
+=for hackers xs/TabGroup.xs line 248
 
 =back
 
@@ -200,7 +224,7 @@ correct distance or by C<$tabgroup->pager->slope( )> or by zero.
 
 Return value is the index of the selected item.
 
-=for hackers xs/TabGroup.xs line 234
+=for hackers xs/TabGroup.xs line 258
 
 =back
 
@@ -225,7 +249,7 @@ them without the display ever looking wrong to the user.
 
 If there are no children then C<-1> is returned.
 
-=for hackers xs/TabGroup.xs line 105
+=for hackers xs/TabGroup.xs line 101
 
 =item C<$tabgroup-E<gt>value( $newval );>X<_tabgroup_E_gt_value_newval_>
 
@@ -234,7 +258,7 @@ if C<$newval> is greater than the children, it selects the last one. Returns
 true if this is a different child than last time. Does not do the
 L<C<callback( )>|FLTK::Widget/"callback">.
 
-=for hackers xs/TabGroup.xs line 121
+=for hackers xs/TabGroup.xs line 117
 
 =back
 
@@ -248,7 +272,7 @@ X<which>
 Returns the child index that would be selected by a click at the given mouse
 position. Returns C<-1> if the mouse position is not in a tab.
 
-=for hackers xs/TabGroup.xs line 141
+=for hackers xs/TabGroup.xs line 137
 
 =back
 
@@ -274,6 +298,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: TabGroup.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: TabGroup.xs 88858e0 2011-04-19 00:47:41Z sanko@cpan.org $
 
 =cut

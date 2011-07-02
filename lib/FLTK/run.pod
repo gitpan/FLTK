@@ -17,7 +17,7 @@ X<add_check>
 
 =item C<FLTK::add_check( \&coderef, $args );>X<FLTK_add_check_coderef_args_>
 
-Fltk will call this callback just before it flushes the display and waits for
+FLTK will call this callback just before it flushes the display and waits for
 events. This is different than L<C<add_idle()>|/"add_idle"> because it is only
 called once, then fltk calls the system and tells it not to return until an
 event happens. If several checks have been added fltk calls them all, the most
@@ -42,7 +42,7 @@ events:
 
 Import this function with the C<:run> tag.
 
-=for hackers xs/run.xs line 447
+=for hackers xs/run.xs line 432
 
 =back
 
@@ -51,7 +51,7 @@ X<add_fd>
 
 =over
 
-=item C<my $okay = FLTK::add_fd( $fh, $events, \&callback, $args );>X<my_okay_FLTK_add_fd_fh_events_callback_args_>
+=item C<my $handle = FLTK::add_fd( $fh, $events, \&callback, $args );>X<my_handle_FLTK_add_fd_fh_events_callback_args_>
 
 Adds a handle to the list watched by FLTK.
 
@@ -84,15 +84,7 @@ weak references.
 
 Import this function with the C<:fd> tag.
 
-=for hackers xs/run.xs line 560
-
-=item C<my $okay = FLTK::add_fd( $fileno, $events, \&callback, $args );>X<my_okay_FLTK_add_fd_fileno_events_callback_args_>
-
-Adds the handle (if it exists) with the particular fileno.
-
-Import this function with the C<:fd> tag.
-
-=for hackers xs/run.xs line 591
+=for hackers xs/run.xs line 565
 
 =back
 
@@ -122,7 +114,7 @@ the idle callback.
 
 Import this function with the C<:run> tag.
 
-=for hackers xs/run.xs line 477
+=for hackers xs/run.xs line 462
 
 =back
 
@@ -342,7 +334,7 @@ X<remove_fd>
 
 =over
 
-=item C<my $okay = FLTK::remove_fd( $fh, $when );>X<my_okay_FLTK_remove_fd_fh_when_>
+=item C<FLTK::remove_fd( $fh, $when );>X<FLTK_remove_fd_fh_when_>
 
 Removes a handle from the list watched by FLTK.
 
@@ -368,17 +360,11 @@ socket is encounters an exception.
 By default, the filehandle is removed completly which is the same as passing
 C<-1>.
 
-Import this function with the C<:fd> tag.
-
-=for hackers xs/run.xs line 655
-
-=item C<my $okay = FLTK::remove_fd( $fileno, $when );>X<my_okay_FLTK_remove_fd_fileno_when_>
-
-Removes the handle (if it exists) with the particular fileno.
-
 =pod 
 
-=for hackers xs/run.xs line 681
+Import this function with the C<:fd> tag.
+
+=for hackers xs/run.xs line 631
 
 =back
 
@@ -393,7 +379,7 @@ Removes the specified idle callback, if it is installed.
 
 Import this function with the C<:run> tag.
 
-=for hackers xs/run.xs line 496
+=for hackers xs/run.xs line 481
 
 =back
 
@@ -402,7 +388,7 @@ X<repeat_timeout>
 
 =over
 
-=item C<FLTK::repeat_timeout( $time, \&callback, $args );>X<FLTK_repeat_timeout_time_callback_args_>
+=item C<FLTK::repeat_timeout( $timeout );>X<FLTK_repeat_timeout_timeout_>
 
 Similar to L<C<add_timeout()>|/"add_timeout">, but rather than the time being
 measured from "now", it is measured from when the system call elapsed that
@@ -417,12 +403,15 @@ Outside a timeout callback this acts like L<C<add_timeout()>|/"add_timeout">.
 This code will print "TICK" each second on C<*STDOUT>, with a fair degree of
 accuracy:
 
-    sub callback {
-        say('TICK');
-        FLTK::repeat_timeout(1, \&callback);
-    }
-    FLTK::add_timeout(1, \&callback);
-    FLTK::wait() while 1
+    my $ticker;
+    $ticker = FLTK::add_timeout(
+        1,
+        sub {
+            say('TICK');
+            FLTK::repeat_timeout(1, $ticker);
+        }
+    );
+    FLTK::wait() while 1;
 
 Import this function with the C<:run> tag.
 
@@ -508,6 +497,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: run.xs 6090ead 2011-01-30 18:51:54Z sanko@cpan.org $
+=for git $Id: run.xs 0f9e351 2011-07-02 22:44:19Z sanko@cpan.org $
 
 =cut

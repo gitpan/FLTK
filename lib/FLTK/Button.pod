@@ -48,7 +48,7 @@ X<HIDDEN>
 
 Back-comptability value to hide the button
 
-=for hackers xs/Button.xs line 79
+=for hackers xs/Button.xs line 75
 
 =back
 
@@ -61,13 +61,13 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/Button.xs line 126
+=for hackers xs/Button.xs line 122
 
 =item C<$button-E<gt>default_style( $style );>X<_button_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/Button.xs line 130
+=for hackers xs/Button.xs line 126
 
 =back
 
@@ -101,7 +101,7 @@ L<C<Widget::setonly()>|FLTK::Widget/"setonly">.
 If you turn it on, a normal button will draw pushed-in, until the user clicks
 it and releases it.
 
-=for hackers xs/Button.xs line 92
+=for hackers xs/Button.xs line 88
 
 =item C<my $val = $button-E<gt>value( );>X<my_val_button_E_gt_value_>
 
@@ -112,7 +112,7 @@ temporary while the user is holding the button down.
 
 This is the same as L<Widget::state()|FLTK::Widget/"state">.
 
-=for hackers xs/Button.xs line 104
+=for hackers xs/Button.xs line 100
 
 =back
 
@@ -155,6 +155,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Button.xs 9ed2f81 2011-01-04 03:45:15Z sanko@cpan.org $
+=for git $Id: Button.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

@@ -208,9 +208,9 @@ package inc::MBX::FLTK;
 
 =for $Revision: 0eccecdb90f40ba44af05a50fe819598edfbcef3 $
 
-=for $Date: 2011-01-29 05:18:37Z (Sat, 29 Jan 2011) $ | Last $Modified: 5 days ago $
+=for $Date: 2011-01-29 05:18:37Z (Sat, 29 Jan 2011) $ | Last $Modified: 5 months ago $
 
-=for $URL: http://github.com/sanko/perl-fltk/raw/master/inc/MBX/FLTK.pm $
+=for $URL: git://github.com/sanko/perl-fltk.git/raw/master/inc/MBX/FLTK.pm $
 
 =for $ID: FLTK.pm 0eccecd 2011-01-29 05:18:37Z sanko@cpan.org $
 

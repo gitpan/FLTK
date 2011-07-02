@@ -6,21 +6,22 @@ MODULE = FLTK::MenuSection               PACKAGE = FLTK::MenuSection
 
 #include <fltk/ItemGroup.h>
 
-#include "include/WidgetSubclass.h"
+#include <fltk/Symbol.h>
 
-void
+#include "include/RectangleSubclass.h"
+
+fltk::MenuSection *
 fltk::MenuSection::new( char * label = 0, fltk::Symbol * symbol = NO_INIT )
-    PPCODE:
-        void * RETVAL = NULL;
-        if ( items == 2)
-            RETVAL = (void *) new WidgetSubclass<fltk::MenuSection>(CLASS,label);
-        else
-	        RETVAL = (void *) new WidgetSubclass<fltk::MenuSection>(CLASS,label,symbol);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CASE: ( items == 2)
+        CODE:
+            RETVAL = new RectangleSubclass<fltk::MenuSection>(CLASS,label);
+        OUTPUT:
+            RETVAL
+    CASE:
+        CODE:
+            RETVAL = new RectangleSubclass<fltk::MenuSection>(CLASS,label,symbol);
+        OUTPUT:
+          RETVAL
 
 bool
 fltk::MenuSection::DESTROY( )

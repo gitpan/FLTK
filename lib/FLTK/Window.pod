@@ -54,13 +54,13 @@ X<border>
 If C<set> is a true value, then a window border will be set, otherwise the
 window will have neither border nor caption.
 
-=for hackers xs/Window.xs line 112
+=for hackers xs/Window.xs line 113
 
 =item C<my $set = $window-E<gt>border( );>X<my_set_window_E_gt_border_>
 
 
 
-=for hackers xs/Window.xs line 117
+=for hackers xs/Window.xs line 118
 
 =back
 
@@ -78,7 +78,7 @@ around the border if this window was zero in size and placed at C<0,0>. C<x,y>
 are typically negative and C<w,h> are typically positive. To get the actual
 rectangle around your window, add these values to the window's size.
 
-=for hackers xs/Window.xs line 134
+=for hackers xs/Window.xs line 135
 
 =back
 
@@ -106,7 +106,7 @@ If you want a dialog that blocks interaction with the other windows of your
 application or with all other applications, you need to look at
 L<C<exec()>|/"exec"> (or possibly L<C<FLTK::modal()>|FLTK/"modal">).
 
-=for hackers xs/Window.xs line 148
+=for hackers xs/Window.xs line 149
 
 =back
 
@@ -121,7 +121,7 @@ Turn off double buffering, so that drawing directly goes to the visible image
 on the screen. Not all systems can do this, they will remain double buffered
 even if this is off.
 
-=for hackers xs/Window.xs line 196
+=for hackers xs/Window.xs line 197
 
 =back
 
@@ -143,13 +143,13 @@ the "outside" area, so the window had better be temporary and the user cannot
 move it) by setting the box() to NO_BOX and making draw() only draw the opaque
 part.
 
-=for hackers xs/Window.xs line 684
+=for hackers xs/Window.xs line 685
 
 =item C<$window-E<gt>default_style( $style );>X<_window_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/Window.xs line 697
+=for hackers xs/Window.xs line 698
 
 =back
 
@@ -166,7 +166,7 @@ L<C<clear_double_buffer()>|/"clear_double_buffer"> was called. If neither has
 been called, this returns a machine-dependant state (systems where double
 buffering is efficient turn it on by default).
 
-=for hackers xs/Window.xs line 284
+=for hackers xs/Window.xs line 285
 
 =back
 
@@ -181,7 +181,7 @@ Returns the L<Window|FLTK::Window> currently being drawn into. To set this use
 L<C<make_current()>|FLTK::Widget/"make_current">. It will already be set when
 C<draw()> is called.
 
-=for hackers xs/Window.xs line 297
+=for hackers xs/Window.xs line 298
 
 =back
 
@@ -196,7 +196,7 @@ Indicate that the overlay drawn with L<C<draw_overlay()>|/"draw_overlay"> is
 blank. L<C<draw_overlay()>|/"draw_overlay"> will not be called until
 L<C<redraw_overlay()>|/"redraw_overlay"> is called again.
 
-=for hackers xs/Window.xs line 207
+=for hackers xs/Window.xs line 208
 
 =back
 
@@ -230,7 +230,7 @@ or key click.
 See L<C<FLTK::modal()>|FLTK/"modal"> for what grab does. This is useful for
 popup menus.
 
-=for hackers xs/Window.xs line 308
+=for hackers xs/Window.xs line 309
 
 =back
 
@@ -248,7 +248,7 @@ L<C<FLTK::Window::exec()>|FLTK::Window/"exec"> uses it for this if no other
 parent is specified. This is also used by L<C<FLTK::run()>|FLTK/"run"> to see
 if any windows still exist.
 
-=for hackers xs/Window.xs line 714
+=for hackers xs/Window.xs line 715
 
 =item C<FLTK::first( $window );>X<FLTK_first_window_>
 
@@ -258,7 +258,7 @@ change the parent of dialog boxes run by
 L<C<FLTK::Window::exec()>|FLTK::Window/"exec"> or
 L<C<FLTK::ask()>|FLTK/"ask">.
 
-=for hackers xs/Window.xs line 723
+=for hackers xs/Window.xs line 724
 
 =back
 
@@ -272,7 +272,7 @@ X<free_backbuffer>
 Get rid of extra storage created by drawing when
 L<C<double_buffer()>|/"double_buffer"> was turned on.
 
-=for hackers xs/Window.xs line 218
+=for hackers xs/Window.xs line 219
 
 =back
 
@@ -319,14 +319,14 @@ and should be avoided.
 
 =back 
 
-=for hackers xs/Window.xs line 338
+=for hackers xs/Window.xs line 339
 
 =item C<$window-E<gt>fullscreen( );>X<_window_E_gt_fullscreen_>
 
 Chooses the L<Monitor|FLTK::Monitor> that the center of the window is on to be
 the one to resize to.
 
-=for hackers xs/Window.xs line 378
+=for hackers xs/Window.xs line 379
 
 =back
 
@@ -340,7 +340,7 @@ X<fullscreen_off>
 Turns off any side effects of L<C<fullscreen()>|/"fullscreen">, then does
 C<resize($x,$y,$w,$h)>.
 
-=for hackers xs/Window.xs line 399
+=for hackers xs/Window.xs line 400
 
 =back
 
@@ -356,7 +356,7 @@ pointing at the center of the widget, which may be the window itself. If
 C<offscreen> is a true value, the window is allowed to extend off the
 L<Monitor|FLTK::Monitor> (some X window managers do not allow this).
 
-=for hackers xs/Window.xs line 430
+=for hackers xs/Window.xs line 431
 
 =item C<$window-E<gt>hotspot( $CX, $CY, $offscreen );>X<_window_E_gt_hotspot_CX_CY_offscreen_>
 
@@ -365,7 +365,7 @@ pointing at the C<cx,cy> position. If C<offscreen> is a true value, the window
 is allowed to extend off the L<Monitor|FLTK::Monitor> (some X window managers
 do not allow this.
 
-=for hackers xs/Window.xs line 439
+=for hackers xs/Window.xs line 440
 
 =back
 
@@ -378,7 +378,7 @@ X<icon>
 
 This loads an icon (F<.ico>) in the window.
 
-=for hackers xs/Window.xs line 753
+=for hackers xs/Window.xs line 754
 
 =back
 
@@ -400,7 +400,7 @@ causes an expose event.>
 Returns true if the window is L<C<shown>|/"shown"> but is
 L<C<iconized>|/"iconize">.
 
-=for hackers xs/Window.xs line 460
+=for hackers xs/Window.xs line 461
 
 =back
 
@@ -421,7 +421,7 @@ Currently there are only X and Win32 system-specific ways to control what is
 drawn in the icon. You should not rely on window managers displaying the
 icons.
 
-=for hackers xs/Window.xs line 228
+=for hackers xs/Window.xs line 229
 
 =back
 
@@ -436,7 +436,7 @@ Sets the text displayed below the icon (or in the taskbar). If you don't set
 this it defaults to the L<C<label()>|/"label"> but if that appears to be a
 filename, it defaults to the last portion after the last C</> character.
 
-=for hackers xs/Window.xs line 495
+=for hackers xs/Window.xs line 496
 
 =back
 
@@ -447,7 +447,7 @@ X<iconlable>
 
 =item C<my $label = $window-E<gt>iconlable( );>X<my_label_window_E_gt_iconlable_>
 
-=for hackers xs/Window.xs line 501
+=for hackers xs/Window.xs line 502
 
 =back
 
@@ -460,19 +460,19 @@ X<label>
 
 Sets both the L<C<label()>|/"label"> and the L<C<iconlabel()>|/"iconlabel">.
 
-=for hackers xs/Window.xs line 516
+=for hackers xs/Window.xs line 517
 
 =item C<$window-E<gt>label( $name );>X<_window_E_gt_label_name_>
 
 Sets the window title, which is drawn in the titlebar by the system.
 
-=for hackers xs/Window.xs line 522
+=for hackers xs/Window.xs line 523
 
 =item C<my $title = $window-E<gt>label( );>X<my_title_window_E_gt_label_>
 
 Returns the window title.
 
-=for hackers xs/Window.xs line 526
+=for hackers xs/Window.xs line 527
 
 =back
 
@@ -492,7 +492,7 @@ Results are undefined if the innermost L<C<exec()>|/"exec"> is being called on
 a window other than this one. Current behavior is to cause that exec to return
 false.
 
-=for hackers xs/Window.xs line 546
+=for hackers xs/Window.xs line 547
 
 =back
 
@@ -526,7 +526,7 @@ Returns the next L<C<visible()>|/"visible"> top-level window, returns C<undef>
 after the last one. You can use this and L<C<first()>|FLTK::Window/"first"> to
 iterate through all the visible windows.
 
-=for hackers xs/Window.xs line 742
+=for hackers xs/Window.xs line 743
 
 =back
 
@@ -544,7 +544,7 @@ L<C<erase_overlay()>|/"erase_overlay">.
 This does nothing if the window is not L<C<shown()>|/"shown">, it is assummed
 that overlays are only drawn in response to user input.
 
-=for hackers xs/Window.xs line 245
+=for hackers xs/Window.xs line 246
 
 =back
 
@@ -565,7 +565,7 @@ The special value C<FLTK::USEDEFAULT> may be used for C<X> and C<Y> indicate
 that the system should choose the window's position. This will only work
 before L<C<show()>|/"show"> is called.
 
-=for hackers xs/Window.xs line 406
+=for hackers xs/Window.xs line 407
 
 =back
 
@@ -581,7 +581,7 @@ image, and then copied to the screen as a single block. This eliminates
 blinking as the window is updated, and often the application looks faster,
 even if it actually is slower.
 
-=for hackers xs/Window.xs line 259
+=for hackers xs/Window.xs line 260
 
 =back
 
@@ -594,7 +594,7 @@ X<show>
 
 Same as C<child_of(parent); show()>.
 
-=for hackers xs/Window.xs line 562
+=for hackers xs/Window.xs line 563
 
 =item C<$window-E<gt>show( $argc, @argv );>X<_window_E_gt_show_argc_argv_>
 
@@ -604,7 +604,7 @@ C<-geometry> switches. In addition if L<C<FLTK::args()>|FLTK/"args"> has not
 been called yet this does so, this is a useful shortcut for the main window in
 a small program.
 
-=for hackers xs/Window.xs line 568
+=for hackers xs/Window.xs line 569
 
 =item C<$window-E<gt>show( );>X<_window_E_gt_show_>
 
@@ -643,7 +643,7 @@ them. This allows these expensive operations to be deferred as long as
 possible, and allows fltk programs to be written that will run without an X
 server as long as they don't actually show a window.
 
-=for hackers xs/Window.xs line 578
+=for hackers xs/Window.xs line 579
 
 =back
 
@@ -667,7 +667,7 @@ On systems that don't support nested desktops (i.e. X) this does
 L<C<child_of(parent)>|/"child_of"> and L<C<show()>|/"show">, which produces an
 overlapping window that will remain above the frame window.
 
-=for hackers xs/Window.xs line 169
+=for hackers xs/Window.xs line 170
 
 =back
 
@@ -682,7 +682,7 @@ Returns non-zero if L<C<show()>|/"show"> has been called, but C<DESTROY()> has
 not been called. Note that this returns true if L<C<hide()>|/"hide"> was
 called or if the user has iconized the window.
 
-=for hackers xs/Window.xs line 475
+=for hackers xs/Window.xs line 476
 
 =back
 
@@ -731,7 +731,7 @@ that is also the maximum size (so the window cannot resize in that direction).
 
 =back 
 
-=for hackers xs/Window.xs line 639
+=for hackers xs/Window.xs line 640
 
 =back
 
@@ -747,7 +747,7 @@ You should call this in your C<layout()> method if xywh have changed. The
 L<C<layout_damage()>|FLTK::Widget/"layout_damage"> flags must be on or it
 won't work.
 
-=for hackers xs/Window.xs line 271
+=for hackers xs/Window.xs line 272
 
 =back
 
@@ -773,6 +773,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Window.xs fb01b98 2011-01-14 19:32:30Z sanko@cpan.org $
+=for git $Id: Window.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

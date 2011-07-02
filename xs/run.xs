@@ -137,23 +137,32 @@ MODULE = FLTK::run               PACKAGE = FLTK::run
 
 MODULE = FLTK::run               PACKAGE = FLTK
 
-void
+SV *
 add_timeout( double time, CV * callback, SV * args = NO_INIT )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 3 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::add_timeout( time, _cb_t, ( void * ) cb );
+        AV *seg_av;
+        seg_av = newAV();
+        av_push(seg_av, newSVsv(ST(1)));
+        if ( items == 3 ) av_push(seg_av, newSVsv(args));
+        RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::timeout", 1));
+        fltk::add_timeout( time, _cb_t, ( void * ) seg_av );
+    OUTPUT:
+        RETVAL
+
+MODULE = FLTK::run               PACKAGE = FLTK::timeout
 
 void
-repeat_timeout( double time, CV * callback, SV * args = NO_INIT )
+DESTROY( SV * timeout )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 3 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::repeat_timeout( time, _cb_t, ( void * ) cb );
+        if (fltk::has_timeout( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_timeout( _cb_t, ( void * ) SvRV(ST(0) ));
+
+MODULE = FLTK::run               PACKAGE = FLTK
+
+void
+repeat_timeout( double time, SV * timeout )
+    CODE:
+        fltk::repeat_timeout( time, _cb_t, ( void * ) SvRV(ST(1) ));
 
 BOOT:
     export_tag("add_timeout",    "run");
@@ -164,50 +173,23 @@ MODULE = FLTK::run               PACKAGE = FLTK::run
 MODULE = FLTK::run               PACKAGE = FLTK
 
 bool
-has_timeout( CV * coderef, SV * args = NO_INIT )
+has_timeout( SV * timeout )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Timeout callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        /* for (Timeout* t = first_timeout; t; t = t->next)
-            if (t->cb == _cb &&
-                av_fetch(*(AV*)t->arg, 0, 0) == newSVsv((SV*)ST(0))
-            ) {RETVAL = true; break; }
-        }*/
-        RETVAL = fltk::has_timeout( _cb_t, ( void * ) cb ); // XXX
+         RETVAL = fltk::has_timeout( _cb_t, ( void * ) SvRV(ST(0) )) ? 1 : 0;
     OUTPUT:
         RETVAL
 
 bool
-has_check( CV * coderef, SV * args = NO_INIT )
+has_check( SV * check )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Timeout callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        /* for (Timeout* t = first_timeout; t; t = t->next)
-            if (t->cb == _cb &&
-                av_fetch(*(AV*)t->arg, 0, 0) == newSVsv((SV*)ST(0))
-            ) {RETVAL = true; break; }
-        }*/
-        RETVAL =   fltk::has_check( _cb_t, ( void * ) cb ); // XXX
+         RETVAL = fltk::has_check( _cb_t, ( void * ) SvRV(ST(0) )) ? 1 : 0;
     OUTPUT:
         RETVAL
 
 bool
-has_idle( CV * coderef, SV * args = NO_INIT )
+has_idle( SV * idle )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Timeout callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        /* for (Timeout* t = first_timeout; t; t = t->next)
-            if (t->cb == _cb &&
-                av_fetch(*(AV*)t->arg, 0, 0) == newSVsv((SV*)ST(0))
-            ) {RETVAL = true; break; }
-        }*/
-        RETVAL =    fltk::has_idle( _cb_t, ( void * ) cb ); // XXX
+         RETVAL = fltk::has_idle( _cb_t, ( void * ) SvRV(ST(0) )) ? 1 : 0;
     OUTPUT:
         RETVAL
 
@@ -221,49 +203,69 @@ MODULE = FLTK::run               PACKAGE = FLTK::run
 MODULE = FLTK::run               PACKAGE = FLTK
 
 void
-remove_timeout( CV * callback, SV * args = NO_INIT )
+remove_timeout( SV * timeout )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::remove_timeout( _cb_t, ( void * ) cb ); // XXX - meh
+        if (fltk::has_timeout( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_timeout( _cb_t, ( void * ) SvRV(ST(0) ));
+        sv_setsv(ST(0), &PL_sv_undef);
 
-void
+SV *
 add_check( CV * callback, SV * args = NO_INIT )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::add_check( _cb_t, ( void * ) cb );
+        AV *seg_av;
+        seg_av = newAV();
+        av_push(seg_av, newSVsv(ST(0)));
+        if ( items == 2 ) av_push(seg_av, newSVsv(args));
+        RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::check", 1));
+        fltk::add_check( _cb_t, ( void * ) seg_av );
+    OUTPUT:
+        RETVAL
+
+MODULE = FLTK::run               PACKAGE = FLTK::check
 
 void
-remove_check( CV * callback, SV * args = NO_INIT )
+DESTROY( SV * check )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::remove_check( _cb_t, ( void * ) cb ); // XXX - meh
+        if (fltk::has_check( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_check( _cb_t, ( void * ) SvRV(ST(0) ));
+
+MODULE = FLTK::run               PACKAGE = FLTK
 
 void
+remove_check( SV * timeout )
+    CODE:
+        if (fltk::has_check( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_check( _cb_t, ( void * ) SvRV(ST(0) ));
+        sv_setsv(ST(0), &PL_sv_undef);
+
+SV *
 add_idle( CV * callback, SV * args = NO_INIT )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::add_idle( _cb_t, ( void * ) cb );
+        AV *seg_av;
+        seg_av = newAV();
+        av_push(seg_av, newSVsv(ST(0)));
+        if ( items == 2 ) av_push(seg_av, newSVsv(args));
+        RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::idle", 1));
+        fltk::add_idle( _cb_t, ( void * ) seg_av );
+    OUTPUT:
+        RETVAL
 
 void
-remove_idle( CV * callback, SV * args = NO_INIT )
+remove_idle( SV * idle )
     CODE:
-        HV   * cb    = newHV( );
-        hv_store( cb, "coderef",  7, newSVsv( ST( 1 ) ), 0 );
-        if ( items == 2 ) /* Callbacks can be called without arguments */
-            hv_store( cb, "args", 4, newSVsv( args ),    0 );
-        fltk::remove_idle( _cb_t, ( void * ) cb ); // XXX - meh
+        if (fltk::has_idle( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_idle( _cb_t, ( void * ) SvRV(ST(0) ));
+        sv_setsv(ST(0), &PL_sv_undef);
+
+MODULE = FLTK::run               PACKAGE = FLTK::idle
+
+void
+DESTROY( SV * idle )
+    CODE:
+        if (fltk::has_idle( _cb_t, ( void * ) SvRV(ST(0) )) )
+            fltk::remove_idle( _cb_t, ( void * ) SvRV(ST(0) ));
+
+MODULE = FLTK::run               PACKAGE = FLTK
 
 BOOT:
     export_tag("remove_timeout", "run");
@@ -284,48 +286,23 @@ BOOT:
 
 MODULE = FLTK::run               PACKAGE = FLTK
 
-bool
-add_fd( fh, int events, CV * callback, SV * args = NO_INIT )
-    CASE: SvIOK( ST(0) )
-        int fh
-        CODE:
-            RETVAL = true;
-            HV * cb = newHV( );
-            hv_store( cb, "coderef", 7, newSVsv( ST( 2 ) ), 0 );
-            if ( items == 4 ) /* Callbacks can be called without arguments */
-                hv_store( cb, "args", 4, newSVsv( args ),   0 );
-            hv_store( cb, "fileno", 6, newSViv( fh ),   0 );
-            PerlIO * _fh;
-            int fd = PerlLIO_dup( fh );
-            /* XXX: user should check errno on undef returns */
-            if (fd < 0)
-                RETVAL = false;
-            else if ( !( _fh = PerlIO_fdopen( fd, "rb" ) ) )
-                RETVAL = false;
-            else {
-                //hv_store( cb, "fh",     2, newSVsv( (SV *) _fh ),  0 );
-                fltk::add_fd(
-                    _get_osfhandle( fh ), events, _cb_f, ( void * ) cb
-                );
-            }
-        OUTPUT:
-            RETVAL
-    CASE:
-        PerlIO * fh
-        CODE:
-            RETVAL = true;
-            HV * cb = newHV( );
-            hv_store( cb, "coderef", 7, newSVsv( ST( 2 ) ), 0 );
-            if ( items == 4 ) /* Callbacks can be called without arguments */
-                hv_store( cb, "args", 4, newSVsv( args ),  0 );
-            int fileno = PerlIO_fileno( fh );
-            hv_store( cb, "fileno", 6, newSViv( fileno ),  0 );
-            //hv_store( cb, "fh",     2, newSVsv( (SV *) fh ),  0 );
-            fltk::add_fd(
-                _get_osfhandle( fileno ), events, _cb_f, ( void * ) cb
-            );
-        OUTPUT:
-            RETVAL
+SV *
+add_fd( PerlIO * fh, int events, CV * callback, SV * args = NO_INIT )
+    CODE:
+        int fileno = PerlIO_fileno( fh );
+        AV *seg_av;
+        seg_av = newAV();
+        // cb, fileno, events, [, args]
+        av_push(seg_av, newSVsv(ST(2)));
+        av_push(seg_av, newRV_inc(ST(0)));
+        av_push(seg_av, newSViv( events ));
+        if ( items == 2 ) av_push(seg_av, newSVsv(args));
+        RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::fd", 1));
+        fltk::add_fd(_get_osfhandle( fileno ), events, _cb_f, ( void * ) seg_av );
+    OUTPUT:
+        RETVAL
+
+MODULE = FLTK::run               PACKAGE = FLTK
 
 BOOT:
     export_tag("add_fd", "fd");
@@ -334,22 +311,27 @@ MODULE = FLTK::run               PACKAGE = FLTK::run
 
 MODULE = FLTK::run               PACKAGE = FLTK
 
-bool
+void
 remove_fd( fh, int when = -1 )
-    CASE: SvIOK( ST(0) )
-        int fh
-        CODE:
-            fltk::remove_fd( _get_osfhandle( fh ), when );
-            RETVAL = 1;
-        OUTPUT:
-            RETVAL
-    CASE:
+    CASE: SvROK( ST(0) ) && ( SvTYPE( SvRV( ST( 0 ) ) ) == SVt_PVGV )
         PerlIO * fh
         CODE:
-            fltk::remove_fd( _get_osfhandle( PerlIO_fileno( fh ) ), when );
-            RETVAL = 1;
-        OUTPUT:
-            RETVAL
+            int fileno = PerlIO_fileno( fh );
+            fltk::remove_fd( _get_osfhandle( fileno ), when );
+    CASE:
+        AV * fh
+        CODE:
+            // cb, fileno, fh, events, [, args]
+            AV  * ref = MUTABLE_AV( fh );
+            SV ** fileref = av_fetch(ref, 1, FALSE);
+            if ( fileref == NULL ) XSRETURN_UNDEF;
+            SV ** moderef = av_fetch(ref, 2, FALSE);
+            PerlIO * pio_file = IoIFP( sv_2io( SvRV( * fileref ) ) );
+            fltk::remove_fd( _get_osfhandle( PerlIO_fileno( pio_file ) ), SvIV( * moderef ) );
+            if ( ix != 100 )
+                sv_setsv(ST(0), &PL_sv_undef);
+    ALIAS:
+        FLTK::fd::DESTROY = 100
 
 BOOT:
     export_tag("remove_fd", "fd");

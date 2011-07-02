@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/Input.xsi
 
-=for git $Id: 40020_input.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
+=for git $Id: 40020_input.t 4146017 2011-07-02 23:03:12Z sanko@cpan.org $
 
 =cut
 
@@ -18,7 +18,7 @@ use Test::More 0.82;
 use Module::Build qw[];
 use Time::HiRes qw[];
 use Test::NeedsDisplay ':skip_all';
-plan tests => 45;
+plan tests => 44;
 my $test_builder = Test::More->builder;
 BEGIN { chdir '../..' if not -d '_build'; }
 use lib 'inc', 'blib/lib', 'blib/arch', 'lib';
@@ -65,8 +65,6 @@ $I->static_text($var, 2);
 note 'I consider this a bug in the library...';
 is($I->text(), $var,
     '$I->text( $var, 2 ); $I->text->( ) returns the full value of $var');
-$var = "HAHAHAHA";
-like($I->text(), qr[$var], 'text() returns the contents');
 
 #
 is($I->position, 0, 'Initial position is 0');

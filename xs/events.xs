@@ -16,6 +16,8 @@ MODULE = FLTK::events               PACKAGE = FLTK::events
 
 #include <fltk/events.h>
 
+#include <fltk/Window.h>
+
 BOOT:
     register_constant( "NO_EVENT", newSViv( fltk::NO_EVENT ));
     export_tag("NO_EVENT", "events");
@@ -626,7 +628,7 @@ MODULE = FLTK::events               PACKAGE = FLTK
 bool
 handle( int event, fltk::Window * window )
     CODE:
-        RETVAL = fltk::handle( event, window );
+        RETVAL = fltk::handle( event, (fltk::Window *) window );
     OUTPUT:
         RETVAL
 

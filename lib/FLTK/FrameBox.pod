@@ -35,7 +35,7 @@ X<_draw>
 
 
 
-=for hackers xs/FrameBox.xs line 89
+=for hackers xs/FrameBox.xs line 85
 
 =back
 
@@ -48,13 +48,13 @@ X<data>
 
 
 
-=for hackers xs/FrameBox.xs line 67
+=for hackers xs/FrameBox.xs line 63
 
 =item C<$framebox-E<gt>data( $string );>X<_framebox_E_gt_data_string_>
 
 
 
-=for hackers xs/FrameBox.xs line 71
+=for hackers xs/FrameBox.xs line 67
 
 =back
 
@@ -67,7 +67,7 @@ X<fills_rectangle>
 
 
 
-=for hackers xs/FrameBox.xs line 109
+=for hackers xs/FrameBox.xs line 105
 
 =back
 
@@ -80,7 +80,7 @@ X<inset>
 
 
 
-=for hackers xs/FrameBox.xs line 99
+=for hackers xs/FrameBox.xs line 95
 
 =back
 
@@ -94,7 +94,7 @@ X<is_frame>
 
 =pod 
 
-=for hackers xs/FrameBox.xs line 113
+=for hackers xs/FrameBox.xs line 109
 
 =back
 
@@ -134,6 +134,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: FrameBox.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: FrameBox.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

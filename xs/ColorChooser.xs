@@ -6,18 +6,14 @@ MODULE = FLTK::ColorChooser               PACKAGE = FLTK::ColorChooser
 
 #include <fltk/ColorChooser.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::ColorChooser *
 fltk::ColorChooser::new( int x, int y, int w, int h, const char * label = 0 )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new WidgetSubclass<fltk::ColorChooser>(CLASS,x,y,w,h,label);
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new RectangleSubclass<fltk::ColorChooser>(CLASS,x,y,w,h,label);
+    OUTPUT:
+        RETVAL
 
 double
 fltk::ColorChooser::h( )

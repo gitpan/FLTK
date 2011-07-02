@@ -83,7 +83,7 @@ Converts ANSI colors to FLTK colors.
 
 =pod 
 
-=for hackers xs/AnsiWidget.xs line 322
+=for hackers xs/AnsiWidget.xs line 317
 
 =back
 
@@ -96,7 +96,7 @@ X<beep>
 
 Create audible beep sound.
 
-=for hackers xs/AnsiWidget.xs line 137
+=for hackers xs/AnsiWidget.xs line 133
 
 =back
 
@@ -109,7 +109,7 @@ X<clearScreen>
 
 Clear the offscreen buffer.
 
-=for hackers xs/AnsiWidget.xs line 133
+=for hackers xs/AnsiWidget.xs line 129
 
 =back
 
@@ -122,7 +122,7 @@ X<drawImage>
 
 Draws the given image onto the offscreen buffer.
 
-=for hackers xs/AnsiWidget.xs line 188
+=for hackers xs/AnsiWidget.xs line 184
 
 =back
 
@@ -135,7 +135,7 @@ X<drawLine>
 
 Draw a line onto the offscreen buffer.
 
-=for hackers xs/AnsiWidget.xs line 162
+=for hackers xs/AnsiWidget.xs line 158
 
 =back
 
@@ -148,7 +148,7 @@ X<drawRect>
 
 Draw a rectangle onto the offscreen buffer.
 
-=for hackers xs/AnsiWidget.xs line 170
+=for hackers xs/AnsiWidget.xs line 166
 
 =back
 
@@ -161,7 +161,7 @@ X<drawRectFilled>
 
 Draw a filled rectangle onto the offscreen buffer.
 
-=for hackers xs/AnsiWidget.xs line 166
+=for hackers xs/AnsiWidget.xs line 162
 
 =back
 
@@ -174,7 +174,7 @@ X<getFontSize>
 
 
 
-=for hackers xs/AnsiWidget.xs line 313
+=for hackers xs/AnsiWidget.xs line 308
 
 =back
 
@@ -187,7 +187,7 @@ X<getHeight>
 
 
 
-=for hackers xs/AnsiWidget.xs line 237
+=for hackers xs/AnsiWidget.xs line 232
 
 =back
 
@@ -200,7 +200,7 @@ X<getPixel>
 
 Returns the color of the pixel at the given C<x, y> location.
 
-=for hackers xs/AnsiWidget.xs line 268
+=for hackers xs/AnsiWidget.xs line 263
 
 =back
 
@@ -213,7 +213,7 @@ X<getWidth>
 
 
 
-=for hackers xs/AnsiWidget.xs line 233
+=for hackers xs/AnsiWidget.xs line 228
 
 =back
 
@@ -226,7 +226,7 @@ X<getX>
 
 
 
-=for hackers xs/AnsiWidget.xs line 225
+=for hackers xs/AnsiWidget.xs line 220
 
 =back
 
@@ -239,7 +239,7 @@ X<getY>
 
 
 
-=for hackers xs/AnsiWidget.xs line 229
+=for hackers xs/AnsiWidget.xs line 224
 
 =back
 
@@ -252,7 +252,7 @@ X<layout>
 
 
 
-=for hackers xs/AnsiWidget.xs line 124
+=for hackers xs/AnsiWidget.xs line 120
 
 =back
 
@@ -278,7 +278,7 @@ X<print>
 
 Prints the contents of the given string onto the backbuffer.
 
-=for hackers xs/AnsiWidget.xs line 153
+=for hackers xs/AnsiWidget.xs line 149
 
 =back
 
@@ -291,7 +291,7 @@ X<saveImage>
 
 Save the offscreen buffer to the given filename.
 
-=for hackers xs/AnsiWidget.xs line 198
+=for hackers xs/AnsiWidget.xs line 193
 
 =back
 
@@ -304,7 +304,7 @@ X<setColor>
 
 Sets the current drawing color.
 
-=for hackers xs/AnsiWidget.xs line 216
+=for hackers xs/AnsiWidget.xs line 211
 
 =back
 
@@ -317,7 +317,7 @@ X<setFontSize>
 
 
 
-=for hackers xs/AnsiWidget.xs line 304
+=for hackers xs/AnsiWidget.xs line 299
 
 =back
 
@@ -330,7 +330,7 @@ X<setPixel>
 
 Sets the pixel to the given color at the given C<X, Y> location.
 
-=for hackers xs/AnsiWidget.xs line 259
+=for hackers xs/AnsiWidget.xs line 254
 
 =back
 
@@ -343,7 +343,7 @@ X<setTextColor>
 
 Sets the current text drawing color.
 
-=for hackers xs/AnsiWidget.xs line 207
+=for hackers xs/AnsiWidget.xs line 202
 
 =back
 
@@ -356,7 +356,7 @@ X<setXY>
 
 
 
-=for hackers xs/AnsiWidget.xs line 277
+=for hackers xs/AnsiWidget.xs line 272
 
 =back
 
@@ -369,7 +369,7 @@ X<textHeight>
 
 Returns the height in pixels using the current font setting.
 
-=for hackers xs/AnsiWidget.xs line 295
+=for hackers xs/AnsiWidget.xs line 290
 
 =back
 
@@ -382,7 +382,7 @@ X<textWidth>
 
 Returns the width in pixels using the current font setting.
 
-=for hackers xs/AnsiWidget.xs line 286
+=for hackers xs/AnsiWidget.xs line 281
 
 =back
 
@@ -420,6 +420,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: AnsiWidget.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: AnsiWidget.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

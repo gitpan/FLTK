@@ -25,7 +25,7 @@ X<remove>
 
 =head2 C<$buffer-E<gt>remove( $start, $end )>
 
-=for hackers xs/TextBuffer.xs line 171
+=for hackers xs/TextBuffer.xs line 167
 
 =back
 
@@ -48,7 +48,7 @@ X<loadfile>
 
 =head2 C<my $status = $buffer-E<gt>loadfile( file )>
 
-=for hackers xs/TextBuffer.xs line 288
+=for hackers xs/TextBuffer.xs line 284
 
 =back
 
@@ -67,7 +67,7 @@ X<insertfile>
 
 =head2 C<my $status = $buffer-E<gt>insertfle( $file, $position )>
 
-=for hackers xs/TextBuffer.xs line 254
+=for hackers xs/TextBuffer.xs line 250
 
 =back
 
@@ -86,7 +86,7 @@ X<text_range>
 
 =head2 C<my $txt = $buffer-E<gt>text_range( $start, $end )>
 
-=for hackers xs/TextBuffer.xs line 107
+=for hackers xs/TextBuffer.xs line 103
 
 =back
 
@@ -126,7 +126,7 @@ X<count_displayed_characters>
 
 =head2 C<my $width = $buffer-E<gt>count_displayed_characters( $lineStartPos, $targetPos )>
 
-=for hackers xs/TextBuffer.xs line 440
+=for hackers xs/TextBuffer.xs line 436
 
 =back
 
@@ -146,7 +146,7 @@ X<undo>
 
 =head2 C<my ($okay, $cursorPosition) = $buffer-E<gt>undo( )>
 
-=for hackers xs/TextBuffer.xs line 219
+=for hackers xs/TextBuffer.xs line 215
 
 =back
 
@@ -168,7 +168,7 @@ X<count_displayed_characters_utf>
 
 =head2 C<my $width = $buffer-E<gt>count_displayed_characters_utf( $lineStartPos, $targetPos )>
 
-=for hackers xs/TextBuffer.xs line 476
+=for hackers xs/TextBuffer.xs line 472
 
 =back
 
@@ -192,7 +192,7 @@ X<skip_displayed_characters>
 
 =head2 C<my $width = $buffer-E<gt>skip_displayed_characters( $startPos, $nChars )>
 
-=for hackers xs/TextBuffer.xs line 494
+=for hackers xs/TextBuffer.xs line 490
 
 =back
 
@@ -212,7 +212,7 @@ X<skip_lines>
 
 =head2 C<my $lines = $buffer-E<gt>skip_lines( $startPos, $nLines )>
 
-=for hackers xs/TextBuffer.xs line 550
+=for hackers xs/TextBuffer.xs line 546
 
 =back
 
@@ -247,7 +247,7 @@ typical string terminator in C<C++>
 
 =head2 C<my $output = $buffer-E<gt>expand_character( $position, $indent )>
 
-=for hackers xs/TextBuffer.xs line 364
+=for hackers xs/TextBuffer.xs line 360
 
 =item C<my $output = $textbuffer-E<gt>expand_character( $position, $indent );>X<my_output_textbuffer_E_gt_expand_character_position_indent_>
 
@@ -270,7 +270,7 @@ X<character_width>
 
 =head2 C<my $width = $buffer-E<gt>character_width( $char, $indent, $tabDist, $nullSubsChar )>
 
-=for hackers xs/TextBuffer.xs line 390
+=for hackers xs/TextBuffer.xs line 386
 
 =back
 
@@ -289,7 +289,7 @@ X<append>
 
 =head2 C<$buffer-E<gt>append( $text )>
 
-=for hackers xs/TextBuffer.xs line 156
+=for hackers xs/TextBuffer.xs line 152
 
 =back
 
@@ -312,7 +312,7 @@ X<appendfile>
 
 =head2 C<my $status = $buffer-E<gt>appendfile( $file )>
 
-=for hackers xs/TextBuffer.xs line 269
+=for hackers xs/TextBuffer.xs line 265
 
 =back
 
@@ -328,7 +328,7 @@ X<length>
 =head2 C<< my $txt = $buffer->text( ) >>
 X<text>
 
-=for hackers xs/TextBuffer.xs line 66
+=for hackers xs/TextBuffer.xs line 62
 
 =back
 
@@ -351,7 +351,7 @@ X<outputfile>
 
 =head2 C<my $status = $buffer-E<gt>outputfile( $file, $start, $end )>
 
-=for hackers xs/TextBuffer.xs line 307
+=for hackers xs/TextBuffer.xs line 303
 
 =back
 
@@ -399,7 +399,7 @@ X<savefile>
 
 =head2 C<my $status = $buffer-E<gt>savefile( $file )>
 
-=for hackers xs/TextBuffer.xs line 326
+=for hackers xs/TextBuffer.xs line 322
 
 =back
 
@@ -420,7 +420,7 @@ X<replace>
 
 =head2 C<$buffer-E<gt>replace( $start, $end, $text )>
 
-=for hackers xs/TextBuffer.xs line 186
+=for hackers xs/TextBuffer.xs line 182
 
 =back
 
@@ -440,7 +440,7 @@ X<copy>
 
 =head2 C<$to_buffer-E<gt>copy( $from_buffer, $from_start, $from_end, $to_pos )>
 
-=for hackers xs/TextBuffer.xs line 203
+=for hackers xs/TextBuffer.xs line 199
 
 =back
 
@@ -480,7 +480,7 @@ TextSelection* highlight_selection() { return &highlight_; }
 
 =pod 
 
-=for hackers xs/TextBuffer.xs line 582
+=for hackers xs/TextBuffer.xs line 578
 
 =back
 
@@ -503,7 +503,7 @@ X<expand_character>
 
 =head2 C<my $output = $buffer-E<gt>expand_character( $character, $indent, $tabDist, $nullSubsChar )>
 
-=for hackers xs/TextBuffer.xs line 345
+=for hackers xs/TextBuffer.xs line 341
 
 =back
 
@@ -524,7 +524,7 @@ X<skip_displayed_characters_utf>
 
 =head2 C<my $width = $buffer-E<gt>skip_displayed_characters_utf( $startPos, $nChars )>
 
-=for hackers xs/TextBuffer.xs line 514
+=for hackers xs/TextBuffer.xs line 510
 
 =back
 
@@ -547,7 +547,7 @@ X<count_lines>
 
 =head2 C<my $lines = $buffer-E<gt>count_lines( $startPos, $endPos )>
 
-=for hackers xs/TextBuffer.xs line 531
+=for hackers xs/TextBuffer.xs line 527
 
 =back
 
@@ -567,7 +567,7 @@ X<rewind_lines>
 
 =head2 C<my $lines = $buffer-E<gt>rewind_lines( $startPos, $nLines )>
 
-=for hackers xs/TextBuffer.xs line 566
+=for hackers xs/TextBuffer.xs line 562
 
 =back
 
@@ -582,7 +582,7 @@ Return the entire contents of the text buffer.
 
 =head2 C<< $buffer->text( $txt ) >>
 
-=for hackers xs/TextBuffer.xs line 78
+=for hackers xs/TextBuffer.xs line 74
 
 =item C<$textbuffer-E<gt>text( $txt );>X<_textbuffer_E_gt_text_txt_>
 
@@ -594,7 +594,7 @@ X<character>
 
 =head2 C<< my $char = $buffer->character( $pos ) >>
 
-=for hackers xs/TextBuffer.xs line 84
+=for hackers xs/TextBuffer.xs line 80
 
 =back
 
@@ -615,7 +615,7 @@ X<insert>
 
 =head2 C<$buffer-E<gt>insert( $pos, $text )>
 
-=for hackers xs/TextBuffer.xs line 139
+=for hackers xs/TextBuffer.xs line 135
 
 =back
 
@@ -636,7 +636,7 @@ X<text_in_rectangle>
 
 =head2 C<my $txt = $buffer-E<gt>text_in_rectangle( $start, $end, $rectStart, $rectEnd )>
 
-=for hackers xs/TextBuffer.xs line 122
+=for hackers xs/TextBuffer.xs line 118
 
 =back
 
@@ -659,7 +659,7 @@ X<canUndo>
 
 =head2 C<$buffer-E<gt>canUndo( $flag ) >
 
-=for hackers xs/TextBuffer.xs line 235
+=for hackers xs/TextBuffer.xs line 231
 
 =back
 
@@ -691,6 +691,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: TextBuffer.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: TextBuffer.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

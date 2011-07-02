@@ -24,7 +24,7 @@ X<hide_popup>
 
 
 
-=for hackers xs/InputBrowser.xs line 104
+=for hackers xs/InputBrowser.xs line 100
 
 =back
 
@@ -37,13 +37,13 @@ X<item>
 
 
 
-=for hackers xs/InputBrowser.xs line 116
+=for hackers xs/InputBrowser.xs line 112
 
 =item C<my $ret = $inputbrowser-E<gt>item( $widget );>X<my_ret_inputbrowser_E_gt_item_widget_>
 
 
 
-=for hackers xs/InputBrowser.xs line 120
+=for hackers xs/InputBrowser.xs line 116
 
 =back
 
@@ -56,13 +56,13 @@ X<maxh>
 
 
 
-=for hackers xs/InputBrowser.xs line 175
+=for hackers xs/InputBrowser.xs line 171
 
 =item C<my $h = $inputbrowser-E<gt>maxh( );>X<my_h_inputbrowser_E_gt_maxh_>
 
 
 
-=for hackers xs/InputBrowser.xs line 179
+=for hackers xs/InputBrowser.xs line 175
 
 =back
 
@@ -75,13 +75,13 @@ X<maxw>
 
 
 
-=for hackers xs/InputBrowser.xs line 167
+=for hackers xs/InputBrowser.xs line 163
 
 =item C<my $w = $inputbrowser-E<gt>maxw( );>X<my_w_inputbrowser_E_gt_maxw_>
 
 
 
-=for hackers xs/InputBrowser.xs line 171
+=for hackers xs/InputBrowser.xs line 167
 
 =back
 
@@ -94,13 +94,13 @@ X<minh>
 
 
 
-=for hackers xs/InputBrowser.xs line 141
+=for hackers xs/InputBrowser.xs line 137
 
 =item C<my $h = $inputbrowser-E<gt>minh( );>X<my_h_inputbrowser_E_gt_minh_>
 
 
 
-=for hackers xs/InputBrowser.xs line 145
+=for hackers xs/InputBrowser.xs line 141
 
 =back
 
@@ -113,13 +113,13 @@ X<minw>
 
 
 
-=for hackers xs/InputBrowser.xs line 133
+=for hackers xs/InputBrowser.xs line 129
 
 =item C<my $w = $inputbrowser-E<gt>minw( );>X<my_w_inputbrowser_E_gt_minw_>
 
 
 
-=for hackers xs/InputBrowser.xs line 137
+=for hackers xs/InputBrowser.xs line 133
 
 =back
 
@@ -145,7 +145,7 @@ X<popup>
 
 
 
-=for hackers xs/InputBrowser.xs line 100
+=for hackers xs/InputBrowser.xs line 96
 
 =back
 
@@ -158,7 +158,7 @@ X<text>
 
 
 
-=for hackers xs/InputBrowser.xs line 201
+=for hackers xs/InputBrowser.xs line 197
 
 =item C<my $string = $inputbrowser-E<gt>text( );>X<my_string_inputbrowser_E_gt_text_>
 
@@ -166,7 +166,7 @@ X<text>
 
 =pod 
 
-=for hackers xs/InputBrowser.xs line 205
+=for hackers xs/InputBrowser.xs line 201
 
 =back
 
@@ -206,6 +206,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: InputBrowser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: InputBrowser.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

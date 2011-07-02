@@ -104,7 +104,7 @@ Position current item to bottom
 =for hackers These are internal to Browser so we don't export them and don't
 put them in the top level.
 
-=for hackers xs/Browser.xs line 227
+=for hackers xs/Browser.xs line 225
 
 =back
 
@@ -117,7 +117,7 @@ X<IS_MULTI>
 
 Means multiple selection can be achieved by user.
 
-=for hackers xs/Browser.xs line 174
+=for hackers xs/Browser.xs line 172
 
 =back
 
@@ -130,7 +130,7 @@ X<MIDDLE>
 
 Position current item to middle
 
-=for hackers xs/Browser.xs line 223
+=for hackers xs/Browser.xs line 221
 
 =back
 
@@ -143,7 +143,7 @@ X<MULTI>
 
 Means multiple selection can be achieved by user.
 
-=for hackers xs/Browser.xs line 182
+=for hackers xs/Browser.xs line 180
 
 =back
 
@@ -156,7 +156,7 @@ X<NORMAL>
 
 Means a single selection can be achieved by user.
 
-=for hackers xs/Browser.xs line 178
+=for hackers xs/Browser.xs line 176
 
 =back
 
@@ -171,7 +171,7 @@ Argument to L<C<make_item_visible()>|/"make_item_visible">.
 
 Moves as little as possible so item is visible.
 
-=for hackers xs/Browser.xs line 213
+=for hackers xs/Browser.xs line 211
 
 =back
 
@@ -187,7 +187,7 @@ Means that no column has been selected by user.
 =for hackers These are internal to Browser so we don't export them and don't
 put them in the top level.
 
-=for hackers xs/Browser.xs line 186
+=for hackers xs/Browser.xs line 184
 
 =back
 
@@ -200,7 +200,7 @@ X<TOP>
 
 Position current item to top
 
-=for hackers xs/Browser.xs line 219
+=for hackers xs/Browser.xs line 217
 
 =back
 
@@ -213,7 +213,7 @@ X<at_mark>
 
 
 
-=for hackers xs/Browser.xs line 518
+=for hackers xs/Browser.xs line 516
 
 =back
 
@@ -227,7 +227,7 @@ X<bottomline>
 Convenience function for non-hierarchial browsers. Make the indexed item
 visible and scroll to put it at the bottom of the browser.
 
-=for hackers xs/Browser.xs line 1038
+=for hackers xs/Browser.xs line 1036
 
 =back
 
@@ -245,7 +245,7 @@ widget, adding or deleting items or opening or closing a parent item such that
 the scrollbar visibility changes) then L<C<layout()>|/"layout"> must be called
 before this is correct.
 
-=for hackers xs/Browser.xs line 275
+=for hackers xs/Browser.xs line 273
 
 =back
 
@@ -263,7 +263,7 @@ deleting items or opening or closing a parent item such that the scrollbar
 visibility changes) then L<C<layout()>|/"layout"> must be called before this
 is correct.
 
-=for hackers xs/Browser.xs line 266
+=for hackers xs/Browser.xs line 264
 
 =back
 
@@ -276,7 +276,7 @@ X<column_labels>
 
 Get the list of labels at the top of browser.
 
-=for hackers xs/Browser.xs line 925
+=for hackers xs/Browser.xs line 923
 
 =item C<$browser-E<gt>column_labels( $col1, ..., $col );>X<_browser_E_gt_column_labels_col1_col_>
 
@@ -286,7 +286,7 @@ can print into the correct columns by putting C<\t> characters into their
 text. Or they can look at L<C<FLTK::column_widths()>|FLTK/"column_widths"> to
 find the settings from their L<C<draw()>|/"draw"> methods.
 
-=for hackers xs/Browser.xs line 929
+=for hackers xs/Browser.xs line 927
 
 =back
 
@@ -299,7 +299,7 @@ X<column_widths>
 
 
 
-=for hackers xs/Browser.xs line 859
+=for hackers xs/Browser.xs line 857
 
 =item C<$browser-E<gt>column_widths( $col1, ..., $col );>X<_browser_E_gt_column_widths_col1_col_>
 
@@ -340,7 +340,7 @@ but total width is kept always.
 
 =back 
 
-=for hackers xs/Browser.xs line 863
+=for hackers xs/Browser.xs line 861
 
 =back
 
@@ -353,7 +353,7 @@ X<compare_to_mark>
 
 
 
-=for hackers xs/Browser.xs line 531
+=for hackers xs/Browser.xs line 529
 
 =back
 
@@ -367,7 +367,7 @@ X<current_index>
 Return an array of C<L<current_level()|/"current_level">+1> indexes saying
 which child at each level includes the current item.
 
-=for hackers xs/Browser.xs line 829
+=for hackers xs/Browser.xs line 827
 
 =back
 
@@ -380,7 +380,7 @@ X<current_level>
 
 Return the nesting level of the current item (how many parents it has).
 
-=for hackers xs/Browser.xs line 783
+=for hackers xs/Browser.xs line 781
 
 =back
 
@@ -394,7 +394,7 @@ X<current_position>
 Return the C<y> position, in pixels, of the top edge of the current item. You
 may also want the height, which is in L<C<item_h()>|/"item_h">.
 
-=for hackers xs/Browser.xs line 787
+=for hackers xs/Browser.xs line 785
 
 =back
 
@@ -407,7 +407,7 @@ X<damage_item>
 
 Set item referenced by this mark as being damaged.
 
-=for hackers xs/Browser.xs line 735
+=for hackers xs/Browser.xs line 733
 
 =item C<$browser-E<gt>damage_item( );>X<_browser_E_gt_damage_item_>
 
@@ -415,7 +415,7 @@ Tell the browser to redraw the current item. Do this if you know it has
 changed appearance. This is better than redrawing the entire browser because
 it will blink a lot less.
 
-=for hackers xs/Browser.xs line 739
+=for hackers xs/Browser.xs line 737
 
 =back
 
@@ -428,13 +428,13 @@ X<default_style>
 
 Get the style
 
-=for hackers xs/Browser.xs line 151
+=for hackers xs/Browser.xs line 149
 
 =item C<$browser-E<gt>default_style( $style );>X<_browser_E_gt_default_style_style_>
 
 Set the style.
 
-=for hackers xs/Browser.xs line 155
+=for hackers xs/Browser.xs line 153
 
 =back
 
@@ -456,7 +456,7 @@ C<ctrl+click>ing the selected items off.
 If C<do_callback> has some bits that are also in L<C<when()>|/"when"> then the
 callback is done for each item that changes selected state.
 
-=for hackers xs/Browser.xs line 680
+=for hackers xs/Browser.xs line 678
 
 =back
 
@@ -471,7 +471,7 @@ Convenience function for non-hierarchial browsers. Make the indexed item be
 L<C<visible()>|/"visible"> and scroll the browser so it can be seen by the
 user.
 
-=for hackers xs/Browser.xs line 1072
+=for hackers xs/Browser.xs line 1070
 
 =back
 
@@ -485,7 +485,7 @@ X<display_lines>
 Accessor (get) method which returns a true value if lines should be displayed,
 or a false value otherwize.
 
-=for hackers xs/Browser.xs line 1083
+=for hackers xs/Browser.xs line 1081
 
 =item C<$browser-E<gt>display_lines( $display );>X<_browser_E_gt_display_lines_display_>
 
@@ -493,7 +493,7 @@ Accessor (set) method which is used to set the value of the C<displaylines_>
 member. If you set C<display> to a false value, it will mean that you do not
 want lines of the tree to be displayed.
 
-=for hackers xs/Browser.xs line 1088
+=for hackers xs/Browser.xs line 1086
 
 =back
 
@@ -507,7 +507,7 @@ X<displayed>
 Convenience function for non-hierarchial browsers. Make the indexed item
 visible and scroll to put it at the bottom of the browser.
 
-=for hackers xs/Browser.xs line 1062
+=for hackers xs/Browser.xs line 1060
 
 =back
 
@@ -521,7 +521,7 @@ X<focus_index>
 Return an array of L<C<focus_level()>|/"focus_level">C<+1> indexes saying
 which child at each level includes the focus.
 
-=for hackers xs/Browser.xs line 834
+=for hackers xs/Browser.xs line 832
 
 =back
 
@@ -535,7 +535,7 @@ X<focus_level>
 Return the nesting level of the focus (how many parents it has). The focus is
 the selected item the user sees.
 
-=for hackers xs/Browser.xs line 792
+=for hackers xs/Browser.xs line 790
 
 =back
 
@@ -550,7 +550,7 @@ Return the C<y> position, in pixels, of the top edge of the focus item. You
 may also want the height, which is in L<C<goto_focus()>|/"goto_focus">C<; >
 L<C<item_h()>|/"item_h">.
 
-=for hackers xs/Browser.xs line 797
+=for hackers xs/Browser.xs line 795
 
 =back
 
@@ -565,7 +565,7 @@ Sets the L<C<item()>|/"item"> to the "focus" (the item with the dotted square
 in an L<FLTK::MultiBrowser|FLTK::MultiBrowser>, and the selected item in a
 normal L<FLTK::Browser|FLTK::Browser>.
 
-=for hackers xs/Browser.xs line 400
+=for hackers xs/Browser.xs line 398
 
 =back
 
@@ -586,21 +586,21 @@ A negative number in C<indexes[0]> will make it go into a special no-item
 state where L<C<select_only_this()>|/"select_only_this"> will do
 L<C<deselect()>|/"deselect">.
 
-=for hackers xs/Browser.xs line 463
+=for hackers xs/Browser.xs line 461
 
 =item C<my $current = $browser-E<gt>goto_index( $index );>X<my_current_browser_E_gt_goto_index_index_>
 
 Go to the C<index>'th item in the top level. If C<index> is out of range,
 C<undef> is returned.
 
-=for hackers xs/Browser.xs line 475
+=for hackers xs/Browser.xs line 473
 
 =item C<my $current = $browser-E<gt>goto_index( $index, $level, $deep, $deeper, $deepest );>X<my_current_browser_E_gt_goto_index_index_level_deep_deeper_deepest_>
 
 Go to an item at any level up to 5. Negative numbers indicate that no more
 levels should be looked at.
 
-=for hackers xs/Browser.xs line 480
+=for hackers xs/Browser.xs line 478
 
 =back
 
@@ -613,7 +613,7 @@ X<goto_mark>
 
 Set current item to a particular mark.
 
-=for hackers xs/Browser.xs line 505
+=for hackers xs/Browser.xs line 503
 
 =back
 
@@ -627,7 +627,7 @@ X<goto_position>
 Set the current L<C<item()>|/"item"> to the last one who's top is at or before
 C<Y> pixels from the top.
 
-=for hackers xs/Browser.xs line 449
+=for hackers xs/Browser.xs line 447
 
 =back
 
@@ -650,7 +650,7 @@ If you have invisible items in the browser you should use
 L<C<goto_index(0)>|/"goto_index"> if you want to go to the first item even if
 it is invisible.
 
-=for hackers xs/Browser.xs line 386
+=for hackers xs/Browser.xs line 384
 
 =back
 
@@ -665,7 +665,7 @@ Returns the default value for L<C<image()>|/"image"> on each item that is a
 hierarchy parent. If the parent item has no L<C<image()>|/"image"> then this
 one is used for it.
 
-=for hackers xs/Browser.xs line 1137
+=for hackers xs/Browser.xs line 1135
 
 =item C<$browser-E<gt>group_symbol( $symbol );>X<_browser_E_gt_group_symbol_symbol_>
 
@@ -675,7 +675,7 @@ one is used for it.
 
 =pod 
 
-=for hackers xs/Browser.xs line 1143
+=for hackers xs/Browser.xs line 1141
 
 =back
 
@@ -689,7 +689,7 @@ X<header>
 Returns the L<Widget|FLTK::Widget> in C<column>, starting from index C<0>. If
 C<column>'th column is invalid, C<undef> is returned.
 
-=for hackers xs/Browser.xs line 969
+=for hackers xs/Browser.xs line 967
 
 =back
 
@@ -704,7 +704,7 @@ The height of all the visible items in the browser, measured in pixels. If
 this is changed (by adding or deleting items or opening or closing a parent
 item) then L<C<layout()>|/"layout"> must be called before this is correct.
 
-=for hackers xs/Browser.xs line 260
+=for hackers xs/Browser.xs line 258
 
 =back
 
@@ -717,7 +717,7 @@ X<hscrollbar>
 
 
 
-=for hackers xs/Browser.xs line 368
+=for hackers xs/Browser.xs line 366
 
 =back
 
@@ -730,7 +730,7 @@ X<indented>
 
 
 
-=for hackers xs/Browser.xs line 339
+=for hackers xs/Browser.xs line 337
 
 =item C<$browser-E<gt>indented( $value );>X<_browser_E_gt_indented_value_>
 
@@ -740,7 +740,7 @@ should be off for a flat browser, or to emulate Windows Explorer where "my
 computer" does not have an open/close to the left of it. The default value is
 false.
 
-=for hackers xs/Browser.xs line 343
+=for hackers xs/Browser.xs line 341
 
 =back
 
@@ -753,7 +753,7 @@ X<item_h>
 
 The item height.
 
-=for hackers xs/Browser.xs line 585
+=for hackers xs/Browser.xs line 583
 
 =back
 
@@ -767,7 +767,7 @@ X<item_is_open>
 If L<C<item_is_parent()>|/"item_is_parent"> is true, return true if this item
 is open. If this is not a parent the result is undefined.
 
-=for hackers xs/Browser.xs line 555
+=for hackers xs/Browser.xs line 553
 
 =back
 
@@ -781,7 +781,7 @@ X<item_is_parent>
 Return true if the current item is a parent. Notice that it may have zero
 children.
 
-=for hackers xs/Browser.xs line 550
+=for hackers xs/Browser.xs line 548
 
 =back
 
@@ -796,7 +796,7 @@ Return true if the item would be visible to the user if the browser was
 scrolled to the correct location. This means that the C<FLTK::INVISIBLE> flag
 is not set on it, and all parents of it are open and visible as well.
 
-=for hackers xs/Browser.xs line 544
+=for hackers xs/Browser.xs line 542
 
 =back
 
@@ -809,7 +809,7 @@ X<layout>
 
 
 
-=for hackers xs/Browser.xs line 142
+=for hackers xs/Browser.xs line 140
 
 =back
 
@@ -824,7 +824,7 @@ Returns the default value for L<C<image()>|/"image"> on each item that is not
 a parent of other items. If the item has no L<C<image()>|/"image"> then this
 one is used for it.
 
-=for hackers xs/Browser.xs line 1125
+=for hackers xs/Browser.xs line 1123
 
 =item C<$browser-E<gt>leaf_symbol( $symbol );>X<_browser_E_gt_leaf_symbol_symbol_>
 
@@ -832,7 +832,7 @@ Sets a default value for L<C<image()>|/"image"> on each item that is not a
 parent of other items. If the item has no L<C<image()>|/"image"> then this one
 is used for it.
 
-=for hackers xs/Browser.xs line 1131
+=for hackers xs/Browser.xs line 1129
 
 =back
 
@@ -845,7 +845,7 @@ X<load>
 
 
 
-=for hackers xs/Browser.xs line 1107
+=for hackers xs/Browser.xs line 1105
 
 =back
 
@@ -877,7 +877,7 @@ bottom of the browser.
 
 This does nothing if the current item is C<undef>.
 
-=for hackers xs/Browser.xs line 707
+=for hackers xs/Browser.xs line 705
 
 =back
 
@@ -893,7 +893,7 @@ visible and scroll to put it in the middle of the browser if it is not already
 visible (passes C<NO_SCROLL> to
 L<C<make_item_visible()>|/"make_item_visible">.
 
-=for hackers xs/Browser.xs line 1043
+=for hackers xs/Browser.xs line 1041
 
 =back
 
@@ -906,7 +906,7 @@ X<multi>
 
 
 
-=for hackers xs/Browser.xs line 1116
+=for hackers xs/Browser.xs line 1114
 
 =back
 
@@ -919,7 +919,7 @@ X<new>
 
 Creates a new C<FLTK::Browser> object.
 
-=for hackers xs/Browser.xs line 122
+=for hackers xs/Browser.xs line 124
 
 =back
 
@@ -941,7 +941,7 @@ The L<C<current_position()>|/"current_position"> is NOT set by this! It cannot
 be calculated efficiently and would slow down the use of this function for
 visiting all items.
 
-=for hackers xs/Browser.xs line 406
+=for hackers xs/Browser.xs line 404
 
 =back
 
@@ -955,7 +955,7 @@ X<next_visible>
 Move forward to the next visible item (what down-arrow does). This does not
 move and returns C<undef> if we are at the bottom.
 
-=for hackers xs/Browser.xs line 419
+=for hackers xs/Browser.xs line 417
 
 =back
 
@@ -969,7 +969,7 @@ X<previous_visible>
 Move backward to previous visible item: This does not move and returns
 C<undef> if we are at the top.
 
-=for hackers xs/Browser.xs line 424
+=for hackers xs/Browser.xs line 422
 
 =back
 
@@ -982,7 +982,7 @@ X<scrollbar>
 
 
 
-=for hackers xs/Browser.xs line 364
+=for hackers xs/Browser.xs line 362
 
 =back
 
@@ -998,7 +998,7 @@ deselect an item in parameter, optionally execute a callback (calls
 L<C<set_item_selected()>|/"set_item_selected">). This method changes item
 position in the tree.
 
-=for hackers xs/Browser.xs line 621
+=for hackers xs/Browser.xs line 619
 
 =item C<my $okay = $browser-E<gt>select( $item, $value );>X<my_okay_browser_E_gt_select_item_value_>
 
@@ -1008,7 +1008,7 @@ nothing happens.
 
 Note: This is an FLTK 1.0 emulation method.
 
-=for hackers xs/Browser.xs line 628
+=for hackers xs/Browser.xs line 626
 
 =back
 
@@ -1028,7 +1028,7 @@ done.
 For the multibrowser, the callback is done for each item that changes, whether
 it turns on or off.
 
-=for hackers xs/Browser.xs line 669
+=for hackers xs/Browser.xs line 667
 
 =back
 
@@ -1045,7 +1045,7 @@ false.
 
 Note: This is an FLTK 1.0 emulation method.
 
-=for hackers xs/Browser.xs line 1002
+=for hackers xs/Browser.xs line 1000
 
 =back
 
@@ -1058,7 +1058,7 @@ X<selected_column>
 
 Returns the currently selected column.
 
-=for hackers xs/Browser.xs line 803
+=for hackers xs/Browser.xs line 801
 
 =back
 
@@ -1071,7 +1071,7 @@ X<set_column_start>
 
 
 
-=for hackers xs/Browser.xs line 960
+=for hackers xs/Browser.xs line 958
 
 =back
 
@@ -1087,7 +1087,7 @@ L<FLTK::MultiBrowser|FLTK::MultiBrowser> the item that has a dotted box around
 it, to the current item. This calls
 L<C<make_item_visible()>|/"make_item_visible">.
 
-=for hackers xs/Browser.xs line 560
+=for hackers xs/Browser.xs line 558
 
 =back
 
@@ -1103,7 +1103,7 @@ L<FLTK::STATE|FLTK/"STATE"> flags) to the given value and redraw the browser
 correctly. Returns C<true> if the state was actually changed, returns C<false>
 if it was already in that state.
 
-=for hackers xs/Browser.xs line 756
+=for hackers xs/Browser.xs line 754
 
 =back
 
@@ -1125,7 +1125,7 @@ L<C<deselect()>|/"deselect"> if \a value is false.
 If C<do_callback> has some bits that are also in L<C<when()>|/"when"> then the
 callback is done for each item that changes selected state.
 
-=for hackers xs/Browser.xs line 651
+=for hackers xs/Browser.xs line 649
 
 =back
 
@@ -1140,7 +1140,7 @@ Turn off or on the LC<FLTK::INVISIBLE>|FLTK/"INVISIBLE"> flag on the given
 item and redraw the browser if necessary. Returns C<true> if the state was
 actually changed, returns C<false> if it was already in that state.
 
-=for hackers xs/Browser.xs line 763
+=for hackers xs/Browser.xs line 761
 
 =back
 
@@ -1153,7 +1153,7 @@ X<set_mark>
 
 
 
-=for hackers xs/Browser.xs line 601
+=for hackers xs/Browser.xs line 599
 
 =back
 
@@ -1166,7 +1166,7 @@ X<set_mark_to_focus>
 
 
 
-=for hackers xs/Browser.xs line 605
+=for hackers xs/Browser.xs line 603
 
 =back
 
@@ -1180,14 +1180,14 @@ X<topline>
 Convenience function for non-hierarchial browsers. Returns the index if the
 top-level item that is at the top of the scrolling window.
 
-=for hackers xs/Browser.xs line 1015
+=for hackers xs/Browser.xs line 1013
 
 =item C<$browser-E<gt>topline( $line );>X<_browser_E_gt_topline_line_>
 
 Convenience function for non-hierarchial browsers. Make the indexed item
 visible and scroll to put it at the top of the browser.
 
-=for hackers xs/Browser.xs line 1020
+=for hackers xs/Browser.xs line 1018
 
 =back
 
@@ -1201,14 +1201,14 @@ X<value>
 Same as C<goto_index(val);set_focus();>, to change the current item in a
 non-hierarchial browser.
 
-=for hackers xs/Browser.xs line 979
+=for hackers xs/Browser.xs line 977
 
 =item C<my $val = $browser-E<gt>value( );>X<my_val_browser_E_gt_value_>
 
 Returns C<focus_index(val)[0]>, to get the current item in a non-hierarchial
 browser.
 
-=for hackers xs/Browser.xs line 984
+=for hackers xs/Browser.xs line 982
 
 =back
 
@@ -1223,7 +1223,7 @@ The width of the longest item in the browser, measured in pixels. If this is
 changed (by adding or deleting items or opening or closing a parent item) then
 L<C<layout()>|/"layout"> must be called before this is correct.
 
-=for hackers xs/Browser.xs line 254
+=for hackers xs/Browser.xs line 252
 
 =back
 
@@ -1235,14 +1235,14 @@ X<xposition>
 =item C<my $x = $browser-E<gt>xposition( );>X<my_x_browser_E_gt_xposition_>
 
 
-=for hackers xs/Browser.xs line 302
+=for hackers xs/Browser.xs line 300
 
 =item C<$browser-E<gt>xposition( $x );>X<_browser_E_gt_xposition_x_>
 
 Set the horizontal scrolling position, measured in pixels. Zero is the normal
 position where the left edge of the child widgets is visible.
 
-=for hackers xs/Browser.xs line 305
+=for hackers xs/Browser.xs line 303
 
 =back
 
@@ -1254,14 +1254,14 @@ X<yposition>
 =item C<my $y = $browser-E<gt>yposition( );>X<my_y_browser_E_gt_yposition_>
 
 
-=for hackers xs/Browser.xs line 310
+=for hackers xs/Browser.xs line 308
 
 =item C<$browser-E<gt>yposition( $y );>X<_browser_E_gt_yposition_y_>
 
 Set the vertical scrolling position, measured in pixels. Zero means the top of
 the first item is visible. Positive numbers scroll the display up.
 
-=for hackers xs/Browser.xs line 313
+=for hackers xs/Browser.xs line 311
 
 =back
 
@@ -1287,6 +1287,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: Browser.xs c629eeb 2010-09-27 04:12:30Z sanko@cpan.org $
+=for git $Id: Browser.xs 7483df2 2011-04-09 05:42:22Z sanko@cpan.org $
 
 =cut

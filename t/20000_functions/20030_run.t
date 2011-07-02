@@ -8,7 +8,7 @@
 
 =for abstract Tests for xs/run.xsi
 
-=for git $Id: 20030_run.t 6858aff 2011-01-29 05:17:25Z sanko@cpan.org $
+=for git $Id: 20030_run.t e0eca02 2011-07-02 23:02:20Z sanko@cpan.org $
 
 =cut
 
@@ -31,6 +31,6 @@ use FLTK qw[:run];
 {
     FLTK::wait(0.01) for 1 .. 60;
     my $i = 0;
-    add_timeout(2, sub { $i++; pass 'add_timeout called' });
+    my $to = add_timeout(2, sub { $i++; pass 'add_timeout called'; });
     for (1 .. 60) { sleep 1; FLTK::wait(1); last if $i; }
 }

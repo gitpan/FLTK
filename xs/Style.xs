@@ -6,6 +6,10 @@ MODULE = FLTK::Style               PACKAGE = FLTK::Style
 
 #include <fltk/Style.h>
 
+#include <fltk/LabelType.h>
+
+#include <fltk/Symbol.h>
+
 fltk::Style *
 fltk::Style::new( )
 

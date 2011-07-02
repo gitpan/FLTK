@@ -6,18 +6,14 @@ MODULE = FLTK::TextSelection               PACKAGE = FLTK::TextSelection
 
 #include <fltk/TextBuffer.h>
 
-#include "include/WidgetSubclass.h"
+#include "include/RectangleSubclass.h"
 
-void
+fltk::TextSelection *
 fltk::TextSelection::new( )
-    PPCODE:
-        void * RETVAL = NULL;
-        RETVAL = (void *) new fltk::TextSelection( );
-        if (RETVAL != NULL) {
-            ST(0) = sv_newmortal();
-            sv_setref_pv(ST(0), CLASS, RETVAL); /* -- hand rolled -- */
-            XSRETURN(1);
-        }
+    CODE:
+        RETVAL = new fltk::TextSelection( );
+    OUTPUT:
+        RETVAL
 
 void
 fltk::TextSelection::set( int start, int end )

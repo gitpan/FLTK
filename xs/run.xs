@@ -287,20 +287,47 @@ BOOT:
 MODULE = FLTK::run               PACKAGE = FLTK
 
 SV *
-add_fd( PerlIO * fh, int events, CV * callback, SV * args = NO_INIT )
-    CODE:
-        int fileno = PerlIO_fileno( fh );
-        AV *seg_av;
-        seg_av = newAV();
-        // cb, fileno, events, [, args]
-        av_push(seg_av, newSVsv(ST(2)));
-        av_push(seg_av, newRV_inc(ST(0)));
-        av_push(seg_av, newSViv( events ));
-        if ( items == 2 ) av_push(seg_av, newSVsv(args));
-        RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::fd", 1));
-        fltk::add_fd(_get_osfhandle( fileno ), events, _cb_f, ( void * ) seg_av );
-    OUTPUT:
-        RETVAL
+add_fd( fh, int events, CV * callback, SV * args = NO_INIT )
+    CASE: SvROK( ST(0) ) && ( SvTYPE( SvRV( ST( 0 ) ) ) == SVt_PVGV )
+        PerlIO * fh
+        CODE:
+            int fileno = PerlIO_fileno( fh );
+            AV *seg_av;
+            seg_av = newAV();
+            // cb, fileno, events, [, args]
+            av_push(seg_av, newSVsv(ST(2)));
+            av_push(seg_av, newRV_inc(ST(0)));
+            av_push(seg_av, newSViv( events ));
+            if ( items == 2 ) av_push(seg_av, newSVsv(args));
+            RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::fd", 1));
+            fltk::add_fd(_get_osfhandle( fileno ), events, _cb_f, ( void * ) seg_av );
+        OUTPUT:
+            RETVAL
+    CASE: SvIOK( ST(0) )
+        int fh
+        CODE:
+            AV *seg_av;
+            seg_av = newAV();
+            // cb, fileno, events, [, args]
+            av_push( seg_av, newSVsv( ST(2) ) );
+            PerlIO * _fh = PerlIO_fdopen( fh, "rb" );
+            SV * svfh;
+            svfh = sv_newmortal();
+            {   const char * _class = "FLTK";
+                GV *gv = newGVgen(_class);
+                /* XXX - reopen fd to the correct mode */
+                if ( do_open(gv, "+<&", 3, FALSE, 0, 0, _fh) )
+                    sv_setsv(svfh, sv_bless(newRV((SV*)gv), gv_stashpv(_class,1)));
+                else
+                    svfh = &PL_sv_undef;
+            }
+            av_push(seg_av,  newSVsv(svfh) );
+            av_push(seg_av, newSViv( events ));
+            if ( items == 2 ) av_push(seg_av, newSVsv(args));
+            RETVAL = sv_bless(newRV_noinc((SV *)seg_av), gv_stashpv("FLTK::fd", 1));
+            fltk::add_fd(_get_osfhandle( fh ), events, _cb_f, ( void * ) seg_av );
+        OUTPUT:
+            RETVAL
 
 MODULE = FLTK::run               PACKAGE = FLTK
 

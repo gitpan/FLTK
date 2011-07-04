@@ -53,7 +53,7 @@ no_index:
 provides:
   FLTK:
     file: lib/FLTK.pm
-    version: 0.532008
+    version: 0.532009
   FLTK::Adjuster:
     file: xs/Adjuster.xs
     version: 0.532006
@@ -393,4 +393,4 @@ resources:
   license: http://opensource.org/licenses/artistic-license-2.0.php
   repository: git://github.com/sanko/perl-fltk.git
   x_ChangeLog: http://github.com/sanko/perl-fltk/commits/master/
-version: 0.532008
+version: 0.532009

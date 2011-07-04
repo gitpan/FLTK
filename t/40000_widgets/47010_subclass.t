@@ -8,7 +8,7 @@
 
 =for abstract Tests for (Subclassed Widgets)
 
-=for git $Id: 47010_subclass.t 20cdb50 2011-04-09 16:18:50Z sanko@cpan.org $
+=for git $Id: 47010_subclass.t 67e5c43 2011-07-04 13:30:00Z sanko@cpan.org $
 
 =cut
 
@@ -50,13 +50,16 @@ use FLTK qw[:events];
 
     package my::Test::HiddenButton;
     use parent-norequire, 'FLTK::Button';
-    sub draw {...}
+    sub draw {
+        ::BAIL_OUT(
+            "We should never be in a position to call my::Test::HiddenButton->draw([...])"
+        );
+        }
 
     sub handle {
-        ...;
         my ($obj, $event) = @_;
         ::BAIL_OUT(
-            "We should never be in a position to call FLTKx::Test::HiddenButton->handle($event)"
+            "We should never be in a position to call my::Test::HiddenButton->handle($event)"
         );
         return 0;
     }

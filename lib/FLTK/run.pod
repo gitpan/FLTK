@@ -86,6 +86,14 @@ Import this function with the C<:fd> tag.
 
 =for hackers xs/run.xs line 565
 
+=item C<my $okay = FLTK::add_fd( $fileno, $events, \&callback, $args );>X<my_okay_FLTK_add_fd_fileno_events_callback_args_>
+
+Adds the handle (if it exists) with the particular fileno.
+
+Import this function with the C<:fd> tag.
+
+=for hackers xs/run.xs line 596
+
 =back
 
 =head2 C<add_idle>
@@ -364,7 +372,7 @@ C<-1>.
 
 Import this function with the C<:fd> tag.
 
-=for hackers xs/run.xs line 631
+=for hackers xs/run.xs line 662
 
 =back
 
@@ -497,6 +505,6 @@ See the
 L<clarification of the CCA-SA3.0|http://creativecommons.org/licenses/by-sa/3.0/us/>.
 
 
-=for git $Id: run.xs 0f9e351 2011-07-02 22:44:19Z sanko@cpan.org $
+=for git $Id: run.xs 7ac4a0a 2011-07-04 16:21:16Z sanko@cpan.org $
 
 =cut

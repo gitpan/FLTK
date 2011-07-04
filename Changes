@@ -1,3 +1,8 @@
+Version 0.532009 | 2011-07-04 16:21:16Z (Mon, 04 Jul 2011) | 7ac4a0a
+
+    API Changes/Compatibility Information:
+     * add_fd( fileno($fh), ... ) is back
+
 Version 0.532008 | 2011-07-02 23:10:36Z (Sat, 02 Jul 2011) | 1529294
 
     Resolved Issues/Bug Fixes:
@@ -124,6 +129,6 @@ _ -.-. .... .- -. --. . ... _________________________________________
 For more information, see the commit log:
     http://github.com/sanko/perl-fltk/commits/master/
 
-$Ver: 0.532008 $ from git $Rev: 1529294 $
-$Date: 2011-07-02 23:10:36Z (Sat, 02 Jul 2011) $
+$Ver: 0.532009 $ from git $Rev: 6d39005 $
+$Date: 2011-07-04 13:29:20Z (Mon, 04 Jul 2011) $
 $Url: git://github.com/sanko/perl-fltk.git/raw/master/Changes $

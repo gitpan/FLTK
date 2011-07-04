@@ -8,7 +8,7 @@
 
 =for abstract Tests for add_fd( ... ) and related functions
 
-=for git $Id: 20050_fd.t e0eca02 2011-07-02 23:02:20Z sanko@cpan.org $
+=for git $Id: 20050_fd.t 7ac4a0a 2011-07-04 16:21:16Z sanko@cpan.org $
 
 =cut
 
@@ -105,7 +105,7 @@ SKIP: {
                 remove_fd($fd{c_p});
                 note 'removed $client from watch list';
                 $fd{c_p_p} = add_fd(
-                    $client, WRITE,
+                   fileno ($client), WRITE,
                     sub {
                         is syswrite(shift, "quit\n"), 5,
                             'wrote 5 bytes to client (quit\\n)';
